@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# **********************************************
+# @version 1.0.0
+# **********************************************
+
+for ADA_SCRIPT in /usr/local/etc/ada/adai.d/*.sh; do
+    if [ -r $ADA_SCRIPT ]; then
+        . $ADA_SCRIPT
+    fi
+done

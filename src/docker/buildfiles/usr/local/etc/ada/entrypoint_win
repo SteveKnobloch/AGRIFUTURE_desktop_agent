@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# **********************************************
+# @version 1.0.0
+# **********************************************
+
+set -e
+
+if [ ! -z "$ADA_VERBOSE" ]; then echo " change user permissions"; fi
+if [ ! -z "$ADA_VERBOSE" ]; then echo "  you are probably a windows user. No id changes will be done."; fi
+
+for ADA_SCRIPT in /usr/local/etc/ada/entrypoint.d/*.sh; do
+    if [ -r $ADA_SCRIPT ]; then
+        if [ ! -z "$ADA_VERBOSE" ]; then echo "RUN $ADA_SCRIPT as root"; fi
+        . $ADA_SCRIPT
+    fi
+done
+
+if [ ! -z "$ADA_VERBOSE" ]; then echo "RUN $@ as user: $HOSTUSER_UID, group: $HOSTUSER_GID (old uid: $OLD_USER_UID, old gid: $OLD_USER_GID)"; fi
+
+exec sudo -E -H -u ada "$@"

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# **********************************************
+# @version 1.0.0
+# **********************************************
+
+set -eu
+
+cd /usr/local/etc
+
+sed 's!=NONE/!=!g' php-fpm.conf.default | tee php-fpm.conf > /dev/null
+cp php-fpm.d/www.conf.default php-fpm.d/www.conf
+sed -i -e 's/user = www-data/user = ada/g' php-fpm.d/www.conf
+sed -i -e 's/group = www-data/group = ada/g' php-fpm.d/www.conf
+
+{
+    echo '[global]';
+    echo 'error_log = /proc/self/fd/2';
+    echo;
+    echo 'log_limit = 8192';
+    echo;
+    echo '[www]';
+    echo 'access.log = /proc/self/fd/2';
+    echo;
+    echo 'clear_env = no';
+    echo;
+    echo 'catch_workers_output = yes';
+    echo 'decorate_workers_output = no';
+} | tee php-fpm.d/docker.conf
+
+{
+    echo '[global]';
+    echo 'daemonize = no';
+    echo;
+    echo '[www]';
+    echo 'listen = 9000';
+} | tee php-fpm.d/zz-docker.conf

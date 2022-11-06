@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  app:
+    image: code.tritum.de:5555/senckenberg/agrifuture_desktop_agent:latest
+    environment:
+      ADA_RUN_AGENT: 1
+      ADA_RUNNING_CONTAINERS: 0
+      ADA_HOST_DIRECTORY: "${PWD}/volumes/data"
+    ports:
+      - '8041:80'
+    volumes:
+      - ./src/docker/buildfiles/opt/ada/app:/opt/ada/app
+      - ./volumes/fakehome:/home/ada/.local/share/ada
+      - ./volumes/data:/data:ro

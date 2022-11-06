@@ -1,0 +1,22 @@
+stages:
+  - build
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  - export DSL_IMAGE_NAMESPACE=$CI_REGISTRY_IMAGE/agrifuture_desktop_agent
+  - |
+    if [ -z "$CI_COMMIT_TAG" ]; then
+        DSL_IMAGE_TAG=$CI_COMMIT_BRANCH
+    else
+        DSL_IMAGE_TAG=$CI_COMMIT_TAG
+    fi
+    export DSL_IMAGE_TAG=$(echo $DSL_IMAGE_TAG | sed 's/[^[:alnum:]\.\_\-]/-/g')
+
+build:agrifuture-desktop-agent:
+  stage: build
+  tags:
+    - docker-image-build
+  timeout: 4h
+  script:
+    - src/docker/build.sh
+    - docker push $DSL_IMAGE_NAMESPACE:${DSL_IMAGE_TAG}
