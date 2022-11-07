@@ -7,6 +7,7 @@ Simulation eines gestarteten Agrifuture Desktop Agent via docker-compose.
 
 ```
 docker-compose up -d
+docker exec -it agrifuture_desktop_agent_app_1 composer install
 ```
 
 Die vom Launchscript ermittelten Volumes werden im Testsetup auf feste Werte gestellt:

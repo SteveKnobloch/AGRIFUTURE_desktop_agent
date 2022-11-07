@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'TRITUM' %}
+
+{% block body %}
+    <header>
+        <style>
+            .tableFixHead {
+                overflow-y: auto;
+                height: 100px;
+            }
+            .tableFixHead thead th {
+                position: sticky;
+                top: 0;
+                z-index: 9000;
+            }
+
+            .tree li {
+                list-style-type:none;
+                margin:0;
+                padding:10px 5px 0 5px;
+                position:relative
+            }
+            .tree li::before, 
+            .tree li::after {
+                content:'';
+                left:-20px;
+                position:absolute;
+                right:auto
+            }
+            .tree li::before {
+                border-left:1px solid #000;
+                bottom:50px;
+                height:100%;
+                top:0;
+                width:1px
+            }
+            .tree li::after {
+                border-top:1px solid #000;
+                height:20px;
+                top:25px;
+                width:25px
+            }
+            .tree li span {
+                -moz-border-radius:5px;
+                -webkit-border-radius:5px;
+                border:1px solid transparent;
+                border-radius:3px;
+                display:inline-block;
+                padding:3px 8px;
+                text-decoration:none;
+                cursor:pointer;
+            }
+            .tree>ul>li::before,
+            .tree>ul>li::after {
+                border:0
+            }
+            .tree li:last-child::before {
+                height:27px
+            }
+        </style>
+    </header>
+    <main>
+        <div class="container-fluid">
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    <footer class="page-footer font-small blue pt-4">
+
+    </footer>
+{% endblock %}

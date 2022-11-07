@@ -128,6 +128,11 @@ RUN install-php-extensions xdebug \
     && chmod 777 /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     \
     \
+    && apk add --no-cache \
+        nodejs \
+        yarn \
+    \
+    \
     && chmod 777 /tmp
 
 USER ada
