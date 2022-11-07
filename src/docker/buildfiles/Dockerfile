@@ -19,11 +19,13 @@ RUN apk -U update \
         dialog \
         gettext \
         nginx \
+        nodejs \
         runit \
         shadow \
         sudo \
         supervisor \
         tzdata \
+        yarn \
     \
     \
     && update-ca-certificates \
@@ -109,7 +111,30 @@ RUN apk -U update \
     \
     && rm -rf /tmp/* \
     \
-    && rm -rf /var/cache/apk/
+    && rm -rf /var/cache/apk/ \
+    \
+    \
+    && cd /opt/ada/app/ \
+    && composer install --no-dev --no-interaction \
+    && composer build:frontend \
+    \
+    && find bin/ -type f -not -name 'console' -delete \
+    && rm -rf assets/ \
+    && rm -rf node_modules/ \
+    && rm -rf var/ \
+    && rm -f composer.lock \
+    && rm -f package.json \
+    && rm -f symfony.lock \
+    && rm -f webpack.config.js \
+    && rm -f yarn.lock \
+    && rm -f .gitignore \
+    && rm -f .php-cs-fixer.dist.php \
+    && mkdir var/ \
+    \
+    && chown ada:ada -R /opt/ada \
+    && find /opt/ada -type d -print0 | xargs -0 -n1 -I{} chmod 755 {} \
+    && find /opt/ada -type f -print0 | xargs -0 -n1 -I{} chmod 644 {} \
+    && chmod 777 var/
 
 VOLUME ["/opt/ada/app/"]
 
@@ -128,11 +153,6 @@ RUN install-php-extensions xdebug \
     && chmod 777 /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     \
     \
-    && apk add --no-cache \
-        nodejs \
-        yarn \
-    \
-    \
     && chmod 777 /tmp
 
 USER ada
@@ -140,7 +160,14 @@ USER ada
 #### PRODUCTION STAGE ####
 FROM base AS production
 
-RUN rm -f /bin/tar \
+ENV APP_ENV=prod
+
+RUN apk del \
+      nodejs \
+      yarn \
+    \
+    \
+    && rm -f /bin/tar \
     \
     && rm -rf /lib/apk/db/ \
     \
@@ -221,7 +248,6 @@ RUN rm -f /bin/tar \
     && rm -f /usr/local/bin/pear* \
     && rm -f /usr/local/bin/pecl \
     && rm -f /usr/local/bin/phar* \
-    && rm -f /usr/local/bin/php \
     && rm -f /usr/local/bin/php-config \
     && rm -f /usr/local/bin/phpize \
     \

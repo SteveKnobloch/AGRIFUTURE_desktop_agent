@@ -1,3 +1,5 @@
+[![pipeline status](https://code.tritum.de/senckenberg/agrifuture_desktop_agent/badges/main/pipeline.svg)](https://code.tritum.de/senckenberg/agrifuture_desktop_agent/-/commits/main) 
+
 Agrifuture Desktop Agent
 
 # Development

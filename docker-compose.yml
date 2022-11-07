@@ -6,6 +6,7 @@ services:
       ADA_RUN_AGENT: 1
       ADA_RUNNING_CONTAINERS: 0
       ADA_HOST_DIRECTORY: "${PWD}/volumes/data"
+      ADA_RUN_UUID: b051976e-182c-4ed3-80c6-e8ebdff91165
     ports:
       - '8041:80'
     volumes:

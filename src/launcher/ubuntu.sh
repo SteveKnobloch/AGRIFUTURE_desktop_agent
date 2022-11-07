@@ -17,6 +17,7 @@ if grep -qiE '(microsoft|mingw64)' /proc/version; then
         ADA_IS_GYGWIN=0;
     fi
 else
+    ADA_IS_GYGWIN=0;
     ADA_IS_WIN=0
 fi
 
@@ -32,9 +33,12 @@ ADA_CONTAINER_ID=""
 ADA_DOCKER_COMMAND_PREFIX=""
 ADA_DATA_DIR=""
 ADA_CMD_FILE=""
+ADA_RUN_UUID=""
 
 function shutdown()
 {
+    $ADA_DOCKER_COMMAND_PREFIX docker run --rm -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER php bin/console app:cancle-analysis $ADA_RUN_UUID &>/dev/null
+
     rm -f "${ADA_CMD_FILE}"
 
     if [ ! -z ${ADA_CONTAINER_ID+x} ]; then
@@ -50,8 +54,9 @@ function shutdown()
     unset ADA_IS_WIN
     unset ADA_IS_GYGWIN
     unset ADA_DOCKER_COMMAND_PREFIX
+    unset ADA_RUN_UUID
 
-#    clear
+    clear
 }
 
 function setup()
@@ -69,6 +74,8 @@ function setup()
     if [ $ADA_IS_GYGWIN -eq 1 ]; then
         ADA_DATA_DIR="/$ADA_DATA_DIR";
     fi
+
+    ADA_RUN_UUID=$(cat /proc/sys/kernel/random/uuid)
 
     echo "Check for updates..."
     docker pull $ADA_CONTAINER
@@ -119,8 +126,7 @@ function main()
 
     for ((;;)); {
         ADA_HOST_DIRECTORIES=$(ls -d1 "$ADA_HOST_DIRECTORY"/.*/ "$ADA_HOST_DIRECTORY"/*/ 2>/dev/null)
-        #$ADA_DOCKER_COMMAND_PREFIX docker run --rm -e ADA_RUN_SETUP=1 -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v "$ADA_DATA_DIR":/home/ada/.local/share/ada -v $(pwd)/src/docker/buildfiles/usr/local/bin/ada-setup:/usr/local/bin/ada-setup -it $ADA_CONTAINER $ADA_HOST_DIRECTORIES
-        $ADA_DOCKER_COMMAND_PREFIX docker run --rm -it -e ADA_RUN_SETUP=1 -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v "$ADA_DATA_DIR":/home/ada/.local/share/ada $ADA_CONTAINER "$ADA_HOST_DIRECTORIES"
+        $ADA_DOCKER_COMMAND_PREFIX docker run --rm -it -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v "$ADA_DATA_DIR":/home/ada/.local/share/ada $ADA_CONTAINER ada-setup "$ADA_HOST_DIRECTORIES"
 
         if [ ! -f "${ADA_CMD_FILE}" ]; then
             exit 0
@@ -169,7 +175,7 @@ function main()
         ADA_HOST_DIRECTORY="/$ADA_HOST_DIRECTORY";
     fi
 
-    $ADA_DOCKER_COMMAND_PREFIX docker run --rm -e ADA_TRANSLATE=1 -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER "app.launch" "ada-setup"
+    $ADA_DOCKER_COMMAND_PREFIX docker run --rm -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER ada-translate "app.launch" "ada-setup"
 
     while ! is_port_free $ADA_PORT
     do
@@ -177,9 +183,9 @@ function main()
     done
 
     ADA_RUNNING_CONTAINERS=$(docker ps --filter "label=de.senckenberg.agrifuture=agrifuture_desktop_agent1" | tail -n +2 | wc -l)
-    ADA_CONTAINER_ID=$(docker run --rm -d --label de.senckenberg.agrifuture=agrifuture_desktop_agent -e ADA_RUN_AGENT=1 -e ADA_RUNNING_CONTAINERS=$ADA_RUNNING_CONTAINERS -e ADA_HOST_DIRECTORY=$ADA_HOST_DIRECTORY -v "$ADA_DATA_DIR":/home/ada/.local/share/ada -v "$ADA_HOST_DIRECTORY":/data:ro -p "127.0.0.1:$ADA_PORT:80" $ADA_CONTAINER)
+    ADA_CONTAINER_ID=$(docker run --rm -d --label de.senckenberg.agrifuture=agrifuture_desktop_agent -e ADA_RUN_AGENT=1 -e ADA_RUNNING_CONTAINERS -e ADA_HOST_DIRECTORY -e ADA_RUN_UUID -v "$ADA_DATA_DIR":/home/ada/.local/share/ada -v "$ADA_HOST_DIRECTORY":/data:ro -p "127.0.0.1:$ADA_PORT:80" $ADA_CONTAINER)
     sleep 5
-    $ADA_DOCKER_COMMAND_PREFIX docker run --rm -e ADA_TRANSLATE=1 -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER "app.launch_information" "ada-setup" "http://127.0.0.1:$ADA_PORT"
+    $ADA_DOCKER_COMMAND_PREFIX docker run --rm -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER ada-translate "app.launch_information" "ada-setup" "http://127.0.0.1:$ADA_PORT"
 
     if [ $ADA_IS_WIN -eq 1 ]; then
         powershell.exe -c start "http://127.0.0.1:$ADA_PORT"

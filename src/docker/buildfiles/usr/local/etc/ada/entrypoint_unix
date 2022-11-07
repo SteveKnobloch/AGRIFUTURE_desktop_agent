@@ -22,9 +22,6 @@ if [ ! -z "$ADA_VERBOSE" ]; then echo " change file permissions"; fi
 if [ ! -z "$ADA_VERBOSE" ]; then echo "   change /home/ada"; fi
 find /home/ada \( -not -user $HOSTUSER_UID -o -not -group $HOSTUSER_GID \) -print0 | xargs -0 -n1 -I{} chown -h $HOSTUSER_UID:$HOSTUSER_GID {} || true
 
-if [ ! -z "$ADA_VERBOSE" ]; then echo "   change /opt/ada"; fi
-find /opt/ada \( -not -user $HOSTUSER_UID -o -not -group $HOSTUSER_GID \) -print0 | xargs -0 -n1 -I{} chown -h $HOSTUSER_UID:$HOSTUSER_GID {} || true
-
 for ADA_SCRIPT in /usr/local/etc/ada/entrypoint.d/*.sh; do
     if [ -r $ADA_SCRIPT ]; then
         if [ ! -z "$ADA_VERBOSE" ]; then echo "RUN $ADA_SCRIPT as root"; fi

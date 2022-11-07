@@ -12,9 +12,6 @@ function remove_command_file()
 function write_command()
 {
     echo "$@" > /home/ada/.local/share/ada/cmd
-    if [ ! -z ${HOSTUSER_UID+x} ] && [ ! -z ${HOSTUSER_GID+x} ]; then
-        chown $HOSTUSER_UID:$HOSTUSER_GID /home/ada/.local/share/ada/cmd
-    fi
 }
 
 function select_language()
@@ -76,14 +73,6 @@ function select_language()
     export TZ=$ADA_TIME
 
     echo "$ADA_LANG" > /home/ada/.local/share/ada/lang
-    if [ ! -z ${HOSTUSER_UID+x} ] && [ ! -z ${HOSTUSER_GID+x} ]; then
-        chown $HOSTUSER_UID:$HOSTUSER_GID /home/ada/.local/share/ada/lang
-    fi
-
-    echo "$ADA_TIME" > /etc/timezone
-    if [ -f "/usr/share/zoneinfo/$ADA_TIME" ]; then
-        cp "/usr/share/zoneinfo/$ADA_TIME" /etc/localtime
-    fi
 }
 
 function select_host_folder()
