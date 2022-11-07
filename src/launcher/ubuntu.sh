@@ -9,16 +9,32 @@
 
 ADA_VERSION=1.0.0
 
+if grep -qiE '(microsoft|mingw64)' /proc/version; then
+    ADA_IS_WIN=1
+    if [ -x "$(command -v cygcheck)" ]; then
+        ADA_IS_GYGWIN=1;
+    else
+        ADA_IS_GYGWIN=0;
+    fi
+else
+    ADA_IS_WIN=0
+fi
+
 if [ "$BASH" = "" ]; then echo "Error: you are not running this script within the bash."; exit 1; fi
 if [ ! -x "$(command -v docker)" ]; then echo "Error: docker is not available. Please install Docker according to these instructions: https://docs.docker.com/engine/install/ubuntu/"; exit 1; fi
-if [ ! -x "$(command -v netstat)" ]; then echo "Error: netstat is not available. Please install netstat with the command 'sudo apt-get install net-tools'"; exit 1; fi
+if [ ! -x "$(command -v netstat)" ]; then echo -e "Error: netstat is not available. Please install netstat with the command\nsudo apt-get install net-tools"; exit 1; fi
+if [ $ADA_IS_WIN -eq 0 ]; then if [ ! -x "$(command -v xdg-open)" ]; then echo -e "Error: xdg-open is not available. Please install xdg-open with the command\nsudo apt-get install xdg-utils"; exit 1; fi fi
 
 ADA_HOST_DIRECTORY="$(pwd)"
 ADA_CONTAINER="code.tritum.de:5555/senckenberg/agrifuture_desktop_agent:latest"
 #ADA_CONTAINER=senckenberg/agrifuture_desktop_agent:latest
 ADA_CONTAINER_ID=""
+ADA_DOCKER_COMMAND_PREFIX=""
+ADA_DATA_DIR=""
+ADA_CMD_FILE=""
 
-function shutdown() {
+function shutdown()
+{
     rm -f "${ADA_CMD_FILE}"
 
     if [ ! -z ${ADA_CONTAINER_ID+x} ]; then
@@ -31,16 +47,28 @@ function shutdown() {
     unset ADA_CONTAINER_ID
     unset ADA_DATA_DIR
     unset ADA_CMD_FILE
+    unset ADA_IS_WIN
+    unset ADA_IS_GYGWIN
+    unset ADA_DOCKER_COMMAND_PREFIX
 
-    clear
+#    clear
 }
 
-function setup() {
+function setup()
+{
     ADA_DATA_DIR="${XDG_DATA_HOME:=${HOME}/.local/share}/agrifuture"
     ADA_CMD_FILE="${ADA_DATA_DIR}/cmd"
 
+    if [ $ADA_IS_GYGWIN -eq 1 ] && [ -x "$(command -v winpty)" ]; then
+        ADA_DOCKER_COMMAND_PREFIX="winpty";
+    fi
+
     mkdir -p "${ADA_DATA_DIR}"
     rm -f "${ADA_CMD_FILE}"
+
+    if [ $ADA_IS_GYGWIN -eq 1 ]; then
+        ADA_DATA_DIR="/$ADA_DATA_DIR";
+    fi
 
     echo "Check for updates..."
     docker pull $ADA_CONTAINER
@@ -48,12 +76,25 @@ function setup() {
     trap 'shutdown' EXIT
 }
 
-is_port_used()
+function is_port_free()
 {
-    netstat -t4uln | grep LISTEN | awk '{print $4}' | cut -d':' -f2 | grep -e "^$1\$" &>/dev/null
+    local ADA_IS_USED=0
+
+    if [ $ADA_IS_GYGWIN -eq 1 ]; then
+        ADA_IS_USED=$(netstat -an -p TCP | awk '{print $3}' | cut -d':' -f2 | grep -e "^$1\$" | wc -l)
+    else
+        ADA_IS_USED=$(netstat -t4uln | grep LISTEN | awk '{print $4}' | cut -d':' -f2 | grep -e "^$1\$" | wc -l)
+    fi
+
+    if [ $ADA_IS_USED -eq 0 ]; then
+        ADA_IS_USED=$(docker ps -aq --filter "publish=$1" | wc -l)
+    fi
+
+    return $ADA_IS_USED
 }
 
-function main() {
+function main()
+{
     if [[ "$1" == "-v" ]]; then
         printf 'RAPiD Pipeline Desktop Agent - launcher\n'
         printf 'Version %s\n' "$ADA_VERSION"
@@ -78,8 +119,8 @@ function main() {
 
     for ((;;)); {
         ADA_HOST_DIRECTORIES=$(ls -d1 "$ADA_HOST_DIRECTORY"/.*/ "$ADA_HOST_DIRECTORY"/*/ 2>/dev/null)
-        #docker run --rm -e ADA_RUN_SETUP=1 -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada -v $(pwd)/src/docker/build_context/usr/local/bin/ada-setup:/usr/local/bin/ada-setup -it $ADA_CONTAINER $ADA_HOST_DIRECTORIES
-        docker run --rm -it -e ADA_RUN_SETUP=1 -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER $ADA_HOST_DIRECTORIES
+        #$ADA_DOCKER_COMMAND_PREFIX docker run --rm -e ADA_RUN_SETUP=1 -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v "$ADA_DATA_DIR":/home/ada/.local/share/ada -v $(pwd)/src/docker/buildfiles/usr/local/bin/ada-setup:/usr/local/bin/ada-setup -it $ADA_CONTAINER $ADA_HOST_DIRECTORIES
+        $ADA_DOCKER_COMMAND_PREFIX docker run --rm -it -e ADA_RUN_SETUP=1 -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v "$ADA_DATA_DIR":/home/ada/.local/share/ada $ADA_CONTAINER "$ADA_HOST_DIRECTORIES"
 
         if [ ! -f "${ADA_CMD_FILE}" ]; then
             exit 0
@@ -124,21 +165,29 @@ function main() {
     rm -f "${ADA_CMD_FILE}"
     clear
 
-    while is_port_used $ADA_PORT
+    if [ $ADA_IS_GYGWIN -eq 1 ]; then
+        ADA_HOST_DIRECTORY="/$ADA_HOST_DIRECTORY";
+    fi
+
+    $ADA_DOCKER_COMMAND_PREFIX docker run --rm -e ADA_TRANSLATE=1 -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER "app.launch" "ada-setup"
+
+    while ! is_port_free $ADA_PORT
     do
       let ADA_PORT=ADA_PORT+1
     done
 
-    docker run --rm -e ADA_TRANSLATE=1 -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER "app.launch" "ada-setup"
     ADA_RUNNING_CONTAINERS=$(docker ps --filter "label=de.senckenberg.agrifuture=agrifuture_desktop_agent1" | tail -n +2 | wc -l)
-    ADA_CONTAINER_ID=$(docker run --rm -d --label de.senckenberg.agrifuture=agrifuture_desktop_agent -e ADA_RUN_AGENT=1 -e ADA_RUNNING_CONTAINERS=$ADA_RUNNING_CONTAINERS -e ADA_HOST_DIRECTORY=$ADA_HOST_DIRECTORY -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada -v "$ADA_HOST_DIRECTORY":/data:ro -p "127.0.0.1:$ADA_PORT:80" $ADA_CONTAINER)
+    ADA_CONTAINER_ID=$(docker run --rm -d --label de.senckenberg.agrifuture=agrifuture_desktop_agent -e ADA_RUN_AGENT=1 -e ADA_RUNNING_CONTAINERS=$ADA_RUNNING_CONTAINERS -e ADA_HOST_DIRECTORY=$ADA_HOST_DIRECTORY -v "$ADA_DATA_DIR":/home/ada/.local/share/ada -v "$ADA_HOST_DIRECTORY":/data:ro -p "127.0.0.1:$ADA_PORT:80" $ADA_CONTAINER)
     sleep 5
-    docker run --rm -e ADA_TRANSLATE=1 -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER "app.launch_information" "ada-setup" "http://127.0.0.1:$ADA_PORT"
-    xdg-open "http://127.0.0.1:$ADA_PORT" &>/dev/null
+    $ADA_DOCKER_COMMAND_PREFIX docker run --rm -e ADA_TRANSLATE=1 -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER "app.launch_information" "ada-setup" "http://127.0.0.1:$ADA_PORT"
 
-    for ((;;)); {
-        nop
-    }
+    if [ $ADA_IS_WIN -eq 1 ]; then
+        powershell.exe -c start "http://127.0.0.1:$ADA_PORT"
+    else
+        xdg-open "http://127.0.0.1:$ADA_PORT" &>/dev/null
+    fi
+
+    sleep infinity
 }
 
 setup

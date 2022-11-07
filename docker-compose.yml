@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   app:
-    image: code.tritum.de:5555/senckenberg/agrifuture_desktop_agent:latest
+    image: code.tritum.de:5555/senckenberg/agrifuture_desktop_agent:development
     environment:
       ADA_RUN_AGENT: 1
       ADA_RUNNING_CONTAINERS: 0

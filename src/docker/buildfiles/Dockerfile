@@ -1,9 +1,8 @@
-FROM composer:latest as composer
-FROM php:8.1-fpm-alpine
+FROM php:8.1-fpm-alpine AS base
 
 LABEL maintainer="hello@waldhacker.dev"
 
-COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY ./ /
 
 ENV VERSION=1.0.0 \
@@ -41,7 +40,9 @@ RUN apk -U update \
     && sed -i -e 's/user nginx/user ada/g' /etc/nginx/nginx.conf \
     \
     \
-    && ada-php-configure-fpm \
+    && chmod 750 /usr/local/bin/ada-php-configure-fpm \
+    && chown root:root /usr/local/bin/ada-php-configure-fpm \
+    && /usr/local/bin/ada-php-configure-fpm \
     && rm -f /usr/local/bin/ada-php-configure-fpm \
     \
     \
@@ -102,7 +103,39 @@ RUN apk -U update \
     && chown root:root /usr/local/etc/ada/entrypoint_win \
     \
     \
-    && rm -f /bin/tar \
+    && find /usr/lib/python3.10/ -type d -name "__pycache__" -print0 | xargs -0 -I {} /bin/rm -rf "{}" \
+    && rm -rf /usr/lib/python3.10/__pycache__ \
+    && rm -rf /usr/lib/python3.10/site-packages/supervisor/tests \
+    \
+    && rm -rf /tmp/* \
+    \
+    && rm -rf /var/cache/apk/
+
+VOLUME ["/opt/ada/app/"]
+
+WORKDIR /opt/ada/app/
+
+EXPOSE 8041
+
+ENTRYPOINT ["/usr/local/bin/entrypoint"]
+
+#### DEVELOPMENT STAGE ####
+FROM base as development
+
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+RUN install-php-extensions xdebug \
+    && sed -i -e 's/zend_extension/;zend_extension/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && chmod 777 /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    \
+    \
+    && chmod 777 /tmp
+
+USER ada
+
+#### PRODUCTION STAGE ####
+FROM base AS production
+
+RUN rm -f /bin/tar \
     \
     && rm -rf /lib/apk/db/ \
     \
@@ -129,6 +162,7 @@ RUN apk -U update \
     \
     && rm -f /usr/bin/2to3 \
     && rm -f /usr/bin/2to3-3.10 \
+    && rm -f /usr/bin/autopoint \
     && rm -f /usr/bin/chage \
     && rm -f /usr/bin/chfn \
     && rm -f /usr/bin/chsh \
@@ -177,11 +211,8 @@ RUN apk -U update \
     && rm -f /usr/bin/xzless \
     && rm -f /usr/bin/xzmore \
     \
-    && find /usr/lib/python3.10/ -type d -name "__pycache__" -print0 | xargs -0 -I {} /bin/rm -rf "{}" \
-    && rm -rf /usr/lib/python3.10/__pycache__ \
-    && rm -rf /usr/lib/python3.10/site-packages/supervisor/tests \
-    \
     && rm -f /usr/local/bin/docker-php-* \
+    && rm -f /usr/local/bin/install-php-extensions \
     && rm -f /usr/local/bin/pear* \
     && rm -f /usr/local/bin/pecl \
     && rm -f /usr/local/bin/phar* \
@@ -226,18 +257,6 @@ RUN apk -U update \
     && rm -f /usr/sbin/zdump \
     && rm -f /usr/sbin/zic \
     \
-    && rm -rf /usr/src/ \
-    \
-    && rm -rf /tmp/ \
-    \
-    && rm -rf /var/cache/apk/
-
-VOLUME ["/opt/ada/app/"]
-
-WORKDIR /opt/ada/app/
+    && rm -rf /usr/src/
 
 USER ada
-
-EXPOSE 8041
-
-ENTRYPOINT ["/usr/local/bin/entrypoint"]

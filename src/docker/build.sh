@@ -10,6 +10,7 @@ set -eo pipefail
 #
 #   DSL_IMAGE_NAMESPACE: The image namespace (default: senckenberg/agrifuture_desktop_agent)
 #   DSL_IMAGE_TAG: The image tag (default: main)
+#   DSL_TARGET_STAGE: The build target (default: production)
 #
 # Examples:
 #
@@ -26,12 +27,13 @@ THIS_SCRIPT_REAL_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 DSL_IMAGE_NAMESPACE=${DSL_IMAGE_NAMESPACE:-senckenberg/agrifuture_desktop_agent}
 DSL_IMAGE_TAG=${DSL_IMAGE_TAG:-main}
+DSL_TARGET_STAGE=${DSL_TARGET_STAGE:-production}
 
 # remove trailing slashes
 DSL_IMAGE_NAMESPACE=${DSL_IMAGE_NAMESPACE%/}
 
 echo "build image ${DSL_IMAGE_NAMESPACE}:${DSL_IMAGE_TAG}"
-docker build --pull --no-cache --tag ${DSL_IMAGE_NAMESPACE}:${DSL_IMAGE_TAG} ${THIS_SCRIPT_REAL_PATH}/buildfiles/
+docker build --pull --no-cache --tag ${DSL_IMAGE_NAMESPACE}:${DSL_IMAGE_TAG} --target ${DSL_TARGET_STAGE} ${THIS_SCRIPT_REAL_PATH}/buildfiles/
 
 unset THIS_SCRIPT_REAL_PATH
 unset DSL_IMAGE_NAMESPACE

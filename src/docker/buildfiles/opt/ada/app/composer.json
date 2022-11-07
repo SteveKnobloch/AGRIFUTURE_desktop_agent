@@ -1,0 +1,66 @@
+{
+    "name": "dreistromland/agrifuture-desktop-agent",
+    "description": "",
+    "license": "GPL-2.0-or-later",
+    "type": "project",
+    "authors": [
+        {
+            "name": "dreistrom.land",
+            "homepage": "https://www.dreistrom.land",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "http://www.dreistrom.land/",
+    "require": {
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.28"
+    },
+    "repositories": {
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "bin-dir": "bin",
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "8.1"
+        },
+        "process-timeout": 0,
+        "sort-packages": true
+    },
+    "extra": {
+        "composer-normalize": {
+            "indent-size": 4,
+            "indent-style": "space"
+        }
+    },
+    "scripts": {
+        "build:frontend": [
+            "@build:frontend:production"
+        ],
+        "build:frontend:development": [
+            "npm install",
+            "grunt build:css:development",
+            "grunt build:javascript:development"
+        ],
+        "build:frontend:production": [
+            "npm install",
+            "grunt build:css:production",
+            "grunt build:javascript:production"
+        ],
+        "codestyle:check": [
+            "@php bin/php-cs-fixer --verbose --dry-run fix"
+        ],
+        "codestyle:fix": [
+            "@php bin/php-cs-fixer --verbose --diff fix"
+        ],
+        "composer:normalize:check": [
+            "@composer normalize --dry-run"
+        ],
+        "composer:normalize:fix": [
+            "@composer normalize"
+        ]
+    }
+}

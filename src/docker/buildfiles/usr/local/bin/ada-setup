@@ -4,18 +4,21 @@
 # @version 1.0.0
 # **********************************************
 
-remove_command_file() {
+function remove_command_file()
+{
     rm -f /home/ada/.local/share/ada/cmd
 }
 
-write_command() {
+function write_command()
+{
     echo "$@" > /home/ada/.local/share/ada/cmd
     if [ ! -z ${HOSTUSER_UID+x} ] && [ ! -z ${HOSTUSER_GID+x} ]; then
         chown $HOSTUSER_UID:$HOSTUSER_GID /home/ada/.local/share/ada/cmd
     fi
 }
 
-select_language() {
+function select_language()
+{
     local ADA_CHOICE
     local ADA_EXIT_CODE
     local ADA_LANG
@@ -83,7 +86,8 @@ select_language() {
     fi
 }
 
-select_host_folder() {
+function select_host_folder()
+{
     if [ -z "$1" ]; then
         echo $(gettext -d ada-setup -s "folder_select.no_host_folder")
         remove_command_file
@@ -133,10 +137,10 @@ select_host_folder() {
         dialog \
             --no-lines \
             --title "$ADA_TITLE" \
-            --ok-label "$ADA_USE_FOLDER_BUTTON" \
+            --ok-label "$ADA_NAVIGATION_BUTTON" \
             --cancel-label "$ADA_CANCEL_BUTTON" \
             --extra-button \
-            --extra-label "$ADA_NAVIGATION_BUTTON" \
+            --extra-label "$ADA_USE_FOLDER_BUTTON" \
             --default-item "$ADA_CURRENT_DIRECTORY_INDEX" \
             --menu "$ADA_DESCRIPTION" \
                 $LINES $COLUMNS $(( $LINES - 8 )) \
@@ -147,11 +151,11 @@ select_host_folder() {
     case $ADA_EXIT_CODE in
         # OK button
         0)
-            write_command "usedir ${ADA_HOST_DIRECTORIES_ARRAY[$ADA_CHOICE]}"
+            write_command "chdir ${ADA_HOST_DIRECTORIES_ARRAY[$ADA_CHOICE]}"
         ;;
         # Extra button
         3)
-            write_command "chdir ${ADA_HOST_DIRECTORIES_ARRAY[$ADA_CHOICE]}"
+            write_command "usedir ${ADA_HOST_DIRECTORIES_ARRAY[$ADA_CHOICE]}"
         ;;
         # All other
         *)
