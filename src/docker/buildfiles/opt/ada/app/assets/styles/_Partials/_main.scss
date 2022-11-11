@@ -29,7 +29,7 @@ button:focus {
 
     &::-webkit-scrollbar-thumb {
         border-radius    : rem-calc(8);
-        border           : 3px solid #fff;
+        border           : rem-calc(3) solid #fff;
         background-color : rgba(0, 0, 0, .3);
     }
 }
