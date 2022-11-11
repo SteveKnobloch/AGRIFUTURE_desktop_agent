@@ -21,6 +21,47 @@ Die Applikation liegt unter `./src/docker/buildfiles/opt/ada/app`
 
 ---
 
+# FE Development
+
+#### Start project
+
+```
+docker-compose up -d
+docker exec -it agrifuture_desktop_agent_app_1 composer install
+docker exec -it agrifuture_desktop_agent_app_1 composer build:frontend
+# call http://127.0.0.1:8041
+```
+
+#### Start Watcher
+
+```
+docker exec -it agrifuture_desktop_agent_app_1 composer build:frontend:watch
+```
+
+All files we need for FE development are located in
+`src/docker/buildfiles/opt/ada/app`
+
+#### Add Stylesheets
+
+- create file in `assets/styles`
+- add entry in `webpack.config.js` like
+
+```
+.addStyleEntry('Components/forms', './assets/styles/Components/forms.scss')
+```
+
+- the identifier like 'Components/forms' 'creates' the folder structure of compiled files in `public/build`
+
+#### Load Stylesheets in templates or blocks
+
+To load e.g. `Components/forms.css` you have to add
+
+```
+{% block stylesheets %}
+    {{ encore_entry_link_tags('Components/forms') }}
+{% endblock %}
+```
+
 **WIP**
 
 # Agrifuture Desktop Agent Image build

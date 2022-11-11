@@ -1,0 +1,16 @@
+// ***************************************
+// vendor imports
+// ***************************************
+// max() and env() do not work with scss yet, so css is imported in TS
+
+// ***************************************
+// fancybox
+// ***************************************
+
+a.lightbox {
+    cursor : zoom-in;
+}
+
+.fancybox-button[disabled] {
+    display : none;
+}

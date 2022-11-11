@@ -1,0 +1,98 @@
+@import "componentsBase";
+
+form {
+    max-width : $sp-width-max-content;
+
+    #main &,
+    .modal & {
+        background    : $gray-100;
+        border        : rem-calc(1) solid $gray-300;
+        border-radius : $border-radius;
+        padding       : $grid-gutter-width;
+
+        .row {
+            margin-bottom : $spacer;
+
+            &:last-of-type {
+                margin-bottom : 0;
+            }
+
+            & > div > fieldset {
+                height        : 100%;
+                border        : rem-calc(1) solid $gray-300;
+                border-radius : $border-radius;
+                padding       : $grid-gutter-width $grid-gutter-width 0;
+
+                legend {
+                    @include element-invisible;
+                }
+            }
+        }
+
+        .form-element {
+
+            .form-text {
+                font-size : $font-size-sm;
+                color     : $body-color;
+            }
+
+            input,
+            textarea {
+
+                &::placeholder {
+                    color : $gray-500;
+                }
+            }
+
+            .form-element-check {
+
+                label {
+                    @include clearfix;
+
+                    input {
+                        float        : left;
+                        margin-right : .5em;
+                    }
+
+                    .form-check-label {
+                        display  : block;
+                        overflow : hidden;
+                    }
+                }
+            }
+        }
+    }
+
+    .form-navigation {
+        text-align : right;
+
+        .btn {
+            display : inline-block;
+        }
+    }
+
+    .modal & {
+
+        .modal-footer {
+            border : 0;
+        }
+    }
+
+    .is-valid:not(:focus) {
+        background-color  : rgba($success, .1);
+        background-repeat : no-repeat;
+    }
+
+    .is-invalid:not(:focus) {
+        border     : rem-calc(1px) solid $danger;
+        background : rgba($danger, .1);
+    }
+
+    .errorMsg {
+        color      : $danger;
+        border     : rem-calc(1) solid $danger;
+        background : rgba($danger, .1);
+        padding    : $spacer/2;
+        margin-top : $spacer/2;
+    }
+}
