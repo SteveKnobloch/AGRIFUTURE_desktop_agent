@@ -1,13 +1,17 @@
-// ***************************************
-// header
-// ***************************************
+@import "../componentsBase";
 
 #header {
     background    : $white;
+    background    : linear-gradient($white 40%, $gray-300 100%);
     padding       : rem-calc($spacer);
-    border-bottom : rem-calc(5) solid $sp-color-green;
+    border-bottom : rem-calc(1) solid $dark;
+    height        : $sp-header-height;
 
     .inner-wrap {
+        display        : flex;
+        flex-direction : column;
+        align-content  : space-around;
+        height         : 100%;
 
         > .container {
             padding-left : rem-calc($sp-width-logo + $sp-space-small);
