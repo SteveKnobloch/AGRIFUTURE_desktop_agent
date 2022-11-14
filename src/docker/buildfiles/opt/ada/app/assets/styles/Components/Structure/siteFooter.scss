@@ -1,6 +1,4 @@
-// ***************************************
-// footer
-// ***************************************
+@import "../componentsBase";
 
 #footer {
     background : $light;
@@ -85,6 +83,16 @@
                     }
                 }
             }
+        }
+    }
+
+
+    .logo-efre {
+        display         : flex;
+        justify-content : flex-end;
+
+        img {
+            width : rem-calc(213);
         }
     }
 }

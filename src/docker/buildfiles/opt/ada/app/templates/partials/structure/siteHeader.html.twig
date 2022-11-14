@@ -1,0 +1,27 @@
+{% block stylesheets %}
+    {{ encore_entry_link_tags('Components/Structure/siteHeader') }}
+{% endblock %}
+{% block container %}
+        <div class="container inner-wrap">
+            <div class="container">
+                <div class="logo-wrap justify-content-start">
+                    <a title="Startseite" href="/">
+                        <img src="images/logoADA.svg" alt="Agrifuture - Desktop Agent">
+                    </a>
+                </div>
+
+                <div class="navbar navbar-expand-lg justify-content-end">
+                    <nav aria-label="Metanavigation" id="navigation-meta">
+                        <ul role="menubar" class="nav nav-meta  justify-content-lg-end" aria-label="Metanavigation">
+                            <li class="nav-item first">
+                                <a role="menuitem" class="nav-link" title="Installationsanleitung" href="/default-title">
+                                    Information
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    {% include 'partials/navigation/language.html.twig' %}
+                </div>
+            </div>
+        </div>
+{% endblock %}

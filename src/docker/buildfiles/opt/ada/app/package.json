@@ -26,7 +26,8 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.11.6",
-        "bootstrap": "^5.2.2"
+        "bootstrap": "^5.2.2",
+        "bootstrap-icons": "^1.9.1"
     },
     "browserslist": [
         "last 2 versions"

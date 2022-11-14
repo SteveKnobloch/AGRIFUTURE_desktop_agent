@@ -1,0 +1,74 @@
+{% block stylesheets %}
+    {{ encore_entry_link_tags('Components/Structure/siteFooter') }}
+{% endblock %}
+{% block container %}
+    <div class="container">
+        <div class="row">
+            <div class="footer-block footer-block-meta col-12 col-lg justify-content-lg-end order-lg-last">
+                <nav aria-label="Metanavigation" id="navigation-meta" class="mb-3">
+                    <ul role="menubar" class="nav nav-meta  justify-content-lg-end" aria-label="Metanavigation">
+                        <li class="nav-item first">
+                            <a role="menuitem" class="nav-link" title="Impressum" href="/impressum">
+                                Impressum
+                            </a>
+                        </li>
+                        <li class="nav-item last">
+                            <a role="menuitem" class="nav-link" title="Datenschutzerklärung &amp; Nutzungsbedingungen" href="/datenschutz-agb">
+                                Datenschutzerklärung &amp; Nutzungsbedingungen
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="logo-efre">
+                    <img class="logo" src="images/logoEFRE.svg" alt="EUROPÄISCHE UNION - REACT-EU - Europäischer Fonds für regionale Entwicklung" with="213">
+                </div>
+
+            </div>
+            <div class="footer-block footer-block-logo col-12 col-md-6 col-lg-3">
+                <div class="logo-wrap">
+                    <img src="images/logoFooterSGN.svg" alt="SENCKENBERG - world of biodiverity">
+                </div>
+            </div>
+            <div class="footer-block col-12 col-md-6 col-lg-4">
+                <address>
+                    <ul>
+                        <li>
+                            <strong>
+                                Senckenberg Gesellschaft für Naturforschung
+                            </strong>
+                        </li>
+                        <li>
+                            Senckenberganlage 25
+                        </li>
+                        <li>
+                            <span>60325</span>
+                            <span>Frankfurt</span>
+                        </li>
+                        <li>
+                            Deutschland
+                        </li>
+                        <li>
+                        <span>
+                            Telefon:
+                        </span>
+                            <span>
+                            <a href="tel:+49697542-0">
+                                +49 69 7542-0
+                            </a>
+                        </span>
+                        </li>
+                        <li>
+                            <span>Fax:</span>
+                            <span><a href="tel:+49697542-0">
+                                +49 69 746238
+                            </a></span>
+                        </li>
+                        <li>
+                            <a href="#" data-mailto-token="jxfiql7fkclXpbkzhbkybod+ab" data-mailto-vector="-3">info(at)senckenberg.de</a>
+                        </li>
+                    </ul>
+                </address>
+            </div>
+        </div>
+    </div>
+{% endblock %}

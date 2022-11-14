@@ -3,19 +3,22 @@
 {% block title 'Agrifuture Desktop Agent' %}
 
 {% block body %}
-  <header>
+  <header id="header">
+    {% include 'partials/structure/siteHeader.html.twig' %}
   </header>
 
-  <main>
-    <div class="container-fluid">
+  <main id="main">
+    <article class="content py-2 py-md-5 container-fluid">
       {% for message in app.flashes('success') %}
         <div class="alert alert-success">{{ message }}</div>
       {% endfor %}
 
       {% block content %}{% endblock %}
-    </div>
+    </article>
   </main>
 
-  <footer class="page-footer font-small blue pt-4">
+
+  <footer id="footer">
+    {% include 'partials/structure/siteFooter.html.twig' %}
   </footer>
 {% endblock %}
