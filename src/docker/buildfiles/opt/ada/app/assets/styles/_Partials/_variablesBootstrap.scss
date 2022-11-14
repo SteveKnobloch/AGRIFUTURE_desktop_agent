@@ -1,0 +1,91 @@
+// Colors
+$primary                           : $sp-color-blue;
+$success                           : $sp-color-green-dark;
+$info                              : $sp-color-blue-light;
+$warning                           : $sp-color-yellow;
+$danger                            : $sp-color-red;
+$light                             : $gray-100;
+$dark                              : $gray-800;
+
+$theme-colors                      : (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark
+);
+
+// links
+$link-color                        : $primary;
+$link-decoration                   : none;
+$link-hover-decoration             : underline;
+
+// scss-docs-start container-max-widths
+$container-max-widths              : (
+    sm: $sp-width-global,
+    md: $sp-width-global,
+    lg: $sp-width-global,
+    xl: $sp-width-global,
+    xxl: $sp-width-global
+);
+
+// grid
+$grid-breakpoints                  : (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1320px,
+    xxl: $sp-width-global
+);
+
+// typography
+$enable-responsive-font-sizes      : true;
+
+// headings-variables
+$headings-margin-bottom            : 1em;
+
+// forms
+$component-active-bg               : $primary;
+$input-focus-border-color          : tint-color($component-active-bg, 50%);
+$input-btn-focus-box-shadow        : 0 0 $input-btn-focus-blur $input-btn-focus-width $primary;
+$input-focus-box-shadow            : 0 0 $input-btn-focus-blur $input-btn-focus-width rgba($primary, $input-btn-focus-color-opacity);
+$form-check-input-focus-border     : $input-focus-border-color;
+$form-check-input-focus-box-shadow : $input-focus-box-shadow;
+
+// paginnation
+$component-active-bg               : $primary;
+$pagination-active-bg              : $component-active-bg;
+$pagination-active-border-color    : $pagination-active-bg;
+
+// breadcrumb
+$breadcrumb-font-size              : $font-size-sm;
+$breadcrumb-divider                : quote(">");
+
+// Badges
+$badge-font-size                   : 1em;
+$badge-font-weight                 : normal;
+
+// Borders
+$border-color                      : $body-color;
+
+// Accordion
+$accordion-border-width            : 0;
+$accordion-body-padding-x          : 0;
+
+$accordion-button-padding-y        : 0;
+$accordion-button-padding-x        : 0;
+$accordion-button-color            : $border-color;
+$accordion-button-bg               : $body-bg;
+$accordion-button-active-bg        : $body-bg;
+$accordion-button-active-color     : $body-color;
+$accordion-icon-active-color       : $accordion-button-color;
+
+// tables
+$table-striped-bg                  : $gray-100;
+
+// dropdowns
+$dropdown-link-color               : $link-color;

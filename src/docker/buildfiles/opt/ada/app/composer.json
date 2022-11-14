@@ -72,6 +72,10 @@
         "build:frontend": [
             "@build:frontend:production"
         ],
+        "build:frontend:watch": [
+            "@build:frontend:production",
+            "yarn watch"
+        ],
         "build:frontend:development": [
             "yarn install",
             "yarn dev"

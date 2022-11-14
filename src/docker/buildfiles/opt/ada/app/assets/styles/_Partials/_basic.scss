@@ -1,0 +1,65 @@
+// ***************************************
+// basics / critical styles
+// ***************************************
+
+body {
+    margin     : 0;
+    word-wrap  : break-word;
+    opacity    : 0;
+    transition : opacity .5s;
+}
+
+ul,
+ol {
+    margin : 0;
+}
+
+dl {
+
+    dd,
+    dt {
+        font-weight    : normal;
+        padding-bottom : .2em;
+    }
+}
+
+p {
+    margin : rem-calc(0 0 10);
+}
+
+img {
+    max-width : 100%;
+    height    : auto;
+}
+
+iframe {
+    max-width : 100%;
+}
+
+.strong{
+    font-weight: 600;
+}
+
+.container {
+    max-width : rem-calc($sp-width-global);
+    margin    : auto;
+}
+
+.layout-list {
+    @include layout-list;
+}
+
+article.content {
+    margin : auto;
+
+    .be-layout-simple &,
+    .be-layout-home & {
+        max-width : rem-calc($sp-width-max-content);
+
+        p,
+        ul,
+        ol {
+            line-height : 1.8;
+        }
+    }
+}

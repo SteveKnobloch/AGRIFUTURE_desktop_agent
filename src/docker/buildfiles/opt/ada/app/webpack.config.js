@@ -21,6 +21,11 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addStyleEntry('Components/forms', './assets/styles/Components/forms.scss')
+    .addStyleEntry('Components/Bootstrap/badge', './assets/styles/Components/Bootstrap/badge.scss')
+    .addStyleEntry('Components/Bootstrap/modal', './assets/styles/Components/Bootstrap/modal.scss')
+    .addStyleEntry('Components/Bootstrap/breadcrumb', './assets/styles/Components/Bootstrap/breadcrumb.scss')
+    .addStyleEntry('Components/Views/details', './assets/styles/Components/Views/details.scss')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
@@ -57,7 +62,12 @@ Encore
     })
 
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
+    .enablePostCssLoader((options) => {
+        options.postcssOptions = {
+            config: './postcss.config.js',
+        }
+    })
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
@@ -72,5 +82,6 @@ Encore
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
 ;
+
 
 module.exports = Encore.getWebpackConfig();

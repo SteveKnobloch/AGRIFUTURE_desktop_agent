@@ -1,0 +1,85 @@
+// ***************************************
+// critical reset
+// ***************************************
+
+body {
+    opacity : 1 !important;
+}
+
+// ***************************************
+// general
+// ***************************************
+
+input:focus,
+textarea:focus,
+button:focus {
+    outline : none;
+}
+
+.contenttable-container {
+    overflow-y : auto;
+    position   : relative;
+    width      : 100%;
+
+    &::-webkit-scrollbar {
+        -webkit-appearance : none;
+        width              : rem-calc(14);
+        height             : rem-calc(14);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius    : rem-calc(8);
+        border           : 3px solid #fff;
+        background-color : rgba(0, 0, 0, .3);
+    }
+}
+
+.frame {
+    margin-bottom : $spacer*3;
+}
+
+.sr-only {
+    @include element-invisible;
+}
+
+.btn-close {
+    background  : none;
+    border      : 0;
+    font-size   : rem-calc(22);
+    font-weight : 600;
+}
+
+// ***************************************
+// scroll to top button
+// ***************************************
+
+.to-top-button {
+    z-index  : 500;
+    display  : none;
+    position : fixed;
+    right    : 0;
+    bottom   : rem-calc(80);
+
+    &.active {
+        display : block;
+    }
+}
+
+article.content {
+    margin : auto;
+
+    .be-layout-simple & {
+        max-width : rem-calc($sp-width-max-content);
+
+        p,
+        ul,
+        ol {
+            line-height : 1.8;
+        }
+    }
+
+    .be-layout-login & {
+        max-width  : rem-calc($sp-width-login-content);
+        margin-top : $spacer*5;
+    }
+}
