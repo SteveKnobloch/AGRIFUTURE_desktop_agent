@@ -8,21 +8,55 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PagesController extends AbstractController
 {
-    #[Route('/privacy', name: 'app_page_privacy')]
+    #[Route(
+        path: '/{_locale}/privacy',
+        name: 'app_page_privacy',
+        requirements: [
+            '_locale' => 'en|de',
+        ],
+    )]
     public function privacy(): Response
     {
         return $this->render('pages/privacy.html.twig', []);
     }
 
-    #[Route('/imprint', name: 'app_page_imprint')]
+    #[Route(
+        path: '/{_locale}/imprint',
+        name: 'app_page_imprint',
+        requirements: [
+            '_locale' => 'en|de',
+        ],
+    )]
     public function imprint(): Response
     {
         return $this->render('pages/imprint.html.twig', []);
     }
 
-    #[Route('/information', name: 'app_page_information')]
+    #[Route(
+        path: '/{_locale}/information',
+        name: 'app_page_information',
+        requirements: [
+            '_locale' => 'en|de',
+        ],
+    )]
     public function information(): Response
     {
         return $this->render('pages/information.html.twig', []);
+    }
+
+    // @toDo
+    // following routes are only necessary for the FE development process
+    // can be removed after FE development
+
+    #[Route(
+        path: '/{_locale}/analysis',
+        name: 'app_page_analysis',
+        requirements: [
+            '_locale' => 'en|de',
+        ],
+    )]
+    public function analysis(): Response
+    {
+        return $this->render('pages/analysis.html.twig', []);
     }
 }
