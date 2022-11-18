@@ -44,21 +44,18 @@ class PagesController extends AbstractController
         return $this->render('pages/information.html.twig', []);
     }
 
-    // @toDo
-    // following routes are only necessary for the FE development process
-    // can be removed after FE development
-
     #[Route(
-        path: '/{_locale}/analysis',
-        name: 'app_page_analysis',
+        path: '/{_locale}/analysis/details',
+        name: 'app_page_analysis_details',
         requirements: [
             '_locale' => 'en|de',
         ],
     )]
     public function analysis(): Response
     {
-        return $this->render('pages/analysis.html.twig', []);
+        return $this->render('pages/analysis/details.html.twig', []);
     }
+
     #[Route(
         path: '/{_locale}/analysis/register',
         name: 'app_page_analysis_register',
@@ -68,6 +65,18 @@ class PagesController extends AbstractController
     )]
     public function analysis_register(): Response
     {
-        return $this->render('pages/analysis_register.html.twig', []);
+        return $this->render('pages/analysis/register.html.twig', []);
+    }
+
+    #[Route(
+        path: '/{_locale}/user_account/connect',
+        name: 'app_page_user_account_connect',
+        requirements: [
+            '_locale' => 'en|de',
+        ],
+    )]
+    public function user_account_connect(): Response
+    {
+        return $this->render('pages/userAccount/connect.html.twig', []);
     }
 }
