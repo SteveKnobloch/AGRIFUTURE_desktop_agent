@@ -1,0 +1,28 @@
+{% if state == 'running' %}
+    {% set iconClass = 'bi-clock-history' %}
+    {% set stateColor = 'info' %}
+    {% set stateLabel = 'running'|trans %}
+{% endif %}
+
+{% if state == 'paused' %}
+    {% set iconClass = 'bi-pause-circle' %}
+    {% set stateColor = 'warning' %}
+    {% set stateLabel = 'paused'|trans %}
+{% endif %}
+
+{% if state == 'crashed' %}
+    {% set iconClass = 'bi-x-circle' %}
+    {% set stateColor = 'danger' %}
+    {% set stateLabel = 'crashed'|trans %}
+{% endif %}
+
+{% if state == 'completed' %}
+    {% set iconClass = 'bi-check-circle' %}
+    {% set stateColor = 'success' %}
+    {% set stateLabel = 'completed'|trans %}
+{% endif %}
+
+<span class="badge bg-white border text-{{ stateColor }} border-{{ stateColor }} badge-{{ small ? 'small'}}">
+    <i class="bi {{ iconClass }}"></i>
+    {{ stateLabel }}
+</span>

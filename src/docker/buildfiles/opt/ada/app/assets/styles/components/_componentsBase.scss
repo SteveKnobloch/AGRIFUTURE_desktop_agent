@@ -4,9 +4,9 @@
 // initial imports
 // ***************************************
 
-@import "../_Partials/functions";
-@import "../_Partials/variables";
-@import "../_Partials/mixin";
+@import "../_partials/functions";
+@import "../_partials/variables";
+@import "../_partials/mixin";
 
 // ***************************************
 // Bootstrap imports
@@ -14,7 +14,7 @@
 
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
-@import "../_Partials/variablesBootstrap";
+@import "../_partials/variablesBootstrap";
 @import "node_modules/bootstrap/scss/mixins";
 
 // ***************************************

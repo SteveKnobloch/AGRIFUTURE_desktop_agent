@@ -23,15 +23,6 @@ $link-color                        : $primary;
 $link-decoration                   : none;
 $link-hover-decoration             : underline;
 
-// scss-docs-start container-max-widths
-$container-max-widths              : (
-    sm: $sp-width-global,
-    md: $sp-width-global,
-    lg: $sp-width-global,
-    xl: $sp-width-global,
-    xxl: $sp-width-global
-);
-
 // grid
 $grid-breakpoints                  : (
     xs: 0,

@@ -22,20 +22,6 @@ Encore
      */
     .addEntry('app', './assets/app.js')
 
-    // Structure
-    .addStyleEntry('Components/Structure/siteHeader', './assets/styles/Components/Structure/siteHeader.scss')
-    .addStyleEntry('Components/Structure/siteFooter', './assets/styles/Components/Structure/siteFooter.scss')
-
-    // Components
-    .addStyleEntry('Components/forms', './assets/styles/Components/forms.scss')
-    .addStyleEntry('Components/Views/details', './assets/styles/Components/Views/details.scss')
-
-    // Bootstrap
-    .addStyleEntry('Components/Bootstrap/badge', './assets/styles/Components/Bootstrap/badge.scss')
-    .addStyleEntry('Components/Bootstrap/modal', './assets/styles/Components/Bootstrap/modal.scss')
-    .addStyleEntry('Components/Bootstrap/breadcrumb', './assets/styles/Components/Bootstrap/breadcrumb.scss')
-    .addStyleEntry('Components/Bootstrap/dropdown', './assets/styles/Components/Bootstrap/dropdown.scss')
-
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
 

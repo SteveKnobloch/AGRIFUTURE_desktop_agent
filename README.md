@@ -42,8 +42,11 @@ All files we need for FE development are located in
 `src/docker/buildfiles/opt/ada/app`
 
 #### Add Stylesheets
-
 - create file in `assets/styles`
+- all partials can be imported in app.scss
+
+If you need a modular include do the following:
+
 - add entry in `webpack.config.js` like
 
 ```
@@ -61,6 +64,27 @@ To load e.g. `Components/forms.css` you have to add
     {{ encore_entry_link_tags('Components/forms') }}
 {% endblock %}
 ```
+
+#### Translations
+The translation .xlf files can be found here:
+src/docker/buildfiles/opt/ada/app/translations
+
+Add strings you want to get translatable to the templates like:
+
+```
+{% trans %}This is my string I want to get translated{% endtrans %}
+```
+or inside variables:
+
+```
+{% set myVariable = 'my string'|trans %}
+```
+
+The following command collects all translatable strings in templates and adds them to the .xlf files
+
+`docker exec -it agrifuture_desktop_agent_app_1 composer build:translation`
+
+After that you can adjust the trans-units.
 
 **WIP**
 

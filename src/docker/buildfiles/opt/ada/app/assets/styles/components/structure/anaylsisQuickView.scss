@@ -1,0 +1,44 @@
+#header {
+
+    .col-analysis {
+
+        .analysis {
+
+            * {
+                line-height : 1;
+            }
+
+            &-title {
+                max-width : rem-calc(250);
+
+            }
+
+            .btn {
+
+                &-small {
+                    font-size   : $font-size-sm;
+                    padding     : 0;
+                    margin-left : $spacer;
+                }
+            }
+
+            .badge {
+
+                &-small {
+                    font-size : $font-size-sm;
+                    padding   : .2em;
+                }
+            }
+        }
+
+        .dates {
+
+            * {
+                display   : inline-block;
+                position  : relative;
+                top       : 50%;
+                transform : translateY(-50%);
+            }
+        }
+    }
+}

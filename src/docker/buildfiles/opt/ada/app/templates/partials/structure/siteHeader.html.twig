@@ -1,27 +1,34 @@
-{% block stylesheets %}
-    {{ encore_entry_link_tags('Components/Structure/siteHeader') }}
-{% endblock %}
 {% block container %}
-        <div class="container inner-wrap">
-            <div class="container">
-                <div class="logo-wrap justify-content-start">
-                    <a title="Startseite" href="/">
-                        <img src="images/logoADA.svg" alt="Agrifuture - Desktop Agent">
-                    </a>
+    <div class="container inner-wrap">
+        <div class="container">
+            <div class="logo-wrap justify-content-start">
+                <a title="{% trans %}Frontpage{% endtrans %}" href="/">
+                    <img src="/images/logoADA.svg"
+                         alt="{% trans %}Agrifuture - Desktop Agent{% endtrans %}">
+                </a>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="col-analysis">
+                    {% include 'partials/analysis/headerQuickView.html.twig' with {'title':' Der wirklich lange sehr Name der Analyse','state': 'running', 'date': 168423037} %}
                 </div>
-
-                <div class="navbar navbar-expand-lg justify-content-end">
-                    <nav aria-label="Metanavigation" id="navigation-meta">
-                        <ul role="menubar" class="nav nav-meta  justify-content-lg-end" aria-label="Metanavigation">
-                            <li class="nav-item first">
-                                <a role="menuitem" class="nav-link" title="Installationsanleitung" href="/default-title">
-                                    Information
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    {% include 'partials/navigation/language.html.twig' %}
+                <div class="col-navigations">
+                    <div class="navbar navbar-expand-lg justify-content-end">
+                        <nav aria-label="{% trans %}Metanavigation{% endtrans %}" id="navigation-meta">
+                            <ul role="menubar" class="nav nav-meta  justify-content-lg-end">
+                                <li class="nav-item first">
+                                    <a role="menuitem"
+                                       class="nav-link"
+                                       title="{% trans %}Information{% endtrans %}"
+                                       href="{{ path('app_page_information') }}">
+                                        {% trans %}Information{% endtrans %}
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        {% include 'partials/navigation/language.html.twig' %}
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 {% endblock %}
