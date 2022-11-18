@@ -30,7 +30,7 @@
         <target>Information</target>
       </trans-unit>
       <trans-unit id="DoQQCNS" resname="Agrifuture - Desktop Agent">
-        <source>AGRIFUTURΞ - Desktop Agent</source>
+        <source>Agrifuture - Desktop Agent</source>
         <target>AGRIFUTURΞ - Desktop Agent</target>
       </trans-unit>
       <trans-unit id="mDHMIeX" resname="Metanavigation">
@@ -53,11 +53,11 @@
         <source>paused</source>
         <target>pausiert</target>
       </trans-unit>
-      <trans-unit id="8S.eaEs" resname="crashed">
+      <trans-unit id=".0LdDeS" resname="crashed">
         <source>crashed</source>
         <target>abgebrochen</target>
       </trans-unit>
-      <trans-unit id="BTQ_mEU" resname="completed">
+      <trans-unit id="Tds_loA" resname="completed">
         <source>completed</source>
         <target>beendet</target>
       </trans-unit>
@@ -80,6 +80,10 @@
       <trans-unit id="Tyc.gYj" resname="Show results of the current analysis on the AGRIFUTURΞ website">
         <source>Show results of the current analysis on the AGRIFUTURΞ website</source>
         <target>Ergebnisse der aktuellen Analyse auf der AGRIFUTURΞ Website anzeigen</target>
+      </trans-unit>
+      <trans-unit id="89e4KEh" resname="Register a RAPID-Pipeline analysis">
+        <source>Register a RAPID-Pipeline analysis</source>
+        <target>Eine RAPID-Pipeline-Analyse registrieren</target>
       </trans-unit>
     </body>
   </file>

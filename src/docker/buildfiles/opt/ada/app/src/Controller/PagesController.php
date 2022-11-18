@@ -59,4 +59,15 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/analysis.html.twig', []);
     }
+    #[Route(
+        path: '/{_locale}/analysis/register',
+        name: 'app_page_analysis_register',
+        requirements: [
+            '_locale' => 'en|de',
+        ],
+    )]
+    public function analysis_register(): Response
+    {
+        return $this->render('pages/analysis_register.html.twig', []);
+    }
 }

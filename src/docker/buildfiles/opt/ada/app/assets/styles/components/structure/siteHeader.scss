@@ -12,7 +12,7 @@
         height         : 100%;
 
         > .container {
-            padding-left : rem-calc($sp-width-logo + $sp-space-small);
+            padding-left : rem-calc($sp-width-logo + $sp-space-large);
             position     : relative;
         }
     }
