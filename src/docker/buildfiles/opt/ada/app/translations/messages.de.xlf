@@ -29,8 +29,8 @@
         <source>Information</source>
         <target>Information</target>
       </trans-unit>
-      <trans-unit id="DoQQCNS" resname="Agrifuture - Desktop Agent">
-        <source>Agrifuture - Desktop Agent</source>
+      <trans-unit id="oaGBQ4g" resname="AGRIFUTURΞ - Desktop Agent">
+        <source>AGRIFUTURΞ - Desktop Agent</source>
         <target>AGRIFUTURΞ - Desktop Agent</target>
       </trans-unit>
       <trans-unit id="mDHMIeX" resname="Metanavigation">
@@ -84,6 +84,14 @@
       <trans-unit id="89e4KEh" resname="Register a RAPID-Pipeline analysis">
         <source>Register a RAPID-Pipeline analysis</source>
         <target>Eine RAPID-Pipeline-Analyse registrieren</target>
+      </trans-unit>
+      <trans-unit id="K2oqPxl" resname="Connect user account">
+        <source>Connect user account</source>
+        <target>Benutzerkonto verknüpfen</target>
+      </trans-unit>
+      <trans-unit id="3xNmUEV" resname="Connect a user account">
+        <source>Connect a user account</source>
+        <target>Ein Benutzerkonto verknüpfen</target>
       </trans-unit>
     </body>
   </file>
