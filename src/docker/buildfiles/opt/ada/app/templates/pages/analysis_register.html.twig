@@ -1,12 +1,12 @@
 {% extends 'layout.html.twig' %}
 
-{% block title '{% trans %}Analysis{% endtrans %} - ' ~ parent() %}
+{% block title 'Register a RAPID-Pipeline analysis'|trans ~ ' - ' ~ parent() %}
 
 {% block content %}
     {% apply spaceless %}
         <div class="text-center">
             <h1>
-                Name der Analyse
+                {% trans %}Register a RAPID-Pipeline analysis{% endtrans %}
             </h1>
         </div>
     {% endapply %}
