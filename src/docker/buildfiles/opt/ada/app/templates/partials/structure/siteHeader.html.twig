@@ -1,40 +1,55 @@
-{% block container %}
-    <div class="container inner-wrap">
-        <div class="container">
-            <div class="logo-wrap justify-content-start">
-                <a title="{% trans %}Frontpage{% endtrans %}" href="/">
-                    <img src="/images/logoADA.svg"
-                         alt="{% trans %}AGRIFUTURΞ - Desktop Agent{% endtrans %}">
-                </a>
+{% set userAccountConnected = '1' %}
+{% set analysisRegistered = '1' %}
+{% set state = 'running' %}
+{% set date = '168423037' %}
+{% set title = 'Der wirklich sehr lange Name der Analyse' %}
+{% set agentTitle = 'Labor Dr. Schneider' %}
+{% set accountUsername = 'email.address@mail.com' %}
+
+<div class="container inner-wrap d-flex flex-column p-0">
+    <div class="container col d-flex flex-column pe-0">
+        <div class="logo-wrap justify-content-start">
+            <a title="{% trans %}Frontpage{% endtrans %}" href="{{ path('app_index') }}">
+                <img src="/images/logoADA.svg"
+                     alt="{% trans %}AGRIFUTURΞ - Desktop Agent{% endtrans %}">
+            </a>
+        </div>
+        <div class="d-flex justify-content-between col">
+            <div class="col-analysis d-flex flex-column justify-content-around">
+                {% if userAccountConnected == '1' %}
+                    {% if analysisRegistered == '1' %}
+                        {% include 'partials/structure/siteHeader/headerQuickView.html.twig' with {'title': title, 'state': state, 'date': date} %}
+                    {% else %}
+                        {% include 'partials/structure/siteHeader/registerAnalysis.html.twig' %}
+                    {% endif %}
+                {% endif %}
             </div>
-            <div class="d-flex justify-content-between">
-                <div class="col-analysis">
-                    {% include 'partials/structure/siteHeader/headerQuickView.html.twig' with {'title':' Der wirklich lange sehr Name der Analyse','state': 'running', 'date': 168423037} %}
-                    {% include 'partials/structure/siteHeader/registerAnalysis.html.twig' %}
+            <div class="d-flex justify-content-end">
+                <div class="col-navigations">
+                    <div class="navbar navbar-expand-lg justify-content-end">
+                        <nav aria-label="{% trans %}Metanavigation{% endtrans %}" id="navigation-meta">
+                            <ul role="menubar" class="nav nav-meta  justify-content-lg-end">
+                                <li class="nav-item first">
+                                    <a role="menuitem"
+                                       class="nav-link"
+                                       title="{% trans %}Information{% endtrans %}"
+                                       href="{{ path('app_page_information') }}">
+                                        {% trans %}Information{% endtrans %}
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        {% include 'partials/navigation/language.html.twig' %}
+                    </div>
                 </div>
-                <div class="d-flex justify-content-end">
-                    <div class="col-navigations">
-                        <div class="navbar navbar-expand-lg justify-content-end">
-                            <nav aria-label="{% trans %}Metanavigation{% endtrans %}" id="navigation-meta">
-                                <ul role="menubar" class="nav nav-meta  justify-content-lg-end">
-                                    <li class="nav-item first">
-                                        <a role="menuitem"
-                                           class="nav-link"
-                                           title="{% trans %}Information{% endtrans %}"
-                                           href="{{ path('app_page_information') }}">
-                                            {% trans %}Information{% endtrans %}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            {% include 'partials/navigation/language.html.twig' %}
-                        </div>
-                    </div>
-                    <div class="col-profile d-flex flex-column justify-content-around ms-2">
+                <div class="col-profile d-flex flex-column justify-content-around ms-2">
+                    {% if userAccountConnected == '1' %}
+                        {% include 'partials/structure/siteHeader/profile.html.twig' with {'agentTitle': agentTitle, 'accountUsername': accountUsername} %}
+                    {% else %}
                         {% include 'partials/structure/siteHeader/connectUserAccount.html.twig' %}
-                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
-{% endblock %}
+</div>

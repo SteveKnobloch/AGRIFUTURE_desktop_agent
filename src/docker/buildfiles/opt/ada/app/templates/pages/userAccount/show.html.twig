@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Connected user account'|trans ~ ' - ' ~ parent() %}
+
+{% block content %}
+    {% apply spaceless %}
+        <div class="text-center">
+            <h1>
+                {% trans %}Connected user account{% endtrans %}
+            </h1>
+        </div>
+    {% endapply %}
+{% endblock %}

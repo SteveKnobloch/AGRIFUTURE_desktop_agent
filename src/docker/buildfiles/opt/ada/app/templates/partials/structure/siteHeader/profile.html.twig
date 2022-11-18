@@ -1,0 +1,25 @@
+<div class="profile d-flex flex-column justify-content-around py-2 pe-3 ps-3">
+    <dl class="m-0">
+        <dt class="sr-only">
+            {% trans %}Title of desktop agent{% endtrans %}
+        </dt>
+        <dd>
+            <i class="bi bi-pc-display"></i>
+            {{ agentTitle }}
+        </dd>
+    </dl>
+    <dl class="m-0">
+        <dt class="sr-only">
+            {% trans %}Connected user account{% endtrans %}
+        </dt>
+        <dd class="m-0">
+            <i class="bi bi-person-circle"></i>
+            {{ accountUsername }}
+        </dd class="m-0">
+    </dl>
+    <a href="{{ path('app_page_user_account_show') }}">
+       <span class="sr-only">
+            {% trans %}Show and edit connected user account{% endtrans %}
+       </span>
+    </a>
+</div>

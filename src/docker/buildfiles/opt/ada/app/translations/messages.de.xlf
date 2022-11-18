@@ -93,6 +93,18 @@
         <source>Connect a user account</source>
         <target>Ein Benutzerkonto verknüpfen</target>
       </trans-unit>
+      <trans-unit id="xY1E3ry" resname="Connected user account">
+        <source>Connected user account</source>
+        <target>Verknüpftes Benutzerkonto</target>
+      </trans-unit>
+      <trans-unit id="qNWiL6D" resname="Title of desktop agent">
+        <source>Title of desktop agent</source>
+        <target>Name des Desktop-Agents</target>
+      </trans-unit>
+      <trans-unit id="Ur6Zgde" resname="Show and edit connected user account">
+        <source>Show and edit connected user account</source>
+        <target>Verknüpftes Benutzerkonto anzeigen und bearbeiten </target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

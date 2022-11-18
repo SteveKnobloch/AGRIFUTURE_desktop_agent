@@ -1,9 +1,20 @@
 #header {
-    background    : $white;
-    background    : linear-gradient($white 40%, $gray-300 100%);
-    padding       : rem-calc($spacer);
-    border-bottom : rem-calc(1) solid $dark;
-    height        : $sp-header-height;
+    background : $white;
+    background : linear-gradient($white 40%, $gray-300 100%);
+    padding    : rem-calc($spacer);
+    height     : $sp-header-height;
+    position   : relative;
+
+    &:after {
+        content    : '';
+        height     : rem-calc(1);
+        width      : 100%;
+        background : $dark;
+        position   : absolute;
+        left       : 0;
+        bottom     : 0;
+        z-index    : 1;
+    }
 
     .inner-wrap {
         display        : flex;
@@ -39,7 +50,7 @@
         @include vertical-center;
         width     : 100%;
         max-width : rem-calc($sp-width-logo);
-        left      : 0;
+        left      : rem-calc($sp-space-small);
 
         .logo-title {
             position : absolute;
@@ -52,6 +63,8 @@
     // ***************************************
 
     .col-navigations {
+        position : relative;
+        z-index  : 2;
 
         .navbar {
             position  : relative;
@@ -87,10 +100,36 @@
 
             > i {
 
-                &::before {
+                &:before {
                     margin-right : .2em;
                 }
             }
+        }
+    }
+
+    .profile {
+        position    : relative;
+        height      : 100%;
+        border-left : rem-calc(2) solid $gray-400;
+        color       : $primary;
+
+        &:hover {
+            background : $gray-300;
+        }
+
+        dl {
+
+            dd {
+                white-space : nowrap;
+            }
+        }
+
+        a {
+            position : absolute;
+            top      : 0;
+            left     : 0;
+            right    : 0;
+            bottom   : rem-calc(1);
         }
     }
 }
