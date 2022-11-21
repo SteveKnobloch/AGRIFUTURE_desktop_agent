@@ -80,11 +80,7 @@
     }
 
     .nav-meta {
-        display : none;
-
-        @include media-breakpoint-up(lg) {
-            display : flex;
-        }
+        display : flex;
 
         .nav-link {
             display       : inline-block;

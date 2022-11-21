@@ -1,13 +1,38 @@
 {% extends 'layout.html.twig' %}
 
+{% set agentTitle = 'Labor Dr. Schneider' %}
+{% set accountUsername = 'email.address@mail.com' %}
+
 {% block title 'Connected user account'|trans ~ ' - ' ~ parent() %}
 
 {% block content %}
     {% apply spaceless %}
-        <div class="text-center">
+        <div class="inner-content-wrap">
             <h1>
                 {% trans %}Connected user account{% endtrans %}
             </h1>
+            <div class="user-account-details border-bottom d-table mb-3">
+                <dl class="d-table-row">
+                    <dt class="d-table-cell strong">
+                        {% trans %}Title of desktop agent{% endtrans %}:
+                    </dt>
+                    <dd class="d-table-cell ps-2 pb-3 pe-5">
+                        {{ agentTitle }}
+                    </dd>
+                </dl>
+                <dl class="d-table-row">
+                    <dt class="d-table-cell strong">
+                        {% trans %}Your email address{% endtrans %}:
+                    </dt>
+                    <dd class="d-table-cell ps-2 pb-3 pe-5">
+                        {{ accountUsername }}
+                    </dd>
+                </dl>
+            </div>
+            <a href="{{ path('app_page_user_account_connect') }}">
+                <i class="bi bi-person-plus-fill"></i>
+                {% trans %}Connect another user acount{% endtrans %}
+            </a>
         </div>
     {% endapply %}
 {% endblock %}

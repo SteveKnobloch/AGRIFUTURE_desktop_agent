@@ -7,6 +7,7 @@ body {
     word-wrap  : break-word;
     opacity    : 0;
     transition : opacity .5s;
+    min-width  : rem-calc($sp-width-min-global);
 }
 
 ul,
@@ -36,8 +37,8 @@ iframe {
     max-width : 100%;
 }
 
-.strong{
-    font-weight: 600;
+.strong {
+    font-weight : 600;
 }
 
 .container {

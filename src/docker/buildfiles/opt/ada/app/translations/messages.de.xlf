@@ -103,7 +103,15 @@
       </trans-unit>
       <trans-unit id="Ur6Zgde" resname="Show and edit connected user account">
         <source>Show and edit connected user account</source>
-        <target>Verknüpftes Benutzerkonto anzeigen und bearbeiten </target>
+        <target>Verknüpftes Benutzerkonto anzeigen und bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="F5bad.8" resname="Connect another user acount">
+        <source>Connect another user acount</source>
+        <target>Ein anderes Benutzerkonto verknüpfen</target>
+      </trans-unit>
+      <trans-unit id="P6fF7xk" resname="Your email address">
+        <source>Your email address</source>
+        <target>Ihre E-Mail-Adresse</target>
       </trans-unit>
     </body>
   </file>

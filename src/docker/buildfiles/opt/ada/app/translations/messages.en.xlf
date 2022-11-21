@@ -105,6 +105,14 @@
         <source>Show and edit connected user account</source>
         <target>Show and edit connected user account</target>
       </trans-unit>
+      <trans-unit id="F5bad.8" resname="Connect another user acount">
+        <source>Connect another user acount</source>
+        <target>Connect another user acount</target>
+      </trans-unit>
+      <trans-unit id="P6fF7xk" resname="Your email address">
+        <source>Your email address</source>
+        <target>Your email address</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

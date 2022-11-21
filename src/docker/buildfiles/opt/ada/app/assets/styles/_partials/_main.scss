@@ -82,4 +82,8 @@ article.content {
         max-width  : rem-calc($sp-width-login-content);
         margin-top : $spacer*5;
     }
+
+    .inner-content-wrap {
+        padding-left : rem-calc($sp-width-logo + $sp-space-large);
+    }
 }
