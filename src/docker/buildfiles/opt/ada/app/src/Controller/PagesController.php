@@ -45,15 +45,15 @@ class PagesController extends AbstractController
     }
 
     #[Route(
-        path: '/{_locale}/analysis/details',
-        name: 'app_page_analysis_details',
+        path: '/{_locale}/analysis',
+        name: 'app_page_analysis_show',
         requirements: [
             '_locale' => 'en|de',
         ],
     )]
     public function analysis(): Response
     {
-        return $this->render('pages/analysis/details.html.twig', []);
+        return $this->render('pages/analysis/show.html.twig', []);
     }
 
     #[Route(
@@ -78,5 +78,17 @@ class PagesController extends AbstractController
     public function user_account_connect(): Response
     {
         return $this->render('pages/userAccount/connect.html.twig', []);
+    }
+
+    #[Route(
+        path: '/{_locale}/user_account',
+        name: 'app_page_user_account_show',
+        requirements: [
+            '_locale' => 'en|de',
+        ],
+    )]
+    public function user_account_view(): Response
+    {
+        return $this->render('pages/userAccount/show.html.twig', []);
     }
 }
