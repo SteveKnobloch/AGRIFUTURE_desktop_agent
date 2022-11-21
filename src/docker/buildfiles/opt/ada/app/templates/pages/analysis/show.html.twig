@@ -1,13 +1,196 @@
 {% extends 'layout.html.twig' %}
 
-{% block title '{% trans %}Analysis{% endtrans %} - ' ~ parent() %}
+{% set listUid = '18' %}
+{% set state = 'running' %}
+{% set title = 'Der Name der Analyse' %}
+{% set type = 'host_determination' %}
+{% set dataFormat = 'fast5' %}
+{% set dateStart = '1668839965' %}
+{% set dateCompleted = '1668840000' %}
+{% set datePaused = '1668840000' %}
+{% set dateCrashed = '1668840000' %}
+{% set localFolder = 'C:/Users/documents/' %}
+{% set totalFilesCount = '5' %}
+{% set currentFile = 'data.fast5' %}
+{% set host = 'Triticum aestivum' %}
+{% set country = 'Germany' %}
+{% set city = 'Jena' %}
+{% set geoLong = '11.586111' %}
+{% set geoLat = '50.927223' %}
+{% set durationHours = '15' %}
+{% set durationMinutes = '13' %}
+{% set modalCancelId = 'cancelAnalysis' %}
+{% set modalStopId = 'stopAnalysis' %}
+
+{% if type %}
+    {% if type == 'host_determination' %}
+        {% set analysisType = 'Host determination'| trans %}
+    {% elseif type == 'pathogen_determination' %}
+        {% set analysisType = 'Pathogene determination'| trans %}
+    {% endif %}
+{% endif %}
+
+{% block title 'Analysis'|trans ~ ' - ' ~ title ~' - ' ~ parent() %}
 
 {% block content %}
     {% apply spaceless %}
-        <div class="text-center">
-            <h1>
-                Name der Analyse
-            </h1>
+        <h1>
+            {{ title }}
+        </h1>
+        <div class="rapid-pipeline-analyses-details detail-view">
+            <div class="row row-facts-and-state flex-row-reverse">
+                <div class="col-5 col-facts">
+                    <div class="card bg-light p-3">
+                        <ul class="layout-list details-state">
+                            <li class="mb-3">
+                                {% include 'partials/states/badge.html.twig' with {
+                                    'state': state,
+                                    'small': false
+                                } %}
+                            </li>
+                            <li class="mt-3 mt-xl-0">
+                                <div class="d-table mb-3">
+                                    {% include 'partials/states/dates.html.twig' with {
+                                        'dateStart': dateStart,
+                                        'datePaused': datePaused,
+                                        'dateCrashed': dateCrashed,
+                                        'dateCompleted': dateCompleted
+                                    } %}
+                                    {% include 'partials/facts.html.twig' with {
+                                        'label': 'Duration' | trans,
+                                        'value': "#{durationHours} h #{durationMinutes} m"
+                                    } %}
+                                    {% include 'partials/facts.html.twig' with {
+                                        'label': 'Local Folder' | trans,
+                                        'value': localFolder
+                                    } %}
+                                    {% include 'partials/facts.html.twig' with {
+                                        'label': 'Number of Files' | trans,
+                                        'value': totalFilesCount
+                                    } %}
+                                    {% include 'partials/facts.html.twig' with {
+                                        'label': 'Current file' | trans,
+                                        'value': currentFile
+                                    } %}
+                                </div>
+                                {% if state != 'completed' %}
+                                    <button type="button" class="btn text-danger" data-bs-toggle="modal" data-bs-target="#modal-cancelAnalysis">
+                                        <i class="bi bi-x-circle"></i>
+                                        {{ 'cancel' | trans }}
+                                    </button>
+                                {% endif %}
+
+                                {% if state == 'paused' %}
+                                    <button type="button" class="btn btn-primary ms-3">
+                                        <i class="bi bi-play-circle"></i>
+                                        {{ 'continue' | trans }}
+                                    </button>
+                                {% endif %}
+
+                                {% if state == 'running' %}
+                                    <button type="button" class="btn btn-primary ms-3">
+                                        <i class="bi bi-x-circle"></i>
+                                        {{ 'pause' | trans }}
+                                    </button>
+                                {% endif %}
+
+                                {% if state != 'completed' %}
+                                    <button type="button" class="btn btn-dark ms-3" data-bs-toggle="modal" data-bs-target="#modal-stopAnalysis">
+                                        <i class="bi bi-x-circle"></i>
+                                        {{ 'stop' | trans }}
+                                    </button>
+                                {% endif %}
+
+                                {% include 'partials/modal.html.twig' with {
+                                    'modalTitle': 'Cancel analysis' | trans,
+                                    'modalBody': 'Are you sure you want to cancel the current analysis?' | trans,
+                                    'modalButtonLabel': 'cancel analysis' | trans,
+                                    'modalButtonAction': '',
+                                    'modalButtonType': 'danger',
+                                    'modalBorderType': 'danger',
+                                    'modalId': 'cancelAnalysis',
+                                    'modalShowCancelButton': true,
+                                    'modalWidth': '300'
+                                } %}
+                                {% include 'partials/modal.html.twig' with {
+                                    'modalTitle': 'Cancel analysis' | trans,
+                                    'modalBody': 'Are you sure you want to stop the current analysis?' | trans,
+                                    'modalButtonLabel': 'stop analysis' | trans,
+                                    'modalButtonAction': '',
+                                    'modalButtonType': 'primary',
+                                    'modalBorderType': 'dark',
+                                    'modalId': 'stopAnalysis',
+                                    'modalShowCancelButton': true,
+                                    'modalWidth': '300',
+                                } %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="details-facts card p-3">
+                        <div class="row justify-content-between">
+                            <div class="col-7">
+                                <div class="d-table layout-list">
+                                    {% include 'partials/facts.html.twig' with {
+                                        'label': 'Analysis type' | trans,
+                                        'value': analysisType
+                                    } %}
+                                    {% include 'partials/facts.html.twig' with {
+                                        'label': 'Data format' | trans,
+                                        'value': dataFormat
+                                    } %}
+                                    {% include 'partials/facts.html.twig' with {
+                                        'label': 'Host plant' | trans,
+                                        'value': host
+                                    } %}
+                                    {% include 'partials/facts.html.twig' with {
+                                        'label': 'Country' | trans,
+                                        'value': country
+                                    } %}
+                                    {% include 'partials/facts.html.twig' with {
+                                        'label': 'City' | trans,
+                                        'value': city
+                                    } %}
+
+                                    <dl class="d-table-row">
+                                        <dt class="d-table-cell strong">
+                                            {{ 'Geolocation' | trans }}:
+                                        </dt>
+                                        <dd class="d-table-cell px-2">
+                                            <div class="d-table">
+                                                <dl class="d-table-row">
+                                                    <dt class="d-table-cell strong">
+                                                        {{ 'Longitude' | trans }}:
+                                                    </dt>
+                                                    <dd class="d-table-cell px-2">
+                                                        {{ geoLong }}
+                                                    </dd>
+                                                </dl>
+                                                <dl class="d-table-row">
+                                                    <dt class="d-table-cell strong">
+                                                        {{ 'Latitude' | trans }}:
+                                                    </dt>
+                                                    <dd class="d-table-cell px-2">
+                                                        {{ geoLat }}
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="col-5 d-flex justify-content-end">
+                                <a class="col-header show-all"
+                                   title="{{ 'Show results of the current analysis on the AGRIFUTURΞ website' | trans }}">
+                                    <i class="bi bi-bar-chart"></i>
+                                    {{ 'Show results of Analysis' | trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     {% endapply %}
 {% endblock %}

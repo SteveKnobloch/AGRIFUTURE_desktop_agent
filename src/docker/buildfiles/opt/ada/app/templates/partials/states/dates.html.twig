@@ -1,0 +1,43 @@
+{% if dateStart %}
+    <dl class="d-table-row d-table">
+        <dt class="d-table-cell strong">
+            {{ 'Started' | trans }}:
+        </dt>
+        <dd class="d-table-cell px-1">
+            {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': dateStart, small: false} %}
+        </dd>
+    </dl>
+{% endif %}
+
+{% if dateCrashed %}
+    <dl class="d-table-row d-table">
+        <dt class="d-table-cell strong">
+            {{ 'Crashed' | trans }}:
+        </dt>
+        <dd class="d-table-cell px-1">
+            {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': dateCrashed, small: false} %}
+        </dd>
+    </dl>
+{% endif %}
+
+{% if datePaused %}
+    <dl class="d-table-row d-table">
+        <dt class="d-table-cell strong">
+            {{ 'Paused' | trans }}:
+        </dt>
+        <dd class="d-table-cell px-1">
+            {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': datePaused, small: false} %}
+        </dd>
+    </dl>
+{% endif %}
+
+{% if dateCompleted %}
+    <dl class="d-table-row d-table">
+        <dt class="d-table-cell strong">
+            {{ 'Completed' | trans }}:
+        </dt>
+        <dd class="d-table-cell px-1">
+            {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': dateCompleted, small: false} %}
+        </dd>
+    </dl>
+{% endif %}

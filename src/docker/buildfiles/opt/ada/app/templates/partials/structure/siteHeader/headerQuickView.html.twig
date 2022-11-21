@@ -22,25 +22,7 @@
     <div class="d-flex justify-content-between">
         {% include 'partials/states/badge.html.twig' with {'state': state, 'small': '1'} %}
         <div class="dates text-nowrap ms-2">
-            <small>
-                {% if app.request.locale == 'de' %}
-                    {{ date | date("d.m.Y") }}
-                {% else %}
-                    {{ date | date("m/d/Y") }}
-                {% endif %}
-            </small>
-            <span class="mx-1">/</span>
-            <small>
-                {% if app.request.locale == 'de' %}
-                    {{ date | date("g:i")}} Uhr
-                {% else %}
-                    {{ date | date("g:iA")}}
-                {% endif %}
-            </small>
-            <span class="mx-1">/</span>
-            <small>
-                15h 13m
-            </small>
+            {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': date, 'small': '1'} %}
         </div>
     </div>
 </div>
