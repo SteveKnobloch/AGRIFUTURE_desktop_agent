@@ -17,8 +17,19 @@
 
                 &-small {
                     font-size   : $font-size-sm;
-                    padding     : 0;
+                    padding     : 0 .5em;
                     margin-left : $spacer;
+
+                    &.btn-primary {
+
+                        .bi {
+                            font-size : .75em;
+                        }
+                    }
+
+                    &:not(.btn-primary) {
+                        padding : 0;
+                    }
                 }
             }
 

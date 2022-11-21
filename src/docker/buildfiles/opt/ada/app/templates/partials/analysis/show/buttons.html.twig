@@ -1,0 +1,62 @@
+{% if analysis.state != 'completed' and  analysis.state != 'crashed'%}
+    <button type="button"
+            class="btn text-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#modal-cancelAnalysis">
+        <i class="bi bi-x-circle"></i>
+        {{ 'cancel' | trans }}
+    </button>
+    {% include 'partials/modal.html.twig' with {
+        'modalTitle': 'Cancel analysis' | trans,
+        'modalBody': 'Are you sure you want to cancel the current analysis?' | trans,
+        'modalButtonLabel': 'cancel analysis' | trans,
+        'modalButtonAction': '',
+        'modalButtonType': 'danger',
+        'modalBorderType': 'danger',
+        'modalId': 'cancelAnalysis',
+        'modalShowCancelButton': true,
+        'modalWidth': '300'
+    } %}
+{% endif %}
+
+{% if analysis.state == 'paused' %}
+    <button type="button" class="btn btn-primary ms-3">
+        <i class="bi bi-play-circle"></i>
+        {{ 'continue' | trans }}
+    </button>
+{% endif %}
+
+{% if analysis.state == 'running' %}
+    <button type="button" class="btn btn-primary ms-3">
+        <i class="bi bi-x-circle"></i>
+        {{ 'pause' | trans }}
+    </button>
+{% endif %}
+
+{% if analysis.state == 'running' or analysis.state == 'paused' %}
+    <button type="button"
+            class="btn btn-dark ms-3"
+            data-bs-toggle="modal"
+            data-bs-target="#modal-stopAnalysis">
+        <i class="bi bi-x-circle"></i>
+        {{ 'stop' | trans }}
+    </button>
+    {% include 'partials/modal.html.twig' with {
+        'modalTitle': 'Cancel analysis' | trans,
+        'modalBody': 'Are you sure you want to stop the current analysis?' | trans,
+        'modalButtonLabel': 'stop analysis' | trans,
+        'modalButtonAction': '',
+        'modalButtonType': 'primary',
+        'modalBorderType': 'dark',
+        'modalId': 'stopAnalysis',
+        'modalShowCancelButton': true,
+        'modalWidth': '300'
+    } %}
+{% endif %}
+
+{% if analysis.state == 'crashed' or analysis.state == 'completed' %}
+    <a href="{{ path('app_page_analysis_register') }}" class="btn btn-primary">
+        <i class="bi bi-eyedropper"></i>
+        {{ 'Register a new RAPID-Pipeline analysis' | trans }}
+    </a>
+{% endif %}

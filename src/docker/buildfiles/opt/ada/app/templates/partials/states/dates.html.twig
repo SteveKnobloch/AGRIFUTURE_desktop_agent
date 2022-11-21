@@ -1,4 +1,4 @@
-{% if dateStart %}
+{% if dateStart is defined %}
     <dl class="d-table-row d-table">
         <dt class="d-table-cell strong">
             {{ 'Started' | trans }}:
@@ -9,7 +9,7 @@
     </dl>
 {% endif %}
 
-{% if dateCrashed %}
+{% if dateCrashed is defined %}
     <dl class="d-table-row d-table">
         <dt class="d-table-cell strong">
             {{ 'Crashed' | trans }}:
@@ -20,7 +20,7 @@
     </dl>
 {% endif %}
 
-{% if datePaused %}
+{% if datePaused is defined %}
     <dl class="d-table-row d-table">
         <dt class="d-table-cell strong">
             {{ 'Paused' | trans }}:
@@ -31,7 +31,7 @@
     </dl>
 {% endif %}
 
-{% if dateCompleted %}
+{% if dateCompleted is defined %}
     <dl class="d-table-row d-table">
         <dt class="d-table-cell strong">
             {{ 'Completed' | trans }}:

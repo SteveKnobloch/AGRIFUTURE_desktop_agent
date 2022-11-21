@@ -35,7 +35,7 @@
       </trans-unit>
       <trans-unit id="mDHMIeX" resname="Metanavigation">
         <source>Metanavigation</source>
-        <target>Meta navigation</target>
+        <target>Metanavigation</target>
       </trans-unit>
       <trans-unit id="RZid5J_" resname="Details">
         <source>Details</source>
@@ -112,6 +112,134 @@
       <trans-unit id="P6fF7xk" resname="Your email address">
         <source>Your email address</source>
         <target>Your email address</target>
+      </trans-unit>
+      <trans-unit id="c1JsnF6" resname="Host determination">
+        <source>Host determination</source>
+        <target>Host determination</target>
+      </trans-unit>
+      <trans-unit id="WgM6Sku" resname="Pathogene determination">
+        <source>Pathogene determination</source>
+        <target>Pathogene determination</target>
+      </trans-unit>
+      <trans-unit id="5w2OuQU" resname="Analysis">
+        <source>Analysis</source>
+        <target>Analysis</target>
+      </trans-unit>
+      <trans-unit id="T8UqPEx" resname="Duration">
+        <source>Duration</source>
+        <target>Duration</target>
+      </trans-unit>
+      <trans-unit id="7LcTc9e" resname="Local Folder">
+        <source>Local Folder</source>
+        <target>Local Folder</target>
+      </trans-unit>
+      <trans-unit id="ZN42bYO" resname="Number of Files">
+        <source>Number of Files</source>
+        <target>Number of Files</target>
+      </trans-unit>
+      <trans-unit id="WskiVpi" resname="Current file">
+        <source>Current file</source>
+        <target>Current file</target>
+      </trans-unit>
+      <trans-unit id="I3TZF5S" resname="cancel">
+        <source>cancel</source>
+        <target>cancel</target>
+      </trans-unit>
+      <trans-unit id="YhDAvwU" resname="pause">
+        <source>pause</source>
+        <target>pause</target>
+      </trans-unit>
+      <trans-unit id="bEXLcqN" resname="stop">
+        <source>stop</source>
+        <target>stop</target>
+      </trans-unit>
+      <trans-unit id="zE6ar_G" resname="Cancel analysis">
+        <source>Cancel analysis</source>
+        <target>Cancel analysis</target>
+      </trans-unit>
+      <trans-unit id="YJxWmEs" resname="Are you sure you want to cancel the current analysis?">
+        <source>Are you sure you want to cancel the current analysis?</source>
+        <target>Are you sure you want to cancel the current analysis?</target>
+      </trans-unit>
+      <trans-unit id="h_28YLU" resname="cancel analysis">
+        <source>cancel analysis</source>
+        <target>cancel analysis</target>
+      </trans-unit>
+      <trans-unit id="Pwnb.f_" resname="Are you sure you want to stop the current analysis?">
+        <source>Are you sure you want to stop the current analysis?</source>
+        <target>Are you sure you want to stop the current analysis?</target>
+      </trans-unit>
+      <trans-unit id="fEsFWs5" resname="stop analysis">
+        <source>stop analysis</source>
+        <target>stop analysis</target>
+      </trans-unit>
+      <trans-unit id="XFkbDNs" resname="Analysis type">
+        <source>Analysis type</source>
+        <target>Analysis type</target>
+      </trans-unit>
+      <trans-unit id="RGnk1Js" resname="Data format">
+        <source>Data format</source>
+        <target>Data format</target>
+      </trans-unit>
+      <trans-unit id="TGHZfT1" resname="Host plant">
+        <source>Host plant</source>
+        <target>Host plant</target>
+      </trans-unit>
+      <trans-unit id="cB0CHQj" resname="Country">
+        <source>Country</source>
+        <target>Country</target>
+      </trans-unit>
+      <trans-unit id=".DP3Mkb" resname="City">
+        <source>City</source>
+        <target>City</target>
+      </trans-unit>
+      <trans-unit id="id_Wjeq" resname="Geolocation">
+        <source>Geolocation</source>
+        <target>Geolocation</target>
+      </trans-unit>
+      <trans-unit id="bYBFj9F" resname="Longitude">
+        <source>Longitude</source>
+        <target>Longitude</target>
+      </trans-unit>
+      <trans-unit id="I4pnbaR" resname="Latitude">
+        <source>Latitude</source>
+        <target>Latitude</target>
+      </trans-unit>
+      <trans-unit id="5.N17us" resname="Show results of Analysis">
+        <source>Show results of Analysis</source>
+        <target>Show results of Analysis</target>
+      </trans-unit>
+      <trans-unit id="7LyJzTe" resname="Started">
+        <source>Started</source>
+        <target>Started</target>
+      </trans-unit>
+      <trans-unit id="QAbhXF4" resname="Crashed">
+        <source>Crashed</source>
+        <target>Crashed</target>
+      </trans-unit>
+      <trans-unit id="4VmwYYf" resname="Paused">
+        <source>Paused</source>
+        <target>Paused</target>
+      </trans-unit>
+      <trans-unit id="Iqlw0uW" resname="Completed">
+        <source>Completed</source>
+        <target>Completed</target>
+      </trans-unit>
+      <trans-unit id="MQ.yABS" resname="close">
+        <source>close</source>
+        <target>close</target>
+      </trans-unit>
+      <trans-unit id="4lbujnr" resname="continue">
+        <source>continue</source>
+        <target>continue</target>
+      </trans-unit>
+      <trans-unit id="gIRiQvJ" resname="Register a new RAPID-Pipeline analysis">
+        <source>Register a new RAPID-Pipeline analysis</source>
+        <target>Register a new RAPID-Pipeline analysis</target>
+      </trans-unit>
+      <trans-unit id="eWKRRGX" resname="new analysis">
+        <source>new analysis</source>
+        <target>new analysis</target>
       </trans-unit>
       <trans-unit id="vqyP86_" resname="Your email address will be used as your username.">
         <source>Your email address will be used as your username.</source>
