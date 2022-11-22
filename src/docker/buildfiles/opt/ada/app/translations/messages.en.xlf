@@ -113,6 +113,22 @@
         <source>Your email address</source>
         <target>Your email address</target>
       </trans-unit>
+      <trans-unit id="vqyP86_" resname="Your email address will be used as your username.">
+        <source>Your email address will be used as your username.</source>
+        <target>Your email address will be used as your username.</target>
+      </trans-unit>
+      <trans-unit id="u9pwK0s" resname="Your password">
+        <source>Your password</source>
+        <target>Your password</target>
+      </trans-unit>
+      <trans-unit id="NDB4lbc" resname="min. 8 characters, min. 1 digit, min. 1 letter, min. 1 special character (#?!@$%^*-)">
+        <source>min. 8 characters, min. 1 digit, min. 1 letter, min. 1 special character (#?!@$%^*-)</source>
+        <target>min. 8 characters, min. 1 digit, min. 1 letter, min. 1 special character (#?!@$%^*-)</target>
+      </trans-unit>
+      <trans-unit id="OFR9aqH" resname="Title of the desktop agent">
+        <source>Title of the desktop agent</source>
+        <target>Title of the desktop agent</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
