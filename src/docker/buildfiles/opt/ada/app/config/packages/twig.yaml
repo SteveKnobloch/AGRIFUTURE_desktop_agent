@@ -1,9 +1,46 @@
 parameters:
-  app_locales: [en, de]
+  app_locales: [ en, de ]
 twig:
   default_path: '%kernel.project_dir%/templates'
   globals:
     locales: '%app_locales%'
+    # FE testing stuff start
+    # following global variables are set for FE testing only
+    # @toDo
+    # they can be removed if real data is available
+    agent:
+      title: 'Labor Dr. Schneider'
+    userAccount:
+      connected : true
+      # connected : false
+      userName: 'email.address@mail.com'
+    analysis:
+      registered: true
+      # registered: false
+      # state: 'running'
+      state: 'paused'
+      # state: 'completed'
+      # state: 'crashed'
+      title: 'A very very very extra long and very very huge title of an analysis '
+      type: 'host_determination'
+      dataFormat: 'fast5'
+      dateStart: '1668839965'
+      dateCompleted: '1669030329'
+      datePaused: '1669130329'
+      dateCrashed: '1669230329'
+      localFolder: 'C:/Users/documents/'
+      totalFilesCount: '5'
+      currentFile: 'data.fast5'
+      host: 'Triticum aestivum'
+      country: 'Germany'
+      city: 'Jena'
+      geoLong: '11.586111'
+      geoLat: '50.927223'
+      durationHours: '15'
+      durationMinutes: '13'
+      modalCancelId: 'cancelAnalysis'
+      modalStopId: 'stopAnalysis'
+   # FE testing stuff end
 
 when@test:
   twig:

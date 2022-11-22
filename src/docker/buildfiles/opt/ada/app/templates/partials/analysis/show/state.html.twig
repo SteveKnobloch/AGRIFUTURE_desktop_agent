@@ -1,0 +1,45 @@
+<div class="d-table mb-3">
+    {% if analysis.state == 'running' %}
+        {% include 'partials/states/dates.html.twig' with {
+            'dateStart': analysis.dateStart
+        } %}
+    {% endif %}
+
+    {% if analysis.state == 'paused' %}
+        {% include 'partials/states/dates.html.twig' with {
+            'dateStart': analysis.dateStart,
+            'datePaused': analysis.datePaused
+        } %}
+    {% endif %}
+
+    {% if analysis.state == 'completed' %}
+        {% include 'partials/states/dates.html.twig' with {
+            'dateStart': analysis.dateStart,
+            'dateCompleted': analysis.dateCompleted
+        } %}
+    {% endif %}
+
+    {% if analysis.state == 'crashed' %}
+        {% include 'partials/states/dates.html.twig' with {
+            'dateStart': analysis.dateStart,
+            'dateCrashed': analysis.dateCrashed
+        } %}
+    {% endif %}
+
+    {% include 'partials/facts.html.twig' with {
+        'label': 'Duration' | trans,
+        'value': "#{analysis.durationHours} h #{analysis.durationMinutes} m"
+    } %}
+    {% include 'partials/facts.html.twig' with {
+        'label': 'Local Folder' | trans,
+        'value': analysis.localFolder
+    } %}
+    {% include 'partials/facts.html.twig' with {
+        'label': 'Number of Files' | trans,
+        'value': analysis.totalFilesCount
+    } %}
+    {% include 'partials/facts.html.twig' with {
+        'label': 'Current file' | trans,
+        'value': analysis.currentFile
+    } %}
+</div>

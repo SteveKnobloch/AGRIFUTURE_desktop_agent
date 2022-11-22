@@ -113,6 +113,134 @@
         <source>Your email address</source>
         <target>Ihre E-Mail-Adresse</target>
       </trans-unit>
+      <trans-unit id="c1JsnF6" resname="Host determination">
+        <source>Host determination</source>
+        <target>Wirtsbestimmung</target>
+      </trans-unit>
+      <trans-unit id="WgM6Sku" resname="Pathogene determination">
+        <source>Pathogene determination</source>
+        <target>Pathogenbestimmung</target>
+      </trans-unit>
+      <trans-unit id="5w2OuQU" resname="Analysis">
+        <source>Analysis</source>
+        <target>Analyse</target>
+      </trans-unit>
+      <trans-unit id="T8UqPEx" resname="Duration">
+        <source>Duration</source>
+        <target>Laufzeit</target>
+      </trans-unit>
+      <trans-unit id="7LcTc9e" resname="Local Folder">
+        <source>Local Folder</source>
+        <target>Lokaler Ordner</target>
+      </trans-unit>
+      <trans-unit id="ZN42bYO" resname="Number of Files">
+        <source>Number of Files</source>
+        <target>Anzahl der Dateien</target>
+      </trans-unit>
+      <trans-unit id="WskiVpi" resname="Current file">
+        <source>Current file</source>
+        <target>Aktuelle Datei</target>
+      </trans-unit>
+      <trans-unit id="I3TZF5S" resname="cancel">
+        <source>cancel</source>
+        <target>abbrechen</target>
+      </trans-unit>
+      <trans-unit id="YhDAvwU" resname="pause">
+        <source>pause</source>
+        <target>pausieren</target>
+      </trans-unit>
+      <trans-unit id="bEXLcqN" resname="stop">
+        <source>stop</source>
+        <target>beenden</target>
+      </trans-unit>
+      <trans-unit id="zE6ar_G" resname="Cancel analysis">
+        <source>Cancel analysis</source>
+        <target>Analyse abbrechen</target>
+      </trans-unit>
+      <trans-unit id="YJxWmEs" resname="Are you sure you want to cancel the current analysis?">
+        <source>Are you sure you want to cancel the current analysis?</source>
+        <target>Sind Sie sicher, dass Sie die Analyse abbrechen möchten?</target>
+      </trans-unit>
+      <trans-unit id="h_28YLU" resname="cancel analysis">
+        <source>cancel analysis</source>
+        <target>Analyse abbrechen</target>
+      </trans-unit>
+      <trans-unit id="Pwnb.f_" resname="Are you sure you want to stop the current analysis?">
+        <source>Are you sure you want to stop the current analysis?</source>
+        <target>Sind Sie sicher, dass Sie die Analyse beenden möchten?</target>
+      </trans-unit>
+      <trans-unit id="fEsFWs5" resname="stop analysis">
+        <source>stop analysis</source>
+        <target>Analyse beenden</target>
+      </trans-unit>
+      <trans-unit id="XFkbDNs" resname="Analysis type">
+        <source>Analysis type</source>
+        <target>Analysetyp</target>
+      </trans-unit>
+      <trans-unit id="RGnk1Js" resname="Data format">
+        <source>Data format</source>
+        <target>Datenformat</target>
+      </trans-unit>
+      <trans-unit id="TGHZfT1" resname="Host plant">
+        <source>Host plant</source>
+        <target>Wirtspflanze</target>
+      </trans-unit>
+      <trans-unit id="cB0CHQj" resname="Country">
+        <source>Country</source>
+        <target>Land</target>
+      </trans-unit>
+      <trans-unit id=".DP3Mkb" resname="City">
+        <source>City</source>
+        <target>Ort</target>
+      </trans-unit>
+      <trans-unit id="id_Wjeq" resname="Geolocation">
+        <source>Geolocation</source>
+        <target>Geolokalisierung</target>
+      </trans-unit>
+      <trans-unit id="bYBFj9F" resname="Longitude">
+        <source>Longitude</source>
+        <target>Longitude</target>
+      </trans-unit>
+      <trans-unit id="I4pnbaR" resname="Latitude">
+        <source>Latitude</source>
+        <target>Latitude</target>
+      </trans-unit>
+      <trans-unit id="5.N17us" resname="Show results of Analysis">
+        <source>Show results of Analysis</source>
+        <target>Ergebnisse der Analyse anzeigen</target>
+      </trans-unit>
+      <trans-unit id="7LyJzTe" resname="Started">
+        <source>Started</source>
+        <target>Gestartet</target>
+      </trans-unit>
+      <trans-unit id="QAbhXF4" resname="Crashed">
+        <source>Crashed</source>
+        <target>Abgebrochen</target>
+      </trans-unit>
+      <trans-unit id="4VmwYYf" resname="Paused">
+        <source>Paused</source>
+        <target>Pausiert</target>
+      </trans-unit>
+      <trans-unit id="Iqlw0uW" resname="Completed">
+        <source>Completed</source>
+        <target>Beendet</target>
+      </trans-unit>
+      <trans-unit id="MQ.yABS" resname="close">
+        <source>close</source>
+        <target>schließen</target>
+      </trans-unit>
+      <trans-unit id="4lbujnr" resname="continue">
+        <source>continue</source>
+        <target>fortsetzen</target>
+      </trans-unit>
+      <trans-unit id="gIRiQvJ" resname="Register a new RAPID-Pipeline analysis">
+        <source>Register a new RAPID-Pipeline analysis</source>
+        <target>Eine neue RAPID-Pipeline-Analyse registrieren</target>
+      </trans-unit>
+      <trans-unit id="eWKRRGX" resname="new analysis">
+        <source>new analysis</source>
+        <target>neue Analyse</target>
+      </trans-unit>
       <trans-unit id="vqyP86_" resname="Your email address will be used as your username.">
         <source>Your email address will be used as your username.</source>
         <target>Ihre E-Mail-Adresse wird als Nutzername verwendet.</target>

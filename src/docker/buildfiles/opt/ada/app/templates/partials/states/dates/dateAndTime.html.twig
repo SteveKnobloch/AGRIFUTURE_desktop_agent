@@ -1,0 +1,33 @@
+{% if small %}
+    <small>
+        {% if app.request.locale == 'de' %}
+            {{ date | date("d.m.Y") }}
+        {% else %}
+            {{ date | date("m/d/Y") }}
+        {% endif %}
+    </small>
+    <small class="mx-1">/</small>
+    <small>
+        {% if app.request.locale == 'de' %}
+            {{ date | date("g:i") }} Uhr
+        {% else %}
+            {{ date | date("g:iA") }}
+        {% endif %}
+    </small>
+{% else %}
+    <span>
+    {% if app.request.locale == 'de' %}
+        {{ date | date("d.m.Y") }}
+    {% else %}
+        {{ date | date("m/d/Y") }}
+    {% endif %}
+</span>
+    <span class="mx-1">/</span>
+    <span>
+    {% if app.request.locale == 'de' %}
+        {{ date | date("g:i") }} Uhr
+    {% else %}
+        {{ date | date("g:iA") }}
+    {% endif %}
+</span>
+{% endif %}

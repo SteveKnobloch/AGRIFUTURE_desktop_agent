@@ -1,13 +1,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block title 'Imprint - ' ~ parent() %}
-
+{% block headline 'Imprint' | trans %}
 {% block content %}
     {% apply spaceless %}
-        <div class="text-center">
-            <h1>
-                {% trans %}Imprint{% endtrans %}
-            </h1>
-        </div>
+
     {% endapply %}
 {% endblock %}
