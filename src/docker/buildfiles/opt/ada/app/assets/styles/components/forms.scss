@@ -1,7 +1,7 @@
 @import "node_modules/bootstrap/scss/forms";
 
 form {
-    max-width : $sp-width-max-content;
+    max-width : 75%;
 
     #main &,
     .modal & {
