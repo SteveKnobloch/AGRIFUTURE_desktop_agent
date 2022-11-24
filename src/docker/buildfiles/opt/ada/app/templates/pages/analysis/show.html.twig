@@ -4,7 +4,7 @@
     {% if analysis.type == 'host_determination' %}
         {% set analysis = analysis|merge({'type': 'Host determination'| trans}) %}
     {% elseif analysis.type == 'pathogen_determination' %}
-        {% set analysis = analysis|merge({'type': 'Pathogene determination'| trans}) %}
+        {% set analysis = analysis|merge({'type': 'Pathogen determination'| trans}) %}
     {% endif %}
 {% endif %}
 

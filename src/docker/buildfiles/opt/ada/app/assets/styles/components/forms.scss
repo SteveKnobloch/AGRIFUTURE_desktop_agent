@@ -1,7 +1,10 @@
 @import "node_modules/bootstrap/scss/forms";
 
 form {
-    max-width : 75%;
+
+    &:not(.full-width){
+        max-width : 75%;
+    }
 
     #main &,
     .modal & {

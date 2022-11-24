@@ -12,22 +12,23 @@ twig:
       title: 'Labor Dr. Schneider'
     userAccount:
       connected : true
-      # connected : false
+      #connected : false
       userName: 'email.address@mail.com'
     analysis:
       registered: true
-      # registered: false
-      # state: 'running'
+      #registered: false
+      #state: 'running'
       state: 'paused'
-      # state: 'completed'
+      #state: 'completed'
       # state: 'crashed'
       title: 'A very very very extra long and very very huge title of an analysis '
-      type: 'host_determination'
+      type: 'NCBI nt DB'
       dataFormat: 'fast5'
       dateStart: '1668839965'
       dateCompleted: '1669030329'
       datePaused: '1669130329'
       dateCrashed: '1669230329'
+      dateShutdown: '1669376484'
       localFolder: 'C:/Users/documents/'
       totalFilesCount: '5'
       currentFile: 'data.fast5'

@@ -3,13 +3,13 @@
             class="btn text-danger"
             data-bs-toggle="modal"
             data-bs-target="#modal-cancelAnalysis">
-        <i class="bi bi-x-circle"></i>
-        {{ 'cancel' | trans }}
+        <i class="bi bi-trash3"></i>
+        {{ 'Cancel' | trans }}
     </button>
     {% include 'partials/modal.html.twig' with {
         'modalTitle': 'Cancel analysis' | trans,
         'modalBody': 'Are you sure you want to cancel the current analysis?' | trans,
-        'modalButtonLabel': 'cancel analysis' | trans,
+        'modalButtonLabel': 'Cancel analysis' | trans,
         'modalButtonAction': '',
         'modalButtonType': 'danger',
         'modalBorderType': 'danger',
@@ -22,14 +22,14 @@
 {% if analysis.state == 'paused' %}
     <button type="button" class="btn btn-primary ms-3">
         <i class="bi bi-play-circle"></i>
-        {{ 'continue' | trans }}
+        {{ 'Continue' | trans }}
     </button>
 {% endif %}
 
 {% if analysis.state == 'running' %}
     <button type="button" class="btn btn-primary ms-3">
-        <i class="bi bi-x-circle"></i>
-        {{ 'pause' | trans }}
+        <i class="bi bi-pause-circle"></i>
+        {{ 'Pause' | trans }}
     </button>
 {% endif %}
 
@@ -37,18 +37,18 @@
     <button type="button"
             class="btn btn-dark ms-3"
             data-bs-toggle="modal"
-            data-bs-target="#modal-stopAnalysis">
-        <i class="bi bi-x-circle"></i>
-        {{ 'stop' | trans }}
+            data-bs-target="#modal-finishAnalysis">
+        <i class="bi bi-check-circle"></i>
+        {{ 'Finish' | trans }}
     </button>
     {% include 'partials/modal.html.twig' with {
-        'modalTitle': 'Cancel analysis' | trans,
-        'modalBody': 'Are you sure you want to stop the current analysis?' | trans,
-        'modalButtonLabel': 'stop analysis' | trans,
+        'modalTitle': 'Finish analysis' | trans,
+        'modalBody': 'Are you sure you want to finish the current analysis?' | trans,
+        'modalButtonLabel': 'Finish analysis' | trans,
         'modalButtonAction': '',
         'modalButtonType': 'primary',
         'modalBorderType': 'dark',
-        'modalId': 'stopAnalysis',
+        'modalId': 'finishAnalysis',
         'modalShowCancelButton': true,
         'modalWidth': '300'
     } %}
@@ -57,6 +57,6 @@
 {% if analysis.state == 'crashed' or analysis.state == 'completed' %}
     <a href="{{ path('app_page_analysis_register') }}" class="btn btn-primary">
         <i class="bi bi-eyedropper"></i>
-        {{ 'Register a new RAPID-Pipeline analysis' | trans }}
+        {{ 'Register an analysis' | trans }}
     </a>
 {% endif %}

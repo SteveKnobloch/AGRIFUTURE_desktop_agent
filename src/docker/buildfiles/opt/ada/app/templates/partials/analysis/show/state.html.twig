@@ -8,7 +8,8 @@
     {% if analysis.state == 'paused' %}
         {% include 'partials/states/dates.html.twig' with {
             'dateStart': analysis.dateStart,
-            'datePaused': analysis.datePaused
+            'datePaused': analysis.datePaused,
+            'dateShutdown': analysis.dateShutdown
         } %}
     {% endif %}
 
@@ -31,11 +32,11 @@
         'value': "#{analysis.durationHours} h #{analysis.durationMinutes} m"
     } %}
     {% include 'partials/facts.html.twig' with {
-        'label': 'Local Folder' | trans,
+        'label': 'Upload folder' | trans,
         'value': analysis.localFolder
     } %}
     {% include 'partials/facts.html.twig' with {
-        'label': 'Number of Files' | trans,
+        'label': 'Number of files uploaded' | trans,
         'value': analysis.totalFilesCount
     } %}
     {% include 'partials/facts.html.twig' with {

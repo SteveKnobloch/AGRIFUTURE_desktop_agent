@@ -81,9 +81,9 @@
         <source>Show results of the current analysis on the AGRIFUTURΞ website</source>
         <target>Ergebnisse der aktuellen Analyse auf der AGRIFUTURΞ Website anzeigen</target>
       </trans-unit>
-      <trans-unit id="89e4KEh" resname="Register a RAPID-Pipeline analysis">
-        <source>Register a RAPID-Pipeline analysis</source>
-        <target>Eine RAPID-Pipeline-Analyse registrieren</target>
+      <trans-unit id="ZKw_YWn" resname="Register an analysis">
+        <source>Register an analysis</source>
+        <target>Eine Analyse registrieren</target>
       </trans-unit>
       <trans-unit id="K2oqPxl" resname="Connect user account">
         <source>Connect user account</source>
@@ -99,14 +99,14 @@
       </trans-unit>
       <trans-unit id="qNWiL6D" resname="Title of desktop agent">
         <source>Title of desktop agent</source>
-        <target>Name des Desktop-Agents</target>
+        <target>Titel des Desktop-Agents</target>
       </trans-unit>
       <trans-unit id="Ur6Zgde" resname="Show and edit connected user account">
         <source>Show and edit connected user account</source>
         <target>Verknüpftes Benutzerkonto anzeigen und bearbeiten</target>
       </trans-unit>
-      <trans-unit id="F5bad.8" resname="Connect another user acount">
-        <source>Connect another user acount</source>
+      <trans-unit id="hTokPVz" resname="Connect another user account">
+        <source>Connect another user account</source>
         <target>Ein anderes Benutzerkonto verknüpfen</target>
       </trans-unit>
       <trans-unit id="P6fF7xk" resname="Your email address">
@@ -117,8 +117,8 @@
         <source>Host determination</source>
         <target>Wirtsbestimmung</target>
       </trans-unit>
-      <trans-unit id="WgM6Sku" resname="Pathogene determination">
-        <source>Pathogene determination</source>
+      <trans-unit id="ThICcKi" resname="Pathogen determination">
+        <source>Pathogen determination</source>
         <target>Pathogenbestimmung</target>
       </trans-unit>
       <trans-unit id="5w2OuQU" resname="Analysis">
@@ -129,13 +129,13 @@
         <source>Duration</source>
         <target>Laufzeit</target>
       </trans-unit>
-      <trans-unit id="7LcTc9e" resname="Local Folder">
-        <source>Local Folder</source>
-        <target>Lokaler Ordner</target>
+      <trans-unit id="41GC5hs" resname="Upload folder">
+        <source>Upload folder</source>
+        <target>Upload Ordner</target>
       </trans-unit>
-      <trans-unit id="ZN42bYO" resname="Number of Files">
-        <source>Number of Files</source>
-        <target>Anzahl der Dateien</target>
+      <trans-unit id="UPaoh96" resname="Number of files uploaded">
+        <source>Number of files uploaded</source>
+        <target>Anzahl der übertragenen Dateien</target>
       </trans-unit>
       <trans-unit id="WskiVpi" resname="Current file">
         <source>Current file</source>
@@ -256,6 +256,170 @@
       <trans-unit id="OFR9aqH" resname="Title of the desktop agent">
         <source>Title of the desktop agent</source>
         <target>Titel des Desktop Agents</target>
+      </trans-unit>
+      <trans-unit id=".vA6t3I" resname="Host designation">
+        <source>Host designation</source>
+        <target>Wirtsbestimmung</target>
+      </trans-unit>
+      <trans-unit id="OYO2CjU" resname="Pathogendesignation">
+        <source>Pathogendesignation</source>
+        <target>Pathogenbestimmung</target>
+      </trans-unit>
+      <trans-unit id="U_L4qml" resname="Title of analysis">
+        <source>Title of analysis</source>
+        <target>Titel der Analyse</target>
+      </trans-unit>
+      <trans-unit id="79bbz3r" resname="This is a descriptive text">
+        <source>This is a descriptive text</source>
+        <target>Das ist ein beschreibender Text</target>
+      </trans-unit>
+      <trans-unit id="3SIfuTV" resname="Country of sequencing">
+        <source>Country of sequencing</source>
+        <target>Land der Sequenzierung</target>
+      </trans-unit>
+      <trans-unit id="8bxIKre" resname="City of sequencing">
+        <source>City of sequencing</source>
+        <target>Ort der Sequenzierung</target>
+      </trans-unit>
+      <trans-unit id="UBLyWyD" resname="Please select the folder in which the sequencing data should be saved.">
+        <source>Please select the folder in which the sequencing data should be saved.</source>
+        <target>Bitte wählen Sie den Ordner, in dem die Sequenzierungsdaten gespeichert werden sollen.</target>
+      </trans-unit>
+      <trans-unit id="IkHcEQ5" resname="fast5 options">
+        <source>fast5 options</source>
+        <target>fast5 Optionen</target>
+      </trans-unit>
+      <trans-unit id=".XMtC9e" resname="Flowcell-Type">
+        <source>Flowcell-Type</source>
+        <target>Flowcell-Typ</target>
+      </trans-unit>
+      <trans-unit id="b0g8BPt" resname="A descriptive text">
+        <source>A descriptive text</source>
+        <target>Ein beschreibender Text</target>
+      </trans-unit>
+      <trans-unit id="KcWbaOd" resname="Library-Kit">
+        <source>Library-Kit</source>
+        <target>Library-Kit</target>
+      </trans-unit>
+      <trans-unit id="59A.4NN" resname="I am sure that the data given do not contain human sequences.">
+        <source>I am sure that the data given do not contain human sequences.</source>
+        <target>Ich bin sicher, dass die übertragenen Daten keine menschlichen Sequenzen enthalten.</target>
+      </trans-unit>
+      <trans-unit id="aJ.C9MP" resname="Fields marked with &quot;*&quot; are mandatory.">
+        <source>Fields marked with "*" are mandatory.</source>
+        <target>Mit "*" gekennzeichnete Felder sind Pflichtfelder.</target>
+      </trans-unit>
+      <trans-unit id="GXZu1sy" resname="Cancel">
+        <source>Cancel</source>
+        <target>Abbruch</target>
+      </trans-unit>
+      <trans-unit id="vQ7mOma" resname="Launch analysis">
+        <source>Launch analysis</source>
+        <target>Analyse starten</target>
+      </trans-unit>
+      <trans-unit id="SK3vDkE" resname="Analysis ends automatically at">
+        <source>Analysis ends automatically at</source>
+        <target>Die Analyse endet automatisch um</target>
+      </trans-unit>
+      <trans-unit id="SkaeTw9" resname="Please select">
+        <source>Please select</source>
+        <target>Bitte wählen</target>
+      </trans-unit>
+      <trans-unit id="tT5NzN." resname="Local folder">
+        <source>Local folder</source>
+        <target>Local folder</target>
+      </trans-unit>
+      <trans-unit id="MfvvFiW" resname="Continue">
+        <source>Continue</source>
+        <target>Fortsetzen</target>
+      </trans-unit>
+      <trans-unit id="hY5Lp6K" resname="Pause">
+        <source>Pause</source>
+        <target>Pause</target>
+      </trans-unit>
+      <trans-unit id="pseoS6p" resname="Finish">
+        <source>Finish</source>
+        <target>Beenden</target>
+      </trans-unit>
+      <trans-unit id="KMYhfZc" resname="Are you sure you want to finish the current analysis?">
+        <source>Are you sure you want to finish the current analysis?</source>
+        <target>Sind Sie sicher, dass Sie die aktuelle Analyse beenden wollen?</target>
+      </trans-unit>
+      <trans-unit id="CtUiOif" resname="Finish analysis">
+        <source>Finish analysis</source>
+        <target>Analyse beenden</target>
+      </trans-unit>
+      <trans-unit id="k0ZS3OQ" resname="Instructions">
+        <source>Instructions</source>
+        <target>Benutzeranleitung</target>
+      </trans-unit>
+      <trans-unit id="bhGcbSS" resname="Pathogen DB">
+        <source>Pathogen DB</source>
+        <target>Pathogen DB</target>
+      </trans-unit>
+      <trans-unit id="UHohayc" resname="NCBI nt DB">
+        <source>NCBI nt DB</source>
+        <target>NCBI nt DB</target>
+      </trans-unit>
+      <trans-unit id="jc6ECCj" resname="Please choose a unique title">
+        <source>Please choose a unique title</source>
+        <target>Bitte wählen Sie einen eindeutigen Titel.</target>
+      </trans-unit>
+      <trans-unit id="6DTpBXg" resname="e.g.Triticum aestivum or Wheat">
+        <source>e.g.Triticum aestivum or Wheat</source>
+        <target>z.B.Triticum aestivum oder Weizen</target>
+      </trans-unit>
+      <trans-unit id="m0q3EV9" resname="Country of origin">
+        <source>Country of origin</source>
+        <target>Herkunftsland</target>
+      </trans-unit>
+      <trans-unit id="2zZMmUr" resname="Location of sample collection">
+        <source>Location of sample collection</source>
+        <target>Ort der Probenahme</target>
+      </trans-unit>
+      <trans-unit id="XbdXs.v" resname="e.g. London">
+        <source>e.g. London</source>
+        <target>z.B. London</target>
+      </trans-unit>
+      <trans-unit id="bs2GcWl" resname="Please select the folder that contains the raw data, if it is not displayed, reload the Desktop Agent.">
+        <source>Please select the folder that contains the raw data, if it is not displayed, reload the Desktop Agent.</source>
+        <target>Bitte wählen Sie den Ordner aus, der die Rohdaten enthält. Wird er nicht angezeigt, laden Sie den Desktop-Agent neu.</target>
+      </trans-unit>
+      <trans-unit id="Eh_cU5g" resname="Reference database">
+        <source>Reference database</source>
+        <target>Referenz-Datenbank</target>
+      </trans-unit>
+      <trans-unit id="CajHtLV" resname="Select Pathogen DB only if you want to determine pathogens.">
+        <source>Select Pathogen DB only if you want to determine pathogens.</source>
+        <target>Wählen Sie Pathogen DB nur, wenn Sie Pathogene bestimmen wollen.</target>
+      </trans-unit>
+      <trans-unit id="CPAo4Uc" resname="Format of raw data">
+        <source>Format of raw data</source>
+        <target>Format der Rohdaten</target>
+      </trans-unit>
+      <trans-unit id="Wus5ose" resname="Dependent on selection, further fields could be shown.">
+        <source>Dependent on selection, further fields could be shown.</source>
+        <target>Je nach Auswahl können weitere Felder angezeigt werden.</target>
+      </trans-unit>
+      <trans-unit id="jUbWV3b" resname="I have read the privacy policy and terms of service">
+        <source>I have read the privacy policy and terms of service</source>
+        <target>Ich habe die Datenschutzerklärung und Nutzungsbedingungen gelesen.</target>
+      </trans-unit>
+      <trans-unit id="KmLNWow" resname="e.g. Pseudomonas syringae pv. tomato">
+        <source>e.g. Pseudomonas syringae pv. tomato</source>
+        <target>z.B. Pseudomonas syringae pv. tomato</target>
+      </trans-unit>
+      <trans-unit id="1jU298k" resname="e.g. city, region or state">
+        <source>e.g. city, region or state</source>
+        <target>z.B. Stadt, Region, Bundesland </target>
+      </trans-unit>
+      <trans-unit id="4qFChA3" resname="Geolocation of sample collection site">
+        <source>Geolocation of sample collection site</source>
+        <target>Geolokation der Probennahme</target>
+      </trans-unit>
+      <trans-unit id="vbmRmqh" resname="Please select Flowcell-Typ first.">
+        <source>Please select Flowcell-Typ first.</source>
+        <target>Bitte zuerst den Flowcell-Typ auswählen.</target>
       </trans-unit>
     </body>
   </file>

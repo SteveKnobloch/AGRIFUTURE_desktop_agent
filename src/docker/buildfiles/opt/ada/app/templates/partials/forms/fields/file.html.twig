@@ -1,0 +1,13 @@
+<div class="form-element form-element-fileupload mb-3">
+    {% include 'partials/forms/fieldLabel.html.twig' %}
+
+    <input id="{{ id }}"
+           name="{{ name }}"
+           class="form-control"
+           type="file"
+           {{ required is defined ? 'required' }}>
+
+    {% if desc is defined %}
+        {% include 'partials/forms/fieldDesc.html.twig' %}
+    {% endif %}
+</div>

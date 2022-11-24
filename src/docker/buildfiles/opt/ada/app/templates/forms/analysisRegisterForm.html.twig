@@ -1,0 +1,204 @@
+{# @todo remove arrays after functional development of this form is done #}
+{# startTodo remove #}
+{% set countries = {
+    '1': {
+        'label': 'Deutschland',
+        'value': 'germany',
+    },
+    '2': {
+        'label': 'Frankreich',
+        'value': 'france',
+    },
+    '3': {
+        'label': 'Italien',
+        'value': 'italy',
+    }
+} %}
+
+{% set folders = {
+    '1': {
+        'label': 'mein/pfad',
+        'value': 'mein/pfad',
+    },
+    '2': {
+        'label': 'mein/pfad/zum',
+        'value': 'mein/pfad/zum',
+    },
+    '3': {
+        'label': 'mein/pfad/zun/ordner',
+        'value': 'mein/pfad/zun/ordner',
+    }
+} %}
+
+{% set formats = {
+    '1': {
+        'label': 'fast5',
+        'value': 'fast5',
+    },
+    '2': {
+        'label': 'fastq',
+        'value': 'fastq',
+    }
+} %}
+{# endTodo remove #}
+
+{% set types = {
+    '1': {
+        'label': 'Pathogen DB' | trans,
+        'value': 'Pathogen DB',
+    },
+    '2': {
+        'label': 'NCBI nt DB' | trans,
+        'value': 'NCBI nt DB',
+    }
+} %}
+
+<form enctype="" method="post" id="analysisRegister" action="" class="full-width">
+    <div class="form-element form-element-gridrow row mb-4">
+        <div class="col-6">
+            <fieldset id="analysisRegister-fieldset-1" class="form-element form-element-fieldset mb-3">
+                {% include 'partials/forms/fields/text.html.twig' with {
+                    'id': 'title',
+                    'name': 'analysis_name_field',
+                    'label': 'Title of analysis' | trans,
+                    'desc': 'Please choose a unique title' | trans,
+                    'required': true
+                } %}
+
+                {% include 'partials/forms/fields/text.html.twig' with {
+                    'id': 'host',
+                    'name': 'host_plant_field',
+                    'label': 'Host plant' | trans,
+                    'placholder': 'e.g. Pseudomonas syringae pv. tomato' | trans
+                } %}
+
+                {% include 'partials/forms/fields/select.html.twig' with {
+                    'id': 'country',
+                    'name': 'country_field',
+                    'label': 'Country of origin' | trans,
+                    'options': countries
+                } %}{# @todo include real country list #}
+
+                {% include 'partials/forms/fields/text.html.twig' with {
+                    'id': 'city',
+                    'name': 'city_field',
+                    'label': 'Location of sample collection' | trans,
+                    'placholder': 'e.g. city, region or state' | trans
+                } %}
+
+                <fieldset>
+                    <legend class="sr-only">
+                        {{ 'Geolocation of sample collection site' | trans }}
+                    </legend>
+                    <div class="form-element form-element-gridrow row">
+                        <div class="col-6">
+                            {% include 'partials/forms/fields/text.html.twig' with {
+                                'id': 'longitude',
+                                'name': 'longitude_field',
+                                'label': 'Longitude' | trans,
+                                'placeholder': '8.651673'
+                            } %}
+                        </div>
+                        <div class="col-6">
+                            {% include 'partials/forms/fields/text.html.twig' with {
+                                'id': 'latitude',
+                                'name': 'latitude_field',
+                                'label': 'Latitude' | trans,
+                                'placeholder': '50.117642'
+                            } %}
+                        </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+        </div>
+
+        <div class="col-6">
+            <fieldset id="analysisRegister-fieldset-2" class="form-element form-element-fieldset mb-3 d-flex flex-column justify-content-between">
+                <div>
+                    {% include 'partials/forms/fields/select.html.twig' with {
+                        'id': 'uploadFolder',
+                        'name': 'upload_folder_field',
+                        'label': 'Upload folder' | trans,
+                        'desc': 'Please select the folder that contains the raw data, if it is not displayed, reload the Desktop Agent.' | trans,
+                        'options': folders,
+                        'required': true
+                    } %}
+
+                    {% include 'partials/forms/fields/select.html.twig' with {
+                        'id': 'type',
+                        'name': 'type_field',
+                        'label': 'Reference database' | trans,
+                        'options': types,
+                        'desc': 'Select Pathogen DB only if you want to determine pathogens.' | trans,
+                        'required': true
+                    } %}
+
+                    {% include 'partials/forms/fields/select.html.twig' with {
+                        'id': 'selectDataFormat',
+                        'name': 'format_field',
+                        'label': 'Format of raw data' | trans,
+                        'desc': 'Dependent on selection, further fields could be shown.' | trans,
+                        'options': formats,
+                        'ariaExpanded': 'false',
+                        'ariaControls': 'collapseFast5Options'
+                    } %}
+
+                    <fieldset class="collapse" id="collapseFast5Options">
+                        <legend class="sr-only">
+                            {{ 'fast5 options' | trans }}
+                        </legend>
+                        <div class="form-element form-element-gridrow row">
+                            <div class="col-6">
+                                {% include 'partials/forms/fields/select.html.twig' with {
+                                    'id': 'flowcellType',
+                                    'name': 'flowcellType_field',
+                                    'label': 'Flowcell-Type' | trans,
+                                    'required': true
+                                } %}
+                            </div>
+                            <div class="col-6">
+                                {% include 'partials/forms/fields/select.html.twig' with {
+                                    'id': 'libraryKit',
+                                    'name': 'libraryKit_field',
+                                    'label': 'Library-Kit' | trans,
+                                    'desc': 'Please select Flowcell-Typ first.' | trans,
+                                    'required': true,
+                                    'disabled': 'disabled'
+                                } %}
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {% include 'partials/forms/fields/checkbox.html.twig' with {
+                    'id': 'privacy',
+                    'name': 'privacy_field',
+                    'label': 'I have read the privacy policy and terms of service' | trans,
+                    'value': '1',
+                    'required': true
+                } %}
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="form-element form-element-gridrow row">
+        <div class="col-6">
+            <div class="form-element form-element-statictext mb-3">
+                <p>
+                    {{ 'Fields marked with "*" are mandatory.' | trans }}
+                </p>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="actions">
+                <nav class="form-navigation">
+                    <button type="button" id="cancelRegisterAnalysis" class="btn btn-dark d-inline-block">
+                        {{ 'Cancel' | trans }}
+                    </button>
+
+                    <input form="pathogenUpload" class="btn btn-primary ms-3" id="pathogen-upload-submit" type="submit" value=" {{ 'Launch analysis' | trans }}">
+                </nav>
+            </div>
+        </div>
+    </div>
+</form>

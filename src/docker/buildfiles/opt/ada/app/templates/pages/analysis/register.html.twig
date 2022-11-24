@@ -1,9 +1,14 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layoutFullWidth.html.twig' %}
 
-{% block title 'Register a RAPID-Pipeline analysis'|trans ~ ' - ' ~ parent() %}
-{% block headline 'Register a RAPID-Pipeline analysis' | trans %}
+{% block title 'Register an analysis'|trans ~ ' - ' ~ parent() %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('analysisRegister') }}
+    {{ encore_entry_script_tags('dataFormatOptions') }}
+{% endblock %}
+{% block headline 'Register an analysis' | trans %}
 {% block content %}
     {% apply spaceless %}
-
+        {% include 'forms/analysisRegisterForm.html.twig' %}
     {% endapply %}
 {% endblock %}

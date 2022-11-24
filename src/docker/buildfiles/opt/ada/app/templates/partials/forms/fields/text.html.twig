@@ -1,0 +1,14 @@
+<div class="form-element form-element-text mb-3">
+    {% include 'partials/forms/fieldLabel.html.twig' %}
+
+    <input id="{{ id }}"
+           name="{{ name }}"
+           class="form-control"
+           type="text"
+           placeholder="{{ placeholder is defined ? placeholder }}"
+           {{ required is defined ? 'required' }}>
+
+    {% if desc is defined %}
+        {% include 'partials/forms/fieldDesc.html.twig' %}
+    {% endif %}
+</div>
