@@ -23,6 +23,7 @@ class TokenRepository extends ServiceEntityRepository
 
     public function save(Token $entity, bool $flush = false): void
     {
+        $this->logout();
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {
@@ -30,37 +31,30 @@ class TokenRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Token $entity, bool $flush = false): void
+    public function logout(
+        ?Token $token = null,
+        bool $flush = false
+    ): void
     {
-        $this->getEntityManager()->remove($entity);
+        if (!$token) {
+            $token = $this->current();
+            if (!$token) {
+                return;
+            }
+        }
+
+        $this->getEntityManager()->remove($token);
 
         if ($flush) {
             $this->getEntityManager()->flush();
         }
     }
 
-//    /**
-//     * @return Token[] Returns an array of Token objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('t.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Token
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function current(): ?Token
+    {
+        return $this->createQueryBuilder('t')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

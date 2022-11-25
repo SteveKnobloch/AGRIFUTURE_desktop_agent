@@ -5,7 +5,7 @@
         </dt>
         <dd class="m-0 p-0">
             <i class="bi bi-pc-display"></i>
-            {{ agent.title }}
+            {{ app.user.name }}
         </dd>
     </dl>
     <dl class="m-0">
@@ -14,7 +14,7 @@
         </dt>
         <dd class="m-0">
             <i class="bi bi-person-circle"></i>
-            {{ userAccount.userName }}
+            {{ app.user.email }}
         </dd>
     </dl>
     <a href="{{ path('app_page_user_account_show') }}">

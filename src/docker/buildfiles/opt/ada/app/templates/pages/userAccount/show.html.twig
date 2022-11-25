@@ -13,7 +13,7 @@
                     {% trans %}Title of desktop agent{% endtrans %}:
                 </dt>
                 <dd class="d-table-cell ps-2 pb-3 pe-5">
-                    {{ agentTitle }}
+                    {{ app.user.name }}
                 </dd>
             </dl>
             <dl class="d-table-row">
@@ -21,11 +21,11 @@
                     {% trans %}Your email address{% endtrans %}:
                 </dt>
                 <dd class="d-table-cell ps-2 pb-3 pe-5">
-                    {{ accountUsername }}
+                    {{ app.user.email }}
                 </dd>
             </dl>
         </div>
-        <a href="{{ path('app_page_user_account_connect') }}">
+        <a href="{{ path('app_logout') }}">
             <i class="bi bi-person-plus-fill"></i>
             {% trans %}Connect another user account{% endtrans %}
         </a>

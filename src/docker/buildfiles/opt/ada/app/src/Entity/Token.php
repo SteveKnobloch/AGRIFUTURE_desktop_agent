@@ -4,62 +4,46 @@ namespace App\Entity;
 
 use App\Repository\TokenRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: TokenRepository::class)]
-class Token
+class Token implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    protected int $id;
 
-    #[ORM\Column(length: 255)]
-    private ?string $token = null;
+    /**
+     * @param int|null $id
+     * @param string|null $token
+     * @param string|null $name
+     * @param string|null $email
+     */
+    public function __construct(
+        #[ORM\Column(length: 255)]
+        public readonly ?string $token,
 
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
+        #[ORM\Column(length: 255)]
+        public readonly ?string $name,
 
-    #[ORM\Column(length: 255)]
-    private ?string $email = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
+        #[ORM\Column(length: 255)]
+        public readonly ?string $email,
+    ) {
     }
 
-    public function getToken(): ?string
+    public function getRoles(): array
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function eraseCredentials()
+    {
+        // Noop
+    }
+
+    public function getUserIdentifier(): string
     {
         return $this->token;
-    }
-
-    public function setToken(string $token): self
-    {
-        $this->token = $token;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
     }
 }

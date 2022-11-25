@@ -4,27 +4,6 @@
 {% block headline 'Connect a user account' | trans %}
 {% block content %}
     {% apply spaceless %}
-        {# @todo #}
-        {# for testing only, remove after real messages included #}
-
-        {% include 'partials/flashMessage.html.twig' with {
-            'type': 'success',
-            'message': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
-        } %}
-        {% include 'partials/flashMessage.html.twig' with {
-            'type': 'info',
-            'message': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
-        } %}
-        {% include 'partials/flashMessage.html.twig' with {
-            'type': 'warning',
-            'message': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
-        } %}
-        {% include 'partials/flashMessage.html.twig' with {
-            'type': 'danger',
-            'message': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
-        } %}
-        {# testing end #}
-
-        {% include 'forms/userAccountConnectForm.html.twig' %}
+        {{ form(form) }}
     {% endapply %}
 {% endblock %}

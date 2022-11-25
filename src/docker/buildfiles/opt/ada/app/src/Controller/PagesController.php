@@ -68,27 +68,4 @@ class PagesController extends AbstractController
         return $this->render('pages/analysis/register.html.twig', []);
     }
 
-    #[Route(
-        path: '/{_locale}/user_account/connect',
-        name: 'app_page_user_account_connect',
-        requirements: [
-            '_locale' => 'en|de',
-        ],
-    )]
-    public function user_account_connect(): Response
-    {
-        return $this->render('pages/userAccount/connect.html.twig', []);
-    }
-
-    #[Route(
-        path: '/{_locale}/user_account',
-        name: 'app_page_user_account_show',
-        requirements: [
-            '_locale' => 'en|de',
-        ],
-    )]
-    public function user_account_view(): Response
-    {
-        return $this->render('pages/userAccount/show.html.twig', []);
-    }
 }
