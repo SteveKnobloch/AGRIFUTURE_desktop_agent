@@ -1,30 +1,45 @@
 {% extends 'layout.html.twig' %}
 
 {% block title 'Connect a user account'|trans ~ ' - ' ~ parent() %}
-{% block headline 'Connect a user account' | trans %}
+
 {% block content %}
     {% apply spaceless %}
-        {# @todo #}
-        {# for testing only, remove after real messages included #}
-
-        {% include 'partials/flashMessage.html.twig' with {
-            'type': 'success',
-            'message': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
-        } %}
-        {% include 'partials/flashMessage.html.twig' with {
-            'type': 'info',
-            'message': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
-        } %}
-        {% include 'partials/flashMessage.html.twig' with {
-            'type': 'warning',
-            'message': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
-        } %}
-        {% include 'partials/flashMessage.html.twig' with {
-            'type': 'danger',
-            'message': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
-        } %}
-        {# testing end #}
-
-        {% include 'forms/userAccountConnectForm.html.twig' %}
+            <h1>
+                {{ 'Connect a user account' | trans }}
+            </h1>
+            <form class="user-account-form">
+                <div class="form-group mb-4">
+                    <label for="userTitle" class="form-label">
+                        {{ 'Title of the desktop agent' | trans }}
+                    </label>
+                    <input type="text" class="form-control" id="userTitle" required="required" aria-required="true">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="userEmail" class="form-label">
+                        {{ 'Your email address' | trans }}
+                    </label>
+                    <input type="email" class="form-control" id="userEmail" aria-labelledby="emailHelp"
+                           required="required" aria-required="true">
+                    <div id="emailHelp" class="form-text">
+                        {{ 'Your email address will be used as your username.' | trans }}
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="userPassword" class="form-label">
+                        {{ 'Your password' | trans }}
+                    </label>
+                    <input type="password" class="form-control" id="userPassword" aria-labelledby="passwordHelp"
+                           required="required" aria-required="true"
+                           pattern="^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^*-]).{8,}$">
+                    <span id="passwordHelp" class="form-text">
+                        {{ 'min. 8 characters, min. 1 digit, min. 1 letter, min. 1 special character (#?!@$%^*-)' | trans }}
+                    </span>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">
+                        {{ 'Connect user account' | trans }}
+                    </button>
+                </div>
+            </form>
     {% endapply %}
 {% endblock %}

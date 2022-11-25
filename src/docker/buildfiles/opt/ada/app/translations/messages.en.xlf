@@ -421,18 +421,6 @@
         <source>Please select Flowcell-Typ first.</source>
         <target>Please select Flowcell-Typ first.</target>
       </trans-unit>
-      <trans-unit id="3UxsoEF" resname="e.g. Laboratory A">
-        <source>e.g. Laboratory A</source>
-        <target>e.g. Laboratory A</target>
-      </trans-unit>
-      <trans-unit id="JVaRmJ0" resname="Username of your AGRIFUTURΞ user account">
-        <source>Username of your AGRIFUTURΞ user account</source>
-        <target>Username of your AGRIFUTURΞ user account</target>
-      </trans-unit>
-      <trans-unit id="8NfnEd6" resname="Password of your AGRIFUTURΞ user account">
-        <source>Password of your AGRIFUTURΞ user account</source>
-        <target>Password of your AGRIFUTURΞ user account</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>
