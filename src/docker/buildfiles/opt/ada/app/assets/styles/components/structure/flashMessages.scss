@@ -1,0 +1,14 @@
+.flash-message {
+    max-width : rem-calc(825);
+
+    .content {
+        position     : relative;
+        padding-left : $spacer*2;
+        margin       : 0;
+
+        .bi {
+            position : absolute;
+            left     : 0;
+        }
+    }
+}

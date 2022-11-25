@@ -9,6 +9,7 @@
                    class="form-check-input"
                    type="checkbox"
                    {{ required is defined ? 'required' }}
+                   aria-required="{{ required is defined ? 'required' : 'false' }}"
                    value="{{ value }}">
 
             <span class="form-check-label">
