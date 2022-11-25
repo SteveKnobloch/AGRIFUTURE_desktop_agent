@@ -86,4 +86,8 @@ article.content {
     .inner-content-wrap {
         padding-left : rem-calc($sp-width-logo + $sp-space-large);
     }
+
+    .center-content-wrap {
+        margin : auto;
+    }
 }

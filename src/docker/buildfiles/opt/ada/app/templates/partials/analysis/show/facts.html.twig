@@ -1,10 +1,10 @@
 <div class="d-table layout-list">
     {% include 'partials/facts.html.twig' with {
-        'label': 'Analysis type' | trans,
+        'label': 'Reference database' | trans,
         'value': analysis.type
     } %}
     {% include 'partials/facts.html.twig' with {
-        'label': 'Data format' | trans,
+        'label': 'Format of raw data' | trans,
         'value': analysis.dataFormat
     } %}
     {% include 'partials/facts.html.twig' with {
@@ -12,17 +12,17 @@
         'value': analysis.host
     } %}
     {% include 'partials/facts.html.twig' with {
-        'label': 'Country' | trans,
+        'label': 'Country of origin' | trans,
         'value': analysis.country
     } %}
     {% include 'partials/facts.html.twig' with {
-        'label': 'City' | trans,
+        'label': 'Location of sample collection' | trans,
         'value': analysis.city
     } %}
 
     <dl class="d-table-row">
         <dt class="d-table-cell strong">
-            {{ 'Geolocation' | trans }}:
+            {{ 'Geolocation of sample collection site' | trans }}:
         </dt>
         <dd class="d-table-cell px-2">
             <div class="d-table">
