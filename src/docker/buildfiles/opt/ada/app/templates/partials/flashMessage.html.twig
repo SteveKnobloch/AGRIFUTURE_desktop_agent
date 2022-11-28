@@ -1,0 +1,20 @@
+{% set iconClasses = 'bi bi-check-circle text-success' %}
+
+{% if type == 'info' %}
+    {% set iconClasses = 'bi bi-info-circle text-info' %}
+{% endif %}
+
+{% if type == 'warning' %}
+    {% set iconClasses = 'bi bi-exclamation-circle text-warning' %}
+{% endif %}
+
+{% if type == 'danger' %}
+    {% set iconClasses = 'bi bi-exclamation-triangle-fill text-danger' %}
+{% endif %}
+
+<div class="flash-message card bg-{{ type }} bg-opacity-10 p-2 mb-3">
+    <p class="content">
+        <i class="{{ iconClasses }}"></i>
+        {{ message }}
+    </p>
+</div>
