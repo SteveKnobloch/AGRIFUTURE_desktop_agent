@@ -515,7 +515,7 @@ function initOptions() {
 }
 
 function addFlocellTypeOptions(data) {
-    const flowcellTypeSelect = document.getElementById('flowcellType');
+    const flowcellTypeSelect = document.getElementById('analysis_form_flowcellType');
 
     // add Flowcell-Type options
     for (const type of data) {
@@ -527,8 +527,8 @@ function addFlocellTypeOptions(data) {
 };
 
 function toggleDependentOptions(data) {
-    const flowcellTypeSelect = document.getElementById('flowcellType'),
-        libraryKitSelect = document.getElementById('libraryKit'),
+    const flowcellTypeSelect = document.getElementById('analysis_form_flowcellType'),
+        libraryKitSelect = document.getElementById('analysis_form_libraryToolkit'),
         libraryKitSelectFirstOption = libraryKitSelect.querySelectorAll('option')[0];
 
     libraryKitSelectFirstOption.removeAttribute('selected');// hide "please select"

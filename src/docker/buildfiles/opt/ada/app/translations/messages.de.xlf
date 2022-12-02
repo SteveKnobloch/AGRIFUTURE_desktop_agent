@@ -199,11 +199,11 @@
       </trans-unit>
       <trans-unit id="bYBFj9F" resname="Longitude">
         <source>Longitude</source>
-        <target>Longitude</target>
+        <target>Längengrad</target>
       </trans-unit>
       <trans-unit id="I4pnbaR" resname="Latitude">
         <source>Latitude</source>
-        <target>Latitude</target>
+        <target>Breitengrad</target>
       </trans-unit>
       <trans-unit id="5.N17us" resname="Show results of Analysis">
         <source>Show results of Analysis</source>
@@ -432,6 +432,26 @@
       <trans-unit id="8NfnEd6" resname="Password of your AGRIFUTURΞ user account">
         <source>Password of your AGRIFUTURΞ user account</source>
         <target>Passswort Ihres AGRIFUTURΞ Benutzerkontos</target>
+      </trans-unit>
+      <trans-unit id="fastq" resname="fastq">
+        <source>fastq</source>
+        <target>FASTQ</target>
+      </trans-unit>
+      <trans-unit id="fast5" resname="fast5">
+        <source>fast5</source>
+        <target>FAST5</target>
+      </trans-unit>
+      <trans-unit id="hosts" resname="hosts">
+        <source>hosts</source>
+        <target>NCBI nt DB</target>
+      </trans-unit>
+      <trans-unit id="pathogens" resname="pathogens">
+        <source>pathogens</source>
+        <target>Pathogen DB</target>
+      </trans-unit>
+      <trans-unit id="UnknownError" resname="UnknownError">
+        <source>UnknownError</source>
+        <target>Es ist ein unbekannter Fehler aufgetreten.</target>
       </trans-unit>
     </body>
   </file>

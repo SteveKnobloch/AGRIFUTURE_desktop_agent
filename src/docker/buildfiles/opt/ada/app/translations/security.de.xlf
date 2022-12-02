@@ -81,11 +81,11 @@
         <source>Too many failed login attempts, please try again in %minutes% minutes.</source>
         <target>Zu viele fehlgeschlagene Anmeldeversuche, bitte versuchen Sie es in %minutes% Minuten noch einmal.</target>
       </trans-unit>
-      <trans-unit id="generate_token.ApiAccessForbidden" resname="generate_token.ApiAccessForbidden">
+      <trans-unit id="hmoD33R" resname="generate_token.ApiAccessForbidden">
         <source>generate_token.ApiAccessForbidden</source>
         <target>Sie dürfen den Desktop Agent nicht nutzen.</target>
       </trans-unit>
-      <trans-unit id="generate_token.NameAlreadyExists" resname="generate_token.NameAlreadyExists">
+      <trans-unit id="caE9ik5" resname="generate_token.NameAlreadyExists">
         <source>generate_token.NameAlreadyExists</source>
         <target>Sie haben bereits einen Desktop Agent mit diesen Titel registriert. Bitte wählen Sie einen anderen Namen oder melden Sie diesen Desktop Agent auf unserer Webseite ab.</target>
       </trans-unit>

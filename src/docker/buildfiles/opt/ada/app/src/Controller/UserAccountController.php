@@ -15,6 +15,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -32,7 +33,12 @@ class UserAccountController extends AbstractController
         Request $request,
         AuthenticationUtils $auth,
         TranslatorInterface $i18n,
+        TokenRepository $tokens,
     ): Response {
+        if ($tokens->current()) {
+            return $this->redirectToRoute('app_page_user_account_show');
+        }
+
         $form = $this->createForm(
             LoginForm::class,
             new Login(

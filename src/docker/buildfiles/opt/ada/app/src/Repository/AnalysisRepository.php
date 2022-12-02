@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Analysis;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @extends ServiceEntityRepository<Analysis>
@@ -14,10 +15,12 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Analysis[]    findAll()
  * @method Analysis[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AnalysisRepository extends ServiceEntityRepository
+final class AnalysisRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
+    public function __construct(
+        ManagerRegistry $registry,
+        private readonly Uuid $uuid,
+    ) {
         parent::__construct($registry, Analysis::class);
     }
 
@@ -39,38 +42,8 @@ class AnalysisRepository extends ServiceEntityRepository
         }
     }
 
-    public function findOneByLocalUuid(string $uuid): ?Analysis
+    public function current(): ?Analysis
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.localUuid = :val')
-            ->setParameter('val', $uuid)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $this->find($this->uuid);
     }
-
-//    /**
-//     * @return Analysis[] Returns an array of Analysis objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Analysis
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

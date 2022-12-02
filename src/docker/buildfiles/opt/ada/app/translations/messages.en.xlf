@@ -433,6 +433,26 @@
         <source>Password of your AGRIFUTURΞ user account</source>
         <target>Password of your AGRIFUTURΞ user account</target>
       </trans-unit>
+      <trans-unit id="pathogens" resname="pathogens">
+        <source>pathogens</source>
+        <target>Pathogen DB</target>
+      </trans-unit>
+      <trans-unit id="hosts" resname="hosts">
+        <source>hosts</source>
+        <target>NCBI nt DB</target>
+      </trans-unit>
+      <trans-unit id="fastq" resname="fastq">
+        <source>fastq</source>
+        <target>FASTQ</target>
+      </trans-unit>
+      <trans-unit id="fast5" resname="fast5">
+        <source>fast5</source>
+        <target>FAST5</target>
+      </trans-unit>
+      <trans-unit id="UnknownError" resname="UnknownError">
+        <source>UnknownError</source>
+        <target>An unknown error occoured.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
