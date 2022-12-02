@@ -2,18 +2,14 @@ parameters:
   app_locales: [ en, de ]
 twig:
   default_path: '%kernel.project_dir%/templates'
+  form_themes:
+    - 'form.html.twig'
   globals:
     locales: '%app_locales%'
     # FE testing stuff start
     # following global variables are set for FE testing only
     # @toDo
     # they can be removed if real data is available
-    agent:
-      title: 'Labor Dr. Schneider'
-    userAccount:
-      connected : true
-      #connected : false
-      userName: 'email.address@mail.com'
     analysis:
       registered: true
       #registered: false

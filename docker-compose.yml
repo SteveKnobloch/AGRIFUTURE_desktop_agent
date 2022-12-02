@@ -7,9 +7,17 @@ services:
       ADA_RUNNING_CONTAINERS: 0
       ADA_HOST_DIRECTORY: "${PWD}/volumes/data"
       ADA_RUN_UUID: b051976e-182c-4ed3-80c6-e8ebdff91165
+      ADA_API_HOST: https://rapid-pipeline-portal.dev.local.dreistrom.land
+      ADA_CHECK_CERTIFICATES: 0
     ports:
       - '8041:80'
     volumes:
       - ./src/docker/buildfiles/opt/ada/app:/opt/ada/app
       - ./volumes/fakehome:/home/ada/.local/share/ada
       - ./volumes/data:/data:ro
+    networks:
+      - domainrouter
+
+networks:
+  domainrouter:
+    external: true
