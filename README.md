@@ -40,12 +40,15 @@ DSL_IMAGE_NAMESPACE=code.tritum.de:5555/senckenberg/agrifuture_desktop_agent DSL
 
 ### System requirements
 
-* All from https://docs.docker.com/desktop/install/windows-install/#wsl-2-backend
-** Windows 11 64-bit: Home or Pro version 21H2 or higher, or Enterprise or Education version 21H2 or higher.
-** Windows 10 64-bit: Home or Pro 21H1 (build 19043) or higher, or Enterprise or Education 20H2 (build 19042) or higher.
-** 64-bit processor with Second Level Address Translation (SLAT)
-** 4GB system RAM
-** BIOS-level hardware virtualization support must be enabled in the BIOS settings.
+(partly from https://docs.docker.com/desktop/install/windows-install/#wsl-2-backend)
+
+* Windows 11 64-bit: Home or Pro version 21H2 or higher, or Enterprise or Education version 21H2 or higher.
+* Windows 10 64-bit: Home or Pro 21H1 (build 19043) or higher, or Enterprise or Education 20H2 (build 19042) or higher.
+* 64-bit processor with Second Level Address Translation (SLAT)
+* 4GB system RAM
+* BIOS-level hardware virtualization support must be enabled in the BIOS settings.
+
+todo: note about https://docs.docker.com/network/proxy/
 
 ### Steps
 
@@ -53,11 +56,22 @@ DSL_IMAGE_NAMESPACE=code.tritum.de:5555/senckenberg/agrifuture_desktop_agent DSL
 * Enable the WSL 2 backend on install: https://serversideup.net/open-source/spin/windows/docker-desktop-configuration.png
 * Install the Linux kernel update package: https://serversideup.net/open-source/spin/windows/wsl-incomplete.png / https://learn.microsoft.com/de-de/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package
 * Install Ubuntu: https://apps.microsoft.com/store/detail/ubuntu/9PDXGNCFSCZV?hl=de-de&gl=de
+* Migrate Ubuntu WSL 1 to WSL 2: Open cmd -> wsl --set-version Ubuntu 2 - https://learn.microsoft.com/de-de/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2
 * Enable Docker Desktop Ubuntu Integration: https://code.visualstudio.com/assets/blogs/2020/03/02/docker-resources-wsl-integration.png
 
 ## Linux
 
-todo: note about https://docs.docker.com/network/proxy/
+### System requirements
+
+(partly from https://docs.docker.com/desktop/install/linux-install/#system-requirements)
+
+* Ununtu 20.04
+* 64-bit processor with Second Level Address Translation (SLAT)
+* 4GB system RAM
+
+### Steps
 
 * goto some directory using the terminal (or right click a folder -> open in Terminal)
 * 
+
+todo: note about https://docs.docker.com/network/proxy/

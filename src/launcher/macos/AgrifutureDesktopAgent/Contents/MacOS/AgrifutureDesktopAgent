@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ "$BASH" = "" ]; then echo "Error: you are not running this script within the bash."; exit 1; fi
+
+_THIS_SCRIPT_REAL_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+osascript <<END
+    tell application "Terminal"
+        do script "$_THIS_SCRIPT_REAL_PATH/agrifuture-desktop-agent.sh"
+    end tell
+END

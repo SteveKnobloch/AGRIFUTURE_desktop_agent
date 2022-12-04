@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Name=Agrifuture Desktop Agent
+Type=Application
+Comment=Upload your DNA sequencing data to the Agrifuture cloud platform.
+Comment[de]=Laden Sie Ihre DNA-Sequenzierungsdaten auf die Agrifuture-Cloud-Plattform hoch.
+Comment[en_GB]=Upload your DNA sequencing data to the Agrifuture cloud platform.
+Terminal=true
+Exec=agrifuture-desktop-agent
+Icon=agrifuture-desktop-agent
+Categories=ConsoleOnly;System;
+GenericName=Agrifuture Desktop Agent
+GenericName[de]=Agrifuture Desktop Agent
+GenericName[en_GB]=Agrifuture Desktop Agent
+Keywords=agrifuture;agent

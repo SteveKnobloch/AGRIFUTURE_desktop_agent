@@ -115,8 +115,8 @@ RUN apk -U update \
     \
     \
     && cd /opt/ada/app/ \
-    && composer install --no-dev --no-interaction \
-    && composer build:frontend \
+    && COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --no-interaction \
+    && COMPOSER_ALLOW_SUPERUSER=1 composer build:frontend \
     \
     && find bin/ -type f -not -name 'console' -delete \
     && rm -rf assets/ \

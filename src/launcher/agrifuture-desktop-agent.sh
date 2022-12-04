@@ -9,22 +9,30 @@
 
 ADA_VERSION=1.0.0
 
-if grep -qiE '(microsoft|mingw64)' /proc/version; then
-    ADA_IS_WIN=1
-    if [ -x "$(command -v cygcheck)" ]; then
-        ADA_IS_GYGWIN=1;
+ADA_IS_WIN=0
+ADA_IS_GYGWIN=0
+ADA_IS_MAC=0
+
+if [ -f /proc/version ]; then
+    if grep -qiE '(microsoft|mingw64)' /proc/version; then
+        ADA_IS_WIN=1
+        if [ -x "$(command -v cygcheck)" ]; then
+            ADA_IS_GYGWIN=1
+        else
+            ADA_IS_GYGWIN=0
+        fi
     else
-        ADA_IS_GYGWIN=0;
+        ADA_IS_GYGWIN=0
+        ADA_IS_WIN=0
     fi
 else
-    ADA_IS_GYGWIN=0;
-    ADA_IS_WIN=0
+    ADA_IS_MAC=1
 fi
 
 if [ "$BASH" = "" ]; then echo "Error: you are not running this script within the bash."; exit 1; fi
 if [ ! -x "$(command -v docker)" ]; then echo "Error: docker is not available. Please install Docker according to these instructions: https://docs.docker.com/engine/install/ubuntu/"; exit 1; fi
 if [ ! -x "$(command -v netstat)" ]; then echo -e "Error: netstat is not available. Please install netstat with the command\nsudo apt-get install net-tools"; exit 1; fi
-if [ $ADA_IS_WIN -eq 0 ]; then if [ ! -x "$(command -v xdg-open)" ]; then echo -e "Error: xdg-open is not available. Please install xdg-open with the command\nsudo apt-get install xdg-utils"; exit 1; fi fi
+if [ $ADA_IS_WIN -eq 0 ] && [ $ADA_IS_MAC -eq 0 ]; then if [ ! -x "$(command -v xdg-open)" ]; then echo -e "Error: xdg-open is not available. Please install xdg-open with the command\nsudo apt-get install xdg-utils"; exit 1; fi fi
 
 ADA_HOST_DIRECTORY="$(pwd)"
 ADA_CONTAINER="code.tritum.de:5555/senckenberg/agrifuture_desktop_agent:latest"
@@ -34,9 +42,9 @@ ADA_DOCKER_COMMAND_PREFIX=""
 ADA_DATA_DIR=""
 ADA_CMD_FILE=""
 ADA_RUN_UUID=""
+ADA_CLEAR_ON_EXIT=1
 
-function shutdown()
-{
+shutdown() {
     $ADA_DOCKER_COMMAND_PREFIX docker run --rm -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER php bin/console app:cancle-analysis $ADA_RUN_UUID &>/dev/null
 
     rm -f "${ADA_CMD_FILE}"
@@ -53,14 +61,18 @@ function shutdown()
     unset ADA_CMD_FILE
     unset ADA_IS_WIN
     unset ADA_IS_GYGWIN
+    unset ADA_IS_MAC
     unset ADA_DOCKER_COMMAND_PREFIX
     unset ADA_RUN_UUID
 
-    clear
+    if [ $ADA_CLEAR_ON_EXIT -eq 1 ]; then
+        clear
+    fi
+    
+    unset ADA_CLEAR_ON_EXIT
 }
 
-function setup()
-{
+setup() {
     ADA_DATA_DIR="${XDG_DATA_HOME:=${HOME}/.local/share}/agrifuture"
     ADA_CMD_FILE="${ADA_DATA_DIR}/cmd"
 
@@ -75,22 +87,27 @@ function setup()
         ADA_DATA_DIR="/$ADA_DATA_DIR";
     fi
 
-    ADA_RUN_UUID=$(cat /proc/sys/kernel/random/uuid)
+    if [ $ADA_IS_MAC -eq 0 ]; then
+        ADA_RUN_UUID=$(cat /proc/sys/kernel/random/uuid)
+    else
+        ADA_RUN_UUID=$(uuidgen)
+    fi
 
     echo "Check for updates..."
-    docker pull $ADA_CONTAINER
+    docker pull $ADA_CONTAINER &>/dev/null
 
     trap 'shutdown' EXIT
 }
 
-function is_port_free()
-{
+is_port_free() {
     local ADA_IS_USED=0
 
     if [ $ADA_IS_GYGWIN -eq 1 ]; then
         ADA_IS_USED=$(netstat -an -p TCP | awk '{print $3}' | cut -d':' -f2 | grep -e "^$1\$" | wc -l)
+    elif [ $ADA_IS_MAC -eq 1 ]; then
+        ADA_IS_USED=$(lsof -i -n -P | grep TCP | awk '{print $9}' | cut -d':' -f2 | grep -e "^$1\$" | wc -l)
     else
-        ADA_IS_USED=$(netstat -t4uln | grep LISTEN | awk '{print $4}' | cut -d':' -f2 | grep -e "^$1\$" | wc -l)
+        ADA_IS_USED=$(netstat -A inet -tuln | grep LISTEN | awk '{print $4}' | cut -d':' -f2 | grep -e "^$1\$" | wc -l)
     fi
 
     if [ $ADA_IS_USED -eq 0 ]; then
@@ -100,8 +117,7 @@ function is_port_free()
     return $ADA_IS_USED
 }
 
-function main()
-{
+main() {
     if [[ "$1" == "-v" ]]; then
         printf 'RAPiD Pipeline Desktop Agent - launcher\n'
         printf 'Version %s\n' "$ADA_VERSION"
@@ -112,6 +128,8 @@ function main()
         printf '\n'
         printf 'For the full copyright and license information, please read the\n'
         printf 'LICENSE.txt file that was distributed with this source code.\n'
+        
+        ADA_CLEAR_ON_EXIT=0;
         exit
     fi
 
@@ -182,18 +200,27 @@ function main()
       let ADA_PORT=ADA_PORT+1
     done
 
-    ADA_RUNNING_CONTAINERS=$(docker ps --filter "label=de.senckenberg.agrifuture=agrifuture_desktop_agent1" | tail -n +2 | wc -l)
+    ADA_RUNNING_CONTAINERS=$(docker ps --filter "label=de.senckenberg.agrifuture=agrifuture_desktop_agent" | tail -n +2 | wc -l | tr -d ' ')
     ADA_CONTAINER_ID=$(docker run --rm -d --label de.senckenberg.agrifuture=agrifuture_desktop_agent -e ADA_RUN_AGENT=1 -e ADA_RUNNING_CONTAINERS -e ADA_HOST_DIRECTORY -e ADA_RUN_UUID -v "$ADA_DATA_DIR":/home/ada/.local/share/ada -v "$ADA_HOST_DIRECTORY":/data:ro -p "127.0.0.1:$ADA_PORT:80" $ADA_CONTAINER)
-    sleep 5
+    for i in {1..5}; do
+        printf "."
+        sleep 1
+    done
+    echo ""
+
     $ADA_DOCKER_COMMAND_PREFIX docker run --rm -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER ada-translate "app.launch_information" "ada-setup" "http://127.0.0.1:$ADA_PORT"
 
     if [ $ADA_IS_WIN -eq 1 ]; then
         powershell.exe -c start "http://127.0.0.1:$ADA_PORT"
+    elif [ $ADA_IS_MAC -eq 1 ]; then
+        open "http://127.0.0.1:$ADA_PORT" &>/dev/null
     else
         xdg-open "http://127.0.0.1:$ADA_PORT" &>/dev/null
     fi
 
-    sleep infinity
+    while true; do
+        sleep 4242
+    done
 }
 
 setup
