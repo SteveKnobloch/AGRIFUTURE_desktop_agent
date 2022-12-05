@@ -3,7 +3,10 @@ declare(strict_types = 1);
 
 namespace App\Service;
 
+use App\Entity\Analysis;
 use App\Enum\FileFormat;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 final class UploadService
 {
@@ -12,11 +15,13 @@ final class UploadService
         // If upgrading to ^8.2, this can be replaced with the enum values.
         'chemical/seq-na-fastq' => [
             'fastq',
+            'fastq.gz',
             'fq',
+            'fq.gz',
         ],
         'chemical/x-seq-na-fast5' => [
             'fast5',
-
+            'fast5.gz',
         ],
     ];
 
@@ -66,5 +71,32 @@ final class UploadService
         }
 
         return false;
+    }
+
+    /**
+     * @return Collection<string>
+     */
+    public function uploadsForAnalysis(Analysis $analysis): Collection
+    {
+        $directory = self::directory . $analysis->relativeDataPath;
+        $contents = new ArrayCollection(scandir($directory));
+        $suffixes = new ArrayCollection(
+            self::suffixes[$analysis->fileType->value]
+        );
+
+        // Convert file names to full paths
+        $paths = $contents->map(
+            fn($name) => "$directory/$name"
+        );
+
+        // Filter for file suffix
+        $fastFiles = $paths->filter(
+            fn($path) => $suffixes->exists(
+                fn($_, $suffix) => str_ends_with($path, ".$suffix") &&
+                    is_file($path)
+            )
+        );
+
+        return $fastFiles;
     }
 }

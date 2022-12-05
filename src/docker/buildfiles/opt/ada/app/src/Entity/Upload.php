@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity;
 
+use App\Enum\UploadFileError;
 use App\Repository\UploadRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -19,11 +20,45 @@ class Upload
         #[ORM\Id]
         #[ORM\GeneratedValue]
         #[ORM\Column]
-        private ?int $id = null,
+        protected ?int $id = null,
+
+        #[ORM\Column(nullable: true)]
+        protected ?UploadFileError $error = null,
+
+        #[ORM\Column]
+        private bool $uploaded = false,
     ) {}
 
     public function getId(): ?int
     {
         return $this->id;
     }
+
+    public function getError(): ?UploadFileError
+    {
+        return $this->error;
+    }
+
+    public function setError(?UploadFileError $error): void
+    {
+        $this->error = $error;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUploaded(): bool
+    {
+        return $this->uploaded;
+    }
+
+    /**
+     * @param bool $uploaded
+     */
+    public function setUploaded(): void
+    {
+        $this->uploaded = true;
+    }
+
+
 }

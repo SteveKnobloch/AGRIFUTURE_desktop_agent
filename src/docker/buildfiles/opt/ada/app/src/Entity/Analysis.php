@@ -32,7 +32,7 @@ class Analysis
         public readonly string $name,
 
         #[ORM\Column]
-        public readonly bool $paused,
+        protected bool $paused,
 
         #[ORM\Column(length: 1024)]
         public readonly string $relativeDataPath,
@@ -43,17 +43,25 @@ class Analysis
         $this->uploads = new ArrayCollection();
     }
 
+    /** @return Collection<Upload> */
     public function getUploads(): Collection
     {
         return $this->uploads;
     }
 
-    public function addUpload(Upload $upload): self
+    /**
+     * @return bool
+     */
+    public function isPaused(): bool
     {
-        if (!$this->uploads->contains($upload)) {
-            $this->uploads->add($upload);
-        }
+        return $this->paused;
+    }
 
-        return $this;
+    /**
+     * @param bool $paused
+     */
+    public function setPaused(bool $paused): void
+    {
+        $this->paused = $paused;
     }
 }
