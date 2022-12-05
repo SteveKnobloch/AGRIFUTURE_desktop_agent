@@ -150,7 +150,7 @@ main() {
     ADA_SKIP_LANGUAGE_SETUP=0
 
     for ((;;)); {
-        ADA_HOST_DIRECTORIES=$(ls -Qd1 "$ADA_HOST_DIRECTORY"/.*/ "$ADA_HOST_DIRECTORY"/*/ 2>/dev/null)
+        ADA_HOST_DIRECTORIES=$(ls -d1 "$ADA_HOST_DIRECTORY"/.*/ "$ADA_HOST_DIRECTORY"/*/ 2>/dev/null | sed 's/\(.*\)/"\1"/g')
         $ADA_DOCKER_COMMAND_PREFIX docker run --rm -it -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v "$ADA_DATA_DIR":/home/ada/.local/share/ada $ADA_CONTAINER ada-setup "$ADA_HOST_DIRECTORIES"
 
         if [ ! -f "${ADA_CMD_FILE}" ]; then

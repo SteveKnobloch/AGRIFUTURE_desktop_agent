@@ -1,5 +1,4 @@
 #!/bin/bash
-set -eo pipefail
 
 # ***********************************************
 # @version 0.0.1
@@ -19,5 +18,6 @@ cp -r ./AgrifutureDesktopAgent ./AgrifutureDesktopAgent.app
 cp ../agrifuture-desktop-agent.sh ./AgrifutureDesktopAgent.app/Contents/MacOS/agrifuture-desktop-agent.sh
 
 create-dmg --overwrite ./AgrifutureDesktopAgent.app ./
+mv "Agrifuture Desktop Agent 1.0.dmg" ./AgrifutureDesktopAgent.dmg
 
 unset THIS_SCRIPT_REAL_PATH
