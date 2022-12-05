@@ -38,7 +38,7 @@ if [ $ADA_IS_WIN -eq 1 ]; then if [ ! -x "$(command -v wslvar )" ]; then echo -e
 if [ $ADA_IS_WIN -eq 1 ] && [ $ADA_IS_GYGWIN -eq 0 ]; then
     ADA_HOST_DIRECTORY=$( cd "$(wslpath "$(wslvar USERPROFILE)")" && pwd )
 else
-    ADA_HOST_DIRECTORY=$( cd "$( realpath "~" )" && pwd )
+    ADA_HOST_DIRECTORY=$( cd "$( realpath ~ )" && pwd )
 fi
 
 
@@ -151,7 +151,7 @@ main() {
 
     for ((;;)); {
         ADA_HOST_DIRECTORIES=$(ls -Qd1 "$ADA_HOST_DIRECTORY"/.*/ "$ADA_HOST_DIRECTORY"/*/ 2>/dev/null)
-        $ADA_DOCKER_COMMAND_PREFIX docker run --rm -it -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v /mnt/c/Users/gizmo/Documents/work/agrifuture_desktop_agent/src/docker/buildfiles/usr/local/bin/ada-setup:/usr/local/bin/ada-setup  -v "$ADA_DATA_DIR":/home/ada/.local/share/ada $ADA_CONTAINER ada-setup "$ADA_HOST_DIRECTORIES"
+        $ADA_DOCKER_COMMAND_PREFIX docker run --rm -it -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v "$ADA_DATA_DIR":/home/ada/.local/share/ada $ADA_CONTAINER ada-setup "$ADA_HOST_DIRECTORIES"
 
         if [ ! -f "${ADA_CMD_FILE}" ]; then
             exit 0

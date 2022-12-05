@@ -20,4 +20,16 @@ cd ./AgrifutureDesktopAgent/
 
 dpkg-buildpackage -uc -us
 
+mv ../agrifuture-desktop-agent_*_all.deb ../AgrifutureDesktopAgent.deb
+
+rm -rf ./debian/.debhelper/
+rm -f ./debian/agrifuture-desktop-agent.substvars
+rm -rf ./debian/agrifuture-desktop-agent/
+rm -rf ./debian/debhelper-build-stamp
+rm -rf ./debian/files
+rm -f ../agrifuture-desktop-agent_*.dsc
+rm -f ../agrifuture-desktop-agent_*.tar.xz
+rm -f ../agrifuture-desktop-agent_*_amd64.buildinfo
+rm -f ../agrifuture-desktop-agent_*_amd64.changes
+
 unset THIS_SCRIPT_REAL_PATH
