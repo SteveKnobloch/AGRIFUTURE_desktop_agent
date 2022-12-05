@@ -88,7 +88,7 @@ function select_host_folder()
     local ADA_NAVIGATION_BUTTON
     local ADA_CANCEL_BUTTON
     local ADA_USE_FOLDER_BUTTON
-    local ADA_HOST_DIRECTORIES_ARRAY
+    local ADA_HOST_DIRECTORIES_ARRAY=()
     local ADA_HOST_DIRECTORIES_OPTIONS
     local ADA_HOST_DIRECTORY_DIRNAME
     local ADA_HOST_DIRECTORY_INDEX
@@ -104,12 +104,12 @@ function select_host_folder()
     ADA_USE_FOLDER_BUTTON=$(gettext -d ada-setup -s "folder_select.use_folder_button")
     ADA_THIS_FOLDER_TEXT=$(gettext -d ada-setup -s "folder_select.this_folder")
 
-    ADA_HOST_DIRECTORIES_ARRAY=($@)
+    eval "ADA_HOST_DIRECTORIES_ARRAY=($1)"
+
     ADA_HOST_DIRECTORIES_OPTIONS=()
     ADA_HOST_DIRECTORY_DIRNAME=$(dirname "${ADA_HOST_DIRECTORIES_ARRAY[0]}")
 
     ADA_DESCRIPTION=$(printf "$ADA_DESCRIPTION" "$ADA_HOST_DIRECTORY_DIRNAME")
-
     for ADA_HOST_DIRECTORY_INDEX in "${!ADA_HOST_DIRECTORIES_ARRAY[@]}"; do
         ADA_HOST_DIRECTORY_BASENAME=$(basename "${ADA_HOST_DIRECTORIES_ARRAY[$ADA_HOST_DIRECTORY_INDEX]}")
 
@@ -140,11 +140,11 @@ function select_host_folder()
     case $ADA_EXIT_CODE in
         # OK button
         0)
-            write_command "chdir ${ADA_HOST_DIRECTORIES_ARRAY[$ADA_CHOICE]}"
+            write_command "chdir \"${ADA_HOST_DIRECTORIES_ARRAY[$ADA_CHOICE]}\""
         ;;
         # Extra button
         3)
-            write_command "usedir ${ADA_HOST_DIRECTORIES_ARRAY[$ADA_CHOICE]}"
+            write_command "usedir \"${ADA_HOST_DIRECTORIES_ARRAY[$ADA_CHOICE]}\""
         ;;
         # All other
         *)

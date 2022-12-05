@@ -1,1 +1,3 @@
-/.build/
+/src/launcher/debian/AgrifutureDesktopAgent/agrifuture-desktop-agent
+/src/launcher/macos/AgrifutureDesktopAgent.app/
+/src/launcher/win/AgrifutureDesktopAgent/agrifuture-desktop-agent.sh

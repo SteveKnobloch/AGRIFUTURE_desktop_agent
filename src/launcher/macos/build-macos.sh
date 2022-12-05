@@ -14,14 +14,10 @@ THIS_SCRIPT_REAL_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd "$THIS_SCRIPT_REAL_PATH"
 
-rm -rf ../../../.build/macos/app/
-mkdir -p ../../../.build/macos/app/
-rsync -rav ./ ../../../.build/macos/app/
-cp ../agrifuture-desktop-agent.sh ../../../.build/macos/app/AgrifutureDesktopAgent/Contents/MacOS/agrifuture-desktop-agent.sh
+rm -rf ./AgrifutureDesktopAgent.app
+cp -r ./AgrifutureDesktopAgent ./AgrifutureDesktopAgent.app
+cp ../agrifuture-desktop-agent.sh ./AgrifutureDesktopAgent.app/Contents/MacOS/agrifuture-desktop-agent.sh
 
-cd ../../../.build/macos/app/
-mv ./AgrifutureDesktopAgent ./AgrifutureDesktopAgent.app
-
-create-dmg --overwrite ./AgrifutureDesktopAgent.app ../
+create-dmg --overwrite ./AgrifutureDesktopAgent.app ./
 
 unset THIS_SCRIPT_REAL_PATH

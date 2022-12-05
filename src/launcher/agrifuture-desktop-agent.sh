@@ -33,8 +33,15 @@ if [ "$BASH" = "" ]; then echo "Error: you are not running this script within th
 if [ ! -x "$(command -v docker)" ]; then echo "Error: docker is not available. Please install Docker according to these instructions: https://docs.docker.com/engine/install/ubuntu/"; exit 1; fi
 if [ ! -x "$(command -v netstat)" ]; then echo -e "Error: netstat is not available. Please install netstat with the command\nsudo apt-get install net-tools"; exit 1; fi
 if [ $ADA_IS_WIN -eq 0 ] && [ $ADA_IS_MAC -eq 0 ]; then if [ ! -x "$(command -v xdg-open)" ]; then echo -e "Error: xdg-open is not available. Please install xdg-open with the command\nsudo apt-get install xdg-utils"; exit 1; fi fi
+if [ $ADA_IS_WIN -eq 1 ]; then if [ ! -x "$(command -v wslvar )" ]; then echo -e "Error: wslvar  is not available. Please install wslvar with the command\nsudo apt-get install wslu"; exit 1; fi fi
 
-ADA_HOST_DIRECTORY="$(pwd)"
+if [ $ADA_IS_WIN -eq 1 ] && [ $ADA_IS_GYGWIN -eq 0 ]; then
+    ADA_HOST_DIRECTORY=$( cd "$(wslpath "$(wslvar USERPROFILE)")" && pwd )
+else
+    ADA_HOST_DIRECTORY=$( cd "$( realpath "~" )" && pwd )
+fi
+
+
 ADA_CONTAINER="code.tritum.de:5555/senckenberg/agrifuture_desktop_agent:latest"
 #ADA_CONTAINER=senckenberg/agrifuture_desktop_agent:latest
 ADA_CONTAINER_ID=""
@@ -143,8 +150,8 @@ main() {
     ADA_SKIP_LANGUAGE_SETUP=0
 
     for ((;;)); {
-        ADA_HOST_DIRECTORIES=$(ls -d1 "$ADA_HOST_DIRECTORY"/.*/ "$ADA_HOST_DIRECTORY"/*/ 2>/dev/null)
-        $ADA_DOCKER_COMMAND_PREFIX docker run --rm -it -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v "$ADA_DATA_DIR":/home/ada/.local/share/ada $ADA_CONTAINER ada-setup "$ADA_HOST_DIRECTORIES"
+        ADA_HOST_DIRECTORIES=$(ls -Qd1 "$ADA_HOST_DIRECTORY"/.*/ "$ADA_HOST_DIRECTORY"/*/ 2>/dev/null)
+        $ADA_DOCKER_COMMAND_PREFIX docker run --rm -it -e ADA_SKIP_LANGUAGE_SETUP=$ADA_SKIP_LANGUAGE_SETUP -v /mnt/c/Users/gizmo/Documents/work/agrifuture_desktop_agent/src/docker/buildfiles/usr/local/bin/ada-setup:/usr/local/bin/ada-setup  -v "$ADA_DATA_DIR":/home/ada/.local/share/ada $ADA_CONTAINER ada-setup "$ADA_HOST_DIRECTORIES"
 
         if [ ! -f "${ADA_CMD_FILE}" ]; then
             exit 0
@@ -156,21 +163,21 @@ main() {
             echo "Error! No command. (code: 1661092995)"
             exit 1
         fi
-        ADA_CMD=($ADA_RAW_CMD)
+        eval "ADA_CMD=($ADA_RAW_CMD)"
 
         case "${ADA_CMD[0]}" in
             "chdir")
-                if [ ! -d "${ADA_CMD[1]}" ]; then
-                    echo "Error! The folder '${ADA_CMD[1]}' does not exists. (code: 1661092998)"
+                if [ ! -d "${ADA_CMD[@]:1}" ]; then
+                    echo "Error! The folder '${ADA_CMD[@]:1}' does not exists. (code: 1661092998)"
                 else
-                    ADA_HOST_DIRECTORY="$( cd "$( realpath "${ADA_CMD[1]}" )" && pwd )"
+                    ADA_HOST_DIRECTORY="$( cd "$( realpath "${ADA_CMD[@]:1}" )" && pwd )"
                 fi
             ;;
             "usedir")
-                if [ ! -d "${ADA_CMD[1]}" ]; then
-                    echo "Error! The folder '${ADA_CMD[1]}' does not exists. (code: 1661092999)"
+                if [ ! -d "${ADA_CMD[@]:1}" ]; then
+                    echo "Error! The folder '${ADA_CMD[@]:1}' does not exists. (code: 1661092999)"
                 else
-                    ADA_HOST_DIRECTORY="$( cd "$( realpath "${ADA_CMD[1]}" )" && pwd )"
+                    ADA_HOST_DIRECTORY="$( cd "$( realpath "${ADA_CMD[@]:1}" )" && pwd )"
                 fi
                 break
             ;;

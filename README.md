@@ -42,6 +42,8 @@ DSL_IMAGE_NAMESPACE=code.tritum.de:5555/senckenberg/agrifuture_desktop_agent DSL
 
 (partly from https://docs.docker.com/desktop/install/windows-install/#wsl-2-backend)
 
+* install docker
+
 * Windows 11 64-bit: Home or Pro version 21H2 or higher, or Enterprise or Education version 21H2 or higher.
 * Windows 10 64-bit: Home or Pro 21H1 (build 19043) or higher, or Enterprise or Education 20H2 (build 19042) or higher.
 * 64-bit processor with Second Level Address Translation (SLAT)
@@ -57,6 +59,7 @@ todo: note about https://docs.docker.com/network/proxy/
 * Install the Linux kernel update package: https://serversideup.net/open-source/spin/windows/wsl-incomplete.png / https://learn.microsoft.com/de-de/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package
 * Install Ubuntu: https://apps.microsoft.com/store/detail/ubuntu/9PDXGNCFSCZV?hl=de-de&gl=de
 * Migrate Ubuntu WSL 1 to WSL 2: Open cmd -> wsl --set-version Ubuntu 2 - https://learn.microsoft.com/de-de/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2
+* Install Ubuntu deps: Open cmd -> wsl -d Ubuntu sudo apt-get update && sudo apt-get install net-tools wslu
 * Enable Docker Desktop Ubuntu Integration: https://code.visualstudio.com/assets/blogs/2020/03/02/docker-resources-wsl-integration.png
 
 ## Linux

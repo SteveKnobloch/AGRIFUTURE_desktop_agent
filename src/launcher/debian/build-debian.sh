@@ -15,12 +15,8 @@ THIS_SCRIPT_REAL_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd "$THIS_SCRIPT_REAL_PATH"
 
-rm -rf ../../../.build/debian/app/
-mkdir -p ../../../.build/debian/app/
-rsync -rav ./ ../../../.build/debian/app/
-cp ../agrifuture-desktop-agent.sh ../../../.build/debian/app/AgrifutureDesktopAgent/agrifuture-desktop-agent
-
-cd ../../../.build/debian/app/AgrifutureDesktopAgent/
+cp ../agrifuture-desktop-agent.sh ./AgrifutureDesktopAgent/agrifuture-desktop-agent
+cd ./AgrifutureDesktopAgent/
 
 dpkg-buildpackage -uc -us
 
