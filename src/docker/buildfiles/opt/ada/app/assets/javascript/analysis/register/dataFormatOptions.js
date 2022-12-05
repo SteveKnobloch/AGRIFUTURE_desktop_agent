@@ -531,6 +531,10 @@ function toggleDependentOptions(data) {
         libraryKitSelect = document.getElementById('analysis_form_libraryToolkit'),
         libraryKitSelectFirstOption = libraryKitSelect.querySelectorAll('option')[0];
 
+    if (!flowcellTypeSelect.value) {
+        libraryKitSelect.setAttribute('disabled', 'disabled');
+    }
+
     libraryKitSelectFirstOption.removeAttribute('selected');// hide "please select"
     addLibraryKitOptions();
 
@@ -542,13 +546,13 @@ function toggleDependentOptions(data) {
         const optionsOld = libraryKitSelect.querySelectorAll('option:not(:first-child)'),
             value = flowcellTypeSelect.value;
 
+        // remove existing options except the first "please select"-option
+        optionsOld.forEach(function (optionOld) {
+            optionOld.remove();
+        });
+
         if (value) {
             const libraryKitGroup = data[value];
-
-            // remove existing options except the first "please select"-option
-            optionsOld.forEach(function (optionOld) {
-                optionOld.remove();
-            });
 
             // add new options dependent on selected Flowcell-Type
             if (libraryKitGroup) {
@@ -562,7 +566,9 @@ function toggleDependentOptions(data) {
 
             // enable library-kit select
             libraryKitSelect.removeAttribute('disabled');
-            libraryKitSelectFirstOption.setAttribute('selected', 'selected');
+        } else{
+            libraryKitSelect.setAttribute('disabled', 'disabled');
+            libraryKitSelectFirstOption.setAttribute( 'selected','selected');
         }
     }
-};
+}
