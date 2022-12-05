@@ -11,7 +11,7 @@ twig:
     # @toDo
     # they can be removed if real data is available
     analysis:
-      registered: true
+      registered: false
       #registered: false
       #state: 'running'
       state: 'paused'

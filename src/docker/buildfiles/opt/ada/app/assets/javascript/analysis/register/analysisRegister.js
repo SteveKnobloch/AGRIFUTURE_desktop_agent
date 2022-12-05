@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function toggleFas5Options(collapse) {
-    const dataFormatSelect = document.getElementById('selectDataFormat'),
+    const dataFormatSelect = document.getElementById('analysis_form_format'),
         fieldset = document.getElementById('collapseFast5Options'),
         fields = fieldset.getElementsByClassName('form-control');
 
@@ -26,7 +26,7 @@ function toggleFas5Options(collapse) {
         });
 
         function toggleFields() {
-            if (dataFormatSelect.value === 'fast5') {
+            if (dataFormatSelect.value === 'chemical/x-seq-na-fast5') {
                 collapse.show();
                 dataFormatSelect.setAttribute('aria-expanded', 'true')
                 for (const field of fields) {

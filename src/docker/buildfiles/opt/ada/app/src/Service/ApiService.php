@@ -3,16 +3,22 @@ declare(strict_types = 1);
 
 namespace App\Service;
 
+use App\Entity\Analysis;
 use App\Entity\Token;
+use App\Enum\AnalysisType;
+use App\Enum\CreateAnalysisError;
+use App\Enum\FileFormat;
 use App\Enum\GenerateTokenError;
 use App\Enum\GetTokenInformationError;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
+use App\Form\Entity\AnalysisInput;
+use Symfony\Component\HttpClient\Exception\JsonException;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Uid\Uuid;
 use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class ApiService
+final class ApiService
 {
     private readonly array $globalOptions;
 
@@ -21,6 +27,7 @@ class ApiService
         private readonly HttpClientInterface $http,
         private readonly Security $security,
         $checkCertificates = true,
+        private readonly Uuid $uuid,
     ) {
         $this->globalOptions = $checkCertificates ? [] :
             [
@@ -141,6 +148,123 @@ class ApiService
                 return GetTokenInformationError::ApiAccessForbidden;
             default:
                 return GetTokenInformationError::UnknownError;
+        }
+    }
+
+    public function createAnalysis(
+        string $locale,
+        AnalysisInput $analysis
+    ): Analysis|CreateAnalysisError {
+        $array = [
+            'type' => match ($analysis->getType()) {
+                AnalysisType::pathogens => [
+                    'type' => AnalysisType::pathogens->value,
+                    'subSpeciesLevel' => $analysis->isSubSpeciesLevel(),
+                    'sensitiveMode' => $analysis->isSensitiveMode(),
+                ],
+                default => [
+                    'type' => $analysis->getType()->value,
+                ]
+            },
+            'format' => match ($analysis->getFormat()) {
+                FileFormat::fast5 => [
+                    'type' => FileFormat::fast5->value,
+                    'flowcellType' => $analysis->getFlowcellType(),
+                    'libraryToolkit' => $analysis->getLibraryToolkit(),
+                ],
+                default => [
+                    'type' => $analysis->getFormat()->value,
+                ]
+            },
+            'name' => $analysis->getName(),
+            'location' => [
+                'country' => $analysis->getCountry(),
+            ],
+            'minQualityScore' => $analysis->getMinQualityScore(),
+            'minSequenceLength' => $analysis->getMinSequenceLength(),
+        ];
+
+        if ($analysis->getHost()) {
+            $array['host'] = $analysis->getHost();
+        }
+        if ($analysis->getCity()) {
+            $array['location']['city'] = $analysis->getCity();
+        }
+        if ($analysis->getCoordinates()->getLongitude() !== null) {
+            $array['location']['longitude'] =
+                $analysis->getCoordinates()->getLongitude();
+        }
+        if ($analysis->getCoordinates()->getLatitude() !== null) {
+            $array['location']['latitude'] =
+                $analysis->getCoordinates()->getLatitude();
+        }
+
+        $json = json_encode($array, flags: JSON_THROW_ON_ERROR);
+
+        try {
+            $response = $this->http->request(
+                'PUT',
+                $this->url($locale, 'analysis'),
+                [
+                    'body' => $json,
+                    'headers' => [
+                        'Content-Type' => 'application/json',
+                        'X-Api-Key' => $this->token(),
+                    ],
+                    ...$this->globalOptions
+                ]
+            );
+        } catch (TransportExceptionInterface $e) {
+            return CreateAnalysisError::UnknownError;
+        }
+
+        try {
+            $status = $response->getStatusCode();
+        } catch (TransportExceptionInterface $e) {
+            return CreateAnalysisError::UnknownError;
+        }
+
+        switch($status) {
+            case 201:
+                try {
+                    $json = json_decode(
+                        $response->getContent(false),
+                        flags: JSON_THROW_ON_ERROR
+                    );
+                } catch (ExceptionInterface|JsonException $e) {
+                    return CreateAnalysisError::UnknownError;
+                }
+
+                return new Analysis(
+                    $this->uuid,
+                    $json->id,
+                    $json->name,
+                    false,
+                    $analysis->getDirectory(),
+                    $analysis->getFormat(),
+                );
+            case 401:
+                return CreateAnalysisError::InvalidToken;
+            case 403:
+                return CreateAnalysisError::ApiAccessForbidden;
+            default:
+                return CreateAnalysisError::UnknownError;
+        }
+    }
+
+    public function checkInternetConnectivity(
+        string $locale,
+    ): bool {
+        try {
+            $response = $this->http->request(
+                'GET',
+                $this->url($locale, 'ping'),
+                $this->globalOptions,
+            );
+
+            return $response->getStatusCode() === 204;
+        } catch (ExceptionInterface $e) {
+            return false;
         }
     }
 
