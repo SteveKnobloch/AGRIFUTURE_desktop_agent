@@ -21,7 +21,8 @@ class AnalysisForm extends AbstractType
 {
     public function __construct(
         private readonly UploadService $uploads,
-    ) {}
+    ) {
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -86,7 +87,7 @@ class AnalysisForm extends AbstractType
                 [
                     'class' => AnalysisType::class,
                     'label' => 'Reference database',
-                    'help' => 'Select Pathogen DB only if you want to determine pathogens.',
+                    'help' => 'Select Pathogen DB only if you want to determine pathogens. Dependent on selection, further fields could be shown.',
                     'placeholder' => 'Please select',
                 ],
             )
@@ -140,8 +141,9 @@ class AnalysisForm extends AbstractType
                 [
                     'placeholder' => 'Please select',
                     'required' => false,
+                    'help' => 'Please select Flowcell-Typ first.',
                     'row_attr' => [
-                        'class' => 'col-6',
+                        'class' => 'col-6 js-disabled',
                     ],
                 ],
             )
@@ -152,6 +154,9 @@ class AnalysisForm extends AbstractType
                     // ToDo Make this nice
                     'html5' => true,
                     'data' => 8,
+                    'row_attr' => [
+                        'class' => 'col-6',
+                    ],
                 ]
             )
             ->add(
@@ -161,6 +166,9 @@ class AnalysisForm extends AbstractType
                     // ToDo Make this nice
                     'html5' => true,
                     'data' => 1000,
+                    'row_attr' => [
+                        'class' => 'col-6',
+                    ],
                 ]
             )
             ->add(
@@ -175,7 +183,10 @@ class AnalysisForm extends AbstractType
                 SubmitType::class,
                 [
                     'label' => 'Launch analysis',
-                    'cancel_route' => 'app_page_user_account_show'
+                    'cancel_route' => 'app_page_user_account_show',
+                    'attr' => [
+                        'class' => 'ms-3 btn btn-primary',
+                    ],
                 ],
             );
     }

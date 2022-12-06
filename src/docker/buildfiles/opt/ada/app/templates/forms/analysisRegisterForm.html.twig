@@ -1,49 +1,52 @@
-{# @todo remove arrays after functional development of this form is done #}
-{# startTodo remove #}
 {{ form_start(form) }}
-    {{ form_errors(form) }}
-    <div class="form-element form-element-gridrow row mb-4">
-        <div class="col-6">
-            <fieldset id="analysisRegister-fieldset-1" class="form-element form-element-fieldset mb-3">
-                {{ form_row(form.name) }}
-                {{ form_row(form.host) }}
-                {{ form_row(form.country) }}
-                {{ form_row(form.city) }}
-                {{ form_row(form.coordinates) }}
-            </fieldset>
-        </div>
-
-        <div class="col-6">
-            <fieldset id="analysisRegister-fieldset-2" class="form-element form-element-fieldset mb-3 d-flex flex-column justify-content-between">
-                <div>
-                    {{ form_row(form.directory) }}
-                    {{ form_row(form.type) }}
-
-                    {# ToDo Show only if type is pathogen, make nice #}
-                    {{ form_row(form.subSpeciesLevel) }}
-                    {{ form_row(form.sensitiveMode) }}
-
-                    {{ form_row(form.format) }}
-
-                    <fieldset class="collapse" id="collapseFast5Options">
-                        <legend class="sr-only">
-                            {% trans %}fast5 options{% endtrans %}
-                        </legend>
-                        <div class="form-element form-element-gridrow row">
-                            {{ form_row(form.flowcellType) }}
-                            {{ form_row(form.libraryToolkit) }}
-                        </div>
-                    </fieldset>
-                </div>
-
-                {# ToDo Make nice #}
-                {{ form_row(form.minQualityScore) }}
-                {{ form_row(form.minSequenceLength) }}
-
-                {{ form_row(form.termsOfServiceAccepted) }}
-            </fieldset>
-        </div>
+{{ form_errors(form) }}
+<div class="form-element form-element-gridrow row mb-4">
+    <div class="col-6">
+        <fieldset id="analysisRegister-fieldset-1" class="form-element form-element-fieldset mb-3">
+            {{ form_row(form.name) }}
+            {{ form_row(form.host) }}
+            {{ form_row(form.country) }}
+            {{ form_row(form.city) }}
+            {{ form_row(form.coordinates) }}
+        </fieldset>
     </div>
 
-    {{ form_row(form.submit) }}
+    <div class="col-6">
+        <fieldset id="analysisRegister-fieldset-2" class="form-element form-element-fieldset mb-3 d-flex flex-column justify-content-between">
+            <div>
+                {{ form_row(form.directory) }}
+                {{ form_row(form.type) }}
+
+                <fieldset class="collapse" id="pathogenDBoptions">
+                    <legend class="sr-only">
+                        {% trans %}pathogen DB options{% endtrans %}
+                    </legend>
+                    {{ form_row(form.subSpeciesLevel) }}
+                    {{ form_row(form.sensitiveMode) }}
+                </fieldset>
+
+                {{ form_row(form.format) }}
+
+                <fieldset class="collapse" id="collapseFast5Options">
+                    <legend class="sr-only">
+                        {% trans %}fast5 options{% endtrans %}
+                    </legend>
+                    <div class="form-element form-element-gridrow row">
+                        {{ form_row(form.flowcellType) }}
+                        {{ form_row(form.libraryToolkit) }}
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="form-element form-element-gridrow row">
+                {{ form_row(form.minQualityScore) }}
+                {{ form_row(form.minSequenceLength) }}
+            </div>
+
+            {{ form_row(form.termsOfServiceAccepted) }}
+        </fieldset>
+    </div>
+</div>
+
+{{ form_row(form.submit) }}
 {{ form_end(form) }}

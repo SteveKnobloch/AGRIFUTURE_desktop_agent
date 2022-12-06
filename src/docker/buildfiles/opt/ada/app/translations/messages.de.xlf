@@ -419,7 +419,7 @@
       </trans-unit>
       <trans-unit id="vbmRmqh" resname="Please select Flowcell-Typ first.">
         <source>Please select Flowcell-Typ first.</source>
-        <target>Bitte zuerst den Flowcell-Typ auswählen.</target>
+        <target>Bitte zuerst einen Flowcell-Typ auswählen.</target>
       </trans-unit>
       <trans-unit id="3UxsoEF" resname="e.g. Laboratory A">
         <source>e.g. Laboratory A</source>

@@ -2,7 +2,7 @@
 
 form {
 
-    &:not(.full-width){
+    &:not(.full-width) {
         max-width : rem-calc(825);
     }
 
@@ -87,8 +87,9 @@ form {
     }
 
     .is-invalid:not(:focus) {
-        border     : rem-calc(1px) solid $danger;
-        background : rgba($danger, .1);
+        border            : rem-calc(1px) solid $danger;
+        background        : rgba($danger, .1);
+        background-repeat : no-repeat;
     }
 
     .errorMsg {
