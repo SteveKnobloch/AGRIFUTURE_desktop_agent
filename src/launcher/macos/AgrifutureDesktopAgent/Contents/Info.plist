@@ -5,9 +5,9 @@
     <key>CFBundleDisplayName</key>
     <string>Agrifuture Desktop Agent</string>
     <key>CFBundleVersion</key>
-    <string>1.0</string>
+    <string>{{ ADA_VERSION }}</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.0</string>
+    <string>{{ ADA_VERSION }}</string>
     <key>CFBundleIconFile</key>
     <string>AppIcon.png</string>
 </dict>

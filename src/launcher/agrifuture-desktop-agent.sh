@@ -7,7 +7,7 @@
 # For the full copyright and license information, please read the
 # LICENSE.txt file that was distributed with this source code.
 
-ADA_VERSION=1.0.0
+ADA_VERSION={{ ADA_VERSION }}
 
 ADA_IS_WIN=0
 ADA_IS_GYGWIN=0

@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=1.0
+Version={{ ADA_VERSION }}
 Name=Agrifuture Desktop Agent
 Type=Application
 Comment=Upload your DNA sequencing data to the Agrifuture cloud platform.
