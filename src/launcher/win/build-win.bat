@@ -14,7 +14,7 @@ copy ..\agrifuture-desktop-agent.sh ..\..\..\.build\launcher\win\AgrifutureDeskt
 
 cd ..\..\..\.build\launcher\win\
 
-powershell.exe -command "& {(Get-Content .\AgrifutureDesktopAgent\agrifuture-desktop-agent.sh).replace('{{ ADA_VERSION }}', '%ADA_VERSION%') | Set-Content .\AgrifutureDesktopAgent\agrifuture-desktop-agent.sh}"
+powershell.exe -command "& {((Get-Content .\AgrifutureDesktopAgent\agrifuture-desktop-agent.sh).replace('{{ ADA_VERSION }}', '%ADA_VERSION%') -join \"`n\") + \"`n\" | Set-Content -NoNewline .\AgrifutureDesktopAgent\agrifuture-desktop-agent.sh}"
 
 "%ProgramFiles(x86)%\NSIS\makensis.exe" .\AgrifutureDesktopAgent.nsi
 "%ProgramFiles(x86)%\NSIS\makensis.exe" .\AgrifutureDesktopAgent-Install.nsi
