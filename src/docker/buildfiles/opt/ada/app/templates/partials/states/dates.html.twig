@@ -1,0 +1,54 @@
+{% if dateStart is defined %}
+    <dl class="d-table-row d-table">
+        <dt class="d-table-cell strong">
+            {{ 'Started' | trans }}:
+        </dt>
+        <dd class="d-table-cell px-1">
+            {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': dateStart, small: false} %}
+        </dd>
+    </dl>
+{% endif %}
+
+{% if dateCrashed is defined %}
+    <dl class="d-table-row d-table">
+        <dt class="d-table-cell strong">
+            {{ 'Crashed' | trans }}:
+        </dt>
+        <dd class="d-table-cell px-1">
+            {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': dateCrashed, small: false} %}
+        </dd>
+    </dl>
+{% endif %}
+
+{% if datePaused is defined %}
+    <dl class="d-table-row d-table">
+        <dt class="d-table-cell strong">
+            {{ 'Paused' | trans }}:
+        </dt>
+        <dd class="d-table-cell px-1">
+            {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': datePaused, small: false} %}
+        </dd>
+    </dl>
+{% endif %}
+
+{% if dateCompleted is defined %}
+    <dl class="d-table-row d-table">
+        <dt class="d-table-cell strong">
+            {{ 'Completed' | trans }}:
+        </dt>
+        <dd class="d-table-cell px-1">
+            {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': dateCompleted, small: false} %}
+        </dd>
+    </dl>
+{% endif %}
+
+{% if dateShutdown is defined %}
+    <dl class="d-table-row d-table">
+        <dt class="d-table-cell strong">
+            {{ 'Analysis ends automatically at' | trans }}:
+        </dt>
+        <dd class="d-table-cell px-1">
+            {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': dateShutdown, small: false} %}
+        </dd>
+    </dl>
+{% endif %}

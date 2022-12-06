@@ -1,0 +1,54 @@
+{% extends 'layoutFullWidth.html.twig' %}
+
+{% if analysis and analysis.type %}
+    {% if analysis.type == 'host_determination' %}
+        {% set analysis = analysis|merge({'type': 'Host determination'| trans}) %}
+    {% elseif analysis.type == 'pathogen_determination' %}
+        {% set analysis = analysis|merge({'type': 'Pathogen determination'| trans}) %}
+    {% endif %}
+{% endif %}
+
+{% block title 'Analysis'|trans ~ ' - ' ~ analysis.name ~' - ' ~ parent() %}
+{% block headline analysis.name %}
+{% block content %}
+    {% apply spaceless %}
+        <div class="rapid-pipeline-analyses-details detail-view">
+            <div class="row row-facts-and-state flex-row-reverse">
+                <div class="col-5 col-facts">
+                    <div class="card bg-light p-3">
+                        <ul class="layout-list details-state">
+                            <li class="mb-3">
+                                {% include 'partials/states/badge.html.twig' with {
+                                    'state': analysis.status,
+                                    'small': false
+                                } %}
+                            </li>
+                            <li class="mt-3 mt-xl-0">
+                                {% include 'partials/analysis/show/state.html.twig' with { 'analysis': analysis } %}
+                                {% include 'partials/analysis/show/buttons.html.twig' with { 'analysis': analysis } %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="details-facts card p-3">
+                        <div class="row justify-content-between">
+                            <div class="col-7">
+                                {% include 'partials/analysis/show/facts.html.twig' with { 'analysis': analysis } %}
+                            </div>
+                            {% if analysis.status.value != 'crashed' %}
+                                <div class="col-5 d-flex justify-content-end">
+                                    <a class="col-header show-all"
+                                       title="{{ 'Show results of the current analysis on the AGRIFUTURΞ website' | trans }}">
+                                        <i class="bi bi-bar-chart"></i>
+                                        {{ 'Show results of Analysis' | trans }}
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endapply %}
+{% endblock %}

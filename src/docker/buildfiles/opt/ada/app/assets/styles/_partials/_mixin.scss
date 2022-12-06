@@ -1,0 +1,136 @@
+// ***************************************
+// layout
+// ***************************************
+
+@mixin layout-list {
+    list-style : none;
+    margin     : 0;
+    padding    : 0;
+}
+
+/// Vertically centers the element inside of its first non-static parent,
+/// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
+@mixin vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/// Horizontally centers the element inside of its first non-static parent,
+/// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
+@mixin horizontal-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/// Absolutely centers the element inside of its first non-static parent,
+/// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// ***************************************
+// icons
+// ***************************************
+
+@mixin icon-styles {
+    font-family             : "icons";
+    font-style              : normal;
+    font-weight             : normal;
+    speak                   : none;
+
+    display                 : inline-block;
+    text-decoration         : inherit;
+    width                   : 1em;
+    margin-right            : .2em;
+    text-align              : center;
+    // opacity: .8; 
+
+    // For safety - reset parent styles, that can break glyph codes
+    font-variant            : normal;
+    text-transform          : none;
+
+    // fix buttons height, for twitter bootstrap 
+    line-height             : 1em;
+
+    // Animation center compensation - margins should be symmetric 
+    // remove if not needed 
+    margin-left             : .2em;
+
+    // you can be more comfortable with increased icons size 
+    // font-size: 120%; 
+
+    // Font smoothing. That was taken from TWBS 
+    -webkit-font-smoothing  : antialiased;
+    -moz-osx-font-smoothing : grayscale;
+
+    // Uncomment for 3D effect 
+    // text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); 
+}
+
+// Adds icon by SCSS without usage of HTML markup.
+//
+// Every selectors, to which this mixin is applied, extends a class '.icon-styles' which contains the icon-style rules.
+// That prevents the icon styles from being multiple included in compiled CSS.
+// The value of $code have to look like this: '\c0d3'
+// The codes can be found in Resources/Public/IconFonts/FontCodes/codes
+// $pseudo is the type of pseudo element. Value can be before or after.
+// If it is necessary to change existing rules for pseudo elements you can use this mixin without a value for $pseudo
+
+// Examples:
+// @include icon('\c0d3', after);
+// @include icon('\c0d3', before);
+// &:after[ @include icon('\c0d3'); }
+@mixin icon($code, $pseudo: false) {
+
+    @if $pseudo {
+        @if $pseudo == before {
+            &:before {
+                content : $code;
+                @extend .icon-styles;
+            }
+        } @else if $pseudo == after {
+            &:after {
+                content : $code;
+                @extend .icon-styles;
+            }
+        } @else {
+            @error "Unsupported pseudo element #{$pseudo}.";
+        }
+    } @else {
+        content : $code;
+        @extend .icon-styles;
+    }
+}
+
+// ***************************************
+// visibility
+// ***************************************
+
+@mixin element-invisible {
+    position    : absolute !important;
+    width       : 1px;
+    height      : 1px;
+    padding     : 0;
+    overflow    : hidden;
+    clip        : rect(0, 0, 0, 0);
+    white-space : nowrap;
+    clip-path   : inset(50%);
+    border      : 0;
+}
+
+@mixin element-visible {
+    position    : relative !important;
+    width       : auto;
+    height      : auto;
+    padding     : 0;
+    overflow    : visible;
+    clip        : auto;
+    white-space : normal;
+    clip-path   : initial;
+    border      : 0;
+}

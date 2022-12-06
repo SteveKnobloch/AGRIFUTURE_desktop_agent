@@ -1,0 +1,50 @@
+**/bin/** text eol=lf
+.env text eol=lf
+.env.*.example text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.aiff binary
+*.bat text eol=crlf
+*.conf text eol=lf
+*.crt text eol=lf
+*.css text eol=lf
+*.desktop text eol=lf
+*.dll binary
+*.eot binary
+*.exe binary
+*.html text eol=lf
+*.jar binary
+*.jpg binary
+*.js text eol=lf
+*.json text eol=lf
+*.key text eol=lf
+*.less text eol=lf
+*.md text eol=lf
+*.mp3 binary
+*.nsi text eol=crlf
+*.o binary
+*.pdf binary
+*.pem text eol=lf
+*.php text eol=lf
+*.phtml text eol=lf
+*.png binary
+*.psd binary
+*.pub text eol=lf
+*.rst text eol=lf
+*.scss text eol=lf
+*.sh text eol=lf
+*.so binary
+*.sql text eol=lf
+*.ttf binary
+*.t3s text eol=lf
+*.tmpl text eol=lf
+*.ts text eol=lf
+*.txt text eol=lf
+*.typoscript text eol=lf
+*.winmd binary
+*.xlf text eol=lf
+*.xml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.zip binary
+Dockerfile text eol=lf

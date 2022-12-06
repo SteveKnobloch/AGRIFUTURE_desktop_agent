@@ -1,0 +1,33 @@
+// ***************************************
+// variables
+// ***************************************
+
+// colors
+$sp-color-blue          : #006fb7;
+$sp-color-blue-light    : #6ea2d2;
+$sp-color-blue-dark     : #003a64;
+$sp-color-green         : #b3b80e;
+$sp-color-green-dark    : #7c8113;
+$sp-color-red           : #e32119;
+$sp-color-red-dark      : #af1f19;
+$sp-color-yellow        : #f09100;
+
+//margins
+$sp-space-base          : 16;
+$sp-space-xsmall        : $sp-space-base *.5;
+$sp-space-small         : $sp-space-base;
+$sp-space-medium        : $sp-space-base * 2;
+$sp-space-large         : $sp-space-base * 2.75;
+$sp-space-xlarge        : $sp-space-base * 4;
+$sp-space-xxlarge       : $sp-space-base * 6;
+
+//widths
+$sp-width-global        : 1400px;
+$sp-width-max-content   : 1200px;
+$sp-width-min-global    : 1200px;
+$sp-width-login-content : 640px;
+$sp-width-logo          : 233;
+$sp-width-logo-footer   : 300;
+
+// heights
+$sp-header-height       : 100px;

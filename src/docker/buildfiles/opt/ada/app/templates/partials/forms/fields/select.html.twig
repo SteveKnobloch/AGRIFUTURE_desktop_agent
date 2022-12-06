@@ -1,0 +1,31 @@
+<div class="form-element form-element-select mb-3">
+    {% include 'partials/forms/fieldLabel.html.twig' %}
+
+    <select id="{{ id }}"
+            name="{{ name }}"
+            class="form-select{{ class is defined ? ' ' ~ class }}"
+            type="text"
+            aria-required="{{ required is defined ? 'required' : 'false' }}"
+            aria-expanded="{{ ariaExpanded is defined ? ariaExpanded }}"
+            aria-controls="{{ ariaControls is defined ? ariaControls : 'false' }}"
+            {{ required is defined ? 'required' }}"
+            {{ disabled is defined ? 'disabled' }}>
+
+    <option disabled="disabled"
+            selected="selected"
+            hidden="hidden"
+            value="">{{ 'Please select' | trans }}
+    </option>
+    {% if options is defined %}
+        {% for option in options %}
+            <option value="{{ option.value }}">
+                {{ option.label }}
+            </option>
+        {% endfor %}
+    {% endif %}
+    </select>
+
+    {% if desc is defined %}
+        {% include 'partials/forms/fieldDesc.html.twig' %}
+    {% endif %}
+</div>

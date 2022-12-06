@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+// ***************************************
+// initial imports
+// ***************************************
+
+@import "../_partials/functions";
+@import "../_partials/variables";
+@import "../_partials/mixin";
+
+// ***************************************
+// Bootstrap imports
+// ***************************************
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "../_partials/variablesBootstrap";
+@import "node_modules/bootstrap/scss/mixins";
+
+// ***************************************
+// global CE styles
+// ***************************************
+
+.icon-styles {
+    @include icon-styles;
+}

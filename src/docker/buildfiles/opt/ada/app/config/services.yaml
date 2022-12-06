@@ -1,0 +1,59 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+    app.api.host: '%env(string:ADA_API_HOST)%'
+    app.api.checkCertificates: '%env(bool:ADA_CHECK_CERTIFICATES)%'
+    app.uuid: '%env(uuid:ADA_RUN_UUID)%'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            'Symfony\Component\Uid\Uuid': '%app.uuid%'
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Service\ApiService:
+        arguments:
+            $apiPrefix: '%app.api.host%'
+            $checkCertificates: '%app.api.checkCertificates%'
+
+    rapid_pipeline.analysis:
+        # Can be null!
+        class: 'App\Entity\RemoteAnalysis'
+        factory: '@App\Service\CurrentAnalysisFactory'
+        public: true
+
+    App\EventListener\AnalysisChanged:
+        tags:
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'postUpdate'
+                entity: 'App\Entity\Analysis'
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'postRemove'
+                entity: 'App\Entity\Analysis'
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'postPersist'
+                entity: 'App\Entity\Upload'
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'postUpdate'
+                entity: 'App\Entity\Upload'
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones

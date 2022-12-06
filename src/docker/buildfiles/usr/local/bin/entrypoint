@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# **********************************************
+# @version 1.0.0
+# **********************************************
+
+set -e
+
+export OLD_USER_UID=`id -u ada`
+export OLD_USER_GID=`getent group ada | awk -F: '{printf "%d", $3}'`
+
+# if: HOSTUSER_UID is not set and /home/ada/.local/share/ada is a directory
+# then: determine HOSTUSER_UID by the user of /home/ada/.local/share/ada (the host user id)
+if [ -z ${HOSTUSER_UID+x} ] && [ -d /home/ada/.local/share/ada ]; then
+    export HOSTUSER_UID=`stat -c "%u" /home/ada/.local/share/ada`
+fi
+
+# if: HOSTUSER_GID is not set and /home/ada/.local/share/ada is a directory
+# then: determine HOSTUSER_GID by the group of /home/ada/.local/share/ada (the host user group id)
+if [ -z ${HOSTUSER_GID+x} ] && [ -d /home/ada/.local/share/ada ]; then
+    export HOSTUSER_GID=`stat -c "%g" /home/ada/.local/share/ada`
+fi
+
+# note: if HOSTUSER_UID / HOSTUSER_GID is 0, it is probably a windows user
+
+export MAYBEUSER_UID=`getent passwd $HOSTUSER_UID` || export MAYBEUSER_UID=""
+export MAYBEUSER_GID=`getent group $HOSTUSER_GID` || export MAYBEUSER_GID=""
+
+# if HOSTUSER_UID is not root (windows user) and an user within the container has already the id HOSTUSER_UID
+if [ "$HOSTUSER_UID" -gt "0" ] && [ "$HOSTUSER_UID" -ne "$OLD_USER_UID" ] && [ ! -z "$MAYBEUSER_UID" ]; then
+    echo "There is already a user with the uid $HOSTUSER_UID in the container!".
+    echo "You need to change your host user id. Sorry!".
+    echo "Tip: Your host user id should be greater than 410 to avoid this error.".
+    exit 1;
+fi
+
+# if HOSTUSER_GID is not root (windows user) and an user group within the container has already the id HOSTUSER_GID
+if [ "$HOSTUSER_GID" -gt "0" ] && [ "$HOSTUSER_GID" -ne "$OLD_USER_GID" ] && [ ! -z "$MAYBEUSER_GID" ]; then
+    echo "There is already a user group with the uid $HOSTUSER_GID in the container!".
+    echo "You need to change your host user group id. Sorry!".
+    echo "Tip: Your host user group id should be greater than 410 to avoid this error.".
+    exit 1;
+fi
+
+if [ "$HOSTUSER_UID" -gt "0" ]; then
+    # unix
+    exec sudo -E /usr/local/etc/ada/entrypoint_unix "$@"
+else
+    # windows
+    exec sudo -E /usr/local/etc/ada/entrypoint_win "$@"
+fi

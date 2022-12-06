@@ -1,0 +1,66 @@
+{% use 'bootstrap_5_layout.html.twig' %}
+
+{# Rows #}
+
+{%- block button_row -%}
+    <div{% with {attr: row_attr|merge({class: row_attr.class|default('d-flex justify-content-end')|trim})} %}{{ block('attributes') }}{% endwith %}>
+        {{- form_widget(form) -}}
+    </div>
+{%- endblock button_row %}
+
+
+{# Labels #}
+
+{%- block form_label -%}
+    {% if required and label -%}
+        {% if not label_html %}
+            {% set label = label|trans|striptags %}
+        {% else %}
+            {% set label = label|trans %}
+        {% endif %}
+        {% set label = label ~ '<span class=required>*</span>' %}
+        {% set label_html = true %}
+    {% endif %}
+    {{ parent() }}
+{%- endblock form_label %}
+
+{%- block checkbox_radio_label -%}
+    {% if required and label -%}
+        {% if not label_html %}
+            {% set label = label|trans|striptags %}
+        {% else %}
+            {% set label = label|trans %}
+        {% endif %}
+        {% set label = label ~ '<span class=required>*</span>' %}
+        {% set label_html = true %}
+    {% endif %}
+    {{ parent() }}
+{%- endblock checkbox_radio_label -%}
+
+{# Custom blocks #}
+
+{%- block form_footer -%}
+    <div class="form-element form-element-gridrow row">
+        <div class="col-6">
+            <div class="form-element form-element-statictext mb-3">
+                <p>
+                    {% trans %}Fields marked with "*" are mandatory.{% endtrans %}
+                </p>
+            </div>
+        </div>
+
+        <div class="col-6 actions">
+            <nav class="form-navigation">
+                <div class="d-flex justify-content-end">
+                    {% if cancel_route is defined and cancel_route %}
+                        <a class="btn btn-dark" href="{{ path(cancel_route) }}">
+                            {{ cancel_label|trans }}
+                        </a>
+                    {% endif %}
+
+                    {{ block('submit_widget') }}
+                </div>
+            </nav>
+        </div>
+    </div>
+{%- endblock form_footer -%}

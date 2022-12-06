@@ -1,0 +1,48 @@
+<div class="d-table layout-list">
+    {% include 'partials/facts.html.twig' with {
+        'label': 'Reference database' | trans,
+        'value': analysis.type.name
+    } %}
+    {% include 'partials/facts.html.twig' with {
+        'label': 'Format of raw data' | trans,
+        'value': analysis.format.value
+    } %}
+    {% include 'partials/facts.html.twig' with {
+        'label': 'Host plant' | trans,
+        'value': analysis.host
+    } %}
+    {% include 'partials/facts.html.twig' with {
+        'label': 'Country of origin' | trans,
+        'value': analysis.country
+    } %}
+    {% include 'partials/facts.html.twig' with {
+        'label': 'Location of sample collection' | trans,
+        'value': analysis.city
+    } %}
+
+    <dl class="d-table-row">
+        <dt class="d-table-cell strong">
+            {{ 'Geolocation of sample collection site' | trans }}:
+        </dt>
+        <dd class="d-table-cell px-2">
+            <div class="d-table">
+                <dl class="d-table-row">
+                    <dt class="d-table-cell strong">
+                        {{ 'Longitude' | trans }}:
+                    </dt>
+                    <dd class="d-table-cell px-2">
+                        {{ analysis.longitude }}
+                    </dd>
+                </dl>
+                <dl class="d-table-row">
+                    <dt class="d-table-cell strong">
+                        {{ 'Latitude' | trans }}:
+                    </dt>
+                    <dd class="d-table-cell px-2">
+                        {{ analysis.latitude }}
+                    </dd>
+                </dl>
+            </div>
+        </dd>
+    </dl>
+</div>

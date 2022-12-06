@@ -1,0 +1,40 @@
+security:
+    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+    providers:
+        token:
+            id: App\Security\UserProvider
+
+    firewalls:
+        login_form:
+            pattern: ^/(de|en)/user_account/connect$
+            methods: [POST]
+
+            custom_authenticators:
+                - App\Security\UsernamePasswordAuthenticator
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            lazy: true
+            provider: token
+
+            custom_authenticators:
+                - App\Security\TokenAuthenticator
+            form_login:
+                login_path: 'app_page_user_account_connect'
+            logout:
+                path: app_logout
+                target: app_page_user_account_connect
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#the-firewall
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/(de|en)/user_account/connect$, roles: PUBLIC_ACCESS }
+        - { path: ^/(de|en)/information, roles: PUBLIC_ACCESS }
+        - { path: ^/, roles: ROLE_USER }

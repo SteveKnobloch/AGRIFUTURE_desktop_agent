@@ -1,0 +1,52 @@
+{% if analysis.status.value != 'completed' and  analysis.status.value != 'crashed'%}
+    <button type="button"
+            class="btn text-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#modal-cancelAnalysis">
+        <i class="bi bi-trash3"></i>
+        {{ 'Cancel' | trans }}
+    </button>
+    {% include 'partials/modal.html.twig' with {
+        'modalTitle': 'Cancel analysis' | trans,
+        'modalBody': 'Are you sure you want to cancel the current analysis?' | trans,
+        'modalButton': cancel,
+        'modalBorderType': 'danger',
+        'modalId': 'cancelAnalysis',
+        'modalShowCancelButton': true,
+        'modalWidth': '300'
+    } %}
+{% endif %}
+
+{% if analysis.status.value == 'paused' %}
+    {{ form(resume) }}
+{% endif %}
+
+{% if analysis.status.value == 'running' %}
+    {{ form(pause) }}
+{% endif %}
+
+{% if analysis.status.value == 'running' or analysis.status.value == 'paused' %}
+    <button type="button"
+            class="btn btn-dark ms-3"
+            data-bs-toggle="modal"
+            data-bs-target="#modal-finishAnalysis">
+        <i class="bi bi-check-circle"></i>
+        {{ 'Finish' | trans }}
+    </button>
+    {% include 'partials/modal.html.twig' with {
+        'modalTitle': 'Finish analysis' | trans,
+        'modalBody': 'Are you sure you want to finish the current analysis?' | trans,
+        'modalButton': finish,
+        'modalBorderType': 'dark',
+        'modalId': 'finishAnalysis',
+        'modalShowCancelButton': true,
+        'modalWidth': '300'
+    } %}
+{% endif %}
+
+{% if analysis.status == 'crashed' or analysis.status == 'completed' %}
+    <a href="{{ path('app_page_analysis_register') }}" class="btn btn-primary">
+        <i class="bi bi-eyedropper"></i>
+        {{ 'Register an analysis' | trans }}
+    </a>
+{% endif %}

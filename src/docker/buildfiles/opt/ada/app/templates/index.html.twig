@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Startpage - ' ~ parent() %}
+
+{% block content %}
+    {% apply spaceless %}
+        <div class="text-center">
+            {% trans %}Hello World!{% endtrans %}
+        </div>
+    {% endapply %}
+{% endblock %}

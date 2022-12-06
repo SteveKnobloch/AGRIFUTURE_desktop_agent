@@ -1,0 +1,55 @@
+#header {
+
+    .col-analysis {
+
+        .analysis {
+
+            * {
+                line-height : 1;
+            }
+
+            &-title {
+                max-width : rem-calc(250);
+
+            }
+
+            .btn {
+
+                &-small {
+                    font-size   : $font-size-sm;
+                    padding     : 0 .5em;
+                    margin-left : $spacer;
+
+                    &.btn-primary {
+
+                        .bi {
+                            font-size : .75em;
+                        }
+                    }
+
+                    &:not(.btn-primary) {
+                        padding : 0;
+                    }
+                }
+            }
+
+            .badge {
+
+                &-small {
+                    font-size : $font-size-sm;
+                    padding   : .2em;
+                }
+            }
+        }
+
+        .dates {
+
+            * {
+                display   : inline-block;
+                position  : relative;
+                top       : 50%;
+                transform : translateY(-50%);
+            }
+        }
+    }
+}

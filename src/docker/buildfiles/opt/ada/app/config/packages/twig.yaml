@@ -1,0 +1,21 @@
+parameters:
+  app_locales: [ en, de ]
+twig:
+  default_path: '%kernel.project_dir%/templates'
+  form_themes:
+    - 'form.html.twig'
+  globals:
+    locales: '%app_locales%'
+    # Can be null!
+    analysis: '@rapid_pipeline.analysis'
+    analysisFactory: '@App\Service\CurrentAnalysisFactory'
+
+when@test:
+  twig:
+    strict_variables:
+      trueservices:
+    extension:
+      intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+          - { name: twig.extension }

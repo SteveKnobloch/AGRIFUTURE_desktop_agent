@@ -1,0 +1,61 @@
+.detail-view {
+
+    .show-all {
+        display : inline-block;
+        width   : fit-content;
+
+        @include media-breakpoint-up(xl) {
+            text-align : right;
+            width      : auto;
+        }
+    }
+
+    .col-header {
+        margin-bottom : $spacer;
+    }
+
+    .hide-mobile {
+        display : none;
+
+        @include media-breakpoint-up(md) {
+            display : unset;
+        }
+    }
+
+    .row-facts-and-state {
+
+        .card {
+            height : 100%;
+        }
+
+        .details-state {
+
+            @include media-breakpoint-up(xl) {
+                height : 100%
+            }
+        }
+    }
+
+    .accordion {
+
+        h2 {
+
+            button {
+                font-size     : $h2-font-size;
+                font-weight   : 600;
+                border-radius : 0 !important;
+            }
+        }
+    }
+
+    .details-results {
+
+        .table {
+            table-layout : fixed;
+        }
+
+        .reached-threshold {
+            font-weight : 700;
+        }
+    }
+}

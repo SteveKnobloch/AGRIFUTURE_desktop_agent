@@ -1,0 +1,43 @@
+{% set route = app.request.attributes.get('_route') %}
+{% set route_params = app.request.attributes.get('_route_params') %}
+{% set params = route_params|merge(app.request.query.all) %}
+
+<nav id="navigation-language" aria-label="Sprache wählen">
+    <div class="dropdown">
+        <button class="btn dropdown-toggle bi bi-globe2"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+            {% if app.request.locale == 'de' %}
+               {% trans %}language label german{% endtrans %}
+            {% else %}
+                {% trans %}language label english{% endtrans %}
+            {% endif %}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+            {% for locale in locales %}
+                {% if locale != app.request.locale %}
+                    <li role="menu" class="dropdown-item">
+                        {% if locale == 'de' %}
+                            {% set label = 'language label german'|trans %}
+                        {% else %}
+                            {% set label = 'language label english'|trans %}
+                        {% endif %}
+                        <a role="menuitem"
+                           class="nav-link"
+                           title="{{ label }}"
+                           href="{{ path(route, params|merge({ _locale: locale })) }}" hreflang="{{ locale }}">
+                            <span>
+                                 {% if locale == 'de' %}
+                                     {% trans %}language label german{% endtrans %}
+                                 {% else %}
+                                     {% trans %}language label english{% endtrans %}
+                                 {% endif %}
+                            </span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</nav>

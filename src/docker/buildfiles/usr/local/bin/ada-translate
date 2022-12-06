@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# **********************************************
+# @version 1.0.0
+# **********************************************
+
+function translate()
+{
+    local ADA_MESSAGE_ID=${1:?}
+    local ADA_SCOPE=${2:?}
+    local MESSAGE=$(gettext -d $ADA_SCOPE -s "$ADA_MESSAGE_ID")
+
+    printf "${MESSAGE}\n" "${@:3}"
+}
+
+translate "$@"

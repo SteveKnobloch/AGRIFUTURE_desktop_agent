@@ -1,0 +1,5 @@
+agrifuture-desktop-agent ({{ ADA_VERSION }}) unstable; urgency=low
+
+  * Initial release.
+
+ -- Agrifuture Team <agrifuture@senckenberg.de>  Tue, 05 Dec 2022 12:00:00 +0200

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# **********************************************
+# @version 1.0.0
+# **********************************************
+
+set -e
+
+if [ ! -z "$ADA_VERBOSE" ]; then echo " change user permissions"; fi
+
+if [ ! -z "$ADA_VERBOSE" ]; then echo "   change id for user ada from $OLD_USER_UID to $HOSTUSER_UID"; fi
+usermod -u $HOSTUSER_UID ada > /dev/null
+
+if [ ! -z "$ADA_VERBOSE" ]; then echo "   change id for group ada from $OLD_USER_GID to $HOSTUSER_GID"; fi
+groupmod -g $HOSTUSER_GID ada > /dev/null
+
+if [ ! -z "$ADA_VERBOSE" ]; then echo "   add user ada to group id $HOSTUSER_GID"; fi
+usermod -g $HOSTUSER_GID ada > /dev/null
+
+if [ ! -z "$ADA_VERBOSE" ]; then echo " change file permissions"; fi
+
+if [ ! -z "$ADA_VERBOSE" ]; then echo "   change /home/ada"; fi
+find /home/ada \( -not -user $HOSTUSER_UID -o -not -group $HOSTUSER_GID \) -print0 | xargs -0 -n1 -I{} chown -h $HOSTUSER_UID:$HOSTUSER_GID {} || true
+
+for ADA_SCRIPT in /usr/local/etc/ada/entrypoint.d/*.sh; do
+    if [ -r $ADA_SCRIPT ]; then
+        if [ ! -z "$ADA_VERBOSE" ]; then echo "RUN $ADA_SCRIPT as root"; fi
+        . $ADA_SCRIPT
+    fi
+done
+
+if [ ! -z "$ADA_VERBOSE" ]; then echo "RUN $@ as user: $HOSTUSER_UID, group: $HOSTUSER_GID (old uid: $OLD_USER_UID, old gid: $OLD_USER_GID)"; fi
+
+exec sudo -E -H -u ada "$@"

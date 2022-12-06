@@ -1,0 +1,175 @@
+// ***************************************
+// textmedia
+// ***************************************
+
+$ce-gallery_margin     : 20;
+$ce-gallery_breakpoint : md;
+
+.ce-textpic {
+    // generell clearing for floated galleries
+    @include clearfix;
+}
+
+.ce-gallery {
+    // generell bottom margins for small screens
+    .ce-right &,
+    .ce-left & {
+        margin-bottom : rem-calc($ce-gallery_margin);
+    }
+
+    // generell centering for small screens
+    .ce-column {
+        text-align : center;
+    }
+
+    figure {
+        display : inline-block;
+
+        figcaption {
+            // text-align: left; optional caption alignment
+        }
+    }
+
+    @include media-breakpoint-up($ce-gallery_breakpoint) {
+        // remove centering
+        .ce-right &,
+        .ce-left & {
+            .ce-column {
+                text-align : left;
+            }
+
+            figure {
+                display : block;
+            }
+        }
+        // right
+        .ce-right & {
+            float : right;
+
+            figcaption {
+                text-align : right;
+            }
+        }
+        .ce-intext.ce-right & {
+            margin : rem-calc(0 0 $ce-gallery_margin $ce-gallery_margin);
+        }
+        // left
+        .ce-left & {
+            float : left;
+
+            figcaption {
+                text-align : left;
+            }
+        }
+        .ce-intext.ce-left & {
+            margin : rem-calc(0 $ce-gallery_margin $ce-gallery_margin 0);
+        }
+    }
+    // center
+    .ce-center & {
+        .ce-column {
+            text-align : center;
+        }
+
+        figure {
+            display : inline-block;
+        }
+    }
+
+    // above, below
+    .ce-above &,
+    .ce-below & {
+        width    : 100%;
+        overflow : hidden;
+    }
+
+    // centering columns
+    .ce-above.ce-center &,
+    .ce-below.ce-Center & {
+        .ce-inner {
+            text-align : center;
+
+            .ce-row {
+                display : inline-block;
+                width   : auto;
+            }
+        }
+    }
+
+    .ce-above & {
+        margin : rem-calc(0 0 $ce-gallery_margin);
+    }
+
+    .ce-below & {
+        margin : rem-calc($ce-gallery_margin 0 2rem);
+    }
+
+    @include media-breakpoint-up($ce-gallery_breakpoint) {
+        .ce-above.ce-right &,
+        .ce-below.ce-right & {
+            > .row {
+                float : right;
+            }
+        }
+        .ce-above.ce-left &,
+        .ce-below.ce-left & {
+            > .row {
+                float : left;
+            }
+        }
+    }
+    // video
+    .video {
+        iframe {
+            border : none;
+        }
+    }
+}
+
+.ce-bodytext {
+    .ce-nowrap & {
+        // prevent floating
+        overflow : hidden;
+    }
+}
+
+// ***************************************
+// uploads
+// ***************************************
+
+.ce-uploads {
+    $border-color   : $secondary;
+    $hover-bg-color : adjust_lightness($secondary, 60%);
+    $icon-color     : $primary;
+
+    @include layout-list;
+    border-top      : 1px solid $border-color;
+    margin-bottom   : rem-calc(20);
+    display         : inline-block;
+
+    li {
+        padding       : 0;
+        border-bottom : 1px solid $border-color;
+
+        a {
+            background : transparent;
+            display    : block;
+            padding    : rem-calc(10);
+            position   : relative;
+
+            &:hover {
+                background : $hover-bg-color;
+            }
+        }
+
+        .ce-uploads-file-icon {
+            margin-right : rem-calc(5);
+            color        : $icon-color;
+        }
+
+        .ce-uploads-file-size {
+            font-size   : rem-calc(12);
+            margin-left : rem-calc(10);
+        }
+    }
+}

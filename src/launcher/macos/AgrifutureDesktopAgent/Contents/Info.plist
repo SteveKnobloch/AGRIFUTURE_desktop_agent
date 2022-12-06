@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><plist version="1.0">
+  <dict>
+    <key>CFBundleGetInfoString</key>
+    <string>Agrifuture Desktop Agent</string>
+    <key>CFBundleDisplayName</key>
+    <string>Agrifuture Desktop Agent</string>
+    <key>CFBundleVersion</key>
+    <string>{{ ADA_VERSION }}</string>
+    <key>CFBundleShortVersionString</key>
+    <string>{{ ADA_VERSION }}</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon.png</string>
+</dict>
+</plist>

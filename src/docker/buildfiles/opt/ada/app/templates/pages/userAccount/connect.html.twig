@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Connect a user account'|trans ~ ' - ' ~ parent() %}
+{% block headline 'Connect a user account' | trans %}
+{% block content %}
+    {% apply spaceless %}
+        {{ form(form) }}
+    {% endapply %}
+{% endblock %}

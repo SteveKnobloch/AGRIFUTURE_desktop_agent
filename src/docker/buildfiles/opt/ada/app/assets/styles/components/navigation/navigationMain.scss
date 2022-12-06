@@ -1,0 +1,70 @@
+
+.navigation-main-wrap {
+    background    : linear-gradient(to top, $body-color #{rem-calc(1)}, $gray-300 0%, $white 80%);
+    margin-bottom : rem-calc(-6);
+
+    .nav-tabs {
+        border-bottom-color : $body-color;
+
+        .nav-link {
+            color   : $body-color;
+            padding : $spacer*.75;
+
+            &.active {
+                border-color : $body-color $body-color transparent;
+            }
+
+            &:hover,
+            &:focus {
+                background          : $gray-300;
+                color               : $body-color;
+                border-bottom-color : $body-color;
+            }
+        }
+    }
+
+    .navigation-main-desktop {
+        position : relative;
+
+        .header-buttons {
+            position : absolute;
+            top      : 100%;
+            right    : 0;
+
+            @include media-breakpoint-up(lg) {
+                margin   : 0 !important;
+                position : static;
+            }
+        }
+    }
+}
+
+// offCanvas
+
+#offcanvasMenu {
+
+    @include media-breakpoint-up(lg) {
+        display : none;
+    }
+
+    #mobile-navigation-main {
+
+        .nav-link {
+            border-bottom : rem-calc(1) solid $gray-300;
+
+            &:hover {
+                background : $gray-100;
+            }
+
+            &.active {
+                background  : $gray-200;
+                font-weight : 600;
+            }
+        }
+
+        .header-buttons {
+            margin-right    : 0 !important;
+            justify-content : space-between;
+        }
+    }
+}

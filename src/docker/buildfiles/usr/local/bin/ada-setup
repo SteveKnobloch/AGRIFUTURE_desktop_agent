@@ -1,0 +1,160 @@
+#!/bin/bash
+
+# **********************************************
+# @version 1.0.0
+# **********************************************
+
+function remove_command_file()
+{
+    rm -f /home/ada/.local/share/ada/cmd
+}
+
+function write_command()
+{
+    echo "$@" > /home/ada/.local/share/ada/cmd
+}
+
+function select_language()
+{
+    local ADA_CHOICE
+    local ADA_EXIT_CODE
+    local ADA_LANG
+    local ADA_TIME
+    local CURRENT_ADA_LANG
+    local CURRENT_ADA_LANG_INDEX=1
+
+    if [ -f "/home/ada/.local/share/ada/lang" ]; then
+        local CURRENT_ADA_LANG=$(cat /home/ada/.local/share/ada/lang | tr -d '\n')
+
+        if [ "$CURRENT_ADA_LANG" == "en_US.UTF-8" ]; then
+            local CURRENT_ADA_LANG_INDEX=1
+        elif [ "$CURRENT_ADA_LANG" == "de_DE.UTF-8" ]; then
+            local CURRENT_ADA_LANG_INDEX=2
+        fi
+    fi
+
+    ADA_CHOICE=$(
+        eval `resize`
+        dialog \
+            --no-lines \
+            --title "Language select" \
+            --default-item "$CURRENT_ADA_LANG_INDEX" \
+            --menu "Select a language" \
+                $LINES $COLUMNS $(( $LINES - 8 )) \
+                "1" "continue in english language" \
+                "2" "weiter in deutscher Sprache" \
+                "3" "quit" 3>&2 2>&1 1>&3
+    )
+    ADA_EXIT_CODE=$?
+
+    if [ $ADA_EXIT_CODE -ne 0 ]; then
+        remove_command_file
+        exit $ADA_EXIT_CODE
+    fi
+
+    case $ADA_CHOICE in
+        "1")
+            ADA_LANG=en_US.UTF-8
+            ADA_TIME=America/New_York
+        ;;
+        "2")
+            ADA_LANG=de_DE.UTF-8
+            ADA_TIME=Europe/Berlin
+        ;;
+        "3")
+            remove_command_file
+            exit 1
+        ;;
+    esac
+
+    export LANG=$ADA_LANG
+    export LANGUAGE=$ADA_LANG
+    export LC_ALL=$ADA_LANG
+    export TZ=$ADA_TIME
+
+    echo "$ADA_LANG" > /home/ada/.local/share/ada/lang
+}
+
+function select_host_folder()
+{
+    if [ -z "$1" ]; then
+        echo $(gettext -d ada-setup -s "folder_select.no_host_folder")
+        remove_command_file
+        exit 255
+    fi
+
+    local ADA_TITLE
+    local ADA_DESCRIPTION
+    local ADA_NAVIGATION_BUTTON
+    local ADA_CANCEL_BUTTON
+    local ADA_USE_FOLDER_BUTTON
+    local ADA_HOST_DIRECTORIES_ARRAY=()
+    local ADA_HOST_DIRECTORIES_OPTIONS
+    local ADA_HOST_DIRECTORY_DIRNAME
+    local ADA_HOST_DIRECTORY_INDEX
+    local ADA_CURRENT_DIRECTORY_INDEX
+    local ADA_HOST_DIRECTORY_BASENAME
+    local ADA_CHOICE
+    local ADA_EXIT_CODE
+
+    ADA_TITLE=$(gettext -d ada-setup -s "folder_select.title")
+    ADA_DESCRIPTION=$(gettext -d ada-setup -s "folder_select.description")
+    ADA_NAVIGATION_BUTTON=$(gettext -d ada-setup -s "folder_select.navigation_button")
+    ADA_CANCEL_BUTTON=$(gettext -d ada-setup -s "folder_select.cancel_button")
+    ADA_USE_FOLDER_BUTTON=$(gettext -d ada-setup -s "folder_select.use_folder_button")
+    ADA_THIS_FOLDER_TEXT=$(gettext -d ada-setup -s "folder_select.this_folder")
+
+    eval "ADA_HOST_DIRECTORIES_ARRAY=($1)"
+
+    ADA_HOST_DIRECTORIES_OPTIONS=()
+    ADA_HOST_DIRECTORY_DIRNAME=$(dirname "${ADA_HOST_DIRECTORIES_ARRAY[0]}")
+
+    ADA_DESCRIPTION=$(printf "$ADA_DESCRIPTION" "$ADA_HOST_DIRECTORY_DIRNAME")
+    for ADA_HOST_DIRECTORY_INDEX in "${!ADA_HOST_DIRECTORIES_ARRAY[@]}"; do
+        ADA_HOST_DIRECTORY_BASENAME=$(basename "${ADA_HOST_DIRECTORIES_ARRAY[$ADA_HOST_DIRECTORY_INDEX]}")
+
+        if [ "$ADA_HOST_DIRECTORY_BASENAME" == "." ]; then
+            ADA_HOST_DIRECTORY_BASENAME=$(printf "$ADA_THIS_FOLDER_TEXT" "$(basename "$ADA_HOST_DIRECTORY_DIRNAME")")
+            ADA_CURRENT_DIRECTORY_INDEX=$ADA_HOST_DIRECTORY_INDEX
+        fi
+
+        ADA_HOST_DIRECTORIES_OPTIONS+=("$ADA_HOST_DIRECTORY_INDEX" "$ADA_HOST_DIRECTORY_BASENAME")
+    done
+
+    ADA_CHOICE=$(
+        eval `resize`
+        dialog \
+            --no-lines \
+            --title "$ADA_TITLE" \
+            --ok-label "$ADA_NAVIGATION_BUTTON" \
+            --cancel-label "$ADA_CANCEL_BUTTON" \
+            --extra-button \
+            --extra-label "$ADA_USE_FOLDER_BUTTON" \
+            --default-item "$ADA_CURRENT_DIRECTORY_INDEX" \
+            --menu "$ADA_DESCRIPTION" \
+                $LINES $COLUMNS $(( $LINES - 8 )) \
+                "${ADA_HOST_DIRECTORIES_OPTIONS[@]}" 3>&2 2>&1 1>&3
+    )
+    ADA_EXIT_CODE=$?
+
+    case $ADA_EXIT_CODE in
+        # OK button
+        0)
+            write_command "chdir \"${ADA_HOST_DIRECTORIES_ARRAY[$ADA_CHOICE]}\""
+        ;;
+        # Extra button
+        3)
+            write_command "usedir \"${ADA_HOST_DIRECTORIES_ARRAY[$ADA_CHOICE]}\""
+        ;;
+        # All other
+        *)
+            remove_command_file
+            exit 1
+        ;;
+    esac
+}
+
+if [ $ADA_SKIP_LANGUAGE_SETUP == 0 ]; then
+    select_language
+fi
+select_host_folder "$@"

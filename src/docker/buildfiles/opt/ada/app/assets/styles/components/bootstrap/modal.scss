@@ -1,0 +1,49 @@
+@import "node_modules/bootstrap/scss/modal";
+
+.modal {
+    opacity    : 0;
+    transition : opacity .4s ease;
+
+    &.show {
+        opacity : 1;
+    }
+
+    .modal-only {
+        display : block !important;
+    }
+
+    .modal-header {
+        margin-bottom : 0 !important;
+
+        .btn-close {
+            position : absolute;
+            top      : $spacer;
+            right    : $spacer;
+        }
+    }
+
+    &-body {
+
+        .frame {
+
+            &:last-child {
+                margin-bottom : 0;
+            }
+        }
+    }
+
+    .btn:focus {
+        color            : var(--bs-btn-hover-color);
+        background-color : var(--bs-btn-hover-bg);
+        border-color     : var(--bs-btn-hover-border-color);
+        outline          : 0;
+        box-shadow       : var(--bs-btn-focus-box-shadow);
+    }
+}
+
+body.modal-open {
+
+    .modal.fade {
+        backdrop-filter : blur(#{rem-calc(5)});
+    }
+}

@@ -1,0 +1,131 @@
+#header {
+    background : $white;
+    background : linear-gradient($white 40%, $gray-300 100%);
+    padding    : rem-calc($spacer);
+    height     : $sp-header-height;
+    position   : relative;
+
+    &:after {
+        content    : '';
+        height     : rem-calc(1);
+        width      : 100%;
+        background : $dark;
+        position   : absolute;
+        left       : 0;
+        bottom     : 0;
+        z-index    : 1;
+    }
+
+    .inner-wrap {
+        display        : flex;
+        flex-direction : column;
+        align-content  : space-around;
+        height         : 100%;
+
+        > .container {
+            padding-left : rem-calc($sp-width-logo + $sp-space-large);
+            position     : relative;
+        }
+    }
+
+    .menu-language {
+        margin-left : rem-calc($sp-space-small);
+    }
+
+    .toggle-menu {
+        padding     : 0;
+        margin-left : $spacer*2;
+
+        .bi {
+            font-size   : rem-calc(36);
+            line-height : 1;
+        }
+    }
+
+    // ***************************************
+    // logo
+    // ***************************************
+
+    .logo-wrap {
+        @include vertical-center;
+        width     : 100%;
+        max-width : rem-calc($sp-width-logo);
+        left      : rem-calc($sp-space-small);
+
+        .logo-title {
+            position : absolute;
+            margin   : 0 0 0 -999em !important;
+        }
+    }
+
+    // ***************************************
+    // meta navigation
+    // ***************************************
+
+    .col-navigations {
+        position : relative;
+        z-index  : 2;
+
+        .navbar {
+            position  : relative;
+            top       : 50%;
+            transform : translateY(-50%);
+            display   : flex;
+            font-size : $small-font-size;
+        }
+    }
+
+    .dropdown-toggle {
+        font-size : $font-size-sm;
+    }
+
+    .nav-meta {
+        display : flex;
+
+        .nav-link {
+            display       : inline-block;
+            padding-right : $spacer*.5;
+            padding-left  : $spacer*.5;
+
+            &:hover {
+                text-decoration : underline;
+            }
+        }
+
+        .header-login-button {
+
+            > i {
+
+                &:before {
+                    margin-right : .2em;
+                }
+            }
+        }
+    }
+
+    .profile {
+        position    : relative;
+        height      : 100%;
+        border-left : rem-calc(2) solid $gray-400;
+        color       : $primary;
+
+        &:hover {
+            background : $gray-300;
+        }
+
+        dl {
+
+            dd {
+                white-space : nowrap;
+            }
+        }
+
+        a {
+            position : absolute;
+            top      : 0;
+            left     : 0;
+            right    : 0;
+            bottom   : rem-calc(1);
+        }
+    }
+}

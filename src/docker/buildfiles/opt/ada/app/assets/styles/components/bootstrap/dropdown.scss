@@ -1,0 +1,30 @@
+@import "node_modules/bootstrap/scss/dropdown";
+
+.dropdown {
+
+    &-toggle {
+
+        &.show {
+
+            &.btn-link {
+                background : $gray-100;
+                color      : $body-color;
+
+                &:hover {
+                    background : $gray-100;
+                    color      : $body-color;
+                }
+            }
+        }
+    }
+
+    &-menu {
+
+        li {
+
+            > span {
+                padding : 0 $spacer;
+            }
+        }
+    }
+}
