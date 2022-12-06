@@ -1,0 +1,13 @@
+Source: agrifuture-desktop-agent
+Maintainer: Agrifuture Team <agrifuture@senckenberg.de>
+Section: utils
+Priority: optional
+Standards-Version: 1.0
+
+Package: agrifuture-desktop-agent
+Architecture: all
+Homepage: https://agrifuture.senckenberg.de/
+Description: Agrifuture Desktop Agent
+ Upload your DNA sequencing data to the
+ Agrifuture cloud platform
+ (https://agrifuture.senckenberg.de).
