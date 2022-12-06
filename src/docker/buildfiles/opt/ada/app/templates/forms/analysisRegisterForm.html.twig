@@ -1,5 +1,9 @@
 {{ form_start(form) }}
-{{ form_errors(form) }}
+{% if form_errors(form) %}
+    <div class="alert alert-danger">
+        {{ form_errors(form) }}
+    </div>
+{% endif %}
 <div class="form-element form-element-gridrow row mb-4">
     <div class="col-6">
         <fieldset id="analysisRegister-fieldset-1" class="form-element form-element-fieldset mb-3">
@@ -16,7 +20,6 @@
             <div>
                 {{ form_row(form.directory) }}
                 {{ form_row(form.type) }}
-
                 <fieldset class="collapse" id="pathogenDBoptions">
                     <legend class="sr-only">
                         {% trans %}pathogen DB options{% endtrans %}
@@ -47,6 +50,5 @@
         </fieldset>
     </div>
 </div>
-
 {{ form_row(form.submit) }}
 {{ form_end(form) }}
