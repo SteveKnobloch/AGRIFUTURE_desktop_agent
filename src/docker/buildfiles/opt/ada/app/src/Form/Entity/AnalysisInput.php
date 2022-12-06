@@ -16,8 +16,11 @@ final class AnalysisInput
         #[Assert\Length(max: 512)]
         private ?string $host = null,
         #[Assert\NotBlank]
+        #[Assert\Country]
         private ?string $country = null,
+        #[Assert\Length(max: 128)]
         private ?string $city = null,
+        #[Assert\Valid]
         private ?Coordinates $coordinates = null,
         private ?string $directory = null,
         #[Assert\NotBlank]

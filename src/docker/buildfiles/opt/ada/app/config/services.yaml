@@ -30,5 +30,30 @@ services:
             $apiPrefix: '%app.api.host%'
             $checkCertificates: '%app.api.checkCertificates%'
 
+    rapid_pipeline.analysis:
+        # Can be null!
+        class: 'App\Entity\RemoteAnalysis'
+        factory: '@App\Service\CurrentAnalysisFactory'
+        public: true
+
+    App\EventListener\AnalysisChanged:
+        tags:
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'postUpdate'
+                entity: 'App\Entity\Analysis'
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'postRemove'
+                entity: 'App\Entity\Analysis'
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'postPersist'
+                entity: 'App\Entity\Upload'
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'postUpdate'
+                entity: 'App\Entity\Upload'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

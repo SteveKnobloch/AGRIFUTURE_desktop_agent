@@ -3,11 +3,12 @@ declare(strict_types = 1);
 
 namespace App\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SubmitType extends \Symfony\Component\Form\Extension\Core\Type\SubmitType
+class FormFooterType extends SubmitType
 {
     public function configureOptions(OptionsResolver $resolver)
     {

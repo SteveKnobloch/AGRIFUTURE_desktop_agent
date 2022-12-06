@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\AnalysisStatus;
 use App\Enum\FileFormat;
 use App\Repository\AnalysisRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -31,14 +32,14 @@ class Analysis
         #[ORM\Column(length: 255)]
         public readonly string $name,
 
-        #[ORM\Column]
-        protected bool $paused,
-
         #[ORM\Column(length: 1024)]
         public readonly string $relativeDataPath,
 
         #[ORM\Column(length: 5)]
         public readonly FileFormat $fileType,
+
+        #[ORM\Column(options: ['default' => AnalysisStatus::running])]
+        protected AnalysisStatus $status = AnalysisStatus::running,
     ) {
         $this->uploads = new ArrayCollection();
     }
@@ -49,19 +50,16 @@ class Analysis
         return $this->uploads;
     }
 
-    /**
-     * @return bool
-     */
-    public function isPaused(): bool
+    public function getStatus(): AnalysisStatus
     {
-        return $this->paused;
+        return $this->status;
     }
 
     /**
-     * @param bool $paused
+     * @param bool $status
      */
-    public function setPaused(bool $paused): void
+    public function setStatus(AnalysisStatus $status): void
     {
-        $this->paused = $paused;
+        $this->status = $status;
     }
 }

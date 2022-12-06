@@ -1,4 +1,4 @@
-{% if analysis.state != 'completed' and  analysis.state != 'crashed'%}
+{% if analysis.status.value != 'completed' and  analysis.status.value != 'crashed'%}
     <button type="button"
             class="btn text-danger"
             data-bs-toggle="modal"
@@ -9,9 +9,7 @@
     {% include 'partials/modal.html.twig' with {
         'modalTitle': 'Cancel analysis' | trans,
         'modalBody': 'Are you sure you want to cancel the current analysis?' | trans,
-        'modalButtonLabel': 'Cancel analysis' | trans,
-        'modalButtonAction': '',
-        'modalButtonType': 'danger',
+        'modalButton': cancel,
         'modalBorderType': 'danger',
         'modalId': 'cancelAnalysis',
         'modalShowCancelButton': true,
@@ -19,21 +17,15 @@
     } %}
 {% endif %}
 
-{% if analysis.state == 'paused' %}
-    <button type="button" class="btn btn-primary ms-3">
-        <i class="bi bi-play-circle"></i>
-        {{ 'Continue' | trans }}
-    </button>
+{% if analysis.status.value == 'paused' %}
+    {{ form(resume) }}
 {% endif %}
 
-{% if analysis.state == 'running' %}
-    <button type="button" class="btn btn-primary ms-3">
-        <i class="bi bi-pause-circle"></i>
-        {{ 'Pause' | trans }}
-    </button>
+{% if analysis.status.value == 'running' %}
+    {{ form(pause) }}
 {% endif %}
 
-{% if analysis.state == 'running' or analysis.state == 'paused' %}
+{% if analysis.status.value == 'running' or analysis.status.value == 'paused' %}
     <button type="button"
             class="btn btn-dark ms-3"
             data-bs-toggle="modal"
@@ -44,9 +36,7 @@
     {% include 'partials/modal.html.twig' with {
         'modalTitle': 'Finish analysis' | trans,
         'modalBody': 'Are you sure you want to finish the current analysis?' | trans,
-        'modalButtonLabel': 'Finish analysis' | trans,
-        'modalButtonAction': '',
-        'modalButtonType': 'primary',
+        'modalButton': finish,
         'modalBorderType': 'dark',
         'modalId': 'finishAnalysis',
         'modalShowCancelButton': true,
@@ -54,7 +44,7 @@
     } %}
 {% endif %}
 
-{% if analysis.state == 'crashed' or analysis.state == 'completed' %}
+{% if analysis.status == 'crashed' or analysis.status == 'completed' %}
     <a href="{{ path('app_page_analysis_register') }}" class="btn btn-primary">
         <i class="bi bi-eyedropper"></i>
         {{ 'Register an analysis' | trans }}

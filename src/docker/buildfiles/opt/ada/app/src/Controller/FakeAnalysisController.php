@@ -34,7 +34,7 @@ class FakeAnalysisController extends AbstractController
         $analysis->setName('name from registration form');
         $analysis->setLocalUuid($this->runUuid);
         $analysis->setName('name from upload field');
-        $analysis->setPaused(false);
+        $analysis->setStatus(false);
         $analysis->setRelativeDataPath('relative path from registration form');
         $analysis->setFileType('filetype from registration form');
         $this->doctrine->getManager()->persist($analysis);

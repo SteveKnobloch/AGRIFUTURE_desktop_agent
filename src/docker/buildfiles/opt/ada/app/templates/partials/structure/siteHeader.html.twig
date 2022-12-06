@@ -9,7 +9,7 @@
         <div class="d-flex justify-content-between col">
             <div class="col-analysis d-flex flex-column justify-content-around">
                 {% if app.user  %}
-                    {% if analysis.registered %}
+                    {% if analysisFactory.registered %}
                         {% include 'partials/structure/siteHeader/headerQuickView.html.twig' %}
                     {% else %}
                         {% include 'partials/structure/siteHeader/registerAnalysis.html.twig' %}

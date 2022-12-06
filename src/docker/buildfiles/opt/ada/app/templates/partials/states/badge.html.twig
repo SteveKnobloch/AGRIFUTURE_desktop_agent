@@ -1,25 +1,31 @@
-{% if state == 'running' %}
+{% if state.name == 'running' %}
     {% set iconClass = 'bi-clock-history' %}
     {% set stateColor = 'info' %}
     {% set stateLabel = 'running'|trans %}
 {% endif %}
 
-{% if state == 'paused' %}
+{% if state.name == 'paused' %}
     {% set iconClass = 'bi-pause-circle' %}
     {% set stateColor = 'warning' %}
     {% set stateLabel = 'paused'|trans %}
 {% endif %}
 
-{% if state == 'crashed' %}
+{% if state.name == 'crashed' %}
     {% set iconClass = 'bi-x-circle' %}
     {% set stateColor = 'danger' %}
     {% set stateLabel = 'crashed'|trans %}
 {% endif %}
 
-{% if state == 'completed' %}
+{% if state.name == 'completed' %}
     {% set iconClass = 'bi-check-circle' %}
     {% set stateColor = 'success' %}
     {% set stateLabel = 'completed'|trans %}
+{% endif %}
+
+{% if state.name == 'unknown' %}
+    {% set iconClass = 'bi-x-circle' %}
+    {% set stateColor = 'warning' %}
+    {% set stateLabel = 'unknown'|trans %}
 {% endif %}
 
 <span class="badge bg-white border text-{{ stateColor }} border-{{ stateColor }} badge-{{ small ? 'small'}}">

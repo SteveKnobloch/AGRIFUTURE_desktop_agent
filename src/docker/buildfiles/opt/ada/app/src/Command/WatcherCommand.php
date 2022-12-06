@@ -15,7 +15,6 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(
     name: 'app:watcher',
@@ -45,7 +44,7 @@ class WatcherCommand extends Command
 
             $analysis = $this->analyses->current();
 
-            if (!$analysis || $analysis->isPaused()) {
+            if (!$analysis->getStatus()->shouldUploadFiles()) {
                 if (!$output->isQuiet()) {
                     $output->writeln('No analysis running.');
                 }

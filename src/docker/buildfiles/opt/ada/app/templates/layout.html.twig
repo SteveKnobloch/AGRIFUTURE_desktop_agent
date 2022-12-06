@@ -11,8 +11,10 @@
         <article class="content py-5 container">
             <div class="inner-content-wrap">
                 <h1>{% block headline %}{% endblock %}</h1>
-                {% for message in app.flashes('success') %}
-                    <div class="alert alert-success">{{ message }}</div>
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}">{{ message }}</div>
+                    {% endfor %}
                 {% endfor %}
 
                 {% block content %}{% endblock %}
