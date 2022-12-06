@@ -9,7 +9,7 @@ set ADA_VERSION=%1
 rd /s /q ..\..\..\.build\launcher\win\
 md ..\..\..\.build\launcher\win\
 
-xcopy /s /y S . ..\..\..\.build\launcher\win\
+xcopy /s /y /q . ..\..\..\.build\launcher\win\
 copy ..\agrifuture-desktop-agent.sh ..\..\..\.build\launcher\win\AgrifutureDesktopAgent\agrifuture-desktop-agent.sh
 
 cd ..\..\..\.build\launcher\win\

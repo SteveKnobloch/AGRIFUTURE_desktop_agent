@@ -22,8 +22,8 @@ cp ../agrifuture-desktop-agent.sh ../../../.build/launcher/macos/AgrifutureDeskt
 
 cd ../../../.build/launcher/macos/
 
-sed -i "s/{{ ADA_VERSION }}/$ADA_VERSION/g" ./AgrifutureDesktopAgent/Contents/MacOS/agrifuture-desktop-agent.sh
-sed -i "s/{{ ADA_VERSION }}/$ADA_VERSION/g" ./AgrifutureDesktopAgent/Contents/Info.plist
+sed -i '' "s/{{ ADA_VERSION }}/$ADA_VERSION/g" ./AgrifutureDesktopAgent/Contents/MacOS/agrifuture-desktop-agent.sh
+sed -i '' "s/{{ ADA_VERSION }}/$ADA_VERSION/g" ./AgrifutureDesktopAgent/Contents/Info.plist
 
 mv ./AgrifutureDesktopAgent ./AgrifutureDesktopAgent.app
 

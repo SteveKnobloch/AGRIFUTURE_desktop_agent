@@ -41,9 +41,7 @@ else
     ADA_HOST_DIRECTORY=$( cd "$( realpath ~ )" && pwd )
 fi
 
-
-ADA_CONTAINER="code.tritum.de:5555/senckenberg/agrifuture_desktop_agent:latest"
-#ADA_CONTAINER=senckenberg/agrifuture_desktop_agent:latest
+ADA_CONTAINER="ghcr.io/steveknobloch/agrifuture_desktop_agent:latest"
 ADA_CONTAINER_ID=""
 ADA_DOCKER_COMMAND_PREFIX=""
 ADA_DATA_DIR=""

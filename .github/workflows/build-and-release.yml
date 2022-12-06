@@ -102,8 +102,8 @@ jobs:
         run: choco install nsis
 
       - name: Build
-        working-directory: ./src/launcher/win/
-        shell: cmd
+        working-directory: .\src\launcher\win\
+        shell: powershell
         run: cmd /C .\build-win.bat $env:GITHUB_REF_NAME
 
       - name: upload windows installer
@@ -112,7 +112,7 @@ jobs:
           name: installers
           path: ./.build/launcher/win/AgrifutureDesktopAgent.exe
 
- upload-installers:
+  upload-installers:
     runs-on: ubuntu-latest
     needs: [build-macos-installer, build-ubuntu-installer, build-windows-installer]
 
@@ -135,6 +135,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: installers
+          path: ./.build/installers/
 
       - name: Upload MacOS installer
         id: installer-macos 
@@ -143,7 +144,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./installers/AgrifutureDesktopAgent.dmg
+          asset_path: ./.build/installers/AgrifutureDesktopAgent.dmg
           asset_name: AgrifutureDesktopAgent.dmg
           asset_content_type: application/octet-stream
 
@@ -154,7 +155,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./installers/linux.zip
+          asset_path: ./.build/installers/AgrifutureDesktopAgent.deb
           asset_name: AgrifutureDesktopAgent.deb
           asset_content_type: application/vnd.debian.binary-package
 
@@ -165,6 +166,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./installers/AgrifutureDesktopAgent.exe
+          asset_path: ./.build/installers/AgrifutureDesktopAgent.exe
           asset_name: AgrifutureDesktopAgent.exe
           asset_content_type: application/vnd.microsoft.portable-executable
