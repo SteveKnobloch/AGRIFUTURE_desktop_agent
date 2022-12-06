@@ -8,6 +8,8 @@ Section
   SetSilent silent
   SetAutoClose true
 
-  ExpandEnvStrings $0 %COMSPEC%
-  Exec '"$0" /C ".\agrifuture-desktop-agent.bat"'
+  !include x64.nsh
+  ${DisableX64FSRedirection}
+  Exec '".\agrifuture-desktop-agent.bat"'
+  ${EnableX64FSRedirection}
 SectionEnd
