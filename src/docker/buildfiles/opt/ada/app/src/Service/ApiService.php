@@ -5,12 +5,15 @@ namespace App\Service;
 
 use App\Entity\Analysis;
 use App\Entity\Token;
+use App\Entity\Upload;
 use App\Enum\AnalysisType;
 use App\Enum\CreateAnalysisError;
 use App\Enum\FileFormat;
 use App\Enum\GenerateTokenError;
 use App\Enum\GetTokenInformationError;
+use App\Enum\UploadFileError;
 use App\Form\Entity\AnalysisInput;
+use App\Repository\TokenRepository;
 use Symfony\Component\HttpClient\Exception\JsonException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Uid\Uuid;
@@ -26,8 +29,9 @@ final class ApiService
         private readonly string $apiPrefix,
         private readonly HttpClientInterface $http,
         private readonly Security $security,
-        $checkCertificates = true,
+        private readonly TokenRepository $tokens,
         private readonly Uuid $uuid,
+        $checkCertificates = true,
     ) {
         $this->globalOptions = $checkCertificates ? [] :
             [
@@ -252,6 +256,63 @@ final class ApiService
         }
     }
 
+    public function uploadFile(
+        Analysis $analysis,
+        string $file
+    ): Upload|UploadFileError {
+        $transmittedName = $file;
+        $gzip = str_ends_with($file, '.gz');
+
+        if ($gzip) {
+            $transmittedName = substr(
+                $file,
+                0,
+                strlen($file) - 3
+            );
+        }
+
+        try {
+            $response = $this->http->request(
+                'POST',
+                $this->url(
+                    'en',
+                    "analysis/{$analysis->remotePipelineId}"
+                ),
+                [
+                    'body' => $gzip ?
+                        gzopen($file, 'r') :
+                        fopen($file, 'r'),
+                    'headers' => [
+                        'Content-Type' => $analysis->fileType->value,
+                        'X-Api-Key' => $this->token(),
+                        'Content-Disposition' => "form-data; filename=$transmittedName"
+                    ],
+                    ...$this->globalOptions,
+                ]
+            );
+        } catch (TransportExceptionInterface $e) {
+            return UploadFileError::UnknownError;
+        }
+
+        try {
+            $status = $response->getStatusCode();
+        } catch (TransportExceptionInterface $e) {
+            return UploadFileError::UnknownError;
+        }
+
+        return match ($status) {
+            202 => new Upload($file, $analysis, uploaded: true),
+            401 => UploadFileError::InvalidToken,
+            403 => UploadFileError::ApiAccessForbidden,
+            404 => UploadFileError::NoSuchAnalysis,
+            409 => UploadFileError::AlreadyUploaded,
+            413 => UploadFileError::TooLarge,
+            415 => UploadFileError::FormatMismatch,
+            503 => UploadFileError::RetryLater,
+            default => UploadFileError::UnknownError,
+        };
+    }
+
     public function checkInternetConnectivity(
         string $locale,
     ): bool {
@@ -270,9 +331,8 @@ final class ApiService
 
     private function token(): ?string
     {
-        /** @var null|User $user */
-        $user = $this->security->getUser();
-        return $user?->token;
+        return $this->security->getUser()?->token ??
+            $this->tokens->current()?->token;
     }
 
     private function url(string $locale, string $path)
