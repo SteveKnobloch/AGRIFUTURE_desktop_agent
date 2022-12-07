@@ -144,6 +144,8 @@ main() {
     local ADA_SKIP_LANGUAGE_SETUP
     local ADA_RUNNING_CONTAINERS
     local ADA_PORT=8041
+    local ADA_LANG
+    local ADA_LANG_SLUG
 
     ADA_SKIP_LANGUAGE_SETUP=0
 
@@ -215,12 +217,26 @@ main() {
 
     $ADA_DOCKER_COMMAND_PREFIX docker run --rm -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER ada-translate "app.launch_information" "ada-setup" "http://127.0.0.1:$ADA_PORT"
 
+    ADA_LANG="en_US.UTF-8"
+    if [ -f "${ADA_DATA_DIR}/lang" ]; then
+        ADA_LANG=$(cat "${ADA_DATA_DIR}/lang" | tr -d '\n')
+        if [ -z "$ADA_LANG" ]; then
+            ADA_LANG="en_US.UTF-8"
+        fi
+    fi
+
+    ADA_LANG_SLUG="en"
+    if [ "$ADA_LANG" == "de_DE.UTF-8" ]; then
+        ADA_LANG_SLUG="de"
+    fi
+
+
     if [ $ADA_IS_WIN -eq 1 ]; then
-        powershell.exe -c start "http://127.0.0.1:$ADA_PORT"
+        powershell.exe -c start "http://127.0.0.1:${ADA_PORT}/${ADA_LANG_SLUG}"
     elif [ $ADA_IS_MAC -eq 1 ]; then
-        open "http://127.0.0.1:$ADA_PORT" &>/dev/null
+        open "http://127.0.0.1:${ADA_PORT}/${ADA_LANG_SLUG}" &>/dev/null
     else
-        xdg-open "http://127.0.0.1:$ADA_PORT" &>/dev/null
+        xdg-open "http://127.0.0.1:${ADA_PORT}/${ADA_LANG_SLUG}" &>/dev/null
     fi
 
     while true; do
