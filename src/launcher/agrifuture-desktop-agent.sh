@@ -7,7 +7,7 @@
 # For the full copyright and license information, please read the
 # LICENSE.txt file that was distributed with this source code.
 
-ADA_VERSION=1.0.0
+ADA_VERSION={{ ADA_VERSION }}
 
 ADA_IS_WIN=0
 ADA_IS_GYGWIN=0
@@ -41,9 +41,7 @@ else
     ADA_HOST_DIRECTORY=$( cd "$( realpath ~ )" && pwd )
 fi
 
-
-ADA_CONTAINER="code.tritum.de:5555/senckenberg/agrifuture_desktop_agent:latest"
-#ADA_CONTAINER=senckenberg/agrifuture_desktop_agent:latest
+ADA_CONTAINER="ghcr.io/steveknobloch/agrifuture_desktop_agent:latest"
 ADA_CONTAINER_ID=""
 ADA_DOCKER_COMMAND_PREFIX=""
 ADA_DATA_DIR=""

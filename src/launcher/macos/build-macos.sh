@@ -11,13 +11,23 @@ if [ "$BASH" = "" ]; then echo "Error: you are not running this script within th
 if [ ! -x "$(command -v create-dmg)" ]; then echo "Error: create-dmg is not installed / executable."; exit 1; fi
 THIS_SCRIPT_REAL_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-cd "$THIS_SCRIPT_REAL_PATH"
+ADA_VERSION=$1
 
-rm -rf ./AgrifutureDesktopAgent.app
-cp -r ./AgrifutureDesktopAgent ./AgrifutureDesktopAgent.app
-cp ../agrifuture-desktop-agent.sh ./AgrifutureDesktopAgent.app/Contents/MacOS/agrifuture-desktop-agent.sh
+cd "$THIS_SCRIPT_REAL_PATH"
+rm -rf ../../../.build/launcher/macos/
+mkdir -p ../../../.build/launcher/macos/
+
+cp -r ./ ../../../.build/launcher/macos/
+cp ../agrifuture-desktop-agent.sh ../../../.build/launcher/macos/AgrifutureDesktopAgent/Contents/MacOS/agrifuture-desktop-agent.sh
+
+cd ../../../.build/launcher/macos/
+
+sed -i '' "s/{{ ADA_VERSION }}/$ADA_VERSION/g" ./AgrifutureDesktopAgent/Contents/MacOS/agrifuture-desktop-agent.sh
+sed -i '' "s/{{ ADA_VERSION }}/$ADA_VERSION/g" ./AgrifutureDesktopAgent/Contents/Info.plist
+
+mv ./AgrifutureDesktopAgent ./AgrifutureDesktopAgent.app
 
 create-dmg --overwrite ./AgrifutureDesktopAgent.app ./
-mv "Agrifuture Desktop Agent 1.0.dmg" ./AgrifutureDesktopAgent.dmg
+mv "Agrifuture Desktop Agent ${ADA_VERSION}.dmg" ./AgrifutureDesktopAgent.dmg
 
 unset THIS_SCRIPT_REAL_PATH

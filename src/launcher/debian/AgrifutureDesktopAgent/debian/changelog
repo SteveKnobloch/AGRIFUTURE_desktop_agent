@@ -1,4 +1,4 @@
-agrifuture-desktop-agent (1.0) unstable; urgency=low
+agrifuture-desktop-agent ({{ ADA_VERSION }}) unstable; urgency=low
 
   * Initial release.
 

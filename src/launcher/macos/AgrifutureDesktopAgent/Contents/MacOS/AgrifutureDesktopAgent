@@ -6,6 +6,7 @@ _THIS_SCRIPT_REAL_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 osascript <<END
     tell application "Terminal"
+        activate
         do script "$_THIS_SCRIPT_REAL_PATH/agrifuture-desktop-agent.sh"
     end tell
 END
