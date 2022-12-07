@@ -215,8 +215,6 @@ main() {
     done
     echo ""
 
-    $ADA_DOCKER_COMMAND_PREFIX docker run --rm -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER ada-translate "app.launch_information" "ada-setup" "http://127.0.0.1:$ADA_PORT"
-
     ADA_LANG="en_US.UTF-8"
     if [ -f "${ADA_DATA_DIR}/lang" ]; then
         ADA_LANG=$(cat "${ADA_DATA_DIR}/lang" | tr -d '\n')
@@ -230,6 +228,7 @@ main() {
         ADA_LANG_SLUG="de"
     fi
 
+    $ADA_DOCKER_COMMAND_PREFIX docker run --rm -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER ada-translate "app.launch_information" "ada-setup" "http://127.0.0.1:${ADA_PORT}/${ADA_LANG_SLUG}"
 
     if [ $ADA_IS_WIN -eq 1 ]; then
         powershell.exe -c start "http://127.0.0.1:${ADA_PORT}/${ADA_LANG_SLUG}"
