@@ -29,9 +29,16 @@
         }
 
         .details-state {
+            height : 100%;
 
-            @include media-breakpoint-up(xl) {
-                height : 100%
+            form {
+
+                .btn {
+
+                    .bi {
+                        margin-right : rem-calc(4);
+                    }
+                }
             }
         }
     }
