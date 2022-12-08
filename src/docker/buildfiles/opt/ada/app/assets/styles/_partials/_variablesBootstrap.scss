@@ -1,6 +1,7 @@
 // Colors
 $primary                           : $sp-color-blue;
-$success                           : $sp-color-green-dark;
+$success                           : $sp-color-green;
+$successDark                       : $sp-color-green-dark;
 $info                              : $sp-color-blue-light;
 $warning                           : $sp-color-yellow;
 $danger                            : $sp-color-red;
@@ -11,6 +12,7 @@ $theme-colors                      : (
     "primary": $primary,
     "secondary": $secondary,
     "success": $success,
+    "successDark": $successDark,
     "info": $info,
     "warning": $warning,
     "danger": $danger,
@@ -59,6 +61,10 @@ $breadcrumb-divider                : quote(">");
 // Badges
 $badge-font-size                   : 1em;
 $badge-font-weight                 : normal;
+
+// alerts
+$alert-bg-scale                    : -90%;
+$alert-border-scale                : -50%;
 
 // Accordion
 $accordion-border-width            : 0;

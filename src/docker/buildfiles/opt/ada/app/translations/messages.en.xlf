@@ -433,25 +433,37 @@
         <source>Password of your AGRIFUTURΞ user account</source>
         <target>Password of your AGRIFUTURΞ user account</target>
       </trans-unit>
-      <trans-unit id="pathogens" resname="pathogens">
+      <trans-unit id="z.vOnbR" resname="pathogens">
         <source>pathogens</source>
         <target>Pathogen DB</target>
       </trans-unit>
-      <trans-unit id="hosts" resname="hosts">
+      <trans-unit id="T4osw5j" resname="hosts">
         <source>hosts</source>
         <target>NCBI nt DB</target>
       </trans-unit>
-      <trans-unit id="fastq" resname="fastq">
+      <trans-unit id="25XTPNR" resname="fastq">
         <source>fastq</source>
-        <target>FASTQ</target>
+        <target>fastq</target>
       </trans-unit>
-      <trans-unit id="fast5" resname="fast5">
+      <trans-unit id="x5dnrBp" resname="fast5">
         <source>fast5</source>
-        <target>FAST5</target>
+        <target>fast5</target>
       </trans-unit>
-      <trans-unit id="UnknownError" resname="UnknownError">
+      <trans-unit id="hEELjJL" resname="UnknownError">
         <source>UnknownError</source>
         <target>An unknown error occoured.</target>
+      </trans-unit>
+      <trans-unit id=".KABpyJ" resname="pathogen DB options">
+        <source>pathogen DB options</source>
+        <target>pathogen DB options</target>
+      </trans-unit>
+      <trans-unit id="TgQ.x9W" resname="chemical/seq-na-fastq">
+        <source>chemical/seq-na-fastq</source>
+        <target>fastq</target>
+      </trans-unit>
+      <trans-unit id="DZ1cdQU" resname="chemical/x-seq-na-fast5">
+        <source>chemical/x-seq-na-fast5</source>
+        <target>fast5</target>
       </trans-unit>
     </body>
   </file>
