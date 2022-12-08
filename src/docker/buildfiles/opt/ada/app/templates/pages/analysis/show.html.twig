@@ -1,6 +1,6 @@
 {% extends 'layoutFullWidth.html.twig' %}
 
-{% if analysis.type %}
+{% if analysis and analysis.type %}
     {% if analysis.type == 'host_determination' %}
         {% set analysis = analysis|merge({'type': 'Host determination'| trans}) %}
     {% elseif analysis.type == 'pathogen_determination' %}
@@ -8,8 +8,8 @@
     {% endif %}
 {% endif %}
 
-{% block title 'Analysis'|trans ~ ' - ' ~ analysis.title ~' - ' ~ parent() %}
-{% block headline analysis.title %}
+{% block title 'Analysis'|trans ~ ' - ' ~ analysis.name ~' - ' ~ parent() %}
+{% block headline analysis.name %}
 {% block content %}
     {% apply spaceless %}
         <div class="rapid-pipeline-analyses-details detail-view">
@@ -19,7 +19,7 @@
                         <ul class="layout-list details-state">
                             <li class="mb-3">
                                 {% include 'partials/states/badge.html.twig' with {
-                                    'state': analysis.state,
+                                    'state': analysis.status,
                                     'small': false
                                 } %}
                             </li>
@@ -36,7 +36,7 @@
                             <div class="col-7">
                                 {% include 'partials/analysis/show/facts.html.twig' with { 'analysis': analysis } %}
                             </div>
-                            {% if analysis.state != 'crashed' %}
+                            {% if analysis.status.value != 'crashed' %}
                                 <div class="col-5 d-flex justify-content-end">
                                     <a class="col-header show-all"
                                        title="{{ 'Show results of the current analysis on the AGRIFUTURΞ website' | trans }}">

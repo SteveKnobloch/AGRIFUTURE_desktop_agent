@@ -180,7 +180,7 @@ class AnalysisForm extends AbstractType
             )
             ->add(
                 'submit',
-                SubmitType::class,
+                FormFooterType::class,
                 [
                     'label' => 'Launch analysis',
                     'cancel_route' => 'app_page_user_account_show',

@@ -1,11 +1,11 @@
 <div class="d-table layout-list">
     {% include 'partials/facts.html.twig' with {
         'label': 'Reference database' | trans,
-        'value': analysis.type
+        'value': analysis.type.name
     } %}
     {% include 'partials/facts.html.twig' with {
         'label': 'Format of raw data' | trans,
-        'value': analysis.dataFormat
+        'value': analysis.format.value
     } %}
     {% include 'partials/facts.html.twig' with {
         'label': 'Host plant' | trans,
@@ -31,7 +31,7 @@
                         {{ 'Longitude' | trans }}:
                     </dt>
                     <dd class="d-table-cell px-2">
-                        {{ analysis.geoLong }}
+                        {{ analysis.longitude }}
                     </dd>
                 </dl>
                 <dl class="d-table-row">
@@ -39,7 +39,7 @@
                         {{ 'Latitude' | trans }}:
                     </dt>
                     <dd class="d-table-cell px-2">
-                        {{ analysis.geoLat }}
+                        {{ analysis.latitude }}
                     </dd>
                 </dl>
             </div>

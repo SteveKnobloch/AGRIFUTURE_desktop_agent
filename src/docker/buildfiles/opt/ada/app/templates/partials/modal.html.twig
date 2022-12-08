@@ -22,7 +22,7 @@
             <div class="modal-body">
                 {{ modalBody }}
             </div>
-            {% if modalButtonLabel or modalShowCancelButton %}
+            {% if modalButton or modalShowCancelButton %}
                 <div class="modal-footer border-0">
                     {% if modalShowCancelButton %}
                         <button type="button"
@@ -31,12 +31,7 @@
                             {{ 'close' | trans }}
                         </button>
                     {% endif %}
-                    <button type="button"
-                            class="btn btn-{{ modalButtonType }}"
-                            id="modal-{{ modalId }}-submit"
-                            onclick="{{ modalButtonAction }}">
-                        {{ modalButtonLabel }}
-                    </button>
+                    {{ form(modalButton) }}
                 </div>
             {% endif %}
         </div>

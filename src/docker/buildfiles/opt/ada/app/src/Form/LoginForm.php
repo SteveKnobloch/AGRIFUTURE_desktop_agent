@@ -46,7 +46,7 @@ class LoginForm extends AbstractType
             )
             ->add(
                 'Submit',
-                SubmitType::class,
+                FormFooterType::class,
                 [
                     'label' => 'Connect user account',
                 ]

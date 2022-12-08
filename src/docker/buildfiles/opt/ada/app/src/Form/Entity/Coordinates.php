@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 final class Coordinates
 {
     public function __construct(
-        #[Assert\Range(min: -90, max: 90)]
+        #[Assert\Range(min: -180, max: 180)]
         protected ?float $longitude = null,
         #[Assert\Range(min: -90, max: 90)]
         protected ?float $latitude = null,

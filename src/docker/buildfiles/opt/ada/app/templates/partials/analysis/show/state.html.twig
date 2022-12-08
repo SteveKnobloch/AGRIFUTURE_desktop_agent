@@ -1,46 +1,48 @@
 <div class="d-table mb-3">
-    {% if analysis.state == 'running' %}
+    {% if analysis.status.value == 'running' %}
         {% include 'partials/states/dates.html.twig' with {
-            'dateStart': analysis.dateStart
+            'dateStart': analysis.created
         } %}
     {% endif %}
 
-    {% if analysis.state == 'paused' %}
+    {% if analysis.status.value == 'paused' %}
+        {# ToDo datePaused removed, doesn't exist. Maybe show runUntil instead. #}
         {% include 'partials/states/dates.html.twig' with {
-            'dateStart': analysis.dateStart,
-            'datePaused': analysis.datePaused,
-            'dateShutdown': analysis.dateShutdown
+            'dateStart': analysis.created,
+            'dateShutdown': analysis.runUntil
         } %}
     {% endif %}
 
-    {% if analysis.state == 'completed' %}
+    {% if analysis.status.value == 'completed' %}
         {% include 'partials/states/dates.html.twig' with {
-            'dateStart': analysis.dateStart,
-            'dateCompleted': analysis.dateCompleted
+            'dateStart': analysis.created,
+            'dateCompleted': analysis.finishedTime
         } %}
     {% endif %}
 
-    {% if analysis.state == 'crashed' %}
+    {% if analysis.status.value == 'crashed' %}
         {% include 'partials/states/dates.html.twig' with {
-            'dateStart': analysis.dateStart,
-            'dateCrashed': analysis.dateCrashed
+            'dateStart': analysis.created,
+            'dateCrashed': analysis.finishedTime
         } %}
     {% endif %}
 
+    {# ToDo There is no duration!
     {% include 'partials/facts.html.twig' with {
         'label': 'Duration' | trans,
         'value': "#{analysis.durationHours} h #{analysis.durationMinutes} m"
-    } %}
+    } %} #}
     {% include 'partials/facts.html.twig' with {
         'label': 'Upload folder' | trans,
-        'value': analysis.localFolder
+        'value': analysisFactory.cached.relativeDataPath
     } %}
     {% include 'partials/facts.html.twig' with {
         'label': 'Number of files uploaded' | trans,
-        'value': analysis.totalFilesCount
+        'value': analysis.uploaded | length
     } %}
+    {# ToDo This isn’t tracked.
     {% include 'partials/facts.html.twig' with {
         'label': 'Current file' | trans,
         'value': analysis.currentFile
-    } %}
+    } %} #}
 </div>

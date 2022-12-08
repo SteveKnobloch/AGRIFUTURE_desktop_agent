@@ -4,15 +4,20 @@ declare(strict_types = 1);
 namespace App\Service;
 
 use App\Entity\Analysis;
+use App\Entity\RemoteAnalysis;
 use App\Entity\Token;
 use App\Entity\Upload;
+use App\Enum\AnalysisStatus;
 use App\Enum\AnalysisType;
 use App\Enum\CreateAnalysisError;
 use App\Enum\FileFormat;
 use App\Enum\GenerateTokenError;
+use App\Enum\GetAnalysisError;
 use App\Enum\GetTokenInformationError;
+use App\Enum\UpdateStatusError;
 use App\Enum\UploadFileError;
 use App\Form\Entity\AnalysisInput;
+use App\Form\Entity\UpdateStatus;
 use App\Repository\TokenRepository;
 use Symfony\Component\HttpClient\Exception\JsonException;
 use Symfony\Component\Security\Core\Security;
@@ -243,7 +248,6 @@ final class ApiService
                     $this->uuid,
                     $json->id,
                     $json->name,
-                    false,
                     $analysis->getDirectory(),
                     $analysis->getFormat(),
                 );
@@ -311,6 +315,81 @@ final class ApiService
             503 => UploadFileError::RetryLater,
             default => UploadFileError::UnknownError,
         };
+    }
+
+    public function getAnalysisStatus(
+        string $locale,
+        Analysis $analysis
+    ): RemoteAnalysis|GetAnalysisError {
+        try {
+            $response = $this->http->request(
+                'GET',
+                $this->url(
+                    $locale,
+                    "analysis/{$analysis->remotePipelineId}"
+                ),
+                [
+                    'headers' => [
+                        'X-Api-Key' => $this->token(),
+                    ],
+                    ...$this->globalOptions
+                ]
+            );
+
+            $status = $response->getStatusCode();
+            return match($status) {
+                200, 410 => RemoteAnalysis::fromResponse(
+                    json_decode($response->getContent(false))
+                ),
+                401 => GetAnalysisError::InvalidToken,
+                403 => GetAnalysisError::ApiAccessForbidden,
+                404 => GetAnalysisError::NoSuchAnalysis,
+                default => GetAnalysisError::UnknownError
+            };
+        } catch (ExceptionInterface $e) {
+            return GetAnalysisError::UnknownError;
+        }
+    }
+
+    public function updateStatus(
+        string $locale,
+        Analysis $analysis,
+        AnalysisStatus $status,
+    ): RemoteAnalysis|UpdateStatusError {
+        try {
+            $body = json_encode([
+                'status' => $status->value
+            ]);
+
+            $response = $this->http->request(
+                'PATCH',
+                $this->url(
+                    $locale,
+                    "analysis/{$analysis->remotePipelineId}"
+                ),
+                [
+                    'headers' => [
+                        'Content-Type' => 'application/json',
+                        'X-Api-Key' => $this->token(),
+                    ],
+                    'body' => $body,
+                    ...$this->globalOptions
+                ]
+            );
+
+            $status = $response->getStatusCode();
+            return match($status) {
+                200 => RemoteAnalysis::fromResponse(
+                    json_decode($response->getContent(false))
+                ),
+                401 => UpdateStatusError::InvalidToken,
+                404 => UpdateStatusError::NoSuchAnalysis,
+                403 => UpdateStatusError::ApiAccessForbidden,
+                default => UpdateStatusError::UnknownError
+            };
+        } catch (ExceptionInterface $e) {
+            return UpdateStatusError::UnknownError;
+        }
     }
 
     public function checkInternetConnectivity(
