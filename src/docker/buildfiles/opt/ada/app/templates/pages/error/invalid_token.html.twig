@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {% trans %}Reconnect your account{% endtrans %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans %}You are no longer logged in!{% endtrans %}
+{% endblock headline %}
+
+{% block content %}
+    <p>{% trans %}
+        You probably used the Portal to log out this Desktop Agent. You’ll need to reconnect it to keep going.
+        {% endtrans %}
+    <p>
+        <a href="{{ path('app_logout') }}" class="btn btn-primary">
+            <i class="bi bi-person-plus-fill"></i>
+            {% trans %}Reconnect your account{% endtrans %}
+        </a>
+{% endblock content %}

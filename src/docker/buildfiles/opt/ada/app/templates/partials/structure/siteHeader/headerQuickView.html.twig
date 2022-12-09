@@ -31,10 +31,12 @@
         } %}
         <div class="dates text-nowrap ms-2">
             {# ToDo Which dates to use? What if fetching the analysis failed? #}
-            {% include 'partials/states/dates/dateAndTime.html.twig' with {
-                'date': analysis.finishedTime | default(analysis.lastReport) | default(analysis.created) | default(0),
-                'small': '1'
-            } %}
+            {% if analysis.created %}
+                {% include 'partials/states/dates/dateAndTime.html.twig' with {
+                    'date': analysis.finishedTime | default(analysis.lastReport) | default(analysis.created),
+                    'small': '1'
+                } %}
+            {% endif %}
         </div>
         {% if analysis.status.value == 'crashed' or analysis.status.value == 'completed' %}
             <a href="{{ path('app_page_analysis_register') }}" class="btn btn-primary btn-small">

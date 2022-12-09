@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {% trans %}Reconnect your account{% endtrans %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans %}You’ll need to use another account.{% endtrans %}
+{% endblock headline %}
+
+{% block content %}
+    <p>{% trans %}
+        It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.{% endtrans %}
+    <p>
+        <a href="{{ path('app_logout') }}" class="btn btn-primary">
+            <i class="bi bi-person-plus-fill"></i>
+            {% trans %}Connect another user account{% endtrans %}
+        </a>
+{% endblock content %}

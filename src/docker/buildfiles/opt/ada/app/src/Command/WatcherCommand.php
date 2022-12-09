@@ -44,7 +44,9 @@ class WatcherCommand extends Command
 
             $analysis = $this->analyses->current();
 
-            if (!$analysis->getStatus()->shouldUploadFiles()) {
+            if (!$analysis ||
+                !$analysis->getStatus()->shouldUploadFiles()
+            ) {
                 if (!$output->isQuiet()) {
                     $output->writeln('No analysis running.');
                 }
@@ -97,7 +99,7 @@ class WatcherCommand extends Command
                         $file,
                         UploadFileError::TooLarge,
                     );
-                    $this->uploads->save($upload);
+                    $this->uploads->save($upload, true);
                     $output->writeln(
                         "Checking $file failed: " .
                         UploadFileError::TooLarge->name
@@ -119,10 +121,6 @@ class WatcherCommand extends Command
                     $this->uploads->save($result, true);
                     $output->writeln("File $file uploaded.");
                     continue 2;
-                }
-
-                if ($result === UploadFileError::NoSuchAnalysis) {
-                    // ToDo Mark analysis as crashed
                 }
 
                 $error = $this->generateError(

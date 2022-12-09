@@ -4,6 +4,8 @@ declare(strict_types = 1);
 namespace App\Controller;
 
 use App\Entity\Analysis;
+use App\Entity\RemoteAnalysis;
+use App\Entity\Token;
 use App\Enum\AnalysisStatus;
 use App\Enum\CreateAnalysisError;
 use App\Enum\GetAnalysisError;
@@ -55,14 +57,30 @@ final class AnalysisController extends AbstractController
             if ($analysis === GetAnalysisError::InvalidToken) {
                 return $this->forward(
                     ErrorController::class . '::invalidToken',
-                    ['_locale' => $_locale]
+                    [
+                        '_locale' => $_locale,
+                        ...$request->attributes->all(),
+                    ]
                 );
             }
 
-            if ($analysis === GetAnalysisError::ApiAccessForbidden) {
+            if ($analysis === GetAnalysisError::Forbidden) {
+                $account = $this->api->getTokenInformation($_locale);
+                if ($account instanceof Token) {
+                    return $this->forward(
+                        ErrorController::class . '::forbidden',
+                        [
+                            ...$request->attributes->all(),
+                        ]
+                    );
+                }
+
                 return $this->forward(
                     ErrorController::class . '::apiAccessForbidden',
-                    ['_locale' => $_locale]
+                    [
+                        '_locale' => $_locale,
+                        ...$request->attributes->all(),
+                    ]
                 );
             }
 
@@ -77,7 +95,10 @@ final class AnalysisController extends AbstractController
             ) {
                 return $this->forward(
                     ErrorController::class . '::offline',
-                    ['_locale' => $_locale]
+                    [
+                        '_locale' => $_locale,
+                        ...$request->attributes->all(),
+                    ]
                 );
             }
 
@@ -90,6 +111,12 @@ final class AnalysisController extends AbstractController
                     'success' :
                     'danger',
                 $analysis->getFinishedReason()
+            );
+            self::addUploadErrors(
+                $this,
+                $analysisFactory,
+                $analysis,
+                $i18n
             );
 
             $this->analyses->remove($analysisFactory->cached(), true);
@@ -105,6 +132,13 @@ final class AnalysisController extends AbstractController
         if ($actions instanceof Response) {
             return $actions;
         }
+
+        self::addUploadErrors(
+            $this,
+            $analysisFactory,
+            $analysis,
+            $i18n
+        );
 
         return $this->render(
             'pages/analysis/show.html.twig',
@@ -174,14 +208,20 @@ final class AnalysisController extends AbstractController
                     if ($analysis === GetAnalysisError::InvalidToken) {
                         return $this->forward(
                             ErrorController::class . '::invalidToken',
-                            ['_locale' => $request->getLocale()]
+                            [
+                                '_locale' => $request->getLocale(),
+                                ...$request->attributes->all(),
+                            ]
                         );
                     }
 
-                    if ($analysis === GetAnalysisError::ApiAccessForbidden) {
+                    if ($analysis === GetAnalysisError::Forbidden) {
                         return $this->forward(
                             ErrorController::class . '::apiAccessForbidden',
-                            ['_locale' => $request->getLocale()]
+                            [
+                                '_locale' => $request->getLocale(),
+                                ...$request->attributes->all(),
+                            ]
                         );
                     }
 
@@ -192,7 +232,10 @@ final class AnalysisController extends AbstractController
                     ) {
                         return $this->forward(
                             ErrorController::class . '::offline',
-                            ['_locale' => $request->getLocale()]
+                            [
+                                '_locale' => $request->getLocale(),
+                                ...$request->attributes->all(),
+                            ]
                         );
                     }
 
@@ -216,6 +259,91 @@ final class AnalysisController extends AbstractController
         }
 
         return $forms;
+    }
+
+    public static function addUploadErrors(
+        AbstractController $controller,
+        CurrentAnalysisFactory $analysisFactory,
+        ?RemoteAnalysis $analysis,
+        TranslatorInterface $i18n,
+    ): void {
+        $localFiles = [];
+
+        // Add upload errors and warnings
+        foreach ($analysisFactory->cached()->getUploads() as $upload) {
+            if ($upload->getError()) {
+                $controller->addFlash(
+                    $upload->isUploaded() ? 'warning' : 'danger',
+                    $i18n->trans(
+                        $i18n->trans("uploadError.{$upload->getError()->name}"),
+                        [
+                            '{file}' => $upload->fileName,
+                        ]
+                    )
+                );
+                continue;
+            }
+
+            $baseName = basename($upload->fileName);
+            $isGz = str_ends_with($baseName, '.gz');
+            if ($isGz) {
+                $baseName = substr(
+                    $baseName,
+                    0,
+                    strlen($baseName) - 3
+                );
+            }
+            $name = substr(
+                $baseName,
+                0,
+                strrpos($baseName, '.')
+            );
+
+            $localFiles[$name] = [
+                'exists' => fn() => is_file($upload->fileName),
+                'size' => fn() => filesize($upload->fileName),
+                'crc32' => fn() => crc32($upload->fileName),
+                'gz' => $isGz
+            ];
+        }
+
+        $warning = fn() => $i18n->trans(
+            'The files in the upload folder seem to differ from the uploaded ' .
+            'ones. If you haven’t touched them on disk, your analysis may be ' .
+            'inaccurate.'
+        );
+        foreach (($analysis?->getUploaded() ?? []) as $remoteUpload) {
+            if (!isset($localFiles[$remoteUpload->fileName])) {
+                $controller->addFlash(
+                    'warning', $warning()
+                );
+                break;
+            }
+
+            $local = $localFiles[$remoteUpload->fileName];
+
+            if (!$local['exists']()) {
+                $controller->addFlash(
+                    'warning', $warning()
+                );
+                break;
+            }
+
+            if ($local['gz']) {
+                continue;
+            }
+
+            if ($remoteUpload->size &&
+                $remoteUpload->size !== $local['size']()
+            ) {
+                $controller->addFlash(
+                    'warning', $warning()
+                );
+                break;
+            }
+
+            // CRC seems to differ even for correct uploads.
+        }
     }
 
     #[Route(
@@ -257,14 +385,20 @@ final class AnalysisController extends AbstractController
             if ($result === CreateAnalysisError::InvalidToken) {
                 return $this->forward(
                     ErrorController::class . '::invalidToken',
-                    ['_locale' => $_locale]
+                    [
+                        '_locale' => $_locale,
+                        ...$request->attributes->all(),
+                    ]
                 );
             }
 
             if ($result === CreateAnalysisError::ApiAccessForbidden) {
                 return $this->forward(
                     ErrorController::class . '::apiAccessForbidden',
-                    ['_locale' => $_locale]
+                    [
+                        '_locale' => $_locale,
+                        ...$request->attributes->all(),
+                    ]
                 );
             }
 
@@ -273,7 +407,10 @@ final class AnalysisController extends AbstractController
             ) {
                 return $this->forward(
                     ErrorController::class . '::offline',
-                    ['_locale' => $_locale]
+                    [
+                        '_locale' => $_locale,
+                        ...$request->attributes->all(),
+                    ]
                 );
             }
 

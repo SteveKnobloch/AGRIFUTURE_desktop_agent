@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {% trans %}Cannot connect to the portal{% endtrans %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans %}Are you offline?{% endtrans %}
+{% endblock headline %}
+
+{% block content %}
+    <p>{% trans %}
+        We cannot connect to the AGRIFUTURE Portal website. To solve this issue, attempt the following:
+        {% endtrans %}
+    <p>
+        <ul>
+            <li>{% trans %}Reload this page.{% endtrans %}
+                {# I tried automating this, but it doesn’t seem to apply to
+                 # form submissions when this is most likely to occour. #}
+            <li>{% trans %}Check your internet connection.{% endtrans %}
+            <li>{% trans %}Verify your firewall and proxy settings.{% endtrans %}
+            <li>{% trans %}If you can’t reach the portal directly, try again later.{% endtrans %}
+        </ul>
+{% endblock content %}

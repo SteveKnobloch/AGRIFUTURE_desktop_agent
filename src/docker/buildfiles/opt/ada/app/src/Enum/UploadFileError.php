@@ -17,7 +17,7 @@ enum UploadFileError: int
      * This might happen if the user has become an employee.
      * Employees aren't allowed to use the API.
      */
-    case ApiAccessForbidden = 1;
+    case Forbidden = 1;
 
     /**
      * The analysis mentioned by ID doesn’t exist or was stopped.

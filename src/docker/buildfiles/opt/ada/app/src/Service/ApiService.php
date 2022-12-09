@@ -307,7 +307,7 @@ final class ApiService
         return match ($status) {
             202 => new Upload($file, $analysis, uploaded: true),
             401 => UploadFileError::InvalidToken,
-            403 => UploadFileError::ApiAccessForbidden,
+            403 => UploadFileError::Forbidden,
             404 => UploadFileError::NoSuchAnalysis,
             409 => UploadFileError::AlreadyUploaded,
             413 => UploadFileError::TooLarge,
@@ -342,7 +342,7 @@ final class ApiService
                     json_decode($response->getContent(false))
                 ),
                 401 => GetAnalysisError::InvalidToken,
-                403 => GetAnalysisError::ApiAccessForbidden,
+                403 => GetAnalysisError::Forbidden,
                 404 => GetAnalysisError::NoSuchAnalysis,
                 default => GetAnalysisError::UnknownError
             };

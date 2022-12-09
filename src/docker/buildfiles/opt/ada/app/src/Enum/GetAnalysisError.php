@@ -16,7 +16,7 @@ enum GetAnalysisError
      * This might happen if the user has become an employee.
      * Employees aren't allowed to use the API.
      */
-    case ApiAccessForbidden;
+    case Forbidden;
 
     /**
      * The analysis mentioned by ID doesn’t exist or was stopped.
