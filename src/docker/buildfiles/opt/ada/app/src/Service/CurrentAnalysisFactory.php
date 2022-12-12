@@ -54,10 +54,6 @@ final class CurrentAnalysisFactory
      */
     public function __invoke(): RemoteAnalysis|null
     {
-        if ($this->proxy instanceof GetAnalysisError) {
-            return null;
-        }
-
         return $this->proxy;
     }
 
@@ -75,7 +71,7 @@ final class CurrentAnalysisFactory
         return $this->analysis !== null;
     }
 
-    public function cached(): Analysis
+    public function cached(): ?Analysis
     {
         return $this->analysis;
     }
@@ -105,7 +101,14 @@ final class CurrentAnalysisFactory
         }
 
         $this->instance = $analysis;
-        $this->proxy = $analysis;
+        if ($analysis instanceof RemoteAnalysis) {
+            $this->proxy = $analysis;
+        } else {
+            $this->analysis->setStatus(AnalysisStatus::unknown);
+            $this->analyses->save($this->analysis, true);
+            $this->remoteAnalysesCache->delete($this->uuid->toBinary());
+        }
+
         return $analysis;
     }
 

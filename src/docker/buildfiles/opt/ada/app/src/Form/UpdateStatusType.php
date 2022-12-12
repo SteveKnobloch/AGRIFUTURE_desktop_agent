@@ -9,7 +9,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -21,7 +23,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class UpdateStatusType extends AbstractType
 {
     public function __construct(
-        private readonly TranslatorInterface $i18n
+        private readonly TranslatorInterface $i18n,
+        private readonly RouterInterface $router,
     ) {}
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -54,6 +57,12 @@ final class UpdateStatusType extends AbstractType
                     ],
                 ],
             );
+
+        if ($options['action']) {
+            $builder->setAction(
+                $this->router->generate($options['action']),
+            );
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -67,7 +76,12 @@ final class UpdateStatusType extends AbstractType
             'label' => 'Submit',
             'icon' => '',
             'class' => 'btn',
+            'action' => '',
             'data_class' => UpdateStatus::class,
+            'csrf_protection' => true,
+            'csrf_token_id' => function(Options $options) {
+                return self::class . "#{$options['status']->value}";
+            }
         ]);
 
         $resolver->setAllowedTypes(
@@ -77,5 +91,6 @@ final class UpdateStatusType extends AbstractType
         $resolver->setAllowedTypes('label', 'string');
         $resolver->setAllowedTypes('icon', 'string');
         $resolver->setAllowedTypes('class', 'string');
+        $resolver->setAllowedTypes('action', 'string');
     }
 }

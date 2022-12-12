@@ -23,9 +23,9 @@
 {% endif %}
 
 {% if state.name == 'unknown' %}
-    {% set iconClass = 'bi-x-circle' %}
-    {% set stateColor = 'warning' %}
-    {% set stateLabel = 'unknown'|trans %}
+    {% set iconClass = 'bi-question-circle' %}
+    {% set stateColor = 'dark' %}
+    {% set stateLabel = 'Unknown'|trans %}
 {% endif %}
 
 <span class="badge bg-white border text-{{ stateColor }} border-{{ stateColor }} badge-{{ small ? 'small'}}">

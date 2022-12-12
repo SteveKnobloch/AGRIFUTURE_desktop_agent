@@ -465,6 +465,122 @@
         <source>chemical/x-seq-na-fast5</source>
         <target>fast5</target>
       </trans-unit>
+      <trans-unit id="t2TNwOq" resname="Unknown">
+        <source>Unknown</source>
+        <target>Unbekannt</target>
+      </trans-unit>
+      <trans-unit id="95nkT9_" resname="Reconnect your account">
+        <source>Reconnect your account</source>
+        <target>Benutzerkonto erneut verknüpfen</target>
+      </trans-unit>
+      <trans-unit id="RpHl4JZ" resname="You are no longer logged in!">
+        <source>You are no longer logged in!</source>
+        <target>Sie sind nicht mehr angemeldet!</target>
+      </trans-unit>
+      <trans-unit id="K3fjDYd" resname="You probably used the Portal to log out this Desktop Agent. You’ll need to reconnect it to keep going.">
+        <source>You probably used the Portal to log out this Desktop Agent. You’ll need to reconnect it to keep going.</source>
+        <target>Sie haben diesen Desktop Agent wahrscheinlich über das Portal abgemeldet. Sie müssen sich zum Fortfahren neu verbinden.</target>
+      </trans-unit>
+      <trans-unit id="gOKapmN" resname="Cannot connect to the portal">
+        <source>Cannot connect to the portal</source>
+        <target>Verbindung zum Portal gescheitert</target>
+      </trans-unit>
+      <trans-unit id="vjLO0pu" resname="Are you offline?">
+        <source>Are you offline?</source>
+        <target>Sind Sie Offline?</target>
+      </trans-unit>
+      <trans-unit id=".s_wlrR" resname="We cannot connect to the AGRIFUTURE Portal website. To solve this issue, attempt the following:">
+        <source>We cannot connect to the AGRIFUTURE Portal website. To solve this issue, attempt the following:</source>
+        <target>Wir können uns nicht mit dem Webportal von AGRIFUTURE verbinden. Probieren Sie folgendes, um das Problem zu lösen:</target>
+      </trans-unit>
+      <trans-unit id="YA7rOsp" resname="Reload this page.">
+        <source>Reload this page.</source>
+        <target>Lade diese Seite neu.</target>
+      </trans-unit>
+      <trans-unit id="1mzCGjq" resname="Check your internet connection.">
+        <source>Check your internet connection.</source>
+        <target>Prüfen Sie Ihre Internetverbindung.</target>
+      </trans-unit>
+      <trans-unit id="Ukw0RfV" resname="Verify your firewall and proxy settings.">
+        <source>Verify your firewall and proxy settings.</source>
+        <target>Schauen Sie, ob die Firewall- und Proxyeinstellungen stimmen.</target>
+      </trans-unit>
+      <trans-unit id="lwKXlX_" resname="If you can’t reach the portal directly, try again later.">
+        <source>If you can’t reach the portal directly, try again later.</source>
+        <target>Wenn Sie sich nicht direkt mit dem Portal verbinden können, Versuchen Sie es später.</target>
+      </trans-unit>
+      <trans-unit id="2xlIixn" resname="You’ll need to use another account.">
+        <source>You’ll need to use another account.</source>
+        <target>Sie müssen ein anderes Benutzerkonto verwenden.</target>
+      </trans-unit>
+      <trans-unit id="OO7Lq_P" resname="It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.">
+        <source>It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.</source>
+        <target>Es schaut so aus, als ob Ihr Benutzerkonto die API nicht mehr verwenden darf. Sie müssen sich für die Benutzung des Desktop Agents erneut registrieren. Kontaktieren Sie uns, wenn dies ein Irrtum ist.</target>
+      </trans-unit>
+      <trans-unit id="8oBMpj2" resname="The analysis was abandoned. You can still check it in the portal. Please consider finishing or canceling it.">
+        <source>The analysis was abandoned. You can still check it in the portal. Please consider finishing or canceling it.</source>
+        <target>Diese Analyse wurde zurückgelassen. Sie können den Status weiterhin im Portal prüfen. Bitte ziehen Sie in betracht, die Analyse dort zu beenden oder abzubrechen.</target>
+      </trans-unit>
+      <trans-unit id="eDQqCQW" resname="Forbidden">
+        <source>Forbidden</source>
+        <target>Verboten</target>
+      </trans-unit>
+      <trans-unit id="Cm7OO9i" resname="You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?">
+        <source>You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?</source>
+        <target>Sie können mit diesem Benutzerkonto nicht diese Analyse ansehen. Möglicherweise wollen Sie Ihr Benutzerkonto zu dem Benutzer wechseln, welche die Analyse gestartet hat?</target>
+      </trans-unit>
+      <trans-unit id="9xVAYWE" resname="Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.">
+        <source>Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.</source>
+        <target>Anderenfalls können Sie die Analyse zurücklassen. Es werden keine neuen Dateien mehr hochgeladen, aber der Prozess läuft bis zur Zeitbegrenzung weiter.</target>
+      </trans-unit>
+      <trans-unit id="0JJSxGp" resname="Abandon">
+        <source>Abandon</source>
+        <target>Zurücklassen</target>
+      </trans-unit>
+      <trans-unit id="It5n36W" resname="Abandon analysis">
+        <source>Abandon analysis</source>
+        <target>Analyse zurücklassen</target>
+      </trans-unit>
+      <trans-unit id="dWWzv5V" resname="Are you sure you want to abandon the current analysis? You won’t be able to add any new files to it.">
+        <source>Are you sure you want to abandon the current analysis? You won’t be able to add any new files to it.</source>
+        <target>Sind Sie sich sicher, diese Analyse zurücklassen zu wollen? Es wird unmöglich, weitere Dateien hinzuzufügen.</target>
+      </trans-unit>
+      <trans-unit id="QbaSwL7" resname="The files in the upload folder seem to differ from the uploaded ones. If you haven’t touched them on disk, your analysis may be inaccurate.">
+        <source>The files in the upload folder seem to differ from the uploaded ones. If you haven’t touched them on disk, your analysis may be inaccurate.</source>
+        <target>Die Dateien im Upload folder scheinen sich von den hochgeladenen zu unterscheiden. Wenn Sie die Dateien auf Ihrer Festplatte nicht geändert haben, ist die Analyse möglicherweise inakkurat.</target>
+      </trans-unit>
+      <trans-unit id="7mD_Vdq" resname="uploadError.InvalidToken">
+        <source>uploadError.InvalidToken</source>
+        <target>Die Datei {file} konnte wegen fehlenden Zugangsdaten nicht hochgeladen werden.</target>
+      </trans-unit>
+      <trans-unit id="1peOuap" resname="uploadError.Forbidden">
+        <source>uploadError.Forbidden</source>
+        <target>Die Datei {file} konnte wegen fehlenden Zugriffsrechte nicht hochgeladen werden.</target>
+      </trans-unit>
+      <trans-unit id="kxe1bfP" resname="uploadError.NoSuchAnalysis">
+        <source>uploadError.NoSuchAnalysis</source>
+        <target>Die Datei {file} konnte nicht hochgeladen werden, da die Analyse bereits abgeschlossen war. Die Analyse ist wahrscheinlich unvollständig.</target>
+      </trans-unit>
+      <trans-unit id="qbTJ1w8" resname="uploadError.TooLarge">
+        <source>uploadError.TooLarge</source>
+        <target>Die Datei {file} ist zu groß. Verkleinern Sie die Datei.</target>
+      </trans-unit>
+      <trans-unit id="hqEO8ZG" resname="uploadError.FormatMismatch">
+        <source>uploadError.FormatMismatch</source>
+        <target>Die Datei {file} hat ein anderes Format als die Analyse.</target>
+      </trans-unit>
+      <trans-unit id="l7kMPg_" resname="uploadError.RetryLater">
+        <source>uploadError.RetryLater</source>
+        <target>Das hochladen von Dateien ist aufgrund hoher Resourcefulness auf unseren Servern gerade unterbrochen.</target>
+      </trans-unit>
+      <trans-unit id="EJvFDw9" resname="uploadError.AlreadyUploaded">
+        <source>uploadError.AlreadyUploaded</source>
+        <target>Die Datei {file} wurde bereits hochgeladen.</target>
+      </trans-unit>
+      <trans-unit id="ogTrUwe" resname="uploadError.UnknownError">
+        <source>uploadError.UnknownError</source>
+        <target>Die Datei {file} konnte nicht hochgeladen werden.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

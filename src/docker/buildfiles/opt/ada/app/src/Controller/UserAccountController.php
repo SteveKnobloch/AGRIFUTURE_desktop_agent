@@ -34,6 +34,7 @@ class UserAccountController extends AbstractController
         AuthenticationUtils $auth,
         TranslatorInterface $i18n,
         TokenRepository $tokens,
+        ApiService $api,
     ): Response {
         if ($tokens->current()) {
             return $this->redirectToRoute('app_page_user_account_show');
@@ -53,6 +54,18 @@ class UserAccountController extends AbstractController
         $reason = null;
         if ($error instanceof ApiAuthenticationException) {
             $reason = $error->error;
+
+            if ($reason === GenerateTokenError::UnknownError &&
+                !$api->checkInternetConnectivity($request->getLocale())
+            ) {
+                return $this->forward(
+                    ErrorController::class . '::offline',
+                    [
+                        '_locale' => $request->getLocale(),
+                        ...$request->attributes->all()
+                    ]
+                );
+            }
         }
 
         if ($error) {

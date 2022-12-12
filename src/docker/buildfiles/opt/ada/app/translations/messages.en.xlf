@@ -465,6 +465,142 @@
         <source>chemical/x-seq-na-fast5</source>
         <target>fast5</target>
       </trans-unit>
+      <trans-unit id="t2TNwOq" resname="Unknown">
+        <source>Unknown</source>
+        <target>Unknown</target>
+      </trans-unit>
+      <trans-unit id="95nkT9_" resname="Reconnect your account">
+        <source>Reconnect your account</source>
+        <target>Reconnect your account</target>
+      </trans-unit>
+      <trans-unit id="RpHl4JZ" resname="You are no longer logged in!">
+        <source>You are no longer logged in!</source>
+        <target>You are no longer logged in!</target>
+      </trans-unit>
+      <trans-unit id="vYTRJSk" resname="You probably used the Portal to log out this Desktop Agent. You’ll need&#10;        to reconnect it to keep going.">
+        <source>You probably used the Portal to log out this Desktop Agent. You’ll need
+        to reconnect it to keep going.</source>
+        <target>You probably used the Portal to log out this Desktop Agent. You’ll need
+        to reconnect it to keep going.</target>
+      </trans-unit>
+      <trans-unit id="gOKapmN" resname="Cannot connect to the portal">
+        <source>Cannot connect to the portal</source>
+        <target>Cannot connect to the portal</target>
+      </trans-unit>
+      <trans-unit id="vjLO0pu" resname="Are you offline?">
+        <source>Are you offline?</source>
+        <target>Are you offline?</target>
+      </trans-unit>
+      <trans-unit id="kRSCer9" resname="We cannot connect to the AGRIFUTURE Portal website.&#10;        To solve this issue, attempt the following:">
+        <source>We cannot connect to the AGRIFUTURE Portal website.
+        To solve this issue, attempt the following:</source>
+        <target>We cannot connect to the AGRIFUTURE Portal website.
+        To solve this issue, attempt the following:</target>
+      </trans-unit>
+      <trans-unit id="YA7rOsp" resname="Reload this page.">
+        <source>Reload this page.</source>
+        <target>Reload this page.</target>
+      </trans-unit>
+      <trans-unit id="1mzCGjq" resname="Check your internet connection.">
+        <source>Check your internet connection.</source>
+        <target>Check your internet connection.</target>
+      </trans-unit>
+      <trans-unit id="Ukw0RfV" resname="Verify your firewall and proxy settings.">
+        <source>Verify your firewall and proxy settings.</source>
+        <target>Verify your firewall and proxy settings.</target>
+      </trans-unit>
+      <trans-unit id="lwKXlX_" resname="If you can’t reach the portal directly, try again later.">
+        <source>If you can’t reach the portal directly, try again later.</source>
+        <target>If you can’t reach the portal directly, try again later.</target>
+      </trans-unit>
+      <trans-unit id="2xlIixn" resname="You’ll need to use another account.">
+        <source>You’ll need to use another account.</source>
+        <target>You’ll need to use another account.</target>
+      </trans-unit>
+      <trans-unit id="Z3uVmP5" resname="It seems as if your account can no longer use the API. You’ll need&#10;        another one to use the Desktop Agent. Contact us if you believe this&#10;        to be a mistake.">
+        <source>It seems as if your account can no longer use the API. You’ll need
+        another one to use the Desktop Agent. Contact us if you believe this
+        to be a mistake.</source>
+        <target>It seems as if your account can no longer use the API. You’ll need
+        another one to use the Desktop Agent. Contact us if you believe this
+        to be a mistake.</target>
+      </trans-unit>
+      <trans-unit id="8oBMpj2" resname="The analysis was abandoned. You can still check it in the portal. Please consider finishing or canceling it.">
+        <source>The analysis was abandoned. You can still check it in the portal. Please consider finishing or canceling it.</source>
+        <target>The analysis was abandoned. You can still check it in the portal. Please consider finishing or canceling it.</target>
+      </trans-unit>
+      <trans-unit id="K3fjDYd" resname="You probably used the Portal to log out this Desktop Agent. You’ll need to reconnect it to keep going.">
+        <source>You probably used the Portal to log out this Desktop Agent. You’ll need to reconnect it to keep going.</source>
+        <target>You probably used the Portal to log out this Desktop Agent. You’ll need to reconnect it to keep going.</target>
+      </trans-unit>
+      <trans-unit id=".s_wlrR" resname="We cannot connect to the AGRIFUTURE Portal website. To solve this issue, attempt the following:">
+        <source>We cannot connect to the AGRIFUTURE Portal website. To solve this issue, attempt the following:</source>
+        <target>We cannot connect to the AGRIFUTURE Portal website. To solve this issue, attempt the following:</target>
+      </trans-unit>
+      <trans-unit id="eDQqCQW" resname="Forbidden">
+        <source>Forbidden</source>
+        <target>Forbidden</target>
+      </trans-unit>
+      <trans-unit id="Cm7OO9i" resname="You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?">
+        <source>You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?</source>
+        <target>__You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?</target>
+      </trans-unit>
+      <trans-unit id="9xVAYWE" resname="Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.">
+        <source>Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.</source>
+        <target>Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.</target>
+      </trans-unit>
+      <trans-unit id="0JJSxGp" resname="Abandon">
+        <source>Abandon</source>
+        <target>Abandon</target>
+      </trans-unit>
+      <trans-unit id="It5n36W" resname="Abandon analysis">
+        <source>Abandon analysis</source>
+        <target>Abandon analysis</target>
+      </trans-unit>
+      <trans-unit id="dWWzv5V" resname="Are you sure you want to abandon the current analysis? You won’t be able to add any new files to it.">
+        <source>Are you sure you want to abandon the current analysis? You won’t be able to add any new files to it.</source>
+        <target>Are you sure you want to abandon the current analysis? You won’t be able to add any new files to it.</target>
+      </trans-unit>
+      <trans-unit id="OO7Lq_P" resname="It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.">
+        <source>It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.</source>
+        <target>It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.</target>
+      </trans-unit>
+      <trans-unit id="QbaSwL7" resname="The files in the upload folder seem to differ from the uploaded ones. If you haven’t touched them on disk, your analysis may be inaccurate.">
+        <source>The files in the upload folder seem to differ from the uploaded ones. If you haven’t touched them on disk, your analysis may be inaccurate.</source>
+        <target>The files in the upload folder seem to differ from the uploaded ones. If you haven’t touched them on disk, your analysis may be inaccurate.</target>
+      </trans-unit>
+      <trans-unit id="7mD_Vdq" resname="uploadError.InvalidToken">
+        <source>uploadError.InvalidToken</source>
+        <target>The file {file} couldn’t be uploaded because of missing authentication.</target>
+      </trans-unit>
+      <trans-unit id="1peOuap" resname="uploadError.Forbidden">
+        <source>uploadError.Forbidden</source>
+        <target>The file {file} couldn’t be uploaded because of missing authorization.</target>
+      </trans-unit>
+      <trans-unit id="kxe1bfP" resname="uploadError.NoSuchAnalysis">
+        <source>uploadError.NoSuchAnalysis</source>
+        <target>The file {file} couldn’t be uploaded because the analysis was already finished. The analysis is probably incomplete.</target>
+      </trans-unit>
+      <trans-unit id="qbTJ1w8" resname="uploadError.TooLarge">
+        <source>uploadError.TooLarge</source>
+        <target>The file {file} is too big. Try shrinking it.</target>
+      </trans-unit>
+      <trans-unit id="hqEO8ZG" resname="uploadError.FormatMismatch">
+        <source>uploadError.FormatMismatch</source>
+        <target>The file {file} has a different format than the analysis.</target>
+      </trans-unit>
+      <trans-unit id="l7kMPg_" resname="uploadError.RetryLater">
+        <source>uploadError.RetryLater</source>
+        <target>The uploading of files is temporarily suspended because of high resource usage on our servers.</target>
+      </trans-unit>
+      <trans-unit id="EJvFDw9" resname="uploadError.AlreadyUploaded">
+        <source>uploadError.AlreadyUploaded</source>
+        <target>The file {file} was already uploaded.</target>
+      </trans-unit>
+      <trans-unit id="ogTrUwe" resname="uploadError.UnknownError">
+        <source>uploadError.UnknownError</source>
+        <target>The file {file} couldn’t be uploaded.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
