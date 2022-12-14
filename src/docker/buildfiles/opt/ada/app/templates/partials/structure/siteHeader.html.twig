@@ -10,7 +10,11 @@
             <div class="col-analysis d-flex flex-column justify-content-around">
                 {% if app.user  %}
                     {% if analysisFactory.registered %}
-                        {% include 'partials/structure/siteHeader/headerQuickView.html.twig' %}
+                        {% if analysis and analysis.name %}
+                            {% include 'partials/structure/siteHeader/headerQuickView.html.twig' %}
+                        {% else %}
+                            {# We are offline and cannot display meaningful info #}
+                        {% endif %}
                     {% else %}
                         {% include 'partials/structure/siteHeader/registerAnalysis.html.twig' %}
                     {% endif %}

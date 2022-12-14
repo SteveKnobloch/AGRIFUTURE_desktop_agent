@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {% trans %}Forbidden{% endtrans %}
+{% endblock title %}
+
+{% block headline %}
+    {% trans %}Forbidden{% endtrans %}
+{% endblock headline %}
+
+{% block content %}
+    <p>{% trans %}You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?{% endtrans %}
+    <p>
+        <a href="{{ path('app_logout') }}" class="btn btn-primary">
+            <i class="bi bi-person-plus-fill"></i>
+            {% trans %}Connect another user account{% endtrans %}
+        </a>
+    <p>{% trans %}Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.{% endtrans %}
+    <p>
+        <button type="button"
+                class="btn btn-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#modal-abandonAnalysis">
+            <i class="bi bi-x-octagon-fill"></i>
+            {{ 'Abandon' | trans }}
+        </button>
+        {% include 'partials/modal.html.twig' with {
+            'modalTitle': 'Abandon analysis' | trans,
+            'modalBody': 'Are you sure you want to abandon the current analysis? You won’t be able to add any new files to it.' | trans,
+            'modalButton': abandon,
+            'modalBorderType': 'danger',
+            'modalId': 'abandonAnalysis',
+            'modalShowCancelButton': true,
+            'modalWidth': '300'
+        } %}
+{% endblock content %}

@@ -1,11 +1,11 @@
 <div class="d-table layout-list">
     {% include 'partials/facts.html.twig' with {
         'label': 'Reference database' | trans,
-        'value': analysis.type.name
+        'value': analysis.type.name | trans
     } %}
     {% include 'partials/facts.html.twig' with {
         'label': 'Format of raw data' | trans,
-        'value': analysis.format.value
+        'value': analysis.format.value | trans
     } %}
     {% include 'partials/facts.html.twig' with {
         'label': 'Host plant' | trans,

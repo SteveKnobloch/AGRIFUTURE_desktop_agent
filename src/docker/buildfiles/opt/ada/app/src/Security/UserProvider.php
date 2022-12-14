@@ -21,7 +21,8 @@ class UserProvider implements UserProviderInterface
     public function refreshUser(UserInterface $user)
     {
         return $this->loadFromApi(
-            $user->getUserIdentifier()
+            $user->getUserIdentifier(),
+            $user,
         );
     }
 
@@ -36,8 +37,10 @@ class UserProvider implements UserProviderInterface
             $this->loadFromApi($token);
     }
 
-    private function loadFromApi(string $token): UserInterface
-    {
+    private function loadFromApi(
+        string $token,
+        ?UserInterface $fallback = null,
+    ): UserInterface {
         $user = $this->api->getTokenInformation(
             'de',
             $token
@@ -47,7 +50,7 @@ class UserProvider implements UserProviderInterface
             return $user;
         }
 
-        throw match($user) {
+        return $fallback ?: throw match($user) {
             GetTokenInformationError::InvalidToken,
             GetTokenInformationError::ApiAccessForbidden =>
             new UserNotFoundException(),
