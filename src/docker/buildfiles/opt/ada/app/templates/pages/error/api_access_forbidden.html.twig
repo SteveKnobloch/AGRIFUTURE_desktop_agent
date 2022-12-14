@@ -9,11 +9,15 @@
 {% endblock headline %}
 
 {% block content %}
-    <p>{% trans %}
-        It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.{% endtrans %}
-    <p>
-        <a href="{{ path('app_logout') }}" class="btn btn-primary">
-            <i class="bi bi-person-plus-fill"></i>
-            {% trans %}Connect another user account{% endtrans %}
-        </a>
+    {% apply spaceless %}
+        <p>
+            {{ 'It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.' | trans }}
+        <p>
+        <p class="my-3">
+            <a href="{{ path('app_logout') }}" class="btn btn-primary">
+                <i class="bi bi-person-plus-fill"></i>
+                {{ 'Connect another user account' | trans }}
+            </a>
+        </p>
+    {% endapply %}
 {% endblock content %}

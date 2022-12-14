@@ -543,7 +543,7 @@
       </trans-unit>
       <trans-unit id="Cm7OO9i" resname="You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?">
         <source>You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?</source>
-        <target>__You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?</target>
+        <target>You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?</target>
       </trans-unit>
       <trans-unit id="9xVAYWE" resname="Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.">
         <source>Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.</source>
