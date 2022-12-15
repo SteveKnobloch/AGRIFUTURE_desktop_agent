@@ -4,6 +4,7 @@ namespace App\Command;
 
 use App\Entity\Analysis;
 use App\Entity\Upload;
+use App\Enum\AnalysisStatus;
 use App\Enum\UploadFileError;
 use App\Repository\AnalysisRepository;
 use App\Repository\UploadRepository;
@@ -121,6 +122,19 @@ class WatcherCommand extends Command
                     $this->uploads->save($result, true);
                     $output->writeln("File $file uploaded.");
                     continue 2;
+                }
+
+                if ($result === UploadFileError::NoSuchAnalysis) {
+                    // No need to do any further work on this analysis
+                    if ($analysis = $this->analyses->current()) {
+                        // If the analysis still exists (canceled from the
+                        // portal), mark it as an unknown status until a
+                        // user reload triggers a fetch to determined if it is
+                        // crashed or completed.
+                        $analysis->setStatus(AnalysisStatus::unknown);
+                        $this->analyses->save($analysis, true);
+                    }
+                    break;
                 }
 
                 $error = $this->generateError(
