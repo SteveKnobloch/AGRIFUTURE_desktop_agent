@@ -121,7 +121,7 @@ final class AnalysisInput
     }
 
     public static function requiredForFast5(
-        ?AnalysisInput $_,
+        mixed $_,
         ExecutionContextInterface $context,
     ) {
         if ($context->getObject()->format === FileFormat::fast5 &&
