@@ -3,6 +3,10 @@
 namespace App\Command;
 
 use App\Entity\Analysis;
+use App\Entity\RemoteAnalysis;
+use App\Enum\AnalysisStatus;
+use App\Repository\AnalysisRepository;
+use App\Service\ApiService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -25,8 +29,10 @@ class CancleAnalysisCommand extends Command
         ;
     }
 
-    public function __construct(private ManagerRegistry $doctrine)
-    {
+    public function __construct(
+        private readonly AnalysisRepository $analyses,
+        private readonly ApiService $apiService,
+    ) {
         parent::__construct();
     }
 
@@ -34,20 +40,32 @@ class CancleAnalysisCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
         $runUuid = $input->getArgument('runUuid');
-        $analysis = $this->doctrine->getRepository(Analysis::class)->findOneByLocalUuid($runUuid);
-        if ($analysis) {
-            // @todo: Send "cancled" to the cloud service.
-            // @todo: If the cloud service detects that the analysis has already been completed (or canceled), the cloud service takes no action.
+        $analysis = $this->analyses->find($runUuid);
 
-            $entityManager = $this->doctrine->getManager();
-            $entityManager->remove($analysis);
-            $entityManager->flush();
-
-            $io->success(sprintf('Analysis deleted (%s)', $runUuid));
-        } else {
-            $io->note(sprintf('No Analysis to delete (%s)', $runUuid));
+        if (!$analysis) {
+            if (!$output->isQuiet()) {
+                $output->writeln('No such analysis.');
+            }
+            return 0;
         }
 
-        return Command::SUCCESS;
+        if (!$analysis->getStatus()->isFinished()) {
+            $cancel = $this->apiService->updateStatus(
+                'en',
+                $analysis,
+                AnalysisStatus::crashed
+            );
+
+            if (!$cancel instanceof RemoteAnalysis) {
+                $io->error(
+                    "Cancling analysis {$analysis->localUuid} failed: " .
+                    $cancel->name
+                );
+            }
+        }
+
+        $this->analyses->remove($analysis, true);
+
+        return 0;
     }
 }
