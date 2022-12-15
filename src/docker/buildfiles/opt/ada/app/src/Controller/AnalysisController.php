@@ -178,7 +178,7 @@ final class AnalysisController extends AbstractController
                 UpdateStatusType::class,
                 options: [
                     'status' => AnalysisStatus::completed,
-                    'label' => 'Finish analaysis',
+                    'label' => 'Finish analysis',
                     'class' => 'btn btn-primary',
                 ]
             ),
