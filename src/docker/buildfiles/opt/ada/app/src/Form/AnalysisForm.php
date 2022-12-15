@@ -26,6 +26,21 @@ class AnalysisForm extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $formatOptions = json_decode(
+            file_get_contents(
+                __DIR__ . '/../../assets/javascript/analysis/register/dataFormatOptions.json'
+            ),
+            true,
+            JSON_THROW_ON_ERROR,
+        );
+
+        $flowcellTypes = array_keys($formatOptions);
+        $libraryToolkits = array_unique(
+            array_merge(
+                ...array_values($formatOptions)
+            )
+        );
+
         $builder
             ->add(
                 'name',
@@ -133,6 +148,10 @@ class AnalysisForm extends AbstractType
                     'row_attr' => [
                         'class' => 'col-6',
                     ],
+                    'choices' => array_combine(
+                        $flowcellTypes,
+                        $flowcellTypes
+                    ),
                 ]
             )
             ->add(
@@ -145,6 +164,10 @@ class AnalysisForm extends AbstractType
                     'row_attr' => [
                         'class' => 'col-6 js-disabled',
                     ],
+                    'choices' => array_combine(
+                        $libraryToolkits,
+                        $libraryToolkits,
+                    ),
                 ],
             )
             ->add(

@@ -3,7 +3,7 @@
         <dt class="d-table-cell strong">
             {{ 'Started' | trans }}:
         </dt>
-        <dd class="d-table-cell px-1">
+        <dd class="d-table-cell px-3">
             {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': dateStart, small: false} %}
         </dd>
     </dl>
@@ -14,7 +14,7 @@
         <dt class="d-table-cell strong">
             {{ 'Crashed' | trans }}:
         </dt>
-        <dd class="d-table-cell px-1">
+        <dd class="d-table-cell px-3">
             {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': dateCrashed, small: false} %}
         </dd>
     </dl>
@@ -25,7 +25,7 @@
         <dt class="d-table-cell strong">
             {{ 'Paused' | trans }}:
         </dt>
-        <dd class="d-table-cell px-1">
+        <dd class="d-table-cell px-3">
             {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': datePaused, small: false} %}
         </dd>
     </dl>
@@ -36,7 +36,7 @@
         <dt class="d-table-cell strong">
             {{ 'Completed' | trans }}:
         </dt>
-        <dd class="d-table-cell px-1">
+        <dd class="d-table-cell px-3">
             {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': dateCompleted, small: false} %}
         </dd>
     </dl>
@@ -45,9 +45,9 @@
 {% if dateShutdown is defined %}
     <dl class="d-table-row d-table">
         <dt class="d-table-cell strong">
-            {{ 'Analysis ends automatically at' | trans }}:
+            {{ 'Analysis ends automatically on' | trans }}:
         </dt>
-        <dd class="d-table-cell px-1">
+        <dd class="d-table-cell px-3">
             {% include 'partials/states/dates/dateAndTime.html.twig' with {'date': dateShutdown, small: false} %}
         </dd>
     </dl>

@@ -227,11 +227,11 @@
       </trans-unit>
       <trans-unit id="MQ.yABS" resname="close">
         <source>close</source>
-        <target>schließen</target>
+        <target>Schließen</target>
       </trans-unit>
       <trans-unit id="4lbujnr" resname="continue">
         <source>continue</source>
-        <target>fortsetzen</target>
+        <target>Fortsetzen</target>
       </trans-unit>
       <trans-unit id="gIRiQvJ" resname="Register a new RAPID-Pipeline analysis">
         <source>Register a new RAPID-Pipeline analysis</source>
@@ -317,9 +317,9 @@
         <source>Launch analysis</source>
         <target>Analyse starten</target>
       </trans-unit>
-      <trans-unit id="SK3vDkE" resname="Analysis ends automatically at">
-        <source>Analysis ends automatically at</source>
-        <target>Die Analyse endet automatisch um</target>
+      <trans-unit id="SK3vDkE" resname="Analysis ends automatically on">
+        <source>Analysis ends automatically on</source>
+        <target>Die Analyse endet automatisch am</target>
       </trans-unit>
       <trans-unit id="SkaeTw9" resname="Please select">
         <source>Please select</source>
