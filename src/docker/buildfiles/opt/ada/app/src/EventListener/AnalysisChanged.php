@@ -19,6 +19,6 @@ final class AnalysisChanged
         $id = $analysis instanceof Upload ?
             $analysis->analysis->localUuid :
             $analysis->localUuid;
-        $this->remoteAnalysesCache->delete($id->toBinary());
+        $this->remoteAnalysesCache->delete($id->toBase58());
     }
 }

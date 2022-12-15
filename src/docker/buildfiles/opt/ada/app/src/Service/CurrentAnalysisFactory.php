@@ -84,7 +84,7 @@ final class CurrentAnalysisFactory
 
         /** @var \Symfony\Contracts\Cache\CacheInterface $pool */
         $analysis = $this->remoteAnalysesCache->get(
-            $this->uuid->toBinary(),
+            $this->uuid->toBase58(),
             function () {
                 return $this->api->getAnalysisStatus(
                     $this->locale->currentLocale() ?? 'en',
@@ -106,7 +106,7 @@ final class CurrentAnalysisFactory
         } else {
             $this->analysis->setStatus(AnalysisStatus::unknown);
             $this->analyses->save($this->analysis, true);
-            $this->remoteAnalysesCache->delete($this->uuid->toBinary());
+            $this->remoteAnalysesCache->delete($this->uuid->toBase58());
         }
 
         return $analysis;
