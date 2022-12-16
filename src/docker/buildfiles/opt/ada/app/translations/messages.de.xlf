@@ -158,8 +158,8 @@
         <target>Analyse abbrechen</target>
       </trans-unit>
       <trans-unit id="YJxWmEs" resname="Are you sure you want to cancel the current analysis?">
-        <source>Are you sure you want to cancel the current analysis?</source>
-        <target>Sind Sie sicher, dass Sie die Analyse abbrechen möchten?</target>
+        <source>Are you sure you want to cancel the current analysis? Any data from this analysis will be lost!</source>
+        <target>Sind Sie sicher, dass Sie die Analyse abbrechen möchten? Alle Daten dieser Analyse gehen dabei verloren!</target>
       </trans-unit>
       <trans-unit id="h_28YLU" resname="cancel analysis">
         <source>cancel analysis</source>
