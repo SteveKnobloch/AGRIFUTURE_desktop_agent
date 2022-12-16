@@ -228,6 +228,6 @@ class RemoteAnalysis
             'en' => 'your-analyses/detailseite',
         } . '?tx_rapidpipeline_pipelineanalysis[action]=detail' .
             '&tx_rapidpipeline_pipelineanalysis[controller]=PipelineAnalysis' .
-            "&tx_rapidpipeline_pipelineanalysis[pipeline]={$this->id}";
+            "&tx_rapidpipeline_pipelineanalysis[pipeline]={$this->getId()}";
     }
 }
