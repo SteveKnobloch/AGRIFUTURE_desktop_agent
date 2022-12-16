@@ -221,4 +221,13 @@ class RemoteAnalysis
             $json->minSequenceLength,
         );
     }
+
+    public final function portalPath(string $locale) {
+        return match ($locale) {
+            'de' => 'analysen/detailseite',
+            'en' => 'your-analyses/detailseite',
+        } . '?tx_rapidpipeline_pipelineanalysis[action]=detail' .
+            '&tx_rapidpipeline_pipelineanalysis[controller]=PipelineAnalysis' .
+            "&tx_rapidpipeline_pipelineanalysis[pipeline]={$this->id}";
+    }
 }

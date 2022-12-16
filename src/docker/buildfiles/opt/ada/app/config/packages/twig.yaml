@@ -9,6 +9,7 @@ twig:
     # Can be null!
     analysis: '@rapid_pipeline.analysis'
     analysisFactory: '@App\Service\CurrentAnalysisFactory'
+    portal: '@App\Service\PortalUrl'
 
 when@test:
   twig:

@@ -4,7 +4,6 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-    app.api.host: '%env(string:ADA_API_HOST)%'
     app.api.checkCertificates: '%env(bool:ADA_CHECK_CERTIFICATES)%'
     app.uuid: '%env(uuid:ADA_RUN_UUID)%'
 
@@ -27,8 +26,12 @@ services:
 
     App\Service\ApiService:
         arguments:
-            $apiPrefix: '%app.api.host%'
             $checkCertificates: '%app.api.checkCertificates%'
+
+    App\Service\PortalUrl:
+        arguments:
+            # Use en in the console, we only log in that language too.
+            $defaultLocale: 'EN'
 
     rapid_pipeline.analysis:
         # Can be null!
