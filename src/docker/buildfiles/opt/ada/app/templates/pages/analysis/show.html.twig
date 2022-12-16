@@ -8,6 +8,11 @@
     {% endif %}
 {% endif %}
 
+{% set detailPath = "analysen/detailseite" %}
+{% if app.request.locale == 'en' %}
+  {% set detailPath = "your-analyses/detailseite" %}
+{% endif %}
+
 {% block title 'Analysis'|trans ~ ' - ' ~ analysis.name ~' - ' ~ parent() %}
 {% block headline analysis.name %}
 {% block content %}
@@ -42,7 +47,7 @@
                             </div>
                             {% if analysis.status.value != 'crashed' %}
                                 <div class="col-5 d-flex justify-content-end">
-                                    <a href="" class="col-header show-all"
+                                    <a href="{{ portal }}/{{ analysis.portalPath(app.request.locale) }}" class="col-header show-all"
                                        title="{{ 'Show results of the current analysis on the AGRIFUTURΞ website' | trans }}">
                                         <i class="bi bi-bar-chart"></i>
                                         {{ 'Show results of Analysis' | trans }}
