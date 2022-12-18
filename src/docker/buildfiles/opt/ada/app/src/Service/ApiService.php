@@ -31,11 +31,11 @@ final class ApiService
     private readonly array $globalOptions;
 
     public function __construct(
-        private readonly string $apiPrefix,
         private readonly HttpClientInterface $http,
         private readonly Security $security,
         private readonly TokenRepository $tokens,
         private readonly Uuid $uuid,
+        private readonly PortalUrl $portal,
         $checkCertificates = true,
     ) {
         $this->globalOptions = $checkCertificates ? [] :
@@ -416,11 +416,6 @@ final class ApiService
 
     private function url(string $locale, string $path)
     {
-        $localePath = match ($locale) {
-            'de' => '',
-            default => "$locale/"
-        };
-
-        return "{$this->apiPrefix}/{$localePath}api/$path";
+        return ($this->portal)($locale) . "/api/$path";
     }
 }
