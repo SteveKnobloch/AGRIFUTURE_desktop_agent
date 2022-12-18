@@ -158,8 +158,8 @@
         <target>Cancel analysis</target>
       </trans-unit>
       <trans-unit id="YJxWmEs" resname="Are you sure you want to cancel the current analysis?">
-        <source>Are you sure you want to cancel the current analysis?</source>
-        <target>Are you sure you want to cancel the current analysis?</target>
+        <source>Are you sure you want to cancel the current analysis? Any data from this analysis will be lost!</source>
+        <target>Are you sure you want to cancel the current analysis? Any data from this analysis will be lost!</target>
       </trans-unit>
       <trans-unit id="h_28YLU" resname="cancel analysis">
         <source>cancel analysis</source>
