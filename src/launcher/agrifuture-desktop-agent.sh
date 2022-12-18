@@ -235,7 +235,7 @@ main() {
     elif [ $ADA_IS_MAC -eq 1 ]; then
         open "http://127.0.0.1:${ADA_PORT}/${ADA_LANG_SLUG}" &>/dev/null
     else
-        xdg-open "http://127.0.0.1:${ADA_PORT}/${ADA_LANG_SLUG}" &>/dev/null
+        setsid xdg-open "http://127.0.0.1:${ADA_PORT}/${ADA_LANG_SLUG}" &>/dev/null
     fi
 
     while true; do
