@@ -119,7 +119,6 @@ RUN apk -U update \
     && COMPOSER_ALLOW_SUPERUSER=1 composer build:frontend \
     \
     && find bin/ -type f -not -name 'console' -delete \
-    && rm -rf assets/ \
     && rm -rf node_modules/ \
     && rm -rf var/ \
     && rm -f composer.lock \
