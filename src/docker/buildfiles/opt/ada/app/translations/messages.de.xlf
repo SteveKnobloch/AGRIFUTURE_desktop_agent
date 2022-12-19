@@ -158,7 +158,7 @@
         <target>Analyse abbrechen</target>
       </trans-unit>
       <trans-unit id="YJxWmEs" resname="Are you sure you want to cancel the current analysis?">
-        <source>Are you sure you want to cancel the current analysis? Any data from this analysis will be lost!</source>
+        <source>Are you sure you want to cancel the current analysis?</source>
         <target>Sind Sie sicher, dass Sie die Analyse abbrechen möchten? Alle Daten dieser Analyse gehen dabei verloren!</target>
       </trans-unit>
       <trans-unit id="h_28YLU" resname="cancel analysis">
@@ -317,7 +317,7 @@
         <source>Launch analysis</source>
         <target>Analyse starten</target>
       </trans-unit>
-      <trans-unit id="SK3vDkE" resname="Analysis ends automatically on">
+      <trans-unit id="2mITVvb" resname="Analysis ends automatically on">
         <source>Analysis ends automatically on</source>
         <target>Die Analyse endet automatisch am</target>
       </trans-unit>
@@ -580,6 +580,18 @@
       <trans-unit id="ogTrUwe" resname="uploadError.UnknownError">
         <source>uploadError.UnknownError</source>
         <target>Die Datei {file} konnte nicht hochgeladen werden.</target>
+      </trans-unit>
+      <trans-unit id="fvxWW3V" resname="The CSRF token is invalid. Please try to resubmit the form.">
+        <source>The CSRF token is invalid. Please try to resubmit the form.</source>
+        <target>Das CSRF-Token ist ungültig. Bitte versuchen Sie, das Formular erneut abzuschicken.</target>
+      </trans-unit>
+      <trans-unit id="GgAI99O" resname="typo3_slug_imprint">
+        <source>typo3_slug:imprint</source>
+        <target>impressum</target>
+      </trans-unit>
+      <trans-unit id="1.ZtIf4" resname="typo3_slug_privacy">
+        <source>typo3_slug_privacy</source>
+        <target>datenschutz-agb</target>
       </trans-unit>
     </body>
   </file>
