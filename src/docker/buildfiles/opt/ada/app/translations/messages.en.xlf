@@ -81,9 +81,9 @@
         <source>Show results of the current analysis on the AGRIFUTURΞ website</source>
         <target>Show results of the current analysis on the AGRIFUTURΞ website</target>
       </trans-unit>
-      <trans-unit id="ZKw_YWn" resname="Register an analysis">
-        <source>Register an analysis</source>
-        <target>Register an analysis</target>
+      <trans-unit id="ZKw_YWn" resname="Launch an analysis">
+        <source>Launch an analysis</source>
+        <target>Launch an analysis</target>
       </trans-unit>
       <trans-unit id="K2oqPxl" resname="Connect user account">
         <source>Connect user account</source>
@@ -369,9 +369,9 @@
         <source>e.g.Triticum aestivum or Wheat</source>
         <target>e.g.Triticum aestivum or Wheat</target>
       </trans-unit>
-      <trans-unit id="m0q3EV9" resname="Country of origin">
-        <source>Country of origin</source>
-        <target>Country of origin</target>
+      <trans-unit id="m0q3EV9" resname="Country of sample origin">
+        <source>Country of sample origin</source>
+        <target>Country of sample origin</target>
       </trans-unit>
       <trans-unit id="2zZMmUr" resname="Location of sample collection">
         <source>Location of sample collection</source>
@@ -405,9 +405,9 @@
         <source>I have read the privacy policy and terms of service</source>
         <target>I have read the privacy policy and terms of service</target>
       </trans-unit>
-      <trans-unit id="KmLNWow" resname="e.g. Pseudomonas syringae pv. tomato">
-        <source>e.g. Pseudomonas syringae pv. tomato</source>
-        <target>e.g. Pseudomonas syringae pv. tomato</target>
+      <trans-unit id="KmLNWow" resname="e.g. Tomato plant, Solanum lycopersicum">
+        <source>e.g. Tomato plant, Solanum lycopersicum</source>
+        <target>e.g. Tomato plant, Solanum lycopersicum</target>
       </trans-unit>
       <trans-unit id="1jU298k" resname="e.g. city, region or state">
         <source>e.g. city, region or state</source>
