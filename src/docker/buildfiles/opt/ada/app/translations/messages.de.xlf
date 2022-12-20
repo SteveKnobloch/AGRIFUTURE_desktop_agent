@@ -81,9 +81,9 @@
         <source>Show results of the current analysis on the AGRIFUTURΞ website</source>
         <target>Ergebnisse der aktuellen Analyse auf der AGRIFUTURΞ Website anzeigen</target>
       </trans-unit>
-      <trans-unit id="ZKw_YWn" resname="Register an analysis">
-        <source>Register an analysis</source>
-        <target>Eine Analyse registrieren</target>
+      <trans-unit id="ZKw_YWn" resname="Launch an analysis">
+        <source>Launch an analysis</source>
+        <target>Eine Analyse starten</target>
       </trans-unit>
       <trans-unit id="K2oqPxl" resname="Connect user account">
         <source>Connect user account</source>
@@ -158,7 +158,7 @@
         <target>Analyse abbrechen</target>
       </trans-unit>
       <trans-unit id="YJxWmEs" resname="Are you sure you want to cancel the current analysis?">
-        <source>Are you sure you want to cancel the current analysis? Any data from this analysis will be lost!</source>
+        <source>Are you sure you want to cancel the current analysis?</source>
         <target>Sind Sie sicher, dass Sie die Analyse abbrechen möchten? Alle Daten dieser Analyse gehen dabei verloren!</target>
       </trans-unit>
       <trans-unit id="h_28YLU" resname="cancel analysis">
@@ -317,7 +317,7 @@
         <source>Launch analysis</source>
         <target>Analyse starten</target>
       </trans-unit>
-      <trans-unit id="SK3vDkE" resname="Analysis ends automatically on">
+      <trans-unit id="2mITVvb" resname="Analysis ends automatically on">
         <source>Analysis ends automatically on</source>
         <target>Die Analyse endet automatisch am</target>
       </trans-unit>
@@ -369,8 +369,8 @@
         <source>e.g.Triticum aestivum or Wheat</source>
         <target>z.B.Triticum aestivum oder Weizen</target>
       </trans-unit>
-      <trans-unit id="m0q3EV9" resname="Country of origin">
-        <source>Country of origin</source>
+      <trans-unit id="m0q3EV9" resname="Country of sample origin">
+        <source>Country of sample origin</source>
         <target>Herkunftsland</target>
       </trans-unit>
       <trans-unit id="2zZMmUr" resname="Location of sample collection">
@@ -405,9 +405,9 @@
         <source>I have read the privacy policy and terms of service</source>
         <target>Ich habe die Datenschutzerklärung und Nutzungsbedingungen gelesen.</target>
       </trans-unit>
-      <trans-unit id="KmLNWow" resname="e.g. Pseudomonas syringae pv. tomato">
-        <source>e.g. Pseudomonas syringae pv. tomato</source>
-        <target>z.B. Pseudomonas syringae pv. tomato</target>
+      <trans-unit id="KmLNWow" resname="e.g. Tomato plant, Solanum lycopersicum">
+        <source>e.g. Tomato plant, Solanum lycopersicum</source>
+        <target>z.B. Tomatenpflanze oder Solanum lycopersicum</target>
       </trans-unit>
       <trans-unit id="1jU298k" resname="e.g. city, region or state">
         <source>e.g. city, region or state</source>
@@ -580,6 +580,18 @@
       <trans-unit id="ogTrUwe" resname="uploadError.UnknownError">
         <source>uploadError.UnknownError</source>
         <target>Die Datei {file} konnte nicht hochgeladen werden.</target>
+      </trans-unit>
+      <trans-unit id="fvxWW3V" resname="The CSRF token is invalid. Please try to resubmit the form.">
+        <source>The CSRF token is invalid. Please try to resubmit the form.</source>
+        <target>Das CSRF-Token ist ungültig. Bitte versuchen Sie, das Formular erneut abzuschicken.</target>
+      </trans-unit>
+      <trans-unit id="GgAI99O" resname="typo3_slug_imprint">
+        <source>typo3_slug:imprint</source>
+        <target>impressum</target>
+      </trans-unit>
+      <trans-unit id="1.ZtIf4" resname="typo3_slug_privacy">
+        <source>typo3_slug_privacy</source>
+        <target>datenschutz-agb</target>
       </trans-unit>
     </body>
   </file>

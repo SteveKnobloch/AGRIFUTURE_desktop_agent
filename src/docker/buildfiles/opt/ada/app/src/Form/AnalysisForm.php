@@ -57,7 +57,7 @@ class AnalysisForm extends AbstractType
                     'required' => false,
                     'label' => 'Host plant',
                     'attr' => [
-                        'placeholder' => 'e.g. Pseudomonas syringae pv. tomato'
+                        'placeholder' => 'e.g. Tomato plant, Solanum lycopersicum'
                     ],
                 ],
             )
@@ -66,7 +66,7 @@ class AnalysisForm extends AbstractType
                 CountryType::class,
                 [
                     'placeholder' => 'Please select',
-                    'label' => 'Country of origin',
+                    'label' => 'Country of sample origin',
                 ],
             )
             ->add(
