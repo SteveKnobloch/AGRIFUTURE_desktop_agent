@@ -98,7 +98,7 @@ setup() {
         ADA_RUN_UUID=$(uuidgen)
     fi
 
-    echo "Check for updates..."
+    echo "Checking for updates..."
     docker pull $ADA_CONTAINER &>/dev/null
 
     trap 'shutdown' EXIT
