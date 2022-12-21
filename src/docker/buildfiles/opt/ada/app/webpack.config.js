@@ -23,6 +23,7 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('analysisRegister', './assets/javascript/analysis/register/analysisRegister.js')
     .addEntry('dataFormatOptions', './assets/javascript/analysis/register/dataFormatOptions.js')
+    .addEntry('reloadAnalysisPage', './assets/javascript/analysis/details/reloadAnalysisPage.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
