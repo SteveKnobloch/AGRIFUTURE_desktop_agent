@@ -4,7 +4,7 @@
 Name "${NAME}"
 OutFile "AgrifutureDesktopAgent.exe"
 Unicode True
-RequestExecutionLevel User
+RequestExecutionLevel admin
 Icon "AgrifutureDesktopAgent\AppIcon.ico"
 InstallDir "" ; Don't set a default $INSTDIR so we can detect /D= and InstallDirRegKey
 InstallDirRegKey HKCU "${REGPATH_UNINSTSUBKEY}" "UninstallString"
@@ -36,15 +36,24 @@ Function un.onInit
   SetShellVarContext Current
 FunctionEnd
 
+Section
+  DetailPrint "Read After Reboot flag..."
+  ReadRegStr $R0 HKCU "Software\Microsoft\Windows\CurrentVersion\" "${NAME}_afterreboot"
+  StrCmp "$R0" "1" InstallStage2
+  StrCmp "$R0" "2" InstallStage3
 
-Section "Program files (Required)"
-  SectionIn Ro
+  DetailPrint "Run main installation:"
+  DetailPrint "Copyng files, installing drivers, registring DLLs, etc."
 
   SetOutPath $INSTDIR
 
   File "AgrifutureDesktopAgent\AgrifutureDesktopAgent.exe"
   File "AgrifutureDesktopAgent\agrifuture-desktop-agent.bat"
   File "AgrifutureDesktopAgent\agrifuture-desktop-agent.sh"
+  File "AgrifutureDesktopAgent\enable-wsl2.bat"
+  File "AgrifutureDesktopAgent\install-wsl2.bat"
+  File "AgrifutureDesktopAgent\install-docker.bat"
+  File "AgrifutureDesktopAgent\configure-ubuntu.bat"
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
   WriteRegStr HKCU "${REGPATH_UNINSTSUBKEY}" "DisplayName" "${NAME}"
@@ -54,16 +63,71 @@ Section "Program files (Required)"
 
   WriteRegDWORD HKCU "${REGPATH_UNINSTSUBKEY}" "NoModify" 1
   WriteRegDWORD HKCU "${REGPATH_UNINSTSUBKEY}" "NoRepair" 1
-SectionEnd
 
-Section "Start Menu shortcut"
   CreateDirectory "$SMPROGRAMS\AgrifutureDesktopAgent"
   CreateShortcut "$SMPROGRAMS\AgrifutureDesktopAgent\AgrifutureDesktopAgent.lnk" "$INSTDIR\AgrifutureDesktopAgent.exe"
   CreateShortcut "$SMPROGRAMS\AgrifutureDesktopAgent\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
-SectionEnd
 
-Section "Desktop Shortcut"
-    CreateShortcut "$DESKTOP\AgrifutureDesktopAgent.lnk" "$INSTDIR\AgrifutureDesktopAgent.exe"
+  CreateShortcut "$DESKTOP\AgrifutureDesktopAgent.lnk" "$INSTDIR\AgrifutureDesktopAgent.exe"
+
+  !include x64.nsh
+  ${DisableX64FSRedirection}
+  ExecWait '"$INSTDIR\enable-wsl2.bat"'
+  ${EnableX64FSRedirection}
+
+  DetailPrint "Installer path: $EXEPATH"
+
+  DetailPrint "Write in RunOnce Registry key..."
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\RunOnce" "${NAME}" "$EXEPATH"
+  DetailPrint "Write After Reboot flag (stage 2) ..."
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\" "${NAME}_afterreboot" "1"
+
+  DetailPrint "Reboot request."
+  MessageBox MB_YESNO|MB_ICONINFORMATION "Installation will be continue after reboot. Press OK to reboot now." IDYES RebootNow
+  DetailPrint "Installation continue if user restart system."
+  Goto SecEnd
+
+  RebootNow:
+    DetailPrint "Rebooting..."
+    Reboot
+  InstallStage2:
+    DetailPrint "Delete After Reboot flag (stage 2) ..."
+    DeleteRegValue HKCU "Software\Microsoft\Windows\CurrentVersion\" "${NAME}_afterreboot"
+    DetailPrint "Continue install after reboot..."			
+
+    !include x64.nsh
+    ${DisableX64FSRedirection}
+    ExecWait '"$INSTDIR\install-wsl2.bat"'
+    ExecWait '"$INSTDIR\install-docker.bat"'
+    ${EnableX64FSRedirection}
+
+    DetailPrint "Installer path: $EXEPATH"
+
+    DetailPrint "Write in RunOnce Registry key..."
+    WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\RunOnce" "${NAME}" "$EXEPATH"
+    DetailPrint "Write After Reboot flag (stage 3) ..."
+    WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\" "${NAME}_afterreboot" "2"
+
+    DetailPrint "Reboot request."
+    MessageBox MB_YESNO|MB_ICONINFORMATION "Installation will be finished after reboot. Press OK to reboot now." IDYES RebootNow
+    DetailPrint "Installation finished if user restart system."
+    Goto SecEnd
+
+  InstallStage3:
+    DetailPrint "Delete After Reboot flag (stage 3) ..."
+    DeleteRegValue HKCU "Software\Microsoft\Windows\CurrentVersion\" "${NAME}_afterreboot"
+    DetailPrint "Continue install after reboot..."			
+
+    !include x64.nsh
+    ${DisableX64FSRedirection}
+    ExecWait '"$INSTDIR\configure-ubuntu.bat"'
+    ${EnableX64FSRedirection}
+
+    DetailPrint "Installation done."
+    Goto SecEnd
+
+  SecEnd:
+
 SectionEnd
 
 !macro DeleteFileOrAskAbort path
@@ -80,6 +144,10 @@ Section -Uninstall
   Delete "$INSTDIR\AgrifutureDesktopAgent.exe"
   Delete "$INSTDIR\agrifuture-desktop-agent.bat"
   Delete "$INSTDIR\agrifuture-desktop-agent.sh"
+  Delete "$INSTDIR\enable-wsl2.bat"
+  Delete "$INSTDIR\install-wsl2.bat"
+  Delete "$INSTDIR\install-docker.bat"
+  Delete "$INSTDIR\configure-ubuntu.bat"
   Delete "$INSTDIR\Uninstall.exe"
 
   RMDir "$INSTDIR"
