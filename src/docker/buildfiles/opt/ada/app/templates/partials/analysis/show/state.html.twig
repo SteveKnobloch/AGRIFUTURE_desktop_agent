@@ -27,11 +27,11 @@
         } %}
     {% endif %}
 
-    {# ToDo There is no duration!
     {% include 'partials/facts.html.twig' with {
         'label': 'Duration' | trans,
-        'value': "#{analysis.durationHours} h #{analysis.durationMinutes} m"
-    } %} #}
+        'value': "#{analysis.runningTime.hours}h #{analysis.runningTime.minutes}m"
+    } %}
+
     {% include 'partials/facts.html.twig' with {
         'label': 'Upload folder' | trans,
         'value': analysisFactory.cached.relativeDataPath

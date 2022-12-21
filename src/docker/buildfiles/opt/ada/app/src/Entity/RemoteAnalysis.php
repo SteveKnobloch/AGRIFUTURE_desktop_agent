@@ -6,6 +6,7 @@ namespace App\Entity;
 use App\Enum\AnalysisStatus;
 use App\Enum\AnalysisType;
 use App\Enum\FileFormat;
+use DateTimeImmutable;
 
 class RemoteAnalysis
 {
@@ -229,5 +230,16 @@ class RemoteAnalysis
         } . '?tx_rapidpipeline_pipelineanalysis[action]=detail' .
             '&tx_rapidpipeline_pipelineanalysis[controller]=PipelineAnalysis' .
             "&tx_rapidpipeline_pipelineanalysis[pipeline]={$this->getId()}";
+    }
+
+    public function getRunningTime(): array
+    {
+        $runningTimeEnd = $this->getStatus()->isFinished() ? $this->getFinishedTime() : new DateTimeImmutable();
+        $diff = $runningTimeEnd->diff($this->getCreated(), true);
+
+        return [
+            'hours' => $diff->days * 24 + $diff->h,
+            'minutes' => $diff->i,
+        ];
     }
 }
