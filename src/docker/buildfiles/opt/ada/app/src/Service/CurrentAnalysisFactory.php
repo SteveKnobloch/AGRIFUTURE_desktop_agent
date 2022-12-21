@@ -94,7 +94,8 @@ final class CurrentAnalysisFactory
         );
 
         if ($analysis instanceof RemoteAnalysis &&
-            $this->analysis->getStatus() !== $analysis->getStatus()
+            $this->analysis->getStatus() !== $analysis->getStatus() &&
+            $analysis->getStatus() !== AnalysisStatus::unknown
         ) {
             $this->analysis->setStatus($analysis->getStatus());
             $this->analyses->save($this->analysis, true);
@@ -158,12 +159,11 @@ final class CurrentAnalysisFactory
                 );
             }
 
-            public function getStatus(): ?AnalysisStatus
+            public function getStatus(): AnalysisStatus
             {
-                return $this->defferOrCached(
+                return $this->deffer(
                     fn(RemoteAnalysis $a) => $a->getStatus(),
-                    $this->analysis->getStatus()
-                );
+                ) ?? AnalysisStatus::unknown;
             }
 
             public function getCreated(): ?\DateTimeInterface
