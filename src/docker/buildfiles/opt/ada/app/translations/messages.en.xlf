@@ -81,7 +81,7 @@
         <source>Show results of the current analysis on the AGRIFUTURΞ website</source>
         <target>Show results of the current analysis on the AGRIFUTURΞ website</target>
       </trans-unit>
-      <trans-unit id="ZKw_YWn" resname="Launch an analysis">
+      <trans-unit id="3nHHvkl" resname="Launch an analysis">
         <source>Launch an analysis</source>
         <target>Launch an analysis</target>
       </trans-unit>
@@ -369,7 +369,7 @@
         <source>e.g.Triticum aestivum or Wheat</source>
         <target>e.g.Triticum aestivum or Wheat</target>
       </trans-unit>
-      <trans-unit id="m0q3EV9" resname="Country of sample origin">
+      <trans-unit id="xtZuuYE" resname="Country of sample origin">
         <source>Country of sample origin</source>
         <target>Country of sample origin</target>
       </trans-unit>
@@ -405,7 +405,7 @@
         <source>I have read the privacy policy and terms of service</source>
         <target>I have read the privacy policy and terms of service</target>
       </trans-unit>
-      <trans-unit id="KmLNWow" resname="e.g. Tomato plant, Solanum lycopersicum">
+      <trans-unit id="SNJkn8V" resname="e.g. Tomato plant, Solanum lycopersicum">
         <source>e.g. Tomato plant, Solanum lycopersicum</source>
         <target>e.g. Tomato plant, Solanum lycopersicum</target>
       </trans-unit>
@@ -609,13 +609,33 @@
         <source>Analysis ends automatically on</source>
         <target>Analysis ends automatically on</target>
       </trans-unit>
-      <trans-unit id="GgAI99O" resname="typo3_slug_imprint">
-        <source>typo3_slug:imprint</source>
+      <trans-unit id="CZanEz_" resname="typo3_slug_imprint">
+        <source>typo3_slug_imprint</source>
         <target>imprint</target>
       </trans-unit>
       <trans-unit id="1.ZtIf4" resname="typo3_slug_privacy">
         <source>typo3_slug_privacy</source>
         <target>privacy-policy-and-terms-of-service</target>
+      </trans-unit>
+      <trans-unit id="KV6qM8." resname="typo3_slug_register">
+        <source>typo3_slug_register</source>
+        <target>registration</target>
+      </trans-unit>
+      <trans-unit id=".OyRUJd" resname="here">
+        <source>here</source>
+        <target>here</target>
+      </trans-unit>
+      <trans-unit id="X9WI1EJ" resname="You don’t have an account yet? Create an account 1 to connect with your desktop agent.">
+        <source>You don’t have an account yet? Create an account 1 to connect with your desktop agent.</source>
+        <target>You don’t have an account yet? Create an account 1 to connect with your desktop agent.</target>
+      </trans-unit>
+      <trans-unit id="_Fp8uy5" resname="typo3_slug_user_manual">
+        <source>typo3_slug_user_manual</source>
+        <target>user-manual</target>
+      </trans-unit>
+      <trans-unit id="isXTHUg" resname="User manual">
+        <source>User manual</source>
+        <target>User manual</target>
       </trans-unit>
     </body>
   </file>

@@ -1,31 +1,16 @@
 /**
  * @author Rene Gropp <rene.gropp@tritum.de>
  */
+
 import data from './dataFormatOptions.json';
 
 // document ready - start
 document.addEventListener("DOMContentLoaded", function (event) {
-    initOptions();
+    toggleDependentOptions(data);
 });
 
-function initOptions() {
-    addFlocellTypeOptions(Object.getOwnPropertyNames(data));
-    toggleDependentOptions(data);
-}
-
-function addFlocellTypeOptions(data) {
-    const flowcellTypeSelect = document.getElementById('analysis_form_flowcellType');
-
-    // add Flowcell-Type options
-    for (const type of data) {
-        const option = document.createElement('option');
-        option.value = type;
-        option.text = type;
-        flowcellTypeSelect.appendChild(option);
-    }
-};
-
-function toggleDependentOptions(data) {
+function toggleDependentOptions(data)
+{
     const flowcellTypeSelect = document.getElementById('analysis_form_flowcellType'),
         libraryKitSelect = document.getElementById('analysis_form_libraryToolkit'),
         libraryKitSelectFirstOption = libraryKitSelect.querySelectorAll('option')[0];
@@ -35,13 +20,14 @@ function toggleDependentOptions(data) {
     }
 
     libraryKitSelectFirstOption.removeAttribute('selected');// hide "please select"
-    addLibraryKitOptions();
+    addLibraryKitOptions(data);
 
     flowcellTypeSelect.addEventListener('change', function () {
         addLibraryKitOptions(data);
     });
 
-    function addLibraryKitOptions(data) {
+    function addLibraryKitOptions(data)
+    {
         const optionsOld = libraryKitSelect.querySelectorAll('option:not(:first-child)'),
             value = flowcellTypeSelect.value;
 
@@ -65,9 +51,9 @@ function toggleDependentOptions(data) {
 
             // enable library-kit select
             libraryKitSelect.removeAttribute('disabled');
-        } else{
+        } else {
             libraryKitSelect.setAttribute('disabled', 'disabled');
-            libraryKitSelectFirstOption.setAttribute( 'selected','selected');
+            libraryKitSelectFirstOption.setAttribute('selected', 'selected');
         }
     }
 }

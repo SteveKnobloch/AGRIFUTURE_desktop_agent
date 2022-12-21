@@ -16,7 +16,9 @@
             </a>
             {% if analysis.status.value != 'crashed' %}
                 <a class="btn btn-link btn-small"
-                   href="{{ portal }}/{{ analysis.portalPath(app.request.locale) }}" title="{{ 'Show results of the current analysis on the AGRIFUTURΞ website' | trans }}">
+                   target="_blank"
+                   href="{{ portal }}/{{ analysis.portalPath(app.request.locale) }}"
+                   title="{{ 'Show results of the current analysis on the AGRIFUTURΞ website' | trans }}">
                     <i class="bi bi-bar-chart"></i>
                     {{ 'Results' | trans }}
                 </a>

@@ -4,6 +4,15 @@
 {% block headline 'Connect a user account' | trans %}
 {% block content %}
     {% apply spaceless %}
+        {% set createAccountlink %}
+            <a href="{{ portal }}/{{ 'typo3_slug_register' | trans }}" target="_blank">{{ 'here' | trans }}</a>
+        {% endset %}
+        {% set variable %}
+            {{ 'You don’t have an account yet? Create an account 1 to connect with your desktop agent.' | trans}}
+        {% endset %}
+
+        <p class="mb-3">{{ variable | trans({1:createAccountlink}) | raw}}</p>
+
         {{ form(form) }}
     {% endapply %}
 {% endblock %}
