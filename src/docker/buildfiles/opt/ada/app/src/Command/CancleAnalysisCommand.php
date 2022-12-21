@@ -22,13 +22,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class CancleAnalysisCommand extends Command
 {
-    protected function configure(): void
-    {
-        $this
-            ->addArgument('runUuid', InputArgument::REQUIRED, 'The desktop agent run uuid')
-        ;
-    }
-
     public function __construct(
         private readonly AnalysisRepository $analyses,
         private readonly ApiService $apiService,
@@ -39,8 +32,7 @@ class CancleAnalysisCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $runUuid = $input->getArgument('runUuid');
-        $analysis = $this->analyses->find($runUuid);
+        $analysis = $this->analyses->current();
 
         if (!$analysis) {
             if (!$output->isQuiet()) {

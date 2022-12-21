@@ -50,11 +50,10 @@ ADA_RUN_UUID=""
 ADA_CLEAR_ON_EXIT=1
 
 shutdown() {
-    $ADA_DOCKER_COMMAND_PREFIX docker run --rm -v "${ADA_DATA_DIR}":/home/ada/.local/share/ada $ADA_CONTAINER php bin/console app:cancle-analysis $ADA_RUN_UUID &>/dev/null
-
     rm -f "${ADA_CMD_FILE}"
 
     if [ ! -z ${ADA_CONTAINER_ID+x} ]; then
+        $ADA_DOCKER_COMMAND_PREFIX docker exec $ADA_CONTAINER_ID php bin/console app:cancle-analysis &>/dev/null
         docker kill $ADA_CONTAINER_ID &>/dev/null
     fi
 
