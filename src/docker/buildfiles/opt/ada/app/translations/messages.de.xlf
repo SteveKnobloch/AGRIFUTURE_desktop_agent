@@ -613,6 +613,14 @@
         <source>User manual</source>
         <target>Benutzeranleitung</target>
       </trans-unit>
+      <trans-unit id="hnkzxsJ" resname="Page will be reloaded in">
+        <source>Page will be reloaded in</source>
+        <target>Seite wird neu geladen in</target>
+      </trans-unit>
+      <trans-unit id="WfAG1jv" resname="seconds">
+        <source>seconds</source>
+        <target>Sekunden</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
