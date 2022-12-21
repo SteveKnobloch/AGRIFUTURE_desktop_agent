@@ -94,7 +94,8 @@ final class CurrentAnalysisFactory
         );
 
         if ($analysis instanceof RemoteAnalysis &&
-            $this->analysis->getStatus() !== $analysis->getStatus()
+            $this->analysis->getStatus() !== $analysis->getStatus() &&
+            $analysis->getStatus() !== AnalysisStatus::unknown
         ) {
             $this->analysis->setStatus($analysis->getStatus());
             $this->analyses->save($this->analysis, true);
