@@ -159,12 +159,11 @@ final class CurrentAnalysisFactory
                 );
             }
 
-            public function getStatus(): ?AnalysisStatus
+            public function getStatus(): AnalysisStatus
             {
-                return $this->defferOrCached(
+                return $this->deffer(
                     fn(RemoteAnalysis $a) => $a->getStatus(),
-                    $this->analysis->getStatus()
-                );
+                ) ?? AnalysisStatus::unknown;
             }
 
             public function getCreated(): ?\DateTimeInterface
