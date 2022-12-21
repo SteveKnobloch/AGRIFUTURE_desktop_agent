@@ -17,10 +17,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(
-    name: 'app:cancle-analysis',
-    description: 'Cancle a analysis by the desktop agent run uuid. Acts as a safety net when the desktop agent is closed. Usually called by the launcher script at shutdown.',
+    name: 'app:cancel-analysis',
+    description: 'Cancel a analysis by the desktop agent run uuid. Acts as a safety net when the desktop agent is closed. Usually called by the launcher script at shutdown.',
 )]
-class CancleAnalysisCommand extends Command
+class CancelAnalysisCommand extends Command
 {
     public function __construct(
         private readonly AnalysisRepository $analyses,
@@ -50,7 +50,7 @@ class CancleAnalysisCommand extends Command
 
             if (!$cancel instanceof RemoteAnalysis) {
                 $io->error(
-                    "Cancling analysis {$analysis->localUuid} failed: " .
+                    "Canceling analysis {$analysis->localUuid} failed: " .
                     $cancel->name
                 );
             }

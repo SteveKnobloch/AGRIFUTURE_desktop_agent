@@ -53,7 +53,7 @@ shutdown() {
     rm -f "${ADA_CMD_FILE}"
 
     if [ ! -z ${ADA_CONTAINER_ID+x} ]; then
-        $ADA_DOCKER_COMMAND_PREFIX docker exec $ADA_CONTAINER_ID php bin/console app:cancle-analysis &>/dev/null
+        $ADA_DOCKER_COMMAND_PREFIX docker exec $ADA_CONTAINER_ID php bin/console app:cancel-analysis &>/dev/null
         docker kill $ADA_CONTAINER_ID &>/dev/null
     fi
 
