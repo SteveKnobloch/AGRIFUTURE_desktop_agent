@@ -17,7 +17,6 @@ use App\Enum\GetTokenInformationError;
 use App\Enum\UpdateStatusError;
 use App\Enum\UploadFileError;
 use App\Form\Entity\AnalysisInput;
-use App\Form\Entity\UpdateStatus;
 use App\Repository\TokenRepository;
 use Symfony\Component\HttpClient\Exception\JsonException;
 use Symfony\Component\Security\Core\Security;

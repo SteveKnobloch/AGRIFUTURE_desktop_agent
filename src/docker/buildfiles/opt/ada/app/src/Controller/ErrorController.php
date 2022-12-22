@@ -4,8 +4,6 @@ declare(strict_types = 1);
 namespace App\Controller;
 
 use App\Enum\AnalysisStatus;
-use App\Enum\AnalysisType;
-use App\Form\AnalysisForm;
 use App\Form\UpdateStatusType;
 use App\Repository\AnalysisRepository;
 use App\Service\ApiService;
