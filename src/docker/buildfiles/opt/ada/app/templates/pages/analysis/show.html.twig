@@ -8,22 +8,36 @@
     {% endif %}
 {% endif %}
 
-{% set detailPath = "analysen/detailseite" %}
+{% set detailPath = "analysen/details" %}
 {% if app.request.locale == 'en' %}
-  {% set detailPath = "your-analyses/detailseite" %}
+    {% set detailPath = "your-analyses/details" %}
 {% endif %}
 
 {% block title 'Analysis'|trans ~ ' - ' ~ analysis.name ~' - ' ~ parent() %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('reloadAnalysisPage') }}
+{% endblock %}
 {% block headline analysis.name %}
 {% block content %}
     {% apply spaceless %}
         <div class="rapid-pipeline-analyses-details detail-view">
+            {% if analysis.status.finished == false %}
+                <div class="d-flex justify-content-end page-reload-hint">
+                    <span class="js-reload-message pt-1" hidden>
+                        {{ 'Page will be reloaded in' | trans }}:
+                        <b><span class="js-reloading-time"></span></b>
+                       {{ 'seconds' | trans }}.
+                    </span>
+                </div>
+            {% endif %}
+
             <div class="row row-facts-and-state flex-row-reverse">
                 <div class="col-5 col-facts">
                     <div class="card bg-light p-3">
                         <div class="details-state d-flex flex-column justify-content-between">
                             <div>
-                                <div class="mb-3">
+                                <div class="mb-3 js-analysis-status-{{ analysis.status.value }}">
                                     {% include 'partials/states/badge.html.twig' with {
                                         'state': analysis.status,
                                         'small': false

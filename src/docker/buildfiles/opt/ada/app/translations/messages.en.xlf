@@ -227,7 +227,7 @@
       </trans-unit>
       <trans-unit id="MQ.yABS" resname="close">
         <source>close</source>
-        <target>close</target>
+        <target>Close</target>
       </trans-unit>
       <trans-unit id="4lbujnr" resname="continue">
         <source>continue</source>
@@ -636,6 +636,14 @@
       <trans-unit id="isXTHUg" resname="User manual">
         <source>User manual</source>
         <target>User manual</target>
+      </trans-unit>
+      <trans-unit id="hnkzxsJ" resname="Page will be reloaded in">
+        <source>Page will be reloaded in</source>
+        <target>Page will be reloaded in</target>
+      </trans-unit>
+      <trans-unit id="WfAG1jv" resname="seconds">
+        <source>seconds</source>
+        <target>seconds</target>
       </trans-unit>
     </body>
   </file>

@@ -1,5 +1,10 @@
 .detail-view {
 
+    .page-reload-hint {
+        margin-top    : calc(#{$spacer} * (-8.125)); // -130px
+        margin-bottom : calc(#{$spacer} * 6.25); // 100px;
+    }
+
     .show-all {
         display : inline-block;
         width   : fit-content;

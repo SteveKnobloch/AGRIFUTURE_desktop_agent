@@ -30,4 +30,4 @@ wsl -d Ubuntu docker --version >nul 2>&1 && (
     exit 1
 )
 
-wsl -d Ubuntu bash -c './agrifuture-desktop-agent.sh'
+wsl -u agrifutureAutoInstall -d Ubuntu bash -c './agrifuture-desktop-agent.sh'
