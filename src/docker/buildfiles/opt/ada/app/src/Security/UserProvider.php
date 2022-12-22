@@ -10,6 +10,7 @@ use App\Service\ApiService;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use function Symfony\Component\Translation\t;
 
 class UserProvider implements UserProviderInterface
 {
@@ -22,7 +23,6 @@ class UserProvider implements UserProviderInterface
     {
         return $this->loadFromApi(
             $user->getUserIdentifier(),
-            $user,
         );
     }
 
@@ -39,8 +39,18 @@ class UserProvider implements UserProviderInterface
 
     private function loadFromApi(
         string $token,
-        ?UserInterface $fallback = null,
     ): UserInterface {
+        // We first use the token from the database, but fall back to the user
+        // session. This allows changing to another account as well as using
+        // browser sync to share a token between devices, but it also could
+        // lead to an easy way of resuming a session if the user doesn’t
+        // disconnect using the portal.
+
+        $current = $this->tokens->current();
+        if ($current) {
+            return $current;
+        }
+
         $user = $this->api->getTokenInformation(
             'de',
             $token
@@ -50,12 +60,6 @@ class UserProvider implements UserProviderInterface
             return $user;
         }
 
-        return $fallback ?: throw match($user) {
-            GetTokenInformationError::InvalidToken,
-            GetTokenInformationError::ApiAccessForbidden =>
-            new UserNotFoundException(),
-            GetTokenInformationError::UnknownError =>
-            new \RuntimeException('Fetching token failed.')
-        };
+        throw new UserNotFoundException();
     }
 }
