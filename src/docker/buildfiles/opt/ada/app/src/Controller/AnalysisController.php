@@ -14,8 +14,10 @@ use App\Form\AnalysisForm;
 use App\Form\Entity\UpdateStatus;
 use App\Form\UpdateStatusType;
 use App\Repository\AnalysisRepository;
+use App\Repository\UploadRepository;
 use App\Service\ApiService;
 use App\Service\CurrentAnalysisFactory;
+use Doctrine\Common\Collections\Criteria;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
@@ -30,7 +32,7 @@ final class AnalysisController extends AbstractController
     public function __construct(
         public readonly ApiService $api,
         public readonly AnalysisRepository $analyses,
-
+        public readonly UploadRepository $uploads,
     ) {}
 
     #[Route(
@@ -140,13 +142,29 @@ final class AnalysisController extends AbstractController
             $i18n
         );
 
+        $params = array_map(
+            fn(FormInterface $form) => $form->createView(),
+            $actions
+        );
+
+        $params['currentFile'] = $this->getCurrentFile();
+
         return $this->render(
             'pages/analysis/show.html.twig',
-            array_map(
-                fn(FormInterface $form) => $form->createView(),
-                $actions
-            )
+            $params,
         );
+    }
+
+    private function getCurrentFile(): string
+    {
+        $upload = $this->uploads->findBy(
+            ['analysis' => $this->analyses->current()->localUuid],
+            ['id' => Criteria::DESC],
+        )[0];
+
+        $parts = explode('/', $upload->fileName);
+
+        return array_pop($parts);
     }
 
     private function analysisActions(

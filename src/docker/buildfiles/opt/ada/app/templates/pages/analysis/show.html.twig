@@ -44,7 +44,8 @@
                                     } %}
                                 </div>
                                 <div>
-                                    {% include 'partials/analysis/show/state.html.twig' with { 'analysis': analysis } %}
+                                    {% include 'partials/analysis/show/state.html.twig'
+                                        with { 'analysis': analysis, 'currentFile': currentFile } %}
                                 </div>
                             </div>
                             <div class="mt-3 mt-0">

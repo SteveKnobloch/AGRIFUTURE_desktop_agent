@@ -40,9 +40,9 @@
         'label': 'Number of files uploaded' | trans,
         'value': analysis.uploaded | length
     } %}
-    {# ToDo This isn’t tracked.
+
     {% include 'partials/facts.html.twig' with {
         'label': 'Current file' | trans,
-        'value': analysis.currentFile
-    } %} #}
+        'value': currentFile
+    } %}
 </div>
