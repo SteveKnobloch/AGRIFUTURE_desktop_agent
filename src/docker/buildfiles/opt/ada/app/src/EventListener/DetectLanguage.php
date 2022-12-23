@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace App\EventListener;
 
-use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -26,7 +25,13 @@ final class DetectLanguage
             }
         }
 
-        foreach ($event->getRequest()->getLanguages() as $requested) {
+        $acceptLanguages = [
+            ...$event->getRequest()->getLanguages(),
+            // Fall back to default if nothing matched
+            $event->getRequest()->getDefaultLocale(),
+            reset($locales)
+        ];
+        foreach ($acceptLanguages as $requested) {
             $requested = strtolower(substr($requested, 0, 2));
             if (in_array($requested, $locales)) {
                 $event->setResponse(
@@ -34,6 +39,7 @@ final class DetectLanguage
                         "/$requested{$event->getRequest()->getPathInfo()}"
                     )
                 );
+                return;
             }
         }
     }
