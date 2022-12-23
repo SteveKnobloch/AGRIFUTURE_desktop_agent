@@ -7,42 +7,56 @@
         'label': 'Format of raw data' | trans,
         'value': analysis.format.value | trans
     } %}
-    {% include 'partials/facts.html.twig' with {
-        'label': 'Host plant' | trans,
-        'value': analysis.host
-    } %}
+
+    {% if analysis.host %}
+        {% include 'partials/facts.html.twig' with {
+            'label': 'Host plant' | trans,
+            'value': analysis.host
+        } %}
+    {% endif %}
+
     {% include 'partials/facts.html.twig' with {
         'label': 'Country of sample origin' | trans,
         'value': analysis.country
     } %}
-    {% include 'partials/facts.html.twig' with {
-        'label': 'Location of sample collection' | trans,
-        'value': analysis.city
-    } %}
 
-    <dl class="d-table-row">
-        <dt class="d-table-cell strong">
-            {{ 'Geolocation of sample collection site' | trans }}:
-        </dt>
-        <dd class="d-table-cell px-2">
-            <div class="d-table">
-                <dl class="d-table-row">
-                    <dt class="d-table-cell strong">
-                        {{ 'Longitude' | trans }}:
-                    </dt>
-                    <dd class="d-table-cell px-2">
-                        {{ analysis.longitude }}
-                    </dd>
-                </dl>
-                <dl class="d-table-row">
-                    <dt class="d-table-cell strong">
-                        {{ 'Latitude' | trans }}:
-                    </dt>
-                    <dd class="d-table-cell px-2">
-                        {{ analysis.latitude }}
-                    </dd>
-                </dl>
-            </div>
-        </dd>
-    </dl>
+    {% if analysis.city %}
+        {% include 'partials/facts.html.twig' with {
+            'label': 'Location of sample collection' | trans,
+            'value': analysis.city
+        } %}
+    {% endif %}
+
+    {% if analysis.longitude or analysis.latitude %}
+        <dl class="d-table-row">
+            <dt class="d-table-cell strong">
+                {{ 'Geolocation of sample collection site' | trans }}:
+            </dt>
+            <dd class="d-table-cell px-3">
+                <div class="d-table">
+                    {% if analysis.longitude %}
+                        <dl class="d-table-row">
+                            <dt class="d-table-cell">
+                                {{ 'Longitude' | trans }}:
+                            </dt>
+                            <dd class="d-table-cell px-2">
+                                {{ analysis.longitude }}
+                            </dd>
+                        </dl>
+                    {% endif %}
+
+                    {% if analysis.latitude %}
+                        <dl class="d-table-row">
+                            <dt class="d-table-cell">
+                                {{ 'Latitude' | trans }}:
+                            </dt>
+                            <dd class="d-table-cell px-2">
+                                {{ analysis.latitude }}
+                            </dd>
+                        </dl>
+                    {% endif %}
+                </div>
+            </dd>
+        </dl>
+    {% endif %}
 </div>
