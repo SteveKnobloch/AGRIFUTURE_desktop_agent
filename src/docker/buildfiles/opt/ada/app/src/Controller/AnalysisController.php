@@ -160,9 +160,13 @@ final class AnalysisController extends AbstractController
         $upload = $this->uploads->findBy(
             ['analysis' => $this->analyses->current()->localUuid],
             ['id' => Criteria::DESC],
-        )[0];
+        );
 
-        $parts = explode('/', $upload->fileName);
+        if (!$upload) {
+            return '';
+        }
+
+        $parts = explode('/', $upload[0]->fileName);
 
         return array_pop($parts);
     }
