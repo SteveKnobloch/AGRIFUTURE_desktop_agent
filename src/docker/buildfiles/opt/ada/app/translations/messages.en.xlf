@@ -625,10 +625,6 @@
         <source>here</source>
         <target>here</target>
       </trans-unit>
-      <trans-unit id="X9WI1EJ" resname="You don’t have an account yet? Create an account 1 to connect with your desktop agent.">
-        <source>You don’t have an account yet? Create an account 1 to connect with your desktop agent.</source>
-        <target>You don’t have an account yet? Create an account 1 to connect with your desktop agent.</target>
-      </trans-unit>
       <trans-unit id="_Fp8uy5" resname="typo3_slug_user_manual">
         <source>typo3_slug_user_manual</source>
         <target>user-manual</target>
@@ -644,6 +640,22 @@
       <trans-unit id="WfAG1jv" resname="seconds">
         <source>seconds</source>
         <target>seconds</target>
+      </trans-unit>
+      <trans-unit id="hgM.daT" resname="Create an account">
+        <source>Create an account</source>
+        <target>Create an account</target>
+      </trans-unit>
+      <trans-unit id="81esUbl" resname="You don’t have an account yet? 1 to connect with your desktop agent.">
+        <source>You don’t have an account yet? 1 to connect with your desktop agent.</source>
+        <target>You don’t have an account yet? 1 to connect with your desktop agent.</target>
+      </trans-unit>
+      <trans-unit id="WaY7oTC" resname="logoEFRE_en.svg">
+        <source>logoEFRE_en.svg</source>
+        <target>logoEFRE_en.svg</target>
+      </trans-unit>
+      <trans-unit id="1fdsuQT" resname="EUROPEAN UNION - REACT-EU - European Regional Development Fund">
+        <source>EUROPEAN UNION - REACT-EU - European Regional Development Fund</source>
+        <target>EUROPEAN UNION - REACT-EU - European Regional Development Fund</target>
       </trans-unit>
     </body>
   </file>

@@ -132,7 +132,6 @@ class AnalysisForm extends AbstractType
                     'label' => 'Format of raw data',
                     'help' => 'Dependent on selection, further fields could be shown.',
                     'attr' => [
-                        'id' => 'selectDataFormat',
                         'aria-expanded' => false,
                         'aria-controls' => 'collapseFast5Options'
                     ],

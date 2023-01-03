@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="footer-block footer-block-meta col justify-content-end order-last">
-                <nav aria-label="{{ 'Metanavigation' | trans }}" id="navigation-meta" class="mb-3">
+                <nav aria-label="{{ 'Metanavigation' | trans }}" id="navigation-meta-footer" class="mb-3">
                     <ul role="menubar" class="nav nav-meta  justify-content-end">
                         <li class="nav-item first">
                             <a role="menuitem"
@@ -26,8 +26,8 @@
                 </nav>
                 <div class="logo-efre">
                     <img class="logo"
-                         src="/images/logoEFRE.svg"
-                         alt="EUROPÄISCHE UNION - REACT-EU - Europäischer Fonds für regionale Entwicklung" with="213">
+                         src="/images/{{ 'logoEFRE_en.svg' | trans }}"
+                         alt="{{ 'EUROPEAN UNION - REACT-EU - European Regional Development Fund' | trans  }}" width="213">
                 </div>
             </div>
             <div class="footer-block footer-block-logo col-3">
@@ -67,7 +67,7 @@
                         <li>
                             <span>{{ 'Fax' | trans }}:</span>
                             <span>
-                                <a href="tel:+49697542-0">
+                                <a href="tel:+4969746238">
                                     +49 69 746238
                                 </a>
                             </span>

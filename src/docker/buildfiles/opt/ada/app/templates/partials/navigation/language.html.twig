@@ -14,10 +14,10 @@
                 {% trans %}language label english{% endtrans %}
             {% endif %}
         </button>
-        <ul class="dropdown-menu dropdown-menu-end">
+        <ul class="dropdown-menu dropdown-menu-end" role="menubar">
             {% for locale in locales %}
                 {% if locale != app.request.locale %}
-                    <li role="menu" class="dropdown-item">
+                    <li class="dropdown-item">
                         {% if locale == 'de' %}
                             {% set label = 'language label german'|trans %}
                         {% else %}

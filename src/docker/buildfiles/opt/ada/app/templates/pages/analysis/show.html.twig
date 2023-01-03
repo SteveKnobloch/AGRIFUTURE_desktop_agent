@@ -62,8 +62,10 @@
                             </div>
                             {% if analysis.status.value != 'crashed' %}
                                 <div class="col-5 d-flex justify-content-end">
-                                    <a href="{{ portal }}/{{ analysis.portalPath(app.request.locale) }}" class="col-header show-all"
-                                       title="{{ 'Show results of the current analysis on the AGRIFUTURΞ website' | trans }}">
+                                    <a href="{{ portal }}/{{ analysis.portalPath(app.request.locale) }}"
+                                       class="col-header show-all"
+                                       title="{{ 'Show results of the current analysis on the AGRIFUTURΞ website' | trans }}"
+                                       target="_blank">
                                         <i class="bi bi-bar-chart"></i>
                                         {{ 'Show results of Analysis' | trans }}
                                     </a>
