@@ -597,14 +597,6 @@
         <source>typo3_slug_register</source>
         <target>registrierung</target>
       </trans-unit>
-      <trans-unit id=".OyRUJd" resname="here">
-        <source>here</source>
-        <target>hier</target>
-      </trans-unit>
-      <trans-unit id="X9WI1EJ" resname="You don’t have an account yet? Create an account 1 to connect with your desktop agent.">
-        <source>You don’t have an account yet? Create an account 1 to connect with your desktop agent.</source>
-        <target>Sie haben noch kein Konto? Erstellen Sie 1 ein Konto, um sich mit Ihrem Desktop-Agenten zu verbinden.</target>
-      </trans-unit>
       <trans-unit id="_Fp8uy5" resname="typo3_slug_user_manual">
         <source>typo3_slug_user_manual</source>
         <target>benutzeranleitung</target>
@@ -613,6 +605,14 @@
         <source>User manual</source>
         <target>Benutzeranleitung</target>
       </trans-unit>
+      <trans-unit id="hgM.daT" resname="Create an account">
+        <source>Create an account</source>
+        <target>Erstellen Sie ein Benutzerkonto,</target>
+      </trans-unit>
+      <trans-unit id="81esUbl" resname="You don’t have an account yet? 1 to connect with your desktop agent.">
+        <source>You don’t have an account yet? 1 to connect with your desktop agent.</source>
+        <target>Sie haben noch kein Benutzerkonto? 1 um sich mit Ihrem Desktop-Agenten zu verbinden.</target>
+      </trans-unit>
       <trans-unit id="hnkzxsJ" resname="Page will be reloaded in">
         <source>Page will be reloaded in</source>
         <target>Seite wird neu geladen in</target>
@@ -620,6 +620,14 @@
       <trans-unit id="WfAG1jv" resname="seconds">
         <source>seconds</source>
         <target>Sekunden</target>
+      </trans-unit>
+      <trans-unit id="WaY7oTC" resname="logoEFRE_en.svg">
+        <source>logoEFRE_en.svg</source>
+        <target>logoEFRE.svg</target>
+      </trans-unit>
+      <trans-unit id="1fdsuQT" resname="EUROPEAN UNION - REACT-EU - European Regional Development Fund">
+        <source>EUROPEAN UNION - REACT-EU - European Regional Development Fund</source>
+        <target>EUROPÄISCHE UNION - REACT-EU - Europäischer Fonds für regionale Entwicklung</target>
       </trans-unit>
     </body>
   </file>
