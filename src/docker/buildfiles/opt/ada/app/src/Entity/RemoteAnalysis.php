@@ -226,7 +226,7 @@ class RemoteAnalysis
     public final function portalPath(string $locale) {
         return match ($locale) {
             'de' => 'analysen/details',
-            'en' => 'your-analyses/details',
+            'en' => 'analyses/details',
         } . '?tx_rapidpipeline_pipelineanalysis[action]=detail' .
             '&tx_rapidpipeline_pipelineanalysis[controller]=PipelineAnalysis' .
             "&tx_rapidpipeline_pipelineanalysis[pipeline]={$this->getId()}";

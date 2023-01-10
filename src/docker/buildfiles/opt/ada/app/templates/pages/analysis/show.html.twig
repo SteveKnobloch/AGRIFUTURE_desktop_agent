@@ -10,7 +10,7 @@
 
 {% set detailPath = "analysen/details" %}
 {% if app.request.locale == 'en' %}
-    {% set detailPath = "your-analyses/details" %}
+    {% set detailPath = "analyses/details" %}
 {% endif %}
 
 {% block title 'Analysis'|trans ~ ' - ' ~ analysis.name ~' - ' ~ parent() %}
