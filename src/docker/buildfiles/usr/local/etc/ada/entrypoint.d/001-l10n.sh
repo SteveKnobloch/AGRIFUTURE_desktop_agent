@@ -21,10 +21,8 @@ setup_language() {
     export LANGUAGE=$ADA_LANG
     export LC_ALL=$ADA_LANG
 
-    if [ "$ADA_LANG" == "en_US.UTF-8" ]; then
-        local ADA_TIME=America/New_York
-    elif [ "$ADA_LANG" == "de_DE.UTF-8" ]; then
-        local ADA_TIME=Europe/Berlin
+    if [ -f "/home/ada/.local/share/ada/timezone" ]; then
+        local ADA_TIME=$(cat /home/ada/.local/share/ada/timezone | tr -d '\n')
     fi
 
     if [ ! -z "ADA_TIME" ]; then

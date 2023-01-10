@@ -206,6 +206,12 @@ main() {
       let ADA_PORT=ADA_PORT+1
     done
 
+    if [ -f "/etc/timezone" ]; then
+        cat "/etc/timezone" > "${ADA_DATA_DIR}/timezone"
+    elif [ -f "/etc/localtime" ]; then
+        echo $(ls -la /etc/localtime | awk -F "zoneinfo/" '{print $2}') > "${ADA_DATA_DIR}/timezone"
+    fi
+
     ADA_RUNNING_CONTAINERS=$(docker ps --filter "label=de.senckenberg.agrifuture=agrifuture_desktop_agent" | tail -n +2 | wc -l | tr -d ' ')
     ADA_CONTAINER_ID=$(docker run --rm -d --label de.senckenberg.agrifuture=agrifuture_desktop_agent -e ADA_PORTAL_DE=https://dreistromland:4DuRyv2PGziZzoMQgJTm@agrifuture.senckenberg.de -e ADA_PORTAL_EN=https://dreistromland:4DuRyv2PGziZzoMQgJTm@agrifuture.senckenberg.de/en -e ADA_CHECK_CERTIFICATES=0 -e ADA_RUN_AGENT=1 -e ADA_RUNNING_CONTAINERS=$ADA_RUNNING_CONTAINERS -e ADA_HOST_DIRECTORY=$ADA_HOST_DIRECTORY -e ADA_RUN_UUID=$ADA_RUN_UUID -v "$ADA_DATA_DIR":/home/ada/.local/share/ada -v "$ADA_HOST_DIRECTORY":/data:ro -p "127.0.0.1:$ADA_PORT:80" $ADA_CONTAINER)
     for i in {1..5}; do
