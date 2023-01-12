@@ -15,5 +15,7 @@ class Kernel extends BaseKernel
         if ($timeZone) {
             date_default_timezone_set($timeZone);
         }
+
+        parent::boot();
     }
 }
