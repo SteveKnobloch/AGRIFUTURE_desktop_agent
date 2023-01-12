@@ -8,4 +8,12 @@ use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
+
+    public function boot()
+    {
+        $timeZone = getenv('TZ');
+        if ($timeZone) {
+            date_default_timezone_set($timeZone);
+        }
+    }
 }
