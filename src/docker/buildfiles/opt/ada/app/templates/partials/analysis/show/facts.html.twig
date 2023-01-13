@@ -17,7 +17,7 @@
 
     {% include 'partials/facts.html.twig' with {
         'label': 'Country of sample origin' | trans,
-        'value': analysis.country
+        'value': analysis.countryName
     } %}
 
     {% if analysis.city %}
