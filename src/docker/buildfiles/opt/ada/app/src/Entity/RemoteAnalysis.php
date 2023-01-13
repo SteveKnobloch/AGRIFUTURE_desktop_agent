@@ -7,6 +7,7 @@ use App\Enum\AnalysisStatus;
 use App\Enum\AnalysisType;
 use App\Enum\FileFormat;
 use DateTimeImmutable;
+use Symfony\Component\Intl\Countries;
 
 class RemoteAnalysis
 {
@@ -162,6 +163,13 @@ class RemoteAnalysis
     public function getCountry(): ?string
     {
         return $this->country;
+    }
+
+    public function getCountryName(): ?string
+    {
+        return $this->country ?
+            Countries::getName($this->country) :
+            null;
     }
 
     public function getCity(): ?string
