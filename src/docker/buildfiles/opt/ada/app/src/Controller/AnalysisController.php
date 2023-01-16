@@ -311,18 +311,26 @@ final class AnalysisController extends AbstractController
     ): void {
         $localFiles = [];
 
+        // Used to skip identical error messages (mainly 503 responses)
+        $errors = [];
+
         // Add upload errors and warnings
         foreach ($analysisFactory->cached()->getUploads() as $upload) {
             if ($upload->getError()) {
-                $controller->addFlash(
-                    $upload->isUploaded() ? 'warning' : 'danger',
-                    $i18n->trans(
-                        $i18n->trans("uploadError.{$upload->getError()->name}"),
-                        [
-                            '{file}' => $upload->fileName,
-                        ]
-                    )
+                $message = $i18n->trans(
+                    "uploadError.{$upload->getError()->name}",
+                    [
+                        '{file}' => $upload->fileName,
+                    ]
                 );
+
+                if (!isset($errors[$message])) {
+                    $controller->addFlash(
+                        $upload->isUploaded() ? 'warning' : 'danger',
+                        $message,
+                    );
+                    $errors[$message] = true;
+                }
                 continue;
             }
 
@@ -343,6 +351,7 @@ final class AnalysisController extends AbstractController
 
             $localFiles[$name] = [
                 'exists' => fn() => is_file($upload->fileName),
+                'uploaded' => fn() => $upload->isUploaded(),
                 'size' => fn() => filesize($upload->fileName),
                 'crc32' => fn() => crc32($upload->fileName),
                 'gz' => $isGz
@@ -369,6 +378,12 @@ final class AnalysisController extends AbstractController
                     'warning', $warning()
                 );
                 break;
+            }
+
+            if (!$local['uploaded']) {
+                // Skip other checks if not uploaded - it’s probably not
+                // fully uploaded yet.
+                continue;
             }
 
             if ($local['gz']) {

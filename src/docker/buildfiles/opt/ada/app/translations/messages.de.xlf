@@ -571,7 +571,7 @@
       </trans-unit>
       <trans-unit id="l7kMPg_" resname="uploadError.RetryLater">
         <source>uploadError.RetryLater</source>
-        <target>Das hochladen von Dateien ist aufgrund hoher Resourcefulness auf unseren Servern gerade unterbrochen.</target>
+        <target>Das hochladen von Dateien ist aufgrund hoher Resourcenauslastung auf unseren Servern gerade unterbrochen.</target>
       </trans-unit>
       <trans-unit id="EJvFDw9" resname="uploadError.AlreadyUploaded">
         <source>uploadError.AlreadyUploaded</source>
