@@ -17,6 +17,7 @@ use App\Repository\AnalysisRepository;
 use App\Repository\UploadRepository;
 use App\Service\ApiService;
 use App\Service\CurrentAnalysisFactory;
+use App\Service\PortalUrl;
 use Doctrine\Common\Collections\Criteria;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
@@ -46,6 +47,7 @@ final class AnalysisController extends AbstractController
         Request $request,
         CurrentAnalysisFactory $analysisFactory,
         TranslatorInterface $i18n,
+        PortalUrl $portal,
         string $_locale,
     ): Response
     {
@@ -114,6 +116,24 @@ final class AnalysisController extends AbstractController
                     'danger',
                 $analysis->getFinishedReason()
             );
+
+            if ($analysis->getStatus() === AnalysisStatus::crashed) {
+                $this->addFlash(
+                    'info',
+                    [
+                        'message' => $i18n->trans(
+                            'Don’t know why your analysis was stopped? Check our <a href=%url%>User Manual</a>.',
+                            [
+                                '%url%' => $portal($_locale) . '/' .
+                                    $i18n->trans('typo3_slug_user_manual')
+                            ]
+                        ),
+                        'raw' => true,
+                        'icon' => 'bi bi-question-circle text-info'
+                    ]
+                );
+            }
+
             self::addUploadErrors(
                 $this,
                 $analysisFactory,
@@ -291,18 +311,26 @@ final class AnalysisController extends AbstractController
     ): void {
         $localFiles = [];
 
+        // Used to skip identical error messages (mainly 503 responses)
+        $errors = [];
+
         // Add upload errors and warnings
         foreach ($analysisFactory->cached()->getUploads() as $upload) {
             if ($upload->getError()) {
-                $controller->addFlash(
-                    $upload->isUploaded() ? 'warning' : 'danger',
-                    $i18n->trans(
-                        $i18n->trans("uploadError.{$upload->getError()->name}"),
-                        [
-                            '{file}' => $upload->fileName,
-                        ]
-                    )
+                $message = $i18n->trans(
+                    "uploadError.{$upload->getError()->name}",
+                    [
+                        '{file}' => $upload->fileName,
+                    ]
                 );
+
+                if (!isset($errors[$message])) {
+                    $controller->addFlash(
+                        $upload->isUploaded() ? 'warning' : 'danger',
+                        $message,
+                    );
+                    $errors[$message] = true;
+                }
                 continue;
             }
 
@@ -323,6 +351,7 @@ final class AnalysisController extends AbstractController
 
             $localFiles[$name] = [
                 'exists' => fn() => is_file($upload->fileName),
+                'uploaded' => fn() => $upload->isUploaded(),
                 'size' => fn() => filesize($upload->fileName),
                 'crc32' => fn() => crc32($upload->fileName),
                 'gz' => $isGz
@@ -349,6 +378,12 @@ final class AnalysisController extends AbstractController
                     'warning', $warning()
                 );
                 break;
+            }
+
+            if (!$local['uploaded']) {
+                // Skip other checks if not uploaded - it’s probably not
+                // fully uploaded yet.
+                continue;
             }
 
             if ($local['gz']) {

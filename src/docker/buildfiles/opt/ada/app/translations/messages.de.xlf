@@ -571,7 +571,7 @@
       </trans-unit>
       <trans-unit id="l7kMPg_" resname="uploadError.RetryLater">
         <source>uploadError.RetryLater</source>
-        <target>Das hochladen von Dateien ist aufgrund hoher Resourcefulness auf unseren Servern gerade unterbrochen.</target>
+        <target>Das hochladen von Dateien ist aufgrund hoher Resourcenauslastung auf unseren Servern gerade unterbrochen.</target>
       </trans-unit>
       <trans-unit id="EJvFDw9" resname="uploadError.AlreadyUploaded">
         <source>uploadError.AlreadyUploaded</source>
@@ -628,6 +628,10 @@
       <trans-unit id="1fdsuQT" resname="EUROPEAN UNION - REACT-EU - European Regional Development Fund">
         <source>EUROPEAN UNION - REACT-EU - European Regional Development Fund</source>
         <target>EUROPÄISCHE UNION - REACT-EU - Europäischer Fonds für regionale Entwicklung</target>
+      </trans-unit>
+      <trans-unit id="ufnM_yb" resname="Don’t know why your analysis was stopped? Check our &lt;a href=%url%&gt;User Manual&lt;/a&gt;.">
+        <source>Don’t know why your analysis was stopped? Check our &lt;a href=%url%&gt;User Manual&lt;/a&gt;.</source>
+        <target><![CDATA[Wissen Sie nicht, warum Ihre Analyse gestoppt wurde? Schauen Sie sich unsere <a href=%url%>Benutzeranleitung</a> an.]]></target>
       </trans-unit>
     </body>
   </file>

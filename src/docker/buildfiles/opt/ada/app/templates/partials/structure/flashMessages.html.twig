@@ -1,0 +1,35 @@
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        {%  if message.icon is defined %}
+            {% set iconClasses = message.icon %}
+        {% else %}
+            {% set iconClasses = 'bi bi-check-circle text-success' %}
+
+            {% if label == 'info' %}
+                {% set iconClasses = 'bi bi-info-circle text-info' %}
+            {% endif %}
+
+            {% if label == 'warning' %}
+                {% set iconClasses = 'bi bi-exclamation-circle text-warning' %}
+            {% endif %}
+
+            {% if label == 'danger' %}
+                {% set iconClasses = 'bi bi-exclamation-triangle-fill text-danger' %}
+            {% endif %}
+        {% endif %}
+
+        <div class="alert alert-{{ label }}">
+            <i class="{{ iconClasses }}"></i>
+
+            {% if message.message is defined %}
+                {% if message.raw is defined and message.raw %}
+                    {{ message.message|raw }}
+                {% else %}
+                    {{ message.message }}
+                {% endif %}
+            {% else %}
+                {{ message }}
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endfor %}
