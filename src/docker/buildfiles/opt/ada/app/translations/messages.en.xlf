@@ -657,6 +657,10 @@
         <source>EUROPEAN UNION - REACT-EU - European Regional Development Fund</source>
         <target>EUROPEAN UNION - REACT-EU - European Regional Development Fund</target>
       </trans-unit>
+      <trans-unit id="ufnM_yb" resname="Don’t know why your analysis was stopped? Check our &lt;a href=%url%&gt;User Manual&lt;/a&gt;.">
+        <source>Don’t know why your analysis was stopped? Check our &lt;a href=%url%&gt;User Manual&lt;/a&gt;.</source>
+        <target><![CDATA[Don’t know why your analysis was stopped? Check our <a href=%url%>User Manual</a>.]]></target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

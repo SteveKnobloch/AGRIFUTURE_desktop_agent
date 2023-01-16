@@ -10,11 +10,8 @@
     <main id="main">
         <article class="content py-5 container">
             <h1>{% block headline %}{% endblock %}</h1>
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ label }}">{{ message }}</div>
-                {% endfor %}
-            {% endfor %}
+
+            {% include 'partials/structure/flashMessages.html.twig' %}
 
             {% block content %}{% endblock %}
         </article>

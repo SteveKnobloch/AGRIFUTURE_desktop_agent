@@ -17,6 +17,7 @@ use App\Repository\AnalysisRepository;
 use App\Repository\UploadRepository;
 use App\Service\ApiService;
 use App\Service\CurrentAnalysisFactory;
+use App\Service\PortalUrl;
 use Doctrine\Common\Collections\Criteria;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
@@ -46,6 +47,7 @@ final class AnalysisController extends AbstractController
         Request $request,
         CurrentAnalysisFactory $analysisFactory,
         TranslatorInterface $i18n,
+        PortalUrl $portal,
         string $_locale,
     ): Response
     {
@@ -114,6 +116,24 @@ final class AnalysisController extends AbstractController
                     'danger',
                 $analysis->getFinishedReason()
             );
+
+            if ($analysis->getStatus() === AnalysisStatus::crashed) {
+                $this->addFlash(
+                    'info',
+                    [
+                        'message' => $i18n->trans(
+                            'Don’t know why your analysis was stopped? Check our <a href=%url%>User Manual</a>.',
+                            [
+                                '%url%' => $portal($_locale) . '/' .
+                                    $i18n->trans('typo3_slug_user_manual')
+                            ]
+                        ),
+                        'raw' => true,
+                        'icon' => 'bi bi-question-circle text-info'
+                    ]
+                );
+            }
+
             self::addUploadErrors(
                 $this,
                 $analysisFactory,
