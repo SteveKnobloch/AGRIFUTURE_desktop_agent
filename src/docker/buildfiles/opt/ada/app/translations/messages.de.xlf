@@ -1,638 +1,646 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
-    <header>
-      <tool tool-id="symfony" tool-name="Symfony"/>
-    </header>
-    <body>
-      <trans-unit id="0ZjtMNC" resname="Imprint">
-        <source>Imprint</source>
-        <target>Impressum</target>
-      </trans-unit>
-      <trans-unit id="Z54GrT7" resname="Privacy policy and terms of service">
-        <source>Privacy policy and terms of service</source>
-        <target>Datenschutz und Nutzungsbedingungen</target>
-      </trans-unit>
-      <trans-unit id="Y9zriAC" resname="Phone">
-        <source>Phone</source>
-        <target>Telefon</target>
-      </trans-unit>
-      <trans-unit id="ANhKtG5" resname="Fax">
-        <source>Fax</source>
-        <target>Fax</target>
-      </trans-unit>
-      <trans-unit id="f4OxZX." resname="Hello World!">
-        <source>Hello World!</source>
-        <target>Hallo Welt!</target>
-      </trans-unit>
-      <trans-unit id="HLC6El_" resname="Information">
-        <source>Information</source>
-        <target>Information</target>
-      </trans-unit>
-      <trans-unit id="oaGBQ4g" resname="AGRIFUTURΞ - Desktop Agent">
-        <source>AGRIFUTURΞ - Desktop Agent</source>
-        <target>AGRIFUTURΞ - Desktop Agent</target>
-      </trans-unit>
-      <trans-unit id="mDHMIeX" resname="Metanavigation">
-        <source>Metanavigation</source>
-        <target>Metanavigation</target>
-      </trans-unit>
-      <trans-unit id="RZid5J_" resname="Details">
-        <source>Details</source>
-        <target>Details</target>
-      </trans-unit>
-      <trans-unit id="IZxKbIa" resname="Results">
-        <source>Results</source>
-        <target>Ergebnisse</target>
-      </trans-unit>
-      <trans-unit id="wHHPX17" resname="running">
-        <source>running</source>
-        <target>gestartet</target>
-      </trans-unit>
-      <trans-unit id="p6ncW89" resname="paused">
-        <source>paused</source>
-        <target>pausiert</target>
-      </trans-unit>
-      <trans-unit id=".0LdDeS" resname="crashed">
-        <source>crashed</source>
-        <target>abgebrochen</target>
-      </trans-unit>
-      <trans-unit id="Tds_loA" resname="completed">
-        <source>completed</source>
-        <target>beendet</target>
-      </trans-unit>
-      <trans-unit id="8HUVpL7" resname="language label german">
-        <source>language label german</source>
-        <target>Deutsch</target>
-      </trans-unit>
-      <trans-unit id="RXnw3wL" resname="language label english">
-        <source>language label english</source>
-        <target>English</target>
-      </trans-unit>
-      <trans-unit id="6yHlGcn" resname="Frontpage">
-        <source>Frontpage</source>
-        <target>Startseite</target>
-      </trans-unit>
-      <trans-unit id="P3BYWZy" resname="Show details of the current analysis">
-        <source>Show details of the current analysis</source>
-        <target>Details der aktuellen Analyse anzeigen</target>
-      </trans-unit>
-      <trans-unit id="Tyc.gYj" resname="Show results of the current analysis on the AGRIFUTURΞ website">
-        <source>Show results of the current analysis on the AGRIFUTURΞ website</source>
-        <target>Ergebnisse der aktuellen Analyse auf der AGRIFUTURΞ Website anzeigen</target>
-      </trans-unit>
-      <trans-unit id="3nHHvkl" resname="Launch an analysis">
-        <source>Launch an analysis</source>
-        <target>Eine Analyse starten</target>
-      </trans-unit>
-      <trans-unit id="K2oqPxl" resname="Connect user account">
-        <source>Connect user account</source>
-        <target>Benutzerkonto verknüpfen</target>
-      </trans-unit>
-      <trans-unit id="3xNmUEV" resname="Connect a user account">
-        <source>Connect a user account</source>
-        <target>Ein Benutzerkonto verknüpfen</target>
-      </trans-unit>
-      <trans-unit id="xY1E3ry" resname="Connected user account">
-        <source>Connected user account</source>
-        <target>Verknüpftes Benutzerkonto</target>
-      </trans-unit>
-      <trans-unit id="qNWiL6D" resname="Title of desktop agent">
-        <source>Title of desktop agent</source>
-        <target>Titel des Desktop-Agents</target>
-      </trans-unit>
-      <trans-unit id="Ur6Zgde" resname="Show and edit connected user account">
-        <source>Show and edit connected user account</source>
-        <target>Verknüpftes Benutzerkonto anzeigen und bearbeiten</target>
-      </trans-unit>
-      <trans-unit id="hTokPVz" resname="Connect another user account">
-        <source>Connect another user account</source>
-        <target>Ein anderes Benutzerkonto verknüpfen</target>
-      </trans-unit>
-      <trans-unit id="P6fF7xk" resname="Your email address">
-        <source>Your email address</source>
-        <target>Ihre E-Mail-Adresse</target>
-      </trans-unit>
-      <trans-unit id="c1JsnF6" resname="Host determination">
-        <source>Host determination</source>
-        <target>Wirtsbestimmung</target>
-      </trans-unit>
-      <trans-unit id="ThICcKi" resname="Pathogen determination">
-        <source>Pathogen determination</source>
-        <target>Pathogenbestimmung</target>
-      </trans-unit>
-      <trans-unit id="5w2OuQU" resname="Analysis">
-        <source>Analysis</source>
-        <target>Analyse</target>
-      </trans-unit>
-      <trans-unit id="T8UqPEx" resname="Duration">
-        <source>Duration</source>
-        <target>Laufzeit</target>
-      </trans-unit>
-      <trans-unit id="41GC5hs" resname="Upload folder">
-        <source>Upload folder</source>
-        <target>Upload Ordner</target>
-      </trans-unit>
-      <trans-unit id="UPaoh96" resname="Number of files uploaded">
-        <source>Number of files uploaded</source>
-        <target>Anzahl der übertragenen Dateien</target>
-      </trans-unit>
-      <trans-unit id="WskiVpi" resname="Current file">
-        <source>Current file</source>
-        <target>Aktuelle Datei</target>
-      </trans-unit>
-      <trans-unit id="I3TZF5S" resname="cancel">
-        <source>cancel</source>
-        <target>abbrechen</target>
-      </trans-unit>
-      <trans-unit id="YhDAvwU" resname="pause">
-        <source>pause</source>
-        <target>pausieren</target>
-      </trans-unit>
-      <trans-unit id="bEXLcqN" resname="stop">
-        <source>stop</source>
-        <target>beenden</target>
-      </trans-unit>
-      <trans-unit id="zE6ar_G" resname="Cancel analysis">
-        <source>Cancel analysis</source>
-        <target>Analyse abbrechen</target>
-      </trans-unit>
-      <trans-unit id="YJxWmEs" resname="Are you sure you want to cancel the current analysis?">
-        <source>Are you sure you want to cancel the current analysis?</source>
-        <target>Sind Sie sicher, dass Sie die Analyse abbrechen möchten? Alle Daten dieser Analyse gehen dabei verloren!</target>
-      </trans-unit>
-      <trans-unit id="h_28YLU" resname="cancel analysis">
-        <source>cancel analysis</source>
-        <target>Analyse abbrechen</target>
-      </trans-unit>
-      <trans-unit id="Pwnb.f_" resname="Are you sure you want to stop the current analysis?">
-        <source>Are you sure you want to stop the current analysis?</source>
-        <target>Sind Sie sicher, dass Sie die Analyse beenden möchten?</target>
-      </trans-unit>
-      <trans-unit id="fEsFWs5" resname="stop analysis">
-        <source>stop analysis</source>
-        <target>Analyse beenden</target>
-      </trans-unit>
-      <trans-unit id="XFkbDNs" resname="Analysis type">
-        <source>Analysis type</source>
-        <target>Analysetyp</target>
-      </trans-unit>
-      <trans-unit id="RGnk1Js" resname="Data format">
-        <source>Data format</source>
-        <target>Datenformat</target>
-      </trans-unit>
-      <trans-unit id="TGHZfT1" resname="Host plant">
-        <source>Host plant</source>
-        <target>Wirtspflanze</target>
-      </trans-unit>
-      <trans-unit id="cB0CHQj" resname="Country">
-        <source>Country</source>
-        <target>Land</target>
-      </trans-unit>
-      <trans-unit id=".DP3Mkb" resname="City">
-        <source>City</source>
-        <target>Ort</target>
-      </trans-unit>
-      <trans-unit id="id_Wjeq" resname="Geolocation">
-        <source>Geolocation</source>
-        <target>Geolokalisierung</target>
-      </trans-unit>
-      <trans-unit id="bYBFj9F" resname="Longitude">
-        <source>Longitude</source>
-        <target>Längengrad</target>
-      </trans-unit>
-      <trans-unit id="I4pnbaR" resname="Latitude">
-        <source>Latitude</source>
-        <target>Breitengrad</target>
-      </trans-unit>
-      <trans-unit id="5.N17us" resname="Show results of Analysis">
-        <source>Show results of Analysis</source>
-        <target>Ergebnisse der Analyse anzeigen</target>
-      </trans-unit>
-      <trans-unit id="7LyJzTe" resname="Started">
-        <source>Started</source>
-        <target>Gestartet</target>
-      </trans-unit>
-      <trans-unit id="QAbhXF4" resname="Crashed">
-        <source>Crashed</source>
-        <target>Abgebrochen</target>
-      </trans-unit>
-      <trans-unit id="4VmwYYf" resname="Paused">
-        <source>Paused</source>
-        <target>Pausiert</target>
-      </trans-unit>
-      <trans-unit id="Iqlw0uW" resname="Completed">
-        <source>Completed</source>
-        <target>Beendet</target>
-      </trans-unit>
-      <trans-unit id="MQ.yABS" resname="close">
-        <source>close</source>
-        <target>Schließen</target>
-      </trans-unit>
-      <trans-unit id="4lbujnr" resname="continue">
-        <source>continue</source>
-        <target>Fortsetzen</target>
-      </trans-unit>
-      <trans-unit id="gIRiQvJ" resname="Register a new RAPID-Pipeline analysis">
-        <source>Register a new RAPID-Pipeline analysis</source>
-        <target>Eine neue RAPID-Pipeline-Analyse registrieren</target>
-      </trans-unit>
-      <trans-unit id="eWKRRGX" resname="new analysis">
-        <source>new analysis</source>
-        <target>neue Analyse</target>
-      </trans-unit>
-      <trans-unit id="vqyP86_" resname="Your email address will be used as your username.">
-        <source>Your email address will be used as your username.</source>
-        <target>Ihre E-Mail-Adresse wird als Nutzername verwendet.</target>
-      </trans-unit>
-      <trans-unit id="u9pwK0s" resname="Your password">
-        <source>Your password</source>
-        <target>Ihr Passwort</target>
-      </trans-unit>
-      <trans-unit id="NDB4lbc" resname="min. 8 characters, min. 1 digit, min. 1 letter, min. 1 special character (#?!@$%^*-)">
-        <source>min. 8 characters, min. 1 digit, min. 1 letter, min. 1 special character (#?!@$%^*-)</source>
-        <target>min. 8 Zeichen, davon min. 1 Ziffer, min. 1 Buchstabe, min. 1 Sonderzeichen (#?!@$%^*-)</target>
-      </trans-unit>
-      <trans-unit id="OFR9aqH" resname="Title of the desktop agent">
-        <source>Title of the desktop agent</source>
-        <target>Titel des Desktop Agents</target>
-      </trans-unit>
-      <trans-unit id=".vA6t3I" resname="Host designation">
-        <source>Host designation</source>
-        <target>Wirtsbestimmung</target>
-      </trans-unit>
-      <trans-unit id="OYO2CjU" resname="Pathogendesignation">
-        <source>Pathogendesignation</source>
-        <target>Pathogenbestimmung</target>
-      </trans-unit>
-      <trans-unit id="U_L4qml" resname="Title of analysis">
-        <source>Title of analysis</source>
-        <target>Titel der Analyse</target>
-      </trans-unit>
-      <trans-unit id="79bbz3r" resname="This is a descriptive text">
-        <source>This is a descriptive text</source>
-        <target>Das ist ein beschreibender Text</target>
-      </trans-unit>
-      <trans-unit id="3SIfuTV" resname="Country of sequencing">
-        <source>Country of sequencing</source>
-        <target>Land der Sequenzierung</target>
-      </trans-unit>
-      <trans-unit id="8bxIKre" resname="City of sequencing">
-        <source>City of sequencing</source>
-        <target>Ort der Sequenzierung</target>
-      </trans-unit>
-      <trans-unit id="UBLyWyD" resname="Please select the folder in which the sequencing data should be saved.">
-        <source>Please select the folder in which the sequencing data should be saved.</source>
-        <target>Bitte wählen Sie den Ordner, in dem die Sequenzierungsdaten gespeichert werden sollen.</target>
-      </trans-unit>
-      <trans-unit id="IkHcEQ5" resname="fast5 options">
-        <source>fast5 options</source>
-        <target>fast5 Optionen</target>
-      </trans-unit>
-      <trans-unit id=".XMtC9e" resname="Flowcell-Type">
-        <source>Flowcell-Type</source>
-        <target>Flowcell-Typ</target>
-      </trans-unit>
-      <trans-unit id="b0g8BPt" resname="A descriptive text">
-        <source>A descriptive text</source>
-        <target>Ein beschreibender Text</target>
-      </trans-unit>
-      <trans-unit id="KcWbaOd" resname="Library-Kit">
-        <source>Library-Kit</source>
-        <target>Library-Kit</target>
-      </trans-unit>
-      <trans-unit id="59A.4NN" resname="I am sure that the data given do not contain human sequences.">
-        <source>I am sure that the data given do not contain human sequences.</source>
-        <target>Ich bin sicher, dass die übertragenen Daten keine menschlichen Sequenzen enthalten.</target>
-      </trans-unit>
-      <trans-unit id="aJ.C9MP" resname="Fields marked with &quot;*&quot; are mandatory.">
-        <source>Fields marked with "*" are mandatory.</source>
-        <target>Mit "*" gekennzeichnete Felder sind Pflichtfelder.</target>
-      </trans-unit>
-      <trans-unit id="GXZu1sy" resname="Cancel">
-        <source>Cancel</source>
-        <target>Abbruch</target>
-      </trans-unit>
-      <trans-unit id="vQ7mOma" resname="Launch analysis">
-        <source>Launch analysis</source>
-        <target>Analyse starten</target>
-      </trans-unit>
-      <trans-unit id="2mITVvb" resname="Analysis ends automatically on">
-        <source>Analysis ends automatically on</source>
-        <target>Die Analyse endet automatisch am</target>
-      </trans-unit>
-      <trans-unit id="SkaeTw9" resname="Please select">
-        <source>Please select</source>
-        <target>Bitte wählen</target>
-      </trans-unit>
-      <trans-unit id="tT5NzN." resname="Local folder">
-        <source>Local folder</source>
-        <target>Local folder</target>
-      </trans-unit>
-      <trans-unit id="MfvvFiW" resname="Continue">
-        <source>Continue</source>
-        <target>Fortsetzen</target>
-      </trans-unit>
-      <trans-unit id="hY5Lp6K" resname="Pause">
-        <source>Pause</source>
-        <target>Pause</target>
-      </trans-unit>
-      <trans-unit id="pseoS6p" resname="Finish">
-        <source>Finish</source>
-        <target>Beenden</target>
-      </trans-unit>
-      <trans-unit id="KMYhfZc" resname="Are you sure you want to finish the current analysis?">
-        <source>Are you sure you want to finish the current analysis?</source>
-        <target>Sind Sie sicher, dass Sie die aktuelle Analyse beenden wollen?</target>
-      </trans-unit>
-      <trans-unit id="CtUiOif" resname="Finish analysis">
-        <source>Finish analysis</source>
-        <target>Analyse beenden</target>
-      </trans-unit>
-      <trans-unit id="k0ZS3OQ" resname="Instructions">
-        <source>Instructions</source>
-        <target>Benutzeranleitung</target>
-      </trans-unit>
-      <trans-unit id="bhGcbSS" resname="Pathogen DB">
-        <source>Pathogen DB</source>
-        <target>Pathogen DB</target>
-      </trans-unit>
-      <trans-unit id="UHohayc" resname="NCBI nt DB">
-        <source>NCBI nt DB</source>
-        <target>NCBI nt DB</target>
-      </trans-unit>
-      <trans-unit id="jc6ECCj" resname="Please choose a unique title">
-        <source>Please choose a unique title</source>
-        <target>Bitte wählen Sie einen eindeutigen Titel.</target>
-      </trans-unit>
-      <trans-unit id="6DTpBXg" resname="e.g.Triticum aestivum or Wheat">
-        <source>e.g.Triticum aestivum or Wheat</source>
-        <target>z.B.Triticum aestivum oder Weizen</target>
-      </trans-unit>
-      <trans-unit id="xtZuuYE" resname="Country of sample origin">
-        <source>Country of sample origin</source>
-        <target>Herkunftsland</target>
-      </trans-unit>
-      <trans-unit id="2zZMmUr" resname="Location of sample collection">
-        <source>Location of sample collection</source>
-        <target>Ort der Probenahme</target>
-      </trans-unit>
-      <trans-unit id="XbdXs.v" resname="e.g. London">
-        <source>e.g. London</source>
-        <target>z.B. London</target>
-      </trans-unit>
-      <trans-unit id="bs2GcWl" resname="Please select the folder that contains the raw data, if it is not displayed, reload the Desktop Agent.">
-        <source>Please select the folder that contains the raw data, if it is not displayed, reload the Desktop Agent.</source>
-        <target>Bitte wählen Sie den Ordner aus, der die Rohdaten enthält. Wird er nicht angezeigt, laden Sie den Desktop-Agent neu.</target>
-      </trans-unit>
-      <trans-unit id="Eh_cU5g" resname="Reference database">
-        <source>Reference database</source>
-        <target>Referenz-Datenbank</target>
-      </trans-unit>
-      <trans-unit id="CajHtLV" resname="Select Pathogen DB only if you want to determine pathogens.">
-        <source>Select Pathogen DB only if you want to determine pathogens.</source>
-        <target>Wählen Sie Pathogen DB nur, wenn Sie Pathogene bestimmen wollen.</target>
-      </trans-unit>
-      <trans-unit id="CPAo4Uc" resname="Format of raw data">
-        <source>Format of raw data</source>
-        <target>Format der Rohdaten</target>
-      </trans-unit>
-      <trans-unit id="Wus5ose" resname="Dependent on selection, further fields could be shown.">
-        <source>Dependent on selection, further fields could be shown.</source>
-        <target>Je nach Auswahl können weitere Felder angezeigt werden.</target>
-      </trans-unit>
-      <trans-unit id="jUbWV3b" resname="I have read the privacy policy and terms of service">
-        <source>I have read the privacy policy and terms of service</source>
-        <target>Ich habe die Datenschutzerklärung und Nutzungsbedingungen gelesen.</target>
-      </trans-unit>
-      <trans-unit id="SNJkn8V" resname="e.g. Tomato plant, Solanum lycopersicum">
-        <source>e.g. Tomato plant, Solanum lycopersicum</source>
-        <target>z.B. Tomatenpflanze oder Solanum lycopersicum</target>
-      </trans-unit>
-      <trans-unit id="1jU298k" resname="e.g. city, region or state">
-        <source>e.g. city, region or state</source>
-        <target>z.B. Stadt, Region, Bundesland </target>
-      </trans-unit>
-      <trans-unit id="4qFChA3" resname="Geolocation of sample collection site">
-        <source>Geolocation of sample collection site</source>
-        <target>Geolokation der Probennahme</target>
-      </trans-unit>
-      <trans-unit id="vbmRmqh" resname="Please select Flowcell-Typ first.">
-        <source>Please select Flowcell-Typ first.</source>
-        <target>Bitte zuerst einen Flowcell-Typ auswählen.</target>
-      </trans-unit>
-      <trans-unit id="3UxsoEF" resname="e.g. Laboratory A">
-        <source>e.g. Laboratory A</source>
-        <target>z.B. Labor A</target>
-      </trans-unit>
-      <trans-unit id="JVaRmJ0" resname="Username of your AGRIFUTURΞ user account">
-        <source>Username of your AGRIFUTURΞ user account</source>
-        <target>Nutzername Ihres AGRIFUTURΞ Benutzerkontos</target>
-      </trans-unit>
-      <trans-unit id="8NfnEd6" resname="Password of your AGRIFUTURΞ user account">
-        <source>Password of your AGRIFUTURΞ user account</source>
-        <target>Passswort Ihres AGRIFUTURΞ Benutzerkontos</target>
-      </trans-unit>
-      <trans-unit id="25XTPNR" resname="fastq">
-        <source>fastq</source>
-        <target>fastq</target>
-      </trans-unit>
-      <trans-unit id="x5dnrBp" resname="fast5">
-        <source>fast5</source>
-        <target>fast5</target>
-      </trans-unit>
-      <trans-unit id="T4osw5j" resname="hosts">
-        <source>hosts</source>
-        <target>NCBI nt DB</target>
-      </trans-unit>
-      <trans-unit id="z.vOnbR" resname="pathogens">
-        <source>pathogens</source>
-        <target>Pathogen DB</target>
-      </trans-unit>
-      <trans-unit id="hEELjJL" resname="UnknownError">
-        <source>UnknownError</source>
-        <target>Es ist ein unbekannter Fehler aufgetreten.</target>
-      </trans-unit>
-      <trans-unit id=".KABpyJ" resname="pathogen DB options">
-        <source>pathogen DB options</source>
-        <target>Pathogen DB Optionen</target>
-      </trans-unit>
-      <trans-unit id="TgQ.x9W" resname="chemical/seq-na-fastq">
-        <source>chemical/seq-na-fastq</source>
-        <target>fastq</target>
-      </trans-unit>
-      <trans-unit id="DZ1cdQU" resname="chemical/x-seq-na-fast5">
-        <source>chemical/x-seq-na-fast5</source>
-        <target>fast5</target>
-      </trans-unit>
-      <trans-unit id="t2TNwOq" resname="Unknown">
-        <source>Unknown</source>
-        <target>Unbekannt</target>
-      </trans-unit>
-      <trans-unit id="95nkT9_" resname="Reconnect your account">
-        <source>Reconnect your account</source>
-        <target>Benutzerkonto erneut verknüpfen</target>
-      </trans-unit>
-      <trans-unit id="RpHl4JZ" resname="You are no longer logged in!">
-        <source>You are no longer logged in!</source>
-        <target>Sie sind nicht mehr angemeldet!</target>
-      </trans-unit>
-      <trans-unit id="K3fjDYd" resname="You probably used the Portal to log out this Desktop Agent. You’ll need to reconnect it to keep going.">
-        <source>You probably used the Portal to log out this Desktop Agent. You’ll need to reconnect it to keep going.</source>
-        <target>Sie haben diesen Desktop Agent wahrscheinlich über das Portal abgemeldet. Sie müssen sich zum Fortfahren neu verbinden.</target>
-      </trans-unit>
-      <trans-unit id="gOKapmN" resname="Cannot connect to the portal">
-        <source>Cannot connect to the portal</source>
-        <target>Verbindung zum Portal gescheitert</target>
-      </trans-unit>
-      <trans-unit id="vjLO0pu" resname="Are you offline?">
-        <source>Are you offline?</source>
-        <target>Sind Sie Offline?</target>
-      </trans-unit>
-      <trans-unit id=".s_wlrR" resname="We cannot connect to the AGRIFUTURE Portal website. To solve this issue, attempt the following:">
-        <source>We cannot connect to the AGRIFUTURE Portal website. To solve this issue, attempt the following:</source>
-        <target>Wir können uns nicht mit dem Webportal von AGRIFUTURE verbinden. Probieren Sie folgendes, um das Problem zu lösen:</target>
-      </trans-unit>
-      <trans-unit id="YA7rOsp" resname="Reload this page.">
-        <source>Reload this page.</source>
-        <target>Lade diese Seite neu.</target>
-      </trans-unit>
-      <trans-unit id="1mzCGjq" resname="Check your internet connection.">
-        <source>Check your internet connection.</source>
-        <target>Prüfen Sie Ihre Internetverbindung.</target>
-      </trans-unit>
-      <trans-unit id="Ukw0RfV" resname="Verify your firewall and proxy settings.">
-        <source>Verify your firewall and proxy settings.</source>
-        <target>Schauen Sie, ob die Firewall- und Proxyeinstellungen stimmen.</target>
-      </trans-unit>
-      <trans-unit id="lwKXlX_" resname="If you can’t reach the portal directly, try again later.">
-        <source>If you can’t reach the portal directly, try again later.</source>
-        <target>Wenn Sie sich nicht direkt mit dem Portal verbinden können, Versuchen Sie es später.</target>
-      </trans-unit>
-      <trans-unit id="2xlIixn" resname="You’ll need to use another account.">
-        <source>You’ll need to use another account.</source>
-        <target>Sie müssen ein anderes Benutzerkonto verwenden.</target>
-      </trans-unit>
-      <trans-unit id="OO7Lq_P" resname="It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.">
-        <source>It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.</source>
-        <target>Es schaut so aus, als ob Ihr Benutzerkonto die API nicht mehr verwenden darf. Sie müssen sich für die Benutzung des Desktop Agents erneut registrieren. Kontaktieren Sie uns, wenn dies ein Irrtum ist.</target>
-      </trans-unit>
-      <trans-unit id="8oBMpj2" resname="The analysis was abandoned. You can still check it in the portal. Please consider finishing or canceling it.">
-        <source>The analysis was abandoned. You can still check it in the portal. Please consider finishing or canceling it.</source>
-        <target>Diese Analyse wurde zurückgelassen. Sie können den Status weiterhin im Portal prüfen. Bitte ziehen Sie in betracht, die Analyse dort zu beenden oder abzubrechen.</target>
-      </trans-unit>
-      <trans-unit id="eDQqCQW" resname="Forbidden">
-        <source>Forbidden</source>
-        <target>Verboten</target>
-      </trans-unit>
-      <trans-unit id="Cm7OO9i" resname="You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?">
-        <source>You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?</source>
-        <target>Sie können mit diesem Benutzerkonto nicht diese Analyse ansehen. Möglicherweise wollen Sie Ihr Benutzerkonto zu dem Benutzer wechseln, welche die Analyse gestartet hat?</target>
-      </trans-unit>
-      <trans-unit id="9xVAYWE" resname="Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.">
-        <source>Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.</source>
-        <target>Anderenfalls können Sie die Analyse zurücklassen. Es werden keine neuen Dateien mehr hochgeladen, aber der Prozess läuft bis zur Zeitbegrenzung weiter.</target>
-      </trans-unit>
-      <trans-unit id="0JJSxGp" resname="Abandon">
-        <source>Abandon</source>
-        <target>Zurücklassen</target>
-      </trans-unit>
-      <trans-unit id="It5n36W" resname="Abandon analysis">
-        <source>Abandon analysis</source>
-        <target>Analyse zurücklassen</target>
-      </trans-unit>
-      <trans-unit id="dWWzv5V" resname="Are you sure you want to abandon the current analysis? You won’t be able to add any new files to it.">
-        <source>Are you sure you want to abandon the current analysis? You won’t be able to add any new files to it.</source>
-        <target>Sind Sie sich sicher, diese Analyse zurücklassen zu wollen? Es wird unmöglich, weitere Dateien hinzuzufügen.</target>
-      </trans-unit>
-      <trans-unit id="QbaSwL7" resname="The files in the upload folder seem to differ from the uploaded ones. If you haven’t touched them on disk, your analysis may be inaccurate.">
-        <source>The files in the upload folder seem to differ from the uploaded ones. If you haven’t touched them on disk, your analysis may be inaccurate.</source>
-        <target>Die Dateien im Upload folder scheinen sich von den hochgeladenen zu unterscheiden. Wenn Sie die Dateien auf Ihrer Festplatte nicht geändert haben, ist die Analyse möglicherweise inakkurat.</target>
-      </trans-unit>
-      <trans-unit id="7mD_Vdq" resname="uploadError.InvalidToken">
-        <source>uploadError.InvalidToken</source>
-        <target>Die Datei {file} konnte wegen fehlenden Zugangsdaten nicht hochgeladen werden.</target>
-      </trans-unit>
-      <trans-unit id="1peOuap" resname="uploadError.Forbidden">
-        <source>uploadError.Forbidden</source>
-        <target>Die Datei {file} konnte wegen fehlenden Zugriffsrechte nicht hochgeladen werden.</target>
-      </trans-unit>
-      <trans-unit id="kxe1bfP" resname="uploadError.NoSuchAnalysis">
-        <source>uploadError.NoSuchAnalysis</source>
-        <target>Die Datei {file} konnte nicht hochgeladen werden, da die Analyse bereits abgeschlossen war. Die Analyse ist wahrscheinlich unvollständig.</target>
-      </trans-unit>
-      <trans-unit id="qbTJ1w8" resname="uploadError.TooLarge">
-        <source>uploadError.TooLarge</source>
-        <target>Die Datei {file} ist zu groß. Verkleinern Sie die Datei.</target>
-      </trans-unit>
-      <trans-unit id="hqEO8ZG" resname="uploadError.FormatMismatch">
-        <source>uploadError.FormatMismatch</source>
-        <target>Die Datei {file} hat ein anderes Format als die Analyse.</target>
-      </trans-unit>
-      <trans-unit id="l7kMPg_" resname="uploadError.RetryLater">
-        <source>uploadError.RetryLater</source>
-        <target>Das hochladen von Dateien ist aufgrund hoher Resourcenauslastung auf unseren Servern gerade unterbrochen.</target>
-      </trans-unit>
-      <trans-unit id="EJvFDw9" resname="uploadError.AlreadyUploaded">
-        <source>uploadError.AlreadyUploaded</source>
-        <target>Die Datei {file} wurde bereits hochgeladen.</target>
-      </trans-unit>
-      <trans-unit id="ogTrUwe" resname="uploadError.UnknownError">
-        <source>uploadError.UnknownError</source>
-        <target>Die Datei {file} konnte nicht hochgeladen werden.</target>
-      </trans-unit>
-      <trans-unit id="fvxWW3V" resname="The CSRF token is invalid. Please try to resubmit the form.">
-        <source>The CSRF token is invalid. Please try to resubmit the form.</source>
-        <target>Das CSRF-Token ist ungültig. Bitte versuchen Sie, das Formular erneut abzuschicken.</target>
-      </trans-unit>
-      <trans-unit id="CZanEz_" resname="typo3_slug_imprint">
-        <source>typo3_slug_imprint</source>
-        <target>impressum</target>
-      </trans-unit>
-      <trans-unit id="1.ZtIf4" resname="typo3_slug_privacy">
-        <source>typo3_slug_privacy</source>
-        <target>datenschutz-agb</target>
-      </trans-unit>
-      <trans-unit id="KV6qM8." resname="typo3_slug_register">
-        <source>typo3_slug_register</source>
-        <target>registrierung</target>
-      </trans-unit>
-      <trans-unit id="_Fp8uy5" resname="typo3_slug_user_manual">
-        <source>typo3_slug_user_manual</source>
-        <target>benutzeranleitung</target>
-      </trans-unit>
-      <trans-unit id="isXTHUg" resname="User manual">
-        <source>User manual</source>
-        <target>Benutzeranleitung</target>
-      </trans-unit>
-      <trans-unit id="hgM.daT" resname="Create an account">
-        <source>Create an account</source>
-        <target>Erstellen Sie ein Benutzerkonto,</target>
-      </trans-unit>
-      <trans-unit id="81esUbl" resname="You don’t have an account yet? 1 to connect with your desktop agent.">
-        <source>You don’t have an account yet? 1 to connect with your desktop agent.</source>
-        <target>Sie haben noch kein Benutzerkonto? 1 um sich mit Ihrem Desktop-Agenten zu verbinden.</target>
-      </trans-unit>
-      <trans-unit id="hnkzxsJ" resname="Page will be reloaded in">
-        <source>Page will be reloaded in</source>
-        <target>Seite wird neu geladen in</target>
-      </trans-unit>
-      <trans-unit id="WfAG1jv" resname="seconds">
-        <source>seconds</source>
-        <target>Sekunden</target>
-      </trans-unit>
-      <trans-unit id="WaY7oTC" resname="logoEFRE_en.svg">
-        <source>logoEFRE_en.svg</source>
-        <target>logoEFRE.svg</target>
-      </trans-unit>
-      <trans-unit id="1fdsuQT" resname="EUROPEAN UNION - REACT-EU - European Regional Development Fund">
-        <source>EUROPEAN UNION - REACT-EU - European Regional Development Fund</source>
-        <target>EUROPÄISCHE UNION - REACT-EU - Europäischer Fonds für regionale Entwicklung</target>
-      </trans-unit>
-      <trans-unit id="ufnM_yb" resname="Don’t know why your analysis was stopped? Check our &lt;a href=%url%&gt;User Manual&lt;/a&gt;.">
-        <source>Don’t know why your analysis was stopped? Check our &lt;a href=%url%&gt;User Manual&lt;/a&gt;.</source>
-        <target><![CDATA[Wissen Sie nicht, warum Ihre Analyse gestoppt wurde? Schauen Sie sich unsere <a href=%url%>Benutzeranleitung</a> an.]]></target>
-      </trans-unit>
-    </body>
-  </file>
+    <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+        <header>
+            <tool tool-id="symfony" tool-name="Symfony"/>
+        </header>
+        <body>
+            <trans-unit id="0ZjtMNC" resname="Imprint">
+                <source>Imprint</source>
+                <target>Impressum</target>
+            </trans-unit>
+            <trans-unit id="Z54GrT7" resname="Privacy policy and terms of service">
+                <source>Privacy policy and terms of service</source>
+                <target>Datenschutz und Nutzungsbedingungen</target>
+            </trans-unit>
+            <trans-unit id="Y9zriAC" resname="Phone">
+                <source>Phone</source>
+                <target>Telefon</target>
+            </trans-unit>
+            <trans-unit id="ANhKtG5" resname="Fax">
+                <source>Fax</source>
+                <target>Fax</target>
+            </trans-unit>
+            <trans-unit id="f4OxZX." resname="Hello World!">
+                <source>Hello World!</source>
+                <target>Hallo Welt!</target>
+            </trans-unit>
+            <trans-unit id="HLC6El_" resname="Information">
+                <source>Information</source>
+                <target>Information</target>
+            </trans-unit>
+            <trans-unit id="oaGBQ4g" resname="AGRIFUTURΞ - Desktop Agent">
+                <source>AGRIFUTURΞ - Desktop Agent</source>
+                <target>AGRIFUTURΞ - Desktop Agent</target>
+            </trans-unit>
+            <trans-unit id="mDHMIeX" resname="Metanavigation">
+                <source>Metanavigation</source>
+                <target>Metanavigation</target>
+            </trans-unit>
+            <trans-unit id="RZid5J_" resname="Details">
+                <source>Details</source>
+                <target>Details</target>
+            </trans-unit>
+            <trans-unit id="IZxKbIa" resname="Results">
+                <source>Results</source>
+                <target>Ergebnisse</target>
+            </trans-unit>
+            <trans-unit id="wHHPX17" resname="running">
+                <source>running</source>
+                <target>gestartet</target>
+            </trans-unit>
+            <trans-unit id="p6ncW89" resname="paused">
+                <source>paused</source>
+                <target>pausiert</target>
+            </trans-unit>
+            <trans-unit id=".0LdDeS" resname="crashed">
+                <source>crashed</source>
+                <target>abgebrochen</target>
+            </trans-unit>
+            <trans-unit id="Tds_loA" resname="completed">
+                <source>completed</source>
+                <target>beendet</target>
+            </trans-unit>
+            <trans-unit id="8HUVpL7" resname="language label german">
+                <source>language label german</source>
+                <target>Deutsch</target>
+            </trans-unit>
+            <trans-unit id="RXnw3wL" resname="language label english">
+                <source>language label english</source>
+                <target>English</target>
+            </trans-unit>
+            <trans-unit id="6yHlGcn" resname="Frontpage">
+                <source>Frontpage</source>
+                <target>Startseite</target>
+            </trans-unit>
+            <trans-unit id="P3BYWZy" resname="Show details of the current analysis">
+                <source>Show details of the current analysis</source>
+                <target>Details der aktuellen Analyse anzeigen</target>
+            </trans-unit>
+            <trans-unit id="Tyc.gYj" resname="Show results of the current analysis on the AGRIFUTURΞ website">
+                <source>Show results of the current analysis on the AGRIFUTURΞ website</source>
+                <target>Ergebnisse der aktuellen Analyse auf der AGRIFUTURΞ Website anzeigen</target>
+            </trans-unit>
+            <trans-unit id="3nHHvkl" resname="Launch an analysis">
+                <source>Launch an analysis</source>
+                <target>Eine Analyse starten</target>
+            </trans-unit>
+            <trans-unit id="K2oqPxl" resname="Connect user account">
+                <source>Connect user account</source>
+                <target>Benutzerkonto verknüpfen</target>
+            </trans-unit>
+            <trans-unit id="3xNmUEV" resname="Connect a user account">
+                <source>Connect a user account</source>
+                <target>Ein Benutzerkonto verknüpfen</target>
+            </trans-unit>
+            <trans-unit id="xY1E3ry" resname="Connected user account">
+                <source>Connected user account</source>
+                <target>Verknüpftes Benutzerkonto</target>
+            </trans-unit>
+            <trans-unit id="qNWiL6D" resname="Title of desktop agent">
+                <source>Title of desktop agent</source>
+                <target>Titel des Desktop-Agents</target>
+            </trans-unit>
+            <trans-unit id="Ur6Zgde" resname="Show and edit connected user account">
+                <source>Show and edit connected user account</source>
+                <target>Verknüpftes Benutzerkonto anzeigen und bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="hTokPVz" resname="Connect another user account">
+                <source>Connect another user account</source>
+                <target>Ein anderes Benutzerkonto verknüpfen</target>
+            </trans-unit>
+            <trans-unit id="P6fF7xk" resname="Your email address">
+                <source>Your email address</source>
+                <target>Ihre E-Mail-Adresse</target>
+            </trans-unit>
+            <trans-unit id="c1JsnF6" resname="Host determination">
+                <source>Host determination</source>
+                <target>Wirtsbestimmung</target>
+            </trans-unit>
+            <trans-unit id="ThICcKi" resname="Pathogen determination">
+                <source>Pathogen determination</source>
+                <target>Pathogenbestimmung</target>
+            </trans-unit>
+            <trans-unit id="5w2OuQU" resname="Analysis">
+                <source>Analysis</source>
+                <target>Analyse</target>
+            </trans-unit>
+            <trans-unit id="T8UqPEx" resname="Duration">
+                <source>Duration</source>
+                <target>Laufzeit</target>
+            </trans-unit>
+            <trans-unit id="41GC5hs" resname="Upload folder">
+                <source>Upload folder</source>
+                <target>Upload Ordner</target>
+            </trans-unit>
+            <trans-unit id="UPaoh96" resname="Number of files uploaded">
+                <source>Number of files uploaded</source>
+                <target>Anzahl der übertragenen Dateien</target>
+            </trans-unit>
+            <trans-unit id="WskiVpi" resname="Current file">
+                <source>Current file</source>
+                <target>Aktuelle Datei</target>
+            </trans-unit>
+            <trans-unit id="I3TZF5S" resname="cancel">
+                <source>cancel</source>
+                <target>abbrechen</target>
+            </trans-unit>
+            <trans-unit id="YhDAvwU" resname="pause">
+                <source>pause</source>
+                <target>pausieren</target>
+            </trans-unit>
+            <trans-unit id="bEXLcqN" resname="stop">
+                <source>stop</source>
+                <target>beenden</target>
+            </trans-unit>
+            <trans-unit id="zE6ar_G" resname="Cancel analysis">
+                <source>Cancel analysis</source>
+                <target>Analyse abbrechen</target>
+            </trans-unit>
+            <trans-unit id="YJxWmEs" resname="Are you sure you want to cancel the current analysis?">
+                <source>Are you sure you want to cancel the current analysis?</source>
+                <target>Sind Sie sicher, dass Sie die Analyse abbrechen möchten? Alle Daten dieser Analyse gehen dabei verloren!</target>
+            </trans-unit>
+            <trans-unit id="h_28YLU" resname="cancel analysis">
+                <source>cancel analysis</source>
+                <target>Analyse abbrechen</target>
+            </trans-unit>
+            <trans-unit id="Pwnb.f_" resname="Are you sure you want to stop the current analysis?">
+                <source>Are you sure you want to stop the current analysis?</source>
+                <target>Sind Sie sicher, dass Sie die Analyse beenden möchten?</target>
+            </trans-unit>
+            <trans-unit id="fEsFWs5" resname="stop analysis">
+                <source>stop analysis</source>
+                <target>Analyse beenden</target>
+            </trans-unit>
+            <trans-unit id="XFkbDNs" resname="Analysis type">
+                <source>Analysis type</source>
+                <target>Analysetyp</target>
+            </trans-unit>
+            <trans-unit id="RGnk1Js" resname="Data format">
+                <source>Data format</source>
+                <target>Datenformat</target>
+            </trans-unit>
+            <trans-unit id="TGHZfT1" resname="Host plant">
+                <source>Host plant</source>
+                <target>Wirtspflanze</target>
+            </trans-unit>
+            <trans-unit id="cB0CHQj" resname="Country">
+                <source>Country</source>
+                <target>Land</target>
+            </trans-unit>
+            <trans-unit id=".DP3Mkb" resname="City">
+                <source>City</source>
+                <target>Ort</target>
+            </trans-unit>
+            <trans-unit id="id_Wjeq" resname="Geolocation">
+                <source>Geolocation</source>
+                <target>Geolokalisierung</target>
+            </trans-unit>
+            <trans-unit id="bYBFj9F" resname="Longitude">
+                <source>Longitude</source>
+                <target>Längengrad</target>
+            </trans-unit>
+            <trans-unit id="I4pnbaR" resname="Latitude">
+                <source>Latitude</source>
+                <target>Breitengrad</target>
+            </trans-unit>
+            <trans-unit id="5.N17us" resname="Show results of Analysis">
+                <source>Show results of Analysis</source>
+                <target>Ergebnisse der Analyse anzeigen</target>
+            </trans-unit>
+            <trans-unit id="7LyJzTe" resname="Started">
+                <source>Started</source>
+                <target>Gestartet</target>
+            </trans-unit>
+            <trans-unit id="QAbhXF4" resname="Crashed">
+                <source>Crashed</source>
+                <target>Abgebrochen</target>
+            </trans-unit>
+            <trans-unit id="4VmwYYf" resname="Paused">
+                <source>Paused</source>
+                <target>Pausiert</target>
+            </trans-unit>
+            <trans-unit id="Iqlw0uW" resname="Completed">
+                <source>Completed</source>
+                <target>Beendet</target>
+            </trans-unit>
+            <trans-unit id="MQ.yABS" resname="close">
+                <source>close</source>
+                <target>Schließen</target>
+            </trans-unit>
+            <trans-unit id="4lbujnr" resname="continue">
+                <source>continue</source>
+                <target>Fortsetzen</target>
+            </trans-unit>
+            <trans-unit id="gIRiQvJ" resname="Register a new RAPID-Pipeline analysis">
+                <source>Register a new RAPID-Pipeline analysis</source>
+                <target>Eine neue RAPID-Pipeline-Analyse registrieren</target>
+            </trans-unit>
+            <trans-unit id="eWKRRGX" resname="new analysis">
+                <source>new analysis</source>
+                <target>neue Analyse</target>
+            </trans-unit>
+            <trans-unit id="vqyP86_" resname="Your email address will be used as your username.">
+                <source>Your email address will be used as your username.</source>
+                <target>Ihre E-Mail-Adresse wird als Nutzername verwendet.</target>
+            </trans-unit>
+            <trans-unit id="u9pwK0s" resname="Your password">
+                <source>Your password</source>
+                <target>Ihr Passwort</target>
+            </trans-unit>
+            <trans-unit id="NDB4lbc" resname="min. 8 characters, min. 1 digit, min. 1 letter, min. 1 special character (#?!@$%^*-)">
+                <source>min. 8 characters, min. 1 digit, min. 1 letter, min. 1 special character (#?!@$%^*-)</source>
+                <target>min. 8 Zeichen, davon min. 1 Ziffer, min. 1 Buchstabe, min. 1 Sonderzeichen (#?!@$%^*-)</target>
+            </trans-unit>
+            <trans-unit id="OFR9aqH" resname="Title of the desktop agent">
+                <source>Title of the desktop agent</source>
+                <target>Titel des Desktop Agents</target>
+            </trans-unit>
+            <trans-unit id=".vA6t3I" resname="Host designation">
+                <source>Host designation</source>
+                <target>Wirtsbestimmung</target>
+            </trans-unit>
+            <trans-unit id="OYO2CjU" resname="Pathogendesignation">
+                <source>Pathogendesignation</source>
+                <target>Pathogenbestimmung</target>
+            </trans-unit>
+            <trans-unit id="U_L4qml" resname="Title of analysis">
+                <source>Title of analysis</source>
+                <target>Titel der Analyse</target>
+            </trans-unit>
+            <trans-unit id="79bbz3r" resname="This is a descriptive text">
+                <source>This is a descriptive text</source>
+                <target>Das ist ein beschreibender Text</target>
+            </trans-unit>
+            <trans-unit id="3SIfuTV" resname="Country of sequencing">
+                <source>Country of sequencing</source>
+                <target>Land der Sequenzierung</target>
+            </trans-unit>
+            <trans-unit id="8bxIKre" resname="City of sequencing">
+                <source>City of sequencing</source>
+                <target>Ort der Sequenzierung</target>
+            </trans-unit>
+            <trans-unit id="UBLyWyD" resname="Please select the folder in which the sequencing data should be saved.">
+                <source>Please select the folder in which the sequencing data should be saved.</source>
+                <target>Bitte wählen Sie den Ordner, in dem die Sequenzierungsdaten gespeichert werden sollen.</target>
+            </trans-unit>
+            <trans-unit id="IkHcEQ5" resname="fast5 options">
+                <source>fast5 options</source>
+                <target>fast5 Optionen</target>
+            </trans-unit>
+            <trans-unit id=".XMtC9e" resname="Flowcell-Type">
+                <source>Flowcell-Type</source>
+                <target>Flowcell-Typ</target>
+            </trans-unit>
+            <trans-unit id="b0g8BPt" resname="A descriptive text">
+                <source>A descriptive text</source>
+                <target>Ein beschreibender Text</target>
+            </trans-unit>
+            <trans-unit id="KcWbaOd" resname="Library-Kit">
+                <source>Library-Kit</source>
+                <target>Library-Kit</target>
+            </trans-unit>
+            <trans-unit id="59A.4NN" resname="I am sure that the data given do not contain human sequences.">
+                <source>I am sure that the data given do not contain human sequences.</source>
+                <target>Ich bin sicher, dass die übertragenen Daten keine menschlichen Sequenzen enthalten.</target>
+            </trans-unit>
+            <trans-unit id="aJ.C9MP" resname="Fields marked with &quot;*&quot; are mandatory.">
+                <source>Fields marked with "*" are mandatory.</source>
+                <target>Mit "*" gekennzeichnete Felder sind Pflichtfelder.</target>
+            </trans-unit>
+            <trans-unit id="GXZu1sy" resname="Cancel">
+                <source>Cancel</source>
+                <target>Abbruch</target>
+            </trans-unit>
+            <trans-unit id="vQ7mOma" resname="Launch analysis">
+                <source>Launch analysis</source>
+                <target>Analyse starten</target>
+            </trans-unit>
+            <trans-unit id="2mITVvb" resname="Analysis ends automatically on">
+                <source>Analysis ends automatically on</source>
+                <target>Die Analyse endet automatisch am</target>
+            </trans-unit>
+            <trans-unit id="SkaeTw9" resname="Please select">
+                <source>Please select</source>
+                <target>Bitte wählen</target>
+            </trans-unit>
+            <trans-unit id="tT5NzN." resname="Local folder">
+                <source>Local folder</source>
+                <target>Local folder</target>
+            </trans-unit>
+            <trans-unit id="MfvvFiW" resname="Continue">
+                <source>Continue</source>
+                <target>Fortsetzen</target>
+            </trans-unit>
+            <trans-unit id="hY5Lp6K" resname="Pause">
+                <source>Pause</source>
+                <target>Pause</target>
+            </trans-unit>
+            <trans-unit id="pseoS6p" resname="Finish">
+                <source>Finish</source>
+                <target>Beenden</target>
+            </trans-unit>
+            <trans-unit id="KMYhfZc" resname="Are you sure you want to finish the current analysis?">
+                <source>Are you sure you want to finish the current analysis?</source>
+                <target>Sind Sie sicher, dass Sie die aktuelle Analyse beenden wollen?</target>
+            </trans-unit>
+            <trans-unit id="CtUiOif" resname="Finish analysis">
+                <source>Finish analysis</source>
+                <target>Analyse beenden</target>
+            </trans-unit>
+            <trans-unit id="k0ZS3OQ" resname="Instructions">
+                <source>Instructions</source>
+                <target>Benutzeranleitung</target>
+            </trans-unit>
+            <trans-unit id="bhGcbSS" resname="Pathogen DB">
+                <source>Pathogen DB</source>
+                <target>Pathogen DB</target>
+            </trans-unit>
+            <trans-unit id="UHohayc" resname="NCBI nt DB">
+                <source>NCBI nt DB</source>
+                <target>NCBI nt DB</target>
+            </trans-unit>
+            <trans-unit id="jc6ECCj" resname="Please choose a unique title">
+                <source>Please choose a unique title</source>
+                <target>Bitte wählen Sie einen eindeutigen Titel.</target>
+            </trans-unit>
+            <trans-unit id="6DTpBXg" resname="e.g.Triticum aestivum or Wheat">
+                <source>e.g.Triticum aestivum or Wheat</source>
+                <target>z.B.Triticum aestivum oder Weizen</target>
+            </trans-unit>
+            <trans-unit id="xtZuuYE" resname="Country of sample origin">
+                <source>Country of sample origin</source>
+                <target>Herkunftsland</target>
+            </trans-unit>
+            <trans-unit id="2zZMmUr" resname="Location of sample collection">
+                <source>Location of sample collection</source>
+                <target>Ort der Probenahme</target>
+            </trans-unit>
+            <trans-unit id="XbdXs.v" resname="e.g. London">
+                <source>e.g. London</source>
+                <target>z.B. London</target>
+            </trans-unit>
+            <trans-unit id="bs2GcWl" resname="Please select the folder that contains the raw data, if it is not displayed, reload the Desktop Agent.">
+                <source>Please select the folder that contains the raw data, if it is not displayed, reload the Desktop Agent.</source>
+                <target>Bitte wählen Sie den Ordner aus, der die Rohdaten enthält. Wird er nicht angezeigt, laden Sie den Desktop-Agent neu.</target>
+            </trans-unit>
+            <trans-unit id="Eh_cU5g" resname="Reference database">
+                <source>Reference database</source>
+                <target>Referenz-Datenbank</target>
+            </trans-unit>
+            <trans-unit id="CajHtLV" resname="Select Pathogen DB only if you want to determine pathogens.">
+                <source>Select Pathogen DB only if you want to determine pathogens.</source>
+                <target>Wählen Sie Pathogen DB nur, wenn Sie Pathogene bestimmen wollen.</target>
+            </trans-unit>
+            <trans-unit id="CPAo4Uc" resname="Format of raw data">
+                <source>Format of raw data</source>
+                <target>Format der Rohdaten</target>
+            </trans-unit>
+            <trans-unit id="Wus5ose" resname="Dependent on selection, further fields could be shown.">
+                <source>Dependent on selection, further fields could be shown.</source>
+                <target>Je nach Auswahl können weitere Felder angezeigt werden.</target>
+            </trans-unit>
+            <trans-unit id="jUbWV3b" resname="I have read the privacy policy and terms of service">
+                <source>I have read the privacy policy and terms of service</source>
+                <target>Ich habe die Datenschutzerklärung und Nutzungsbedingungen gelesen.</target>
+            </trans-unit>
+            <trans-unit id="SNJkn8V" resname="e.g. Tomato plant, Solanum lycopersicum">
+                <source>e.g. Tomato plant, Solanum lycopersicum</source>
+                <target>z.B. Tomatenpflanze oder Solanum lycopersicum</target>
+            </trans-unit>
+            <trans-unit id="1jU298k" resname="e.g. city, region or state">
+                <source>e.g. city, region or state</source>
+                <target>z.B. Stadt, Region, Bundesland</target>
+            </trans-unit>
+            <trans-unit id="4qFChA3" resname="Geolocation of sample collection site">
+                <source>Geolocation of sample collection site</source>
+                <target>Geolokation der Probennahme</target>
+            </trans-unit>
+            <trans-unit id="vbmRmqh" resname="Please select Flowcell-Typ first.">
+                <source>Please select Flowcell-Typ first.</source>
+                <target>Bitte zuerst einen Flowcell-Typ auswählen.</target>
+            </trans-unit>
+            <trans-unit id="3UxsoEF" resname="e.g. Laboratory A">
+                <source>e.g. Laboratory A</source>
+                <target>z.B. Labor A</target>
+            </trans-unit>
+            <trans-unit id="JVaRmJ0" resname="Username of your AGRIFUTURΞ user account">
+                <source>Username of your AGRIFUTURΞ user account</source>
+                <target>Nutzername Ihres AGRIFUTURΞ Benutzerkontos</target>
+            </trans-unit>
+            <trans-unit id="8NfnEd6" resname="Password of your AGRIFUTURΞ user account">
+                <source>Password of your AGRIFUTURΞ user account</source>
+                <target>Passswort Ihres AGRIFUTURΞ Benutzerkontos</target>
+            </trans-unit>
+            <trans-unit id="25XTPNR" resname="fastq">
+                <source>fastq</source>
+                <target>fastq</target>
+            </trans-unit>
+            <trans-unit id="x5dnrBp" resname="fast5">
+                <source>fast5</source>
+                <target>fast5</target>
+            </trans-unit>
+            <trans-unit id="T4osw5j" resname="hosts">
+                <source>hosts</source>
+                <target>NCBI nt DB</target>
+            </trans-unit>
+            <trans-unit id="z.vOnbR" resname="pathogens">
+                <source>pathogens</source>
+                <target>Pathogen DB</target>
+            </trans-unit>
+            <trans-unit id="hEELjJL" resname="UnknownError">
+                <source>UnknownError</source>
+                <target>Es ist ein unbekannter Fehler aufgetreten.</target>
+            </trans-unit>
+            <trans-unit id=".KABpyJ" resname="pathogen DB options">
+                <source>pathogen DB options</source>
+                <target>Pathogen DB Optionen</target>
+            </trans-unit>
+            <trans-unit id="TgQ.x9W" resname="chemical/seq-na-fastq">
+                <source>chemical/seq-na-fastq</source>
+                <target>fastq</target>
+            </trans-unit>
+            <trans-unit id="DZ1cdQU" resname="chemical/x-seq-na-fast5">
+                <source>chemical/x-seq-na-fast5</source>
+                <target>fast5</target>
+            </trans-unit>
+            <trans-unit id="t2TNwOq" resname="Unknown">
+                <source>Unknown</source>
+                <target>Unbekannt</target>
+            </trans-unit>
+            <trans-unit id="95nkT9_" resname="Reconnect your account">
+                <source>Reconnect your account</source>
+                <target>Benutzerkonto erneut verknüpfen</target>
+            </trans-unit>
+            <trans-unit id="RpHl4JZ" resname="You are no longer logged in!">
+                <source>You are no longer logged in!</source>
+                <target>Sie sind nicht mehr angemeldet!</target>
+            </trans-unit>
+            <trans-unit id="K3fjDYd" resname="You probably used the Portal to log out this Desktop Agent. You’ll need to reconnect it to keep going.">
+                <source>You probably used the Portal to log out this Desktop Agent. You’ll need to reconnect it to keep going.</source>
+                <target>Sie haben diesen Desktop Agent wahrscheinlich über das Portal abgemeldet. Sie müssen sich zum Fortfahren neu verbinden.</target>
+            </trans-unit>
+            <trans-unit id="gOKapmN" resname="Cannot connect to the portal">
+                <source>Cannot connect to the portal</source>
+                <target>Verbindung zum Portal gescheitert</target>
+            </trans-unit>
+            <trans-unit id="vjLO0pu" resname="Are you offline?">
+                <source>Are you offline?</source>
+                <target>Sind Sie Offline?</target>
+            </trans-unit>
+            <trans-unit id=".s_wlrR" resname="We cannot connect to the AGRIFUTURE Portal website. To solve this issue, attempt the following:">
+                <source>We cannot connect to the AGRIFUTURE Portal website. To solve this issue, attempt the following:</source>
+                <target>Wir können uns nicht mit dem Webportal von AGRIFUTURE verbinden. Probieren Sie folgendes, um das Problem zu lösen:</target>
+            </trans-unit>
+            <trans-unit id="YA7rOsp" resname="Reload this page.">
+                <source>Reload this page.</source>
+                <target>Lade diese Seite neu.</target>
+            </trans-unit>
+            <trans-unit id="1mzCGjq" resname="Check your internet connection.">
+                <source>Check your internet connection.</source>
+                <target>Prüfen Sie Ihre Internetverbindung.</target>
+            </trans-unit>
+            <trans-unit id="Ukw0RfV" resname="Verify your firewall and proxy settings.">
+                <source>Verify your firewall and proxy settings.</source>
+                <target>Schauen Sie, ob die Firewall- und Proxyeinstellungen stimmen.</target>
+            </trans-unit>
+            <trans-unit id="lwKXlX_" resname="If you can’t reach the portal directly, try again later.">
+                <source>If you can’t reach the portal directly, try again later.</source>
+                <target>Wenn Sie sich nicht direkt mit dem Portal verbinden können, Versuchen Sie es später.</target>
+            </trans-unit>
+            <trans-unit id="2xlIixn" resname="You’ll need to use another account.">
+                <source>You’ll need to use another account.</source>
+                <target>Sie müssen ein anderes Benutzerkonto verwenden.</target>
+            </trans-unit>
+            <trans-unit id="OO7Lq_P" resname="It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.">
+                <source>It seems as if your account can no longer use the API. You’ll need another one to use the Desktop Agent. Contact us if you believe this to be a mistake.</source>
+                <target>Es schaut so aus, als ob Ihr Benutzerkonto die API nicht mehr verwenden darf. Sie müssen sich für die Benutzung des Desktop Agents erneut registrieren. Kontaktieren Sie uns, wenn dies ein Irrtum ist.</target>
+            </trans-unit>
+            <trans-unit id="8oBMpj2" resname="The analysis was abandoned. You can still check it in the portal. Please consider finishing or canceling it.">
+                <source>The analysis was abandoned. You can still check it in the portal. Please consider finishing or canceling it.</source>
+                <target>Diese Analyse wurde zurückgelassen. Sie können den Status weiterhin im Portal prüfen. Bitte ziehen Sie in betracht, die Analyse dort zu beenden oder abzubrechen.</target>
+            </trans-unit>
+            <trans-unit id="eDQqCQW" resname="Forbidden">
+                <source>Forbidden</source>
+                <target>Verboten</target>
+            </trans-unit>
+            <trans-unit id="Cm7OO9i" resname="You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?">
+                <source>You cannot use this account to check this analysis. Maybe you wish to switch your account to the one you used to start the analysis?</source>
+                <target>Sie können mit diesem Benutzerkonto nicht diese Analyse ansehen. Möglicherweise wollen Sie Ihr Benutzerkonto zu dem Benutzer wechseln, welche die Analyse gestartet hat?</target>
+            </trans-unit>
+            <trans-unit id="9xVAYWE" resname="Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.">
+                <source>Alternatively, you can abandon this analysis. No new files can be added, but it will continue running until it times out.</source>
+                <target>Anderenfalls können Sie die Analyse zurücklassen. Es werden keine neuen Dateien mehr hochgeladen, aber der Prozess läuft bis zur Zeitbegrenzung weiter.</target>
+            </trans-unit>
+            <trans-unit id="0JJSxGp" resname="Abandon">
+                <source>Abandon</source>
+                <target>Zurücklassen</target>
+            </trans-unit>
+            <trans-unit id="It5n36W" resname="Abandon analysis">
+                <source>Abandon analysis</source>
+                <target>Analyse zurücklassen</target>
+            </trans-unit>
+            <trans-unit id="dWWzv5V" resname="Are you sure you want to abandon the current analysis? You won’t be able to add any new files to it.">
+                <source>Are you sure you want to abandon the current analysis? You won’t be able to add any new files to it.</source>
+                <target>Sind Sie sich sicher, diese Analyse zurücklassen zu wollen? Es wird unmöglich, weitere Dateien hinzuzufügen.</target>
+            </trans-unit>
+            <trans-unit id="QbaSwL7" resname="The files in the upload folder seem to differ from the uploaded ones. If you haven’t touched them on disk, your analysis may be inaccurate.">
+                <source>The files in the upload folder seem to differ from the uploaded ones. If you haven’t touched them on disk, your analysis may be inaccurate.</source>
+                <target>Die Dateien im Upload folder scheinen sich von den hochgeladenen zu unterscheiden. Wenn Sie die Dateien auf Ihrer Festplatte nicht geändert haben, ist die Analyse möglicherweise inakkurat.</target>
+            </trans-unit>
+            <trans-unit id="7mD_Vdq" resname="uploadError.InvalidToken">
+                <source>uploadError.InvalidToken</source>
+                <target>Die Datei {file} konnte wegen fehlenden Zugangsdaten nicht hochgeladen werden.</target>
+            </trans-unit>
+            <trans-unit id="1peOuap" resname="uploadError.Forbidden">
+                <source>uploadError.Forbidden</source>
+                <target>Die Datei {file} konnte wegen fehlenden Zugriffsrechte nicht hochgeladen werden.</target>
+            </trans-unit>
+            <trans-unit id="kxe1bfP" resname="uploadError.NoSuchAnalysis">
+                <source>uploadError.NoSuchAnalysis</source>
+                <target>Die Datei {file} konnte nicht hochgeladen werden, da die Analyse bereits abgeschlossen war. Die Analyse ist wahrscheinlich unvollständig.</target>
+            </trans-unit>
+            <trans-unit id="qbTJ1w8" resname="uploadError.TooLarge">
+                <source>uploadError.TooLarge</source>
+                <target>Die Datei {file} ist zu groß. Verkleinern Sie die Datei.</target>
+            </trans-unit>
+            <trans-unit id="hqEO8ZG" resname="uploadError.FormatMismatch">
+                <source>uploadError.FormatMismatch</source>
+                <target>Die Datei {file} hat ein anderes Format als die Analyse.</target>
+            </trans-unit>
+            <trans-unit id="l7kMPg_" resname="uploadError.RetryLater">
+                <source>uploadError.RetryLater</source>
+                <target>Das hochladen von Dateien ist aufgrund hoher Resourcenauslastung auf unseren Servern gerade unterbrochen.</target>
+            </trans-unit>
+            <trans-unit id="EJvFDw9" resname="uploadError.AlreadyUploaded">
+                <source>uploadError.AlreadyUploaded</source>
+                <target>Die Datei {file} wurde bereits hochgeladen.</target>
+            </trans-unit>
+            <trans-unit id="ogTrUwe" resname="uploadError.UnknownError">
+                <source>uploadError.UnknownError</source>
+                <target>Die Datei {file} konnte nicht hochgeladen werden.</target>
+            </trans-unit>
+            <trans-unit id="fvxWW3V" resname="The CSRF token is invalid. Please try to resubmit the form.">
+                <source>The CSRF token is invalid. Please try to resubmit the form.</source>
+                <target>Das CSRF-Token ist ungültig. Bitte versuchen Sie, das Formular erneut abzuschicken.</target>
+            </trans-unit>
+            <trans-unit id="CZanEz_" resname="typo3_slug_imprint">
+                <source>typo3_slug_imprint</source>
+                <target>impressum</target>
+            </trans-unit>
+            <trans-unit id="1.ZtIf4" resname="typo3_slug_privacy">
+                <source>typo3_slug_privacy</source>
+                <target>datenschutz-agb</target>
+            </trans-unit>
+            <trans-unit id="KV6qM8." resname="typo3_slug_register">
+                <source>typo3_slug_register</source>
+                <target>registrierung</target>
+            </trans-unit>
+            <trans-unit id="_Fp8uy5" resname="typo3_slug_user_manual">
+                <source>typo3_slug_user_manual</source>
+                <target>benutzeranleitung</target>
+            </trans-unit>
+            <trans-unit id="isXTHUg" resname="User manual">
+                <source>User manual</source>
+                <target>Benutzeranleitung</target>
+            </trans-unit>
+            <trans-unit id="hgM.daT" resname="Create an account">
+                <source>Create an account</source>
+                <target>Erstellen Sie ein Benutzerkonto,</target>
+            </trans-unit>
+            <trans-unit id="81esUbl" resname="You don’t have an account yet? 1 to connect with your desktop agent.">
+                <source>You don’t have an account yet? 1 to connect with your desktop agent.</source>
+                <target>Sie haben noch kein Benutzerkonto? 1 um sich mit Ihrem Desktop-Agenten zu verbinden.</target>
+            </trans-unit>
+            <trans-unit id="hnkzxsJ" resname="Page will be reloaded in">
+                <source>Page will be reloaded in</source>
+                <target>Seite wird neu geladen in</target>
+            </trans-unit>
+            <trans-unit id="WfAG1jv" resname="seconds">
+                <source>seconds</source>
+                <target>Sekunden</target>
+            </trans-unit>
+            <trans-unit id="WaY7oTC" resname="logoEFRE_en.svg">
+                <source>logoEFRE_en.svg</source>
+                <target>logoEFRE.svg</target>
+            </trans-unit>
+            <trans-unit id="1fdsuQT" resname="EUROPEAN UNION - REACT-EU - European Regional Development Fund">
+                <source>EUROPEAN UNION - REACT-EU - European Regional Development Fund</source>
+                <target>EUROPÄISCHE UNION - REACT-EU - Europäischer Fonds für regionale Entwicklung</target>
+            </trans-unit>
+            <trans-unit id="ufnM_yb" resname="Don’t know why your analysis was stopped? Check our &lt;a href=%url%&gt;User Manual&lt;/a&gt;.">
+                <source>Don’t know why your analysis was stopped? Check our &lt;a href=%url%&gt;User Manual&lt;/a&gt;.</source>
+                <target><![CDATA[Wissen Sie nicht, warum Ihre Analyse gestoppt wurde? Schauen Sie sich unsere <a href=%url%>Benutzeranleitung</a> an.]]></target>
+            </trans-unit>
+            <trans-unit id="5D0BMDx" resname="Current analysis">
+                <source>Current analysis</source>
+                <target>Aktuelle Analyse</target>
+            </trans-unit>
+            <trans-unit id="Y5nq6GF" resname="Title of current analysis">
+                <source>Title of current analysis</source>
+                <target>Name der aktuellen Analyse</target>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>
