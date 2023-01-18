@@ -77,6 +77,10 @@
 
     .dropdown-toggle {
         font-size : $font-size-sm;
+
+        &:focus-visible {
+            outline : rem-calc(2) solid $black;
+        }
     }
 
     .nav-meta {

@@ -1,6 +1,6 @@
-<div class="card bg-white p-2 analysis">
+<div class="card bg-white p-2 analysis" aria-label="{{ 'Current analysis' | trans }}">
     <div class="d-flex justify-content-between mb-1">
-        <span class="analysis-title text-truncate">
+        <span class="analysis-title text-truncate" aria-label="{{ 'Title of current analysis' | trans }}">
             <strong>
                 <small>
                      {{ analysis.name }}
@@ -10,7 +10,8 @@
         <div class="d-flex">
             <a class="btn btn-link btn-small"
                href="{{ path('app_page_analysis_show') }}"
-               title="{{ 'Show details of the current analysis' | trans }}">
+               title="{{ 'Show details of the current analysis' | trans }}"
+               aria-label="{{ 'Show details of the current analysis' | trans }}">
                 <i class="bi bi-eye"></i>
                 {{ 'Details' | trans }}
             </a>
@@ -18,7 +19,8 @@
                 <a class="btn btn-link btn-small"
                    target="_blank"
                    href="{{ portal }}/{{ analysis.portalPath(app.request.locale) }}"
-                   title="{{ 'Show results of the current analysis on the AGRIFUTURΞ website' | trans }}">
+                   title="{{ 'Show results of the current analysis on the AGRIFUTURΞ website' | trans }}"
+                   aria-label="{{ 'Show results of the current analysis on the AGRIFUTURΞ website' | trans }}">
                     <i class="bi bi-bar-chart"></i>
                     {{ 'Results' | trans }}
                 </a>
