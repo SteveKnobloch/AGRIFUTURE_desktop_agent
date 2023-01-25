@@ -81,7 +81,7 @@ final class UpdateStatusType extends AbstractType
             'csrf_protection' => true,
             'csrf_token_id' => function(Options $options) {
                 return self::class . "#{$options['status']->value}";
-            }
+            },
         ]);
 
         $resolver->setAllowedTypes(

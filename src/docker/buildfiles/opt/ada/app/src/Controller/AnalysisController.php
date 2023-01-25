@@ -21,6 +21,7 @@ use App\Service\PortalUrl;
 use Doctrine\Common\Collections\Criteria;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,9 +32,10 @@ use Twig\Error\RuntimeError;
 final class AnalysisController extends AbstractController
 {
     public function __construct(
-        public readonly ApiService $api,
-        public readonly AnalysisRepository $analyses,
-        public readonly UploadRepository $uploads,
+        private readonly ApiService $api,
+        private readonly AnalysisRepository $analyses,
+        private readonly UploadRepository $uploads,
+        private readonly FormFactoryInterface $forms,
     ) {}
 
     #[Route(
@@ -198,7 +200,8 @@ final class AnalysisController extends AbstractController
     ): Response|array {
         /** @var array<string, FormInterface> $forms */
         $forms = [
-            'resume' => $this->createForm(
+            'resume' => $this->forms->createNamed(
+                AnalysisStatus::running->value,
                 UpdateStatusType::class,
                 options: [
                     'status' => AnalysisStatus::running,
@@ -207,7 +210,8 @@ final class AnalysisController extends AbstractController
                     'icon' => 'play-circle'
                 ]
             ),
-            'pause' => $this->createForm(
+            'pause' => $this->forms->createNamed(
+                AnalysisStatus::paused->value,
                 UpdateStatusType::class,
                 options: [
                     'status' => AnalysisStatus::paused,
@@ -216,7 +220,8 @@ final class AnalysisController extends AbstractController
                     'icon' => 'pause-circle'
                 ]
             ),
-            'finish' => $this->createForm(
+            'finish' => $this->forms->createNamed(
+                AnalysisStatus::completed->value,
                 UpdateStatusType::class,
                 options: [
                     'status' => AnalysisStatus::completed,
@@ -224,7 +229,8 @@ final class AnalysisController extends AbstractController
                     'class' => 'btn btn-primary',
                 ]
             ),
-            'cancel' => $this->createForm(
+            'cancel' => $this->forms->createNamed(
+                AnalysisStatus::crashed->value,
                 UpdateStatusType::class,
                 options: [
                     'status' => AnalysisStatus::crashed,
