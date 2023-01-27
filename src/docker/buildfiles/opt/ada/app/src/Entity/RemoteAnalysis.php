@@ -231,13 +231,28 @@ class RemoteAnalysis
         );
     }
 
-    public final function portalPath(string $locale) {
+    final public function portalPath(string $locale) {
+        $parameters = [
+            'action' => 'detail',
+            'controller' => 'PipelineAnalysis',
+            'pipeline' => $this->getId()
+        ];
+
+        // Wrap the parameters with tx_rapidpipeline_pipelineanalysis[…]
+        $parameters = array_combine(
+            array_map(
+                fn(string $name) => "tx_rapidpipeline_pipelineanalysis[$name]",
+                array_keys($parameters)
+            ),
+            array_values($parameters)
+        );
+
+        $parameterString = http_build_query($parameters);
+
         return match ($locale) {
             'de' => 'analysen/details',
             'en' => 'analyses/details',
-        } . '?tx_rapidpipeline_pipelineanalysis[action]=detail' .
-            '&tx_rapidpipeline_pipelineanalysis[controller]=PipelineAnalysis' .
-            "&tx_rapidpipeline_pipelineanalysis[pipeline]={$this->getId()}";
+        } . '?' . $parameterString;
     }
 
     public function getRunningTime(): array
