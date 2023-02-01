@@ -108,17 +108,36 @@ class WatcherCommand extends Command
                     continue;
                 }
 
+                $existing = $this->findError(
+                    $uploads,
+                    $file
+                );
+                $error = $existing?->getError();
+
+                if ($existing) {
+                    // Recreating the upload forces a new id, which means the
+                    // current file is displayed correctly.
+                    $this->uploads->remove($existing);
+                }
+
+                // Create a new upload
+                // This prevents differences between server and client to be
+                // detected
+                $databaseUpload = new Upload(
+                    $file,
+                    $analysis,
+                    error: $error
+                );
+                $this->uploads->save($databaseUpload, true);
+
                 $result = $this->api->uploadFile($analysis, $file);
                 if ($result instanceof Upload) {
-                    $existing = $this->findError(
-                        $uploads,
-                        $file
-                    );
+                    // Delete the existing analysis
+                    // We could update it, but the current file is based on
+                    // the order of the id.
+                    $this->uploads->remove($databaseUpload);
 
-                    if ($existing) {
-                        $this->uploads->remove($existing);
-                    }
-
+                    // Store the new upload
                     $this->uploads->save($result, true);
                     $output->writeln("File $file uploaded.");
                     continue 2;
@@ -137,17 +156,12 @@ class WatcherCommand extends Command
                     break;
                 }
 
-                $error = $this->generateError(
-                    $uploads,
-                    $analysis,
-                    $file,
-                    $result,
-                    uploaded: match($result) {
-                        UploadFileError::AlreadyUploaded => true,
-                        default => false,
-                    }
-                );
-                $this->uploads->save($error, true);
+                $databaseUpload->setError($result);
+                if ($result === UploadFileError::AlreadyUploaded) {
+                    $databaseUpload->setUploaded();
+                }
+
+                $this->uploads->save($databaseUpload, true);
                 $output->writeln(
                     "File $file failed: {$result->name}"
                 );
