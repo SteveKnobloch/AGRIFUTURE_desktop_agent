@@ -8,15 +8,15 @@ set -eo pipefail
 #
 # Parameters:
 #
-#   DSL_IMAGE_NAMESPACE: The image namespace (default: senckenberg/agrifuture_desktop_agent)
-#   DSL_IMAGE_TAG: The image tag (default: main)
+#   DSL_IMAGE_NAMESPACE: The image namespace (default: ghcr.io/steveknobloch/agrifuture_desktop_agent)
+#   DSL_IMAGE_TAG: The image tag (default: latest)
 #   DSL_TARGET_STAGE: The build target (default: production)
 #
 # Examples:
 #
 #   ./build.sh
-#   DSL_IMAGE_NAMESPACE=code.tritum.de:5555/senckenberg/agrifuture_desktop_agent:latest ./build.sh
-#   DSL_IMAGE_NAMESPACE=rapid-node DSL_IMAGE_TAG=1.0.0 ./build.sh
+#   DSL_IMAGE_NAMESPACE=ghcr.io/steveknobloch/agrifuture_desktop_agent ./build.sh
+#   DSL_IMAGE_NAMESPACE=ghcr.io/steveknobloch/agrifuture_desktop_agent DSL_IMAGE_TAG=namespace ./build.sh
 # ***********************************************
 
 # ******************
@@ -25,8 +25,8 @@ if [ "$BASH" = "" ]; then echo "Error: you are not running this script within th
 if [ ! -x "$(command -v docker)" ]; then echo "Error: docker is not installed / executable."; exit 1; fi
 THIS_SCRIPT_REAL_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-DSL_IMAGE_NAMESPACE=${DSL_IMAGE_NAMESPACE:-senckenberg/agrifuture_desktop_agent}
-DSL_IMAGE_TAG=${DSL_IMAGE_TAG:-main}
+DSL_IMAGE_NAMESPACE=${DSL_IMAGE_NAMESPACE:-ghcr.io/steveknobloch/agrifuture_desktop_agent}
+DSL_IMAGE_TAG=${DSL_IMAGE_TAG:-latest}
 DSL_TARGET_STAGE=${DSL_TARGET_STAGE:-production}
 
 # remove trailing slashes

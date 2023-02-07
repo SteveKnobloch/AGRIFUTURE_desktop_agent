@@ -1,7 +1,5 @@
 FROM php:8.1-fpm-alpine AS base
 
-LABEL maintainer="hello@waldhacker.dev"
-
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY ./ /
 
@@ -18,6 +16,8 @@ RUN apk -U update \
         ca-certificates \
         dialog \
         gettext \
+        icu \
+        icu-data-full \
         nginx \
         nodejs \
         runit \
@@ -26,6 +26,14 @@ RUN apk -U update \
         supervisor \
         tzdata \
         yarn \
+    \
+    \
+    && apk add --no-cache --virtual .build-deps \
+        $PHPIZE_DEPS \
+        g++ \
+        icu-dev \
+        make \
+        zlib-dev \
     \
     \
     && update-ca-certificates \
@@ -46,6 +54,13 @@ RUN apk -U update \
     && chown root:root /usr/local/bin/ada-php-configure-fpm \
     && /usr/local/bin/ada-php-configure-fpm \
     && rm -f /usr/local/bin/ada-php-configure-fpm \
+    \
+    \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install \
+        intl \
+    && docker-php-ext-enable intl \
+    && { find /usr/local/lib -type f -print0 | xargs -0r strip --strip-all -p 2>/dev/null || true; } \
     \
     \
     && cp /usr/share/zoneinfo/Etc/UTC /etc/localtime \
@@ -165,6 +180,8 @@ RUN apk del \
       nodejs \
       yarn \
     \
+    \
+    && apk del .build-deps \
     \
     && rm -f /bin/tar \
     \
