@@ -11,8 +11,8 @@ services:
       # each language.
       ADA_PORTAL_DE: https://rapid-pipeline-portal.dev.local.dreistrom.land
       ADA_PORTAL_EN: https://rapid-pipeline-portal.dev.local.dreistrom.land/en
-      # ADA_PORTAL_DE: https://dreistromland:4DuRyv2PGziZzoMQgJTm@agrifuture.senckenberg.de
-      # ADA_PORTAL_EN: https://dreistromland:4DuRyv2PGziZzoMQgJTm@agrifuture.senckenberg.de/en
+      # ADA_PORTAL_DE: https://agrifuture.senckenberg.de
+      # ADA_PORTAL_EN: https://agrifuture.senckenberg.de/en
       ADA_CHECK_CERTIFICATES: 0
     ports:
       - '8041:80'
