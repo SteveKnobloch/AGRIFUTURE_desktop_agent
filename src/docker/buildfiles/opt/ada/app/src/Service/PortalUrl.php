@@ -17,9 +17,9 @@ final class PortalUrl
         $locale ??= $this->locale->currentLocale();
         $locale ??= $this->defaultLocale;
 
-        return getenv(
+        return $_ENV[
             'ADA_PORTAL_' . strtoupper($locale)
-        );
+        ];
     }
 
     public function __toString(): string
